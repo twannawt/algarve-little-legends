@@ -21,7 +21,6 @@ import {
   CloudFog,
   Plus,
   Calendar,
-  Star,
   Navigation,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -94,12 +93,6 @@ function getWeatherRecommendation(weather: WeatherData, places: Place[]): Place 
   }
   const playgrounds = places.filter((p) => p.category === "playground");
   return playgrounds[Math.floor(Math.random() * playgrounds.length)] || null;
-}
-
-function getWeeklyTip(places: Place[]): Place | null {
-  if (places.length === 0) return null;
-  const weekNumber = Math.floor((Date.now() - new Date(2024, 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000));
-  return places[weekNumber % places.length];
 }
 
 function parseMinAge(ageRange: string): number {
@@ -230,7 +223,6 @@ export default function HomePage() {
   const seasonalPlaces = getSeasonalPlaces(todayOpen ? places.filter((p) => placeMatchesSeason(p)) : places);
   const currentMonth = dutchMonths[new Date().getMonth()];
 
-  const weeklyTip = getWeeklyTip(places);
   const weatherRec = weather ? getWeatherRecommendation(weather, places) : null;
 
   async function fetchRandom() {
@@ -306,32 +298,6 @@ export default function HomePage() {
       </motion.section>
 
       <div className="px-4">
-        {/* Tip van de Week */}
-        {weeklyTip && !showResults && (
-          <Card
-            className="mb-6 rounded-2xl overflow-hidden border-primary/20 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
-            onClick={() => navigate(`/place/${weeklyTip.id}`)}
-          >
-            <div className="bg-gradient-to-r from-primary/10 to-accent/10 px-4 py-3">
-              <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-primary fill-primary/30" />
-                <span className="text-sm font-semibold text-primary">{t("tipVanDeWeek")}</span>
-              </div>
-            </div>
-            <CardContent className="p-4">
-              <h3 className="font-bold font-serif text-foreground text-lg">{weeklyTip.name}</h3>
-              <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
-                <MapPin className="h-3 w-3" />
-                <span>{weeklyTip.location}</span>
-              </div>
-              <div className="mt-2">
-                <CategoryBadge category={weeklyTip.category} />
-              </div>
-              <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{weeklyTip.description}</p>
-            </CardContent>
-          </Card>
-        )}
-
         {/* Quick Actions */}
         <div className="flex flex-col gap-3 mb-6 sm:flex-row">
           <button
