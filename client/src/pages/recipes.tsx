@@ -537,7 +537,7 @@ function RecipeCard({
 
   return (
     <motion.div variants={fadeIn} transition={{ duration: 0.2 }}>
-      <Card className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border ${hasAnyApproval ? "border-amber-300 dark:border-amber-600" : "border-border"}`}>
+      <Card className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border ${hasAnyApproval ? "border-primary/40 dark:border-primary/50" : "border-border"}`}>
         {/* Image */}
         {recipe.imageUrl && (
           <a href={recipe.url} target="_blank" rel="noopener noreferrer">
@@ -558,7 +558,7 @@ function RecipeCard({
                   {approvals.map((tag) => (
                     <span
                       key={tag}
-                      className="bg-amber-400 text-white rounded-full px-2 py-0.5 text-[10px] font-semibold shadow-sm"
+                      className="bg-primary text-white rounded-full px-2 py-0.5 text-[10px] font-semibold shadow-sm"
                     >
                       {tag === "beiden" ? "👫" : tag === "charlie" ? "👧" : "👦"}
                     </span>
@@ -668,7 +668,7 @@ function RecipeCard({
                   onClick={() => onToggleKidApproval(key)}
                   className={`flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium transition-all ${
                     isActive
-                      ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
+                      ? "bg-primary/15 text-primary dark:bg-primary/20 dark:text-primary"
                       : "bg-muted text-muted-foreground hover:bg-muted/80"
                   }`}
                 >
