@@ -58,11 +58,11 @@
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 
-  /* Surface layering — Bali Green header/nav, warm terracotta tabs */
+  /* Surface layering — Bali Green header/nav, lighter green tabs */
   --header-bg: hsl(140 14% 93% / 0.97);
   --header-border: hsl(140 16% 82%);
-  --tabs-bg: hsl(18 30% 95% / 0.95);
-  --tabs-border: hsl(18 20% 87%);
+  --tabs-bg: hsl(140 12% 96% / 0.95);
+  --tabs-border: hsl(140 12% 88%);
   --nav-bg: hsl(140 14% 93% / 0.97);
   --nav-border: hsl(140 16% 82%);
 
@@ -144,11 +144,11 @@
   --shadow-xl: 0 12px 32px rgba(0,0,0, 0.40);
   --shadow-2xl: 0 16px 40px rgba(0,0,0, 0.45);
 
-  /* Surface layering — dark mode: Bali Green header/nav, warm terracotta tabs */
+  /* Surface layering — dark mode: Bali Green header/nav, lighter green tabs */
   --header-bg: hsl(140 16% 11% / 0.97);
   --header-border: hsl(140 14% 18%);
-  --tabs-bg: hsl(18 18% 12% / 0.95);
-  --tabs-border: hsl(18 14% 20%);
+  --tabs-bg: hsl(140 12% 14% / 0.95);
+  --tabs-border: hsl(140 10% 22%);
   --nav-bg: hsl(140 16% 11% / 0.97);
   --nav-border: hsl(140 14% 18%);
 
