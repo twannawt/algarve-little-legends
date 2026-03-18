@@ -184,6 +184,7 @@ export default function HomePage() {
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [gpsActive, setGpsActive] = useState(false);
   const nearbyRef = useRef<HTMLElement>(null);
+  const suggestionRef = useRef<HTMLDivElement>(null);
   const queryClient = useQueryClient();
 
   const { data: places = [] } = useQuery<Place[]>({
@@ -235,6 +236,10 @@ export default function HomePage() {
     const res = await apiRequest("GET", "/api/random");
     const place = await res.json();
     setRandomPlace(place);
+    // Scroll to suggestion card after render
+    setTimeout(() => {
+      suggestionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
   }
 
   function handleNearbyClick() {
@@ -360,7 +365,7 @@ export default function HomePage() {
 
         {/* Random Suggestion */}
         {randomPlace && (
-          <Card className="mb-6 border-primary/20 bg-primary/5 rounded-2xl shadow-sm">
+          <Card ref={suggestionRef} className="mb-6 border-primary/20 bg-primary/5 rounded-2xl shadow-sm">
             <CardContent className="p-4">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
