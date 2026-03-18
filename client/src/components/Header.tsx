@@ -2,7 +2,6 @@ import { Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
-import { useI18n } from "@/lib/i18n";
 
 function AlgarveLittleLegendsLogo() {
   return (
@@ -108,7 +107,6 @@ function AlgarveLittleLegendsLogo() {
 export function Header() {
   const [, navigate] = useLocation();
   const [isDark, setIsDark] = useState(false);
-  const { lang, setLang } = useI18n();
 
   useEffect(() => {
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -130,54 +128,29 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-sm">
-      <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+      <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
         <button
           data-testid="logo-home"
           onClick={() => navigate("/")}
-          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
         >
           <AlgarveLittleLegendsLogo />
-          <span className="font-serif font-bold text-lg text-foreground">Algarve Little Legends</span>
+          <div className="flex flex-col">
+            <span className="font-serif font-bold text-lg text-foreground leading-tight">Algarve Little Legends</span>
+            <span className="text-[11px] text-muted-foreground leading-tight mt-1">Vandaag iets doen met Charlie & Bodi</span>
+          </div>
         </button>
 
-        <div className="flex items-center gap-1">
-          {/* Language toggle */}
-          <div className="flex items-center rounded-full border border-border overflow-hidden text-xs">
-            <button
-              data-testid="lang-nl"
-              onClick={() => setLang("nl")}
-              className={`px-3 py-2 min-h-[36px] transition-colors ${
-                lang === "nl"
-                  ? "bg-primary/10 text-primary font-semibold"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              NL
-            </button>
-            <button
-              data-testid="lang-en"
-              onClick={() => setLang("en")}
-              className={`px-3 py-2 min-h-[36px] transition-colors ${
-                lang === "en"
-                  ? "bg-primary/10 text-primary font-semibold"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              EN
-            </button>
-          </div>
-
-          <Button
-            data-testid="theme-toggle"
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8"
-            onClick={toggleTheme}
-            aria-label={isDark ? "Schakel naar licht thema" : "Schakel naar donker thema"}
-          >
-            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </Button>
-        </div>
+        <Button
+          data-testid="theme-toggle"
+          variant="ghost"
+          size="icon"
+          className="h-8 w-8"
+          onClick={toggleTheme}
+          aria-label={isDark ? "Schakel naar licht thema" : "Schakel naar donker thema"}
+        >
+          {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+        </Button>
       </div>
     </header>
   );

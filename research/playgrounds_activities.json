@@ -8,14 +8,14 @@
     "description": "Gloednieuwe (geopend april 2025) gemeentelijke speeltuin direct naast het strand van Carvoeiro, gebouwd door de Município de Lagoa. Ontworpen met veiligheid en plezier in gedachten voor kinderen en gezinnen die het strand bezoeken of in de buurt wonen. Voorzien van moderne klimtoestellen, glijbanen en open speelruimtes met zeezicht.",
     "description_en": "Brand new (opened April 2025) municipal playground right next to Carvoeiro beach, built by the Município de Lagoa. Designed with safety and fun in mind for children and families visiting or living near the beach. Features modern climbing equipment, slides, and open play areas with sea views.",
     "kidFeatures": [
-      "new equipment",
-      "near beach",
-      "sea views",
-      "safe surfaces",
-      "fenced area"
+      "nieuwe speeltoestellen",
+      "bij het strand",
+      "zeezicht",
+      "veilige ondergronden",
+      "omheind terrein"
     ],
     "ageRange": "2-10",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open daily, dawn to dusk",
     "tip": "Combineer met een ochtend op het strand van Carvoeiro op een steenworp afstand. De nieuwe speeltuin verving de oude in het voorjaar van 2025. Parkeer bij de strandparkeerplaats.",
     "tip_en": "Combine with a morning at Carvoeiro beach just steps away. The new playground replaced the old one in spring 2025. Park at the beach car park.",
@@ -35,13 +35,13 @@
     "description": "Gemeentelijke speeltuin in het hoofdstadpark van Lagoa, Largo 5 de Outubro. Centraal gelegen in Lagoa met schaduwrijke zitplekken voor ouders en een aangename tuinsfeer. Een handige buurtspeeltuin voor inwoners.",
     "description_en": "Municipal playground in Lagoa's main town garden, Largo 5 de Outubro. Located centrally in Lagoa with shaded seating for parents and a pleasant garden atmosphere. A convenient neighbourhood playground for locals.",
     "kidFeatures": [
-      "shaded",
+      "beschaduwd",
       "town centre",
-      "garden setting",
-      "benches for parents"
+      "tuinomgeving",
+      "bankjes voor ouders"
     ],
     "ageRange": "2-10",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open daily, dawn to dusk",
     "tip": "Ideaal voor een snelle stop als je boodschappen doet in het centrum van Lagoa. Combineer met een koffie bij een van de nabijgelegen cafés.",
     "tip_en": "Ideal for a quick stop when running errands in Lagoa town. Combine with a coffee at one of the nearby cafés.",
@@ -61,11 +61,11 @@
     "description_en": "Recently refurbished (2023) neighbourhood playground in the Bairro da Boa Vontade area, part of the Município de Lagoa's investment in local play spaces. Features updated equipment and improved ground surfaces for toddler safety.",
     "kidFeatures": [
       "recently refurbished",
-      "safe surfaces",
+      "veilige ondergronden",
       "neighbourhood setting"
     ],
     "ageRange": "2-10",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open daily, dawn to dusk",
     "tip": "Een van de meerdere gemeentelijk opgeknapte speeltuinen in de regio Lagoa sinds 2023. Fijn voor een rustig lokaal uitje weg van de toeristische drukte.",
     "tip_en": "One of several municipally upgraded playgrounds in the Lagoa region since 2023. Good for a quiet local outing away from tourist crowds.",
@@ -85,15 +85,15 @@
     "description_en": "A large castle-themed playground beside the Arade River in Silves, complete with climbing structures, slides, and giant 'SILVES' letter sculptures with climbing holds. A smooth circular riverside path is ideal for strollers or baby carriers. There's a café right next to it for parents.",
     "kidFeatures": [
       "castle-themed equipment",
-      "stroller-friendly river path",
+      "buggy-vriendelijk rivierpad",
       "climbing structures",
-      "slides",
-      "shaded areas",
+      "glijbanen",
+      "schaduwplekken",
       "café next door",
-      "free parking nearby"
+      "gratis parkeren in de buurt"
     ],
     "ageRange": "1-10",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open daily, dawn to dusk",
     "tip": "Parkeer gratis bij Parking Parque Ribeirinho de Silves. Na de speeltuin kun je door het stadje omhoog lopen naar het kasteel van Silves (klein entreegeld). Ga vroeg om de zomerhitte te vermijden. Entree kasteel: €2,80 volwassenen, €1,40 kinderen boven 3, gratis onder 3.",
     "tip_en": "Park free at Parking Parque Ribeirinho de Silves. After the playground, walk up through the town to Silves Castle (small entry fee). Visit early to avoid summer heat. Entry to the castle is €2.80 adults, €1.40 children over 3, free under 3.",
@@ -114,16 +114,16 @@
     "kidFeatures": [
       "skatepark",
       "pump track",
-      "two playgrounds",
+      "twee speeltuinen",
       "basketball",
       "football fields",
-      "animals (peacocks, ducks, turtles)",
+      "dieren (pauwen, eenden, schildpadden)",
       "pond",
-      "picnic areas",
+      "picknickplekken",
       "café"
     ],
     "ageRange": "1-16",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Daily 08:30–20:00",
     "tip": "De dieren zijn een groot succes bij peuters. Doordeweeks in de ochtend is het rustiger. Adres: Urbanização Alto Pacheco LA, 8500-510 Portimão.",
     "tip_en": "The animals are a big hit with toddlers. Weekday mornings are quieter. Address: Urbanização Alto Pacheco LA, 8500-510 Portimão.",
@@ -144,15 +144,15 @@
     "description": "Een groot recreatiepark in het noorden van Albufeira, geopend in 2008 en beschouwd als de grootste kinderspeeltuin-infrastructuur van de gemeente. Voorzien van uitgebreide speeltoestellen voor verschillende leeftijdsgroepen, fitnessplekken, wandelpaden en een klein café/kiosk. Goed onderhouden met weelderig groen.",
     "description_en": "A large recreational park in northern Albufeira, opened in 2008 and considered the largest children's playground infrastructure in the municipality. Features extensive play equipment for different age groups, fitness areas, footpaths, and a small café/kiosk on site. Well-maintained with lush green surroundings.",
     "kidFeatures": [
-      "largest play area in Albufeira",
-      "multiple equipment sets for different ages",
-      "fitness area",
+      "grootste speeltuin in Albufeira",
+      "meerdere speeltoestellen voor verschillende leeftijden",
+      "fitnessruimte",
       "café/kiosk",
       "footpaths",
-      "shaded areas"
+      "schaduwplekken"
     ],
     "ageRange": "2-12",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open daily (24 hours per park records)",
     "tip": "Adres: R. Cândido de Oliveira 1, 8200-317 Albufeira. Ongeveer 30 minuten van Lagoa. Het beste 's ochtends te bezoeken voordat het heet wordt in de zomer.",
     "tip_en": "Address: R. Cândido de Oliveira 1, 8200-317 Albufeira. About 30 minutes from Lagoa. Best visited in the morning before it gets hot in summer.",
@@ -173,12 +173,12 @@
     "description_en": "A well-loved neighbourhood playground set within the shaded Alameda park in Portimão. Spacious play area with good equipment, surrounded by mature trees providing natural shade — especially welcome in summer. Well-maintained and popular with local families.",
     "kidFeatures": [
       "shaded by mature trees",
-      "spacious",
+      "ruim",
       "well-maintained",
       "good equipment"
     ],
     "ageRange": "2-10",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open daily, dawn to dusk",
     "tip": "Een van de schaduwrijkste speeltuinen in de regio — ideaal voor hete zomermiddagen. Centraal gelegen in Portimão.",
     "tip_en": "One of the better-shaded playgrounds in the region — great for hot summer afternoons. Located in central Portimão.",
@@ -198,13 +198,13 @@
     "description_en": "A 570-metre wooden boardwalk running along the top of dramatic clifftops near Carvoeiro beach, offering spectacular Atlantic views. Features the new playground area at one end and connects to scenic viewpoints over turquoise coves. Completely safe with railings throughout — a favourite for family strolls.",
     "kidFeatures": [
       "railed wooden boardwalk",
-      "sea views",
-      "playground nearby",
-      "stroller-accessible sections",
-      "flat and safe"
+      "zeezicht",
+      "speeltuin in de buurt",
+      "buggy-toegankelijke gedeelten",
+      "vlak en veilig"
     ],
     "ageRange": "0-99",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open 24 hours",
     "tip": "Op z'n mooist bij zonsondergang met prachtig gouden licht over de zeegrottes. Heel dichtbij de nieuwe 2025-strandspeeltuin. Ideaal voor buggy's over het hoofdgedeelte van de boardwalk.",
     "tip_en": "Best at sunset for incredible golden light over the sea caves. Very close to the new 2025 beach playground. Ideal for strollers along the main boardwalk section.",
@@ -225,11 +225,11 @@
     "kidFeatures": [
       "pirate theme",
       "interesting structures",
-      "beautiful garden setting",
+      "mooie tuinomgeving",
       "city centre"
     ],
     "ageRange": "2-10",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open daily, dawn to dusk",
     "tip": "Combineer met een wandeling langs de oude stadsmuren en de jachthaven van Faro. Ongeveer 45 minuten rijden vanuit Lagoa.",
     "tip_en": "Combine with a walk along Faro's old town walls and marina. About 45 minutes' drive from Lagoa.",
@@ -248,14 +248,14 @@
     "description": "Een aangenaam gemeentepark met een goed onderhouden speeltuin die vooral geschikt is voor kinderen vanaf ongeveer 3 jaar. Inclusief een fitnessgedeelte, wandelpaden en een kunstmatig meerfeature. Schoon en regelmatig onderhouden door de lokale gemeente.",
     "description_en": "A pleasant municipal park with a well-maintained playground particularly suited for children around age 3 and up. Includes a fitness area, footpaths for walking, and a man-made lake feature. Clean and regularly maintained by local municipality.",
     "kidFeatures": [
-      "playground",
-      "fitness area",
+      "speeltuin",
+      "fitnessruimte",
       "footpaths",
       "lake feature",
-      "clean surfaces"
+      "schone ondergronden"
     ],
     "ageRange": "2-10",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open daily, dawn to dusk",
     "tip": "Een rustig lokaal park weg van de toeristische plekken. Fijn voor een ochtendwandeling en speeltuinbezoek dichtbij Lagoa.",
     "tip_en": "A quieter local park away from tourist spots. Good for a morning walk and playground session close to Lagoa.",
@@ -274,18 +274,18 @@
     "description": "Een premium gezinspark in Vale do Lobo dat een goed uitgeruste buitenspeeltuin combineert met een spetterplaats, springkussen, klimgebied, 18-holes-midgetgolf, een Robokeeper-spel en eten aan het strand. De kinderspeelplaats is gratis; activiteiten zoals minigolf en het zwembad kosten een kleine bijdrage. Populair bij zowel vakantiegezinnen als lokale bewoners.",
     "description_en": "A premium family entertainment park in Vale do Lobo combining a well-equipped outdoor playground with a splash pad, bouncy castle, climbing area, 18-hole mini golf course, Robokeeper game, and beachside dining. The kids' play area is free; activities like mini golf and the pool have small charges. Popular with both families on holiday and local residents.",
     "kidFeatures": [
-      "outdoor playground (free)",
+      "buitenspeeltuin (gratis)",
       "splash pad",
-      "bouncy castle",
-      "climbing area",
-      "18-hole mini golf",
+      "springkussen",
+      "klimgedeelte",
+      "18-holes minigolf",
       "Robokeeper",
-      "sea views",
+      "zeezicht",
       "restaurant/bar",
-      "birthday parties"
+      "verjaardagsfeestjes"
     ],
     "ageRange": "1-12",
-    "cost": "Playground free; mini golf ~€17 package incl. drink; other activities €2–€15",
+    "cost": "Playground gratis; mini golf ~€17 package incl. drink; other activities €2–€15",
     "openingHours": "Daily 10:00–22:00",
     "tip": "Adres: Avenida do Mar 23, Vale do Lobo 8136-864. De buitenspeeltuin en spetterplaats zijn gratis — goede deal. Het €17-pakket (minigolf + drankje) is fijn voor ouders.",
     "tip_en": "Address: Avenida do Mar 23, Vale do Lobo 8136-864. The outdoor playground area and splash pad are free — great value. The 17€ package (mini golf + drink) is good for parents.",
@@ -305,17 +305,17 @@
     "description": "Een van de grootste indoor (en outdoor) gezinspretparken in de Algarve, geopend in 2024/2025 vlak bij Alcantarilha, op slechts enkele minuten van Lagoa. Voorzien van een speelgebied op meerdere niveaus met trampolines, reuzenglijbanen, klimnetten en een speciale peuterzone. Buiten wisselende springkussens bij mooi weer. Ouders kunnen ontspannen in het restaurant met goed eten en drinken. Een uitstekende regendag-optie.",
     "description_en": "One of the largest indoor (and outdoor) family fun parks in the Algarve, opened in 2024/2025 near Alcantarilha, just minutes from Lagoa. Features a multi-level indoor play area with trampolines, giant slides, climbing nets, and a dedicated toddler zone. Outdoor rotating bouncy castles in good weather. Parents can relax at the restaurant with good food and drinks. An excellent rainy-day option.",
     "kidFeatures": [
-      "dedicated toddler zone",
+      "speciaal peutergedeelte",
       "trampolines",
-      "large slides",
+      "grote glijbanen",
       "climbing nets",
-      "bouncy castles (outdoor)",
-      "indoor/outdoor",
-      "restaurant for parents",
-      "very clean"
+      "springkussens (buiten)",
+      "binnen/buiten",
+      "restaurant voor ouders",
+      "zeer schoon"
     ],
     "ageRange": "1-14",
-    "cost": "€15 per child (1 year and older); adults/teens free",
+    "cost": "€15 per kind (1 jaar en ouder); volwassenen/teens gratis",
     "openingHours": "Tue–Thu 10:00–20:00; Fri 10:00–21:00; Sat–Sun 10:00–20:00; closed Mondays",
     "tip": "Adres: R. De Vale De Lousas, Alcantarilha 8365-306. Ongeveer 10–15 min van Lagoa. Ga doordeweeks voor een rustigere ervaring. Onder de 1 jaar gratis. Boek verjaardagsfeestjes van tevoren.",
     "tip_en": "Address: R. De Vale De Lousas, Alcantarilha 8365-306. About 10–15 min from Lagoa. Go on a weekday for a more relaxed experience. Under-1s are free. Book birthday parties in advance.",
@@ -336,17 +336,17 @@
     "description": "Een groot gezinspark gebouwd rond een kartcomplex met drie afzonderlijke banen voor alle leeftijden. De Mini F1-baan is ontworpen voor kinderen van 3–6 jaar, het Junior Circuit voor 7–12 jaar en een volwassen hoofdbaan (760m, replica van het Jacarepaguá F1-circuit). Naast karten biedt het park trampolines, een mechanische stier, minibootjes, een kinderboerderij en ATV/buggy-safari's. Gratis toegang tot het parkterrein.",
     "description_en": "A full-scale family entertainment park built around a go-kart complex with three distinct tracks for all ages. The Mini F1 track is designed for children aged 3–6, the Junior Circuit for ages 7–12, and an adult main track (760m, replica of the Jacarepaguá F1 circuit). Beyond karting, the park has trampolines, a mechanical bull, mini boats, a petting zoo, and ATV/buggy safaris. Free admission to the park grounds.",
     "kidFeatures": [
-      "Mini F1 track (age 3–6)",
-      "Junior Circuit (age 7–12)",
+      "Mini F1-baan (3–6 jaar)",
+      "junior Circuit (7–12 jaar)",
       "trampolines",
       "mechanical bull",
       "mini boats",
-      "petting zoo",
+      "kinderboerderij",
       "buggy/ATV safari",
-      "free park entry"
+      "gratis toegang tot het park"
     ],
     "ageRange": "3-16",
-    "cost": "Free entry; karting approx. €15/person per session; other activities extra",
+    "cost": "Gratis entree; karting ca.. €15/person per sessie; andere activiteiten extra",
     "openingHours": "Tue 13:00–18:00; Wed–Fri 10:00–18:00; Sat–Sun 10:00–18:30; closed Mon",
     "tip": "Gratis toegang tot het park — je betaalt alleen voor de activiteiten die je doet. De Mini F1-auto's zijn perfect voor de eerste karting-ervaring van een 5-jarige. Reken op 2–3 uur. Ongeveer 45 min van Lagoa.",
     "tip_en": "Free to enter the park — you only pay for activities you do. The Mini F1 cars are perfect for a 5-year-old's first karting experience. Allow 2–3 hours. About 45 min from Lagoa.",
@@ -366,16 +366,16 @@
     "description": "Een 18-holes-midgetgolfbaan in een adembenemende tropische tuin met meer dan 2.000 planten van meer dan 100 soorten, met natuurlijke watervallen en een ontspannen sfeer. Omgedoopt tot Eden Alvor, met ook een spa, buitenzwembad, golfsimulator en een top-beoordeeld restaurant. Kinderen onder 5 spelen gratis met een betalende volwassene. Kleine clubs beschikbaar voor jonge kinderen.",
     "description_en": "An 18-hole mini golf course set within a breathtaking tropical garden featuring over 2,000 plants from more than 100 species, with natural waterfalls and a relaxed atmosphere. Rebranded as Eden Alvor, it also includes a spa, outdoor pool, golf simulator, and a top-rated restaurant. Under-5s play free with a paying adult. Small clubs available for young children.",
     "kidFeatures": [
-      "18-hole mini golf",
-      "natural waterfall setting",
-      "tropical garden",
-      "small clubs for kids",
+      "18-holes minigolf",
+      "natuurlijke watervalomgeving",
+      "tropische tuin",
+      "kleine clubs voor kinderen",
       "under-5s free",
       "restaurant/café",
-      "spa/pool on site"
+      "spa/zwembad aanwezig"
     ],
     "ageRange": "3-99",
-    "cost": "Adults €13; children (5–14) €8; under 5 free with adult",
+    "cost": "Volwassenen €13; kinderen (5–14) €8; onder 5 gratis met volwassene",
     "openingHours": "Daily 09:00–22:00",
     "tip": "GPS: 37.132774, -8.592648. Adres: Rua Serpa Pinto 1, Alvor. Boek van tevoren (15:00–18:00 is rustiger en iets goedkoper). Ongeveer 20 minuten van Lagoa.",
     "tip_en": "GPS: 37.132774, -8.592648. Address: Rua Serpa Pinto 1, Alvor. Book in advance (3–6pm is quieter and slightly cheaper). About 20 minutes from Lagoa.",
@@ -396,14 +396,14 @@
     "description": "Een Romeins-thema midgetgolfpark in Vilamoura met twee 18-holes-banen (Adventure Classic en Crazygolf) in een prachtige tuin. Kinderen onder 5 spelen helemaal gratis bij elk gekocht volwassenticket. Uitstekende gezinssfeer met online boeken mogelijk voor 15% korting.",
     "description_en": "A Roman-themed mini golf park in Vilamoura with two 18-hole courses (Adventure Classic and Crazygolf) set within a beautiful garden. Children under 5 play completely free with every adult ticket purchased. Excellent family atmosphere with online booking available for a 15% discount.",
     "kidFeatures": [
-      "Roman theme",
+      "Romeins thema",
       "two 18-hole courses",
-      "beautiful garden setting",
-      "under-5s free with adult",
-      "15% online discount"
+      "mooie tuinomgeving",
+      "onder 5 jaar gratis met een volwassene",
+      "15% online korting"
     ],
     "ageRange": "3-99",
-    "cost": "Adults €18.50 (1 course); children €14.50 with adult; under 5 free with adult",
+    "cost": "Volwassenen €18.50 (1 course); kinderen €14.50 met volwassene; onder 5 gratis met volwassene",
     "openingHours": "Daily 10:00 (closing varies by season: 18:00 in winter, midnight+ in summer); closed Nov–Jan for maintenance",
     "tip": "Adres: Rua dos Marmeleiros, Vilamoura 8125-497. Boek online om 15% te besparen. Kinderen onder 5 zijn helemaal gratis — geweldige deal voor een gezin van 4.",
     "tip_en": "Address: Rua dos Marmeleiros, Vilamoura 8125-497. Book online to save 15%. Under-5s are completely free — great deal for a family of 4.",
@@ -427,11 +427,11 @@
       "helmets included",
       "matched to rider level",
       "multilingual guides (EN/PT/ES/FR)",
-      "calm and well-trained horses",
+      "rustige en goed getrainde paarden",
       "beautiful dune/countryside setting"
     ],
     "ageRange": "2-99",
-    "cost": "~€40–€60 per person for a 1–1.5 hour ride (prices not confirmed online, book by phone)",
+    "cost": "~€40–€60 per persoon voor een 1–1,5 uur rijden (prijzen niet online bevestigd, bel om te boeken)",
     "openingHours": "Daily 07:00–19:30",
     "tip": "Adres: M526 Quinta da Saudade, Albufeira 8200-424. Bel of WhatsApp om te boeken: reviews vermelden dat spontane boekingen ook werken. Kinderen vanaf 2 jaar kunnen ponyrijden. Ongeveer 20 min van Lagoa.",
     "tip_en": "Address: M526 Quinta da Saudade, Albufeira 8200-424. Call or WhatsApp to book: reviews mention spontaneous bookings work too. Children as young as 2 can do pony rides. About 20 min from Lagoa.",
@@ -451,14 +451,14 @@
     "description_en": "A well-established riding centre on the EN125 between Lagos and Sagres, offering guided trail rides and lessons for all ages and abilities. Particularly good for family rides with mixed experience levels, as groups are matched by ability. Offers a Pony Club on Saturdays for kids with games, badges, and competitions. Beautiful coastal countryside setting.",
     "kidFeatures": [
       "pony rides/lessons",
-      "Pony Club (Saturdays)",
+      "Ponyclub (zaterdags)",
       "groups matched by ability",
       "helmets provided",
       "experienced instructors",
       "coastal countryside trails"
     ],
     "ageRange": "4-99",
-    "cost": "~€50–€83 per person for 1 hour ride",
+    "cost": "~€50–€83 per persoon voor 1 uur rijden",
     "openingHours": "Mon–Sat: Oct–May 10:00–13:00 and 15:00–dusk; Jun–Sep 09:00–13:00 and 15:00–20:00",
     "tip": "GPS: 37.0997N, -8.7588W. Adres: 1677-E Almádena, 8600-102 Luz, Lagos. Boek 24 uur van tevoren door te bellen naar +351 917 667 514. Ongeveer 40 min van Lagoa.",
     "tip_en": "GPS: 37.0997N, -8.7588W. Address: 1677-E Almádena, 8600-102 Luz, Lagos. Book 24 hours in advance by calling +351 917 667 514. About 40 min from Lagoa.",
@@ -478,15 +478,15 @@
     "description": "Een 1,5 uur durende boottocht in kleine groepen die vertrekt vanaf het strand van Carvoeiro, langs de prachtige zeegrottes en rotsbogen aan de kust, inclusief de beroemde Benagil-grot (de 'kathedraal-grot'). Boten bieden plaats aan maximaal 10 passagiers voor een persoonlijke ervaring. Reddingsvesten worden verstrekt. Baby's van 0–2 jaar varen gratis mee; kinderen van 3–10 tegen kindertarief. Het beste voor gezinnen met kinderen die comfortabel zijn op het water.",
     "description_en": "A 1.5-hour small-group boat tour departing from Carvoeiro beach, exploring the stunning sea caves and rock arch coastline including the famous Benagil Cave (the 'cathedral cave'). Boats hold a maximum of 10 passengers, providing a personal experience. Life jackets provided. Babies 0–2 years board free; children 3–10 at reduced child price. Best for families with children who are comfortable on the water.",
     "kidFeatures": [
-      "life jackets provided",
-      "small group (max 10)",
+      "zwemvesten beschikbaar",
+      "kleine groep (max 10)",
       "babies free",
-      "child prices available",
-      "1.5 hours duration",
-      "scenic coastline and caves"
+      "kinderprijzen beschikbaar",
+      "1,5 uur duur",
+      "schilderachtige kustlijn en grotten"
     ],
     "ageRange": "2-99",
-    "cost": "Adults ~€42; children ~€20–30; babies under 2 free",
+    "cost": "Volwassenen ~€42; kinderen ~€20–30; baby's onder 2 gratis",
     "openingHours": "Multiple daily departures; seasonal (main season April–October)",
     "tip": "Vertrekt vanaf het strand van Carvoeiro — slechts 5 minuten van Lagoa! Boek van tevoren in de zomer want plaatsen zijn snel bezet. Kies een grotere catamaran voor een stabielere vaart als je peuter last heeft van zeeziekte. Ochtenddiensten hebben kalmer water.",
     "tip_en": "Departs from Carvoeiro beach — just 5 minutes from Lagoa! Book in advance in summer as spots sell out. Choose a larger catamaran for a more stable ride if your toddler is prone to seasickness. Morning departures have calmer seas.",
@@ -506,16 +506,16 @@
     "description": "Een 3–5 km lange houten boardwalk door de beschermde moerasgebieden van de Alvor-monding, een van de meest gezinsvriendelijke natuurwandelingen in de Algarve. De brede, vlakke boardwalk heeft overal leuningen en is volledig buggy-/kinderwagen-toegankelijk. Rijk aan vogels waaronder flamingo's, reigers en steltlopers die het hele jaar zichtbaar zijn. Eindigt bij het prachtige strand van Alvor waar kinderen kunnen spelen. Gratis parkeren bij het startpunt.",
     "description_en": "A 3–5km wooden boardwalk through the protected Alvor estuary wetlands, one of the most family-friendly nature walks in the Algarve. The wide, flat boardwalk has railings throughout and is fully pushchair/stroller-accessible. Rich wildlife including flamingos, herons, and wading birds visible year-round. Ends at the beautiful Alvor beach where kids can play. Free parking at the start.",
     "kidFeatures": [
-      "fully stroller-accessible",
-      "flat with railings",
+      "volledig buggy-toegankelijk",
+      "vlak met leuningen",
       "wildlife spotting (flamingos)",
-      "leads to beach",
+      "leidt naar het strand",
       "no steps on boardwalk",
-      "free parking",
-      "dogs not allowed (safe for kids)"
+      "gratis parkeren",
+      "geen honden toegestaan (veilig voor kinderen)"
     ],
     "ageRange": "0-99",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open 24 hours daily",
     "tip": "Start bij Praia de Alvor (GPS: 37.1264, -8.5960). De boardwalk kronkelt waardoor je de wandeling zo lang of kort kunt maken als je wilt — perfect voor de aandachtsspanne van peuters! Het beste bij laag tij voor het meeste vogelleven.",
     "tip_en": "Start at Praia de Alvor (GPS: 37.1264, -8.5960). The boardwalk meanders so you can make the walk as long or short as you want — perfect for toddler attention spans! Best at low tide for the most birdlife.",
@@ -536,13 +536,13 @@
     "description_en": "A beautiful coastal lagoon boardwalk through one of the Algarve's best birdwatching sites, located between Armação de Pêra and Galé. An easy 1–2km boardwalk through dunes leads directly to a golden beach. The lagoon is home to flamingos (winter), storks, herons, and 25+ bird species. The sandy path and boardwalk are manageable with a stroller for the main section.",
     "kidFeatures": [
       "wildlife spotting (flamingos in winter)",
-      "leads to a wide sandy beach",
-      "easy flat walk",
+      "leidt naar een breed zandstrand",
+      "makkelijke vlakke wandeling",
       "educational nature experience",
-      "free parking"
+      "gratis parkeren"
     ],
     "ageRange": "1-99",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open daily (dawn recommended for birdwatching)",
     "tip": "GPS: 37.0945, -8.3314. Neem afslag 8 van de A22 richting Algoz/Pêra. Ga bij zonsondergang voor een magische sfeer — locals noemen het 'de boardwalk'. In de winter kun je flamingo's zien. Ongeveer 15 min van Lagoa.",
     "tip_en": "GPS: 37.0945, -8.3314. Take exit 8 from A22 towards Algoz/Pêra. Visit at sunset for a magical atmosphere — locals call it 'the boardwalk.' Winter visits offer flamingo sightings. About 15 min from Lagoa.",
@@ -562,14 +562,14 @@
     "description": "Een populaire vlakke kustwandeling over een boardwalk van Galé West-strand naar het stadje Armação de Pêra, veilig en makkelijk voor gezinnen met jonge kinderen. Volgt de kliffen en de boulevard met prachtig zeezicht. Sterk aanbevolen door lokale gezinsgroepen als een veilige, vlakke wandeling geschikt voor peuters. Beloon jezelf met een ijsje in Armação de Pêra aan het eind.",
     "description_en": "A popular flat coastal boardwalk walk from Galé West beach to Armação de Pêra town, safe and easy for families with young children. Follows the clifftops and beachfront with excellent sea views. Well-recommended by local family groups as a safe, flat walk suitable for toddlers. Reward with ice cream in Armação de Pêra at the end.",
     "kidFeatures": [
-      "flat and safe",
-      "sea views",
-      "stroller-accessible sections",
-      "beachfront route",
+      "vlak en veilig",
+      "zeezicht",
+      "buggy-toegankelijke gedeelten",
+      "route langs het strand",
       "ice cream destination at end"
     ],
     "ageRange": "0-99",
-    "cost": "Free",
+    "cost": "Gratis",
     "openingHours": "Open 24 hours",
     "tip": "Start bij Galé West en loop naar het oosten richting Armação de Pêra. Facebook-gezinsgroepen noemen dit consequent als een van de beste makkelijke gezinswandelingen in de centrale Algarve. Ongeveer 15–20 min van Lagoa.",
     "tip_en": "Start at Galé West and walk east to Armação de Pêra. Facebook family groups consistently recommend this as one of the best easy family walks in the central Algarve. About 15–20 min from Lagoa.",
@@ -588,14 +588,14 @@
     "description": "Een vlak, gezinsvriendelijk fietspad van 5 km (retour) langs de boardwalk en het strand van de Alvor-monding. Volledig gescheiden van verkeer en helemaal vlak, ideaal voor jonge kinderen op de fiets of in fietskarren/-stoeltjes. Meerdere stoppunten voor vogels kijken en strandspel. Fietsverhuur beschikbaar in het dorp Alvor.",
     "description_en": "A flat, family-friendly 5km (round-trip) cycling trail following the Alvor estuary boardwalk and beachfront. Completely separated from traffic and perfectly flat, ideal for young children on bikes or in bike trailers/seats. Multiple stopping points for wildlife watching and beach play. Bike hire available in Alvor village.",
     "kidFeatures": [
-      "flat and traffic-free",
-      "beach access",
+      "vlak en autovrij",
+      "strandtoegang",
       "wildlife along route",
-      "suitable for bike trailers/seats",
-      "bike hire available nearby"
+      "geschikt voor fietskarren/-stoeltjes",
+      "fietsverhuur in de buurt"
     ],
     "ageRange": "2-99",
-    "cost": "Free (bike hire approx. €10–€15/hour locally)",
+    "cost": "Gratis (bike hire ca.. €10–€15/hour locally)",
     "openingHours": "Open daily",
     "tip": "Combineer een kort fietstochtje met de Alvor-boardwalkwandeling. De route is volledig vlak en veilig voor een 5-jarige op de fiets. Fietsverhuurwinkels zijn beschikbaar in het centrum van Alvor. Ongeveer 20 min van Lagoa.",
     "tip_en": "Combine a short cycle with the Alvor boardwalk walk. The route is completely flat and safe for a 5-year-old on a bike. Bike hire shops are available in central Alvor. About 20 min from Lagoa.",
@@ -614,14 +614,14 @@
     "description": "Een vlak fietspad van 10 km dat Portimão en Lagoa verbindt, onderdeel van het Ecovia do Litoral-netwerk van de Algarve. Dit stedelijke traject is overwegend vlak (39m totaal hoogteverschil) en gescheiden van druk verkeer, waardoor het toegankelijk is voor gezinnen met jonge kinderen. Een leuke manier om het gebied tussen beide steden te verkennen. Geschikt voor kinderen op fietsen of in fietskarren/-stoeltjes.",
     "description_en": "A flat 10km dedicated cycling route connecting Portimão and Lagoa, part of the Algarve's Ecovia do Litoral network. This urban section is mostly flat (39m total elevation gain) and separated from heavy traffic, making it accessible for families with young children. A great way to explore the area between both towns. Suitable for children on bikes or in bike trailers/seats.",
     "kidFeatures": [
-      "flat route",
+      "vlakke route",
       "dedicated cycle path",
       "low traffic exposure",
-      "connects two family-friendly towns",
-      "suitable for trailers/seats"
+      "verbindt twee gezinsvriendelijke dorpen",
+      "geschikt voor karren/stoeltjes"
     ],
     "ageRange": "4-99",
-    "cost": "Free (bike hire locally available)",
+    "cost": "Gratis (bike hire locally available)",
     "openingHours": "Open daily",
     "tip": "Totale afstand 10 km enkel; 39m hoogteverschil. Perfect voor een 5-jarige om te fietsen. Start vanuit Portimão en rijd richting Lagoa. Gezinnen keren vaak halverwege om voor een haalbare 10 km retour.",
     "tip_en": "Total distance 10km one-way; 39m elevation gain. Perfect for a 5-year-old to ride. Start from Portimão and head toward Lagoa. Families often turn around halfway for a manageable 10km round trip.",
@@ -644,10 +644,10 @@
       "donkey interactions",
       "guided tours",
       "educational farm experience",
-      "outdoors in orange groves"
+      "buiten tussen de sinaasappelbomen"
     ],
     "ageRange": "1-99",
-    "cost": "Orange Route Tour ~€15/person; with Donkeys ~€20/person; Farm-to-Table ~€45/person",
+    "cost": "Orange Route Tour ~€15/person; met Donkeys ~€20/person; Farm-to-Table ~€45/person",
     "openingHours": "Seasonal; booking required",
     "tip": "Gelegen bij Silves, ongeveer 15–20 min van Lagoa. Boek van tevoren via hun website. Peuters zijn helemaal weg van het sinaasappels plukken en de ezels ontmoeten. Combineer met de speeltuin aan de rivier in Silves voor een volledige dagtip.",
     "tip_en": "Located near Silves, about 15–20 min from Lagoa. Book in advance through their website. Toddlers absolutely love picking oranges and meeting the donkeys. Combine with the Silves riverside playground for a full day trip.",
@@ -670,10 +670,10 @@
       "life jackets",
       "stable catamaran options",
       "high dolphin sighting success rate",
-      "child tickets available"
+      "kinderkaartjes beschikbaar"
     ],
     "ageRange": "2-99",
-    "cost": "Adults ~€35–€50; children ~€25–€35; under 2 often free",
+    "cost": "Volwassenen ~€35–€50; kinderen ~€25–€35; onder 2 vaak gratis",
     "openingHours": "Multiple departures daily (year-round, weather permitting)",
     "tip": "Vertrekt vanuit de jachthaven van Lagos. Kies een ochtendtocht voor kalmer water en betere dolfijnwaarnemingen. Boek via Viator of GetYourGuide voor de beste prijzen. Ongeveer 30 min van Lagoa. Catamarantochten zijn stabieler voor peuters dan speedboten.",
     "tip_en": "Departs from Lagos Marina. Choose a morning trip for calmer seas and better dolphin sightings. Book via Viator or GetYourGuide for best prices. About 30 min from Lagoa. Catamaran trips are more stable for toddlers than speedboats.",
@@ -683,5 +683,617 @@
     ],
     "imageUrl": "https://www.seabookings.com/wp-content/uploads/2189-cover-for-dolphin-watching-lagos-1575397888.jpg",
     "imageAlt": "High-quality photo representing Dolphin Watching tour from Lagos Marina, Algarve Portugal"
+  },
+  {
+    "name": "Praia do Amado",
+    "location": "Aljezur / Carrapateira",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Een van de bekendste surfstranden van de regio. Het is een geweldige plek voor kinderen om naar surfers te kijken of zelf hun eerste golven te trotseren.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Praia do Amado in Aljezur / Carrapateira, Algarve, Portugal"
+  },
+  {
+    "name": "Praia do Beliche",
+    "location": "Sagres",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Een beschut strand dat bekend staat als een uitstekende surfspot. De omliggende kliffen zorgen voor een indrukwekkend decor voor een sportieve gezinsdag.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Praia do Beliche in Sagres, Algarve, Portugal"
+  },
+  {
+    "name": "Odeceixe Cliff Walks",
+    "location": "Odeceixe",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "nature_walk",
+    "description": "Prachtige wandelingen bovenop de kliffen met adembenemende uitzichten. Voor actieve gezinnen is dit een geweldige manier om de natuur van de Algarve te verkennen.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Odeceixe Cliff Walks in Odeceixe, Algarve, Portugal"
+  },
+  {
+    "name": "Musette Bike",
+    "location": "Lagos (en regio)",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "Organiseert de mooiste fietstochten en fietsvakanties in de Algarve. Voor jonge kinderen hebben ze handige 'follow-me' systemen zodat ze veilig mee kunnen fietsen.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Musette Bike in Lagos (en regio), Algarve, Portugal"
+  },
+  {
+    "name": "Monte Rosa",
+    "location": "Barão de São João",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Op Monte Rosa kunnen kinderen hutten bouwen, spelen op het sportveldje of gebruik maken van de schommels en de glijbaan. Er is ook een verkleedkist en een gemeenschappelijke ruimte met veel spelletjes en boeken voor urenlang plezier. Kinderen mogen bovendien de kippen voeren en verse eitjes uit het leg-hok halen, wat een geweldige ervaring is.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.monterosaportugal.com/nl/activiteiten/met-de-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Monte Rosa in Barão de São João, Algarve, Portugal"
+  },
+  {
+    "name": "Quinta Paraíso Alto",
+    "location": "Lagos area (nabij Monte Rosa)",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Bij Quinta Paraíso Alto kunnen kinderen een begeleide ponyrit maken van ongeveer twintig minuten door de natuur. Het is een interactieve ervaring waarbij kinderen ook kunnen helpen met het borstelen en opzadelen van hun pony. Voor de oudere kinderen en ouders zijn er uitdagendere ritten van een of twee uur in de mooie omgeving beschikbaar.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.monterosaportugal.com/nl/activiteiten/met-de-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Quinta Paraíso Alto in Lagos area (nabij Monte Rosa), Algarve, Portugal"
+  },
+  {
+    "name": "Parque Aventura Lagos",
+    "location": "Lagos",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "playground",
+    "description": "Parque Aventura in Lagos biedt een uitdagend klimparcours in de bomen met verschillende moeilijkheidsgraden voor verschillende leeftijden. Kinderen klimmen en klouteren via hangbruggen, netten en zip lines van boom naar boom in een veilige omgeving. Het park heeft drie niveaus (curious, adventurous en fearless), zodat elk kind op zijn eigen tempo kan grensverleggen.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.monterosaportugal.com/nl/activiteiten/met-de-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Parque Aventura Lagos in Lagos, Algarve, Portugal"
+  },
+  {
+    "name": "Kajakken bij Ponta da Piedade",
+    "location": "Lagos",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "Kajakken langs de grillige kustlijn van Lagos is een actieve manier om de natuurlijke schoonheid van de Algarve te ontdekken. Kinderen vanaf ongeveer 4 jaar kunnen al mee op avontuur langs spectaculaire rotsen en grotten.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://fullsuitcase.com/algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Kajakken bij Ponta da Piedade in Lagos, Algarve, Portugal"
+  },
+  {
+    "name": "Kajakken vanuit Albufeira",
+    "location": "Albufeira",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "Vanaf het water ontdek je verborgen grotten en strandjes bij Albufeira die over land niet bereikbaar zijn. Het is een leuke en sportieve activiteit die een spannend nieuw perspectief biedt op de Portugese kust.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://fullsuitcase.com/algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Kajakken vanuit Albufeira in Albufeira, Algarve, Portugal"
+  },
+  {
+    "name": "Parasailing",
+    "location": "Albufeira Marina",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Zweven aan een parachute achter een boot is een opwindende ervaring die kinderen vanaf 6 jaar een geweldig uitzicht over de kust geeft. Het is een veilige maar spannende manier om de Algarve vanuit de lucht te bewonderen.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://fullsuitcase.com/algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Parasailing in Albufeira Marina, Algarve, Portugal"
+  },
+  {
+    "name": "Fonte Grande de Alte",
+    "location": "Alte",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "In het hart van het dorpje Alte vind je deze natuurlijke bronnen waar je heerlijk kunt afkoelen in het kristalheldere water. De schaduwrijke plekken en het ondiepe water maken het een ideale picknickplaats voor gezinnen.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://fullsuitcase.com/algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Fonte Grande de Alte in Alte, Algarve, Portugal"
+  },
+  {
+    "name": "Parque Aventura",
+    "location": "Albufeira, Lagos en Vila Real de Santo António",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "playground",
+    "description": "Dit klimbos in de bomen biedt verschillende uitdagende parcoursen die zijn afgestemd op lengte en ervaring. Het is een geweldige plek voor actieve kinderen om hun fysieke grenzen te verleggen in een veilige omgeving.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://fullsuitcase.com/algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Parque Aventura in Albufeira, Lagos en Vila Real de Santo António, Algarve, Portugal"
+  },
+  {
+    "name": "Seven Hanging Valleys Trail",
+    "location": "Tussen Praia da Marinha en Vale Centeanes",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "nature_walk",
+    "description": "Deze spectaculaire kustwandeling voert langs de mooiste kliffen en uitzichtpunten van de regio. Hoewel de wandeling soms wat inspanning vraagt, belonen de prachtige panorama's en de strandstops onderweg alle moeite.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://fullsuitcase.com/algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Seven Hanging Valleys Trail in Tussen Praia da Marinha en Vale Centeanes, Algarve, Portugal"
+  },
+  {
+    "name": "Indoor Karting Albufeira",
+    "location": "Albufeira Marina",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "In de jachthaven van Albufeira kunnen tieners en snelheidsduivels hun hart ophalen op de kartbaan. Omdat het een binnenbaan is, vormt het een perfect uitje voor als de zon even niet schijnt.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://fullsuitcase.com/algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Indoor Karting Albufeira in Albufeira Marina, Algarve, Portugal"
+  },
+  {
+    "name": "Mar Ilimitado",
+    "location": "Sagres (Haven)",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Maak een spannende tocht op een zodiac boot om de kust te verkennen en hopelijk dolfijnen te spotten. Het is een avontuurlijke ervaring waarbij je met hoge snelheid over de golven zoeft, wat kinderen fantastisch zullen vinden. De tours zijn educatief en gericht op respect voor het mariene leven.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Mar Ilimitado in Sagres (Haven), Algarve, Portugal"
+  },
+  {
+    "name": "O Ninho Family Bar",
+    "location": "Lagos",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Een geweldige combinatie van een koffiebar en een speelruimte met een ruime keuze aan speelgoed, boeken en activiteiten. Het is de perfecte plek voor een tussenstop waar kinderen veilig kunnen spelen terwijl ouders genieten van een goede koffie. De ruimte is speciaal ingericht op de behoeften van jonge gezinnen.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    ],
+    "imageUrl": "",
+    "imageAlt": "O Ninho Family Bar in Lagos, Algarve, Portugal"
+  },
+  {
+    "name": "Amado Surfcamp",
+    "location": "Praia do Amado",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "Dit kamp biedt surflessen die speciaal zijn ontworpen voor kinderen vanaf 6 jaar. Het is een geweldige manier voor kinderen om op een veilige en speelse manier kennis te maken met de golven onder professionele begeleiding. De energie op het strand is aanstekelijk voor actieve kinderen.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Amado Surfcamp in Praia do Amado, Algarve, Portugal"
+  },
+  {
+    "name": "Ria Formosa Lagoon Cruise",
+    "location": "Olhão / Faro",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "boat_tour",
+    "description": "Een rustige boottocht door een labyrint van kanalen en eilanden vol met bijzondere vogels en zeedieren. Het is een geweldige manier voor kinderen om meer te leren over natuurbehoud en de beschermde zeepaardjes.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Ria Formosa Lagoon Cruise in Olhão / Faro, Algarve, Portugal"
+  },
+  {
+    "name": "Santa Bernarda Pirate Ship",
+    "location": "Portimão",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "boat_tour",
+    "description": "Stap aan boord van een traditioneel houten schip en beleef een dag als een echte piraat op de Atlantische Oceaan. Met speciale piratenspellen en entertainment is dit een absolute hit bij jonge avonturiers.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Santa Bernarda Pirate Ship in Portimão, Algarve, Portugal"
+  },
+  {
+    "name": "Minigolf Adventure Park",
+    "location": "Albufeira",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "Een populaire 20-holes minigolfbaan die uitdagend genoeg is voor het hele gezin. De baan is mooi aangelegd en biedt een gezellige sfeer voor een sportieve middag met de kinderen.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Minigolf Adventure Park in Albufeira, Algarve, Portugal"
+  },
+  {
+    "name": "Adventure Golf Alvor",
+    "location": "Alvor",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "Een minigolfbaan met een spannend dinosaurus-thema, compleet met grote beelden van prehistorische dieren langs de holes. Kinderen wanen zich in Jurassic Park terwijl ze proberen hun balletje in de hole te krijgen.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Adventure Golf Alvor in Alvor, Algarve, Portugal"
+  },
+  {
+    "name": "Albufeira Riding Centre",
+    "location": "Albufeira",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Een manege waar kinderen vanaf 4 jaar hun eerste stapjes op een pony kunnen zetten onder professionele begeleiding. Voor tieners zijn er prachtige ritten langs de kust of bij zonsondergang mogelijk.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Albufeira Riding Centre in Albufeira, Algarve, Portugal"
+  },
+  {
+    "name": "Salema Eco Camp",
+    "location": "Salema",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Een milieuvriendelijke camping vlakbij het strand waar gezinnen kunnen verblijven in een natuurlijke omgeving. Het is een goede uitvalsbasis om de westelijke Algarve te verkennen.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.gezinopreis.nl/algarve-met-kinderen/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Salema Eco Camp in Salema, Algarve, Portugal"
+  },
+  {
+    "name": "The Campus",
+    "location": "Quinta do Lago",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Een hoogwaardige sportfaciliteit waar gezinnen samen kunnen tennissen of aan andere sporten kunnen deelnemen. Het is een gezonde en actieve manier om quality time door te brengen.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "The Campus in Quinta do Lago, Algarve, Portugal"
+  },
+  {
+    "name": "Electric Karting Albufeira Marina",
+    "location": "Albufeira, Algarve",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "Een overdekte kartbaan van 400 meter met snelle, stille en milieuvriendelijke elektrische karts. Het is de perfecte activiteit voor tieners die houden van actie en competitie, ongeacht het weer.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Electric Karting Albufeira Marina in Albufeira, Algarve, Algarve, Portugal"
+  },
+  {
+    "name": "Blue Xperiences - Benagil Cave SUP & Kayak Tours",
+    "location": "Benagil, Algarve",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "Verken de magische grotten van Benagil van dichtbij met een begeleide kajak- of Stand Up Paddle (SUP) tour vanaf het strand. Het is een onvergetelijke manier voor gezinnen om de natuurlijke schoonheid van de kustlijn te ontdekken.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Blue Xperiences - Benagil Cave SUP & Kayak Tours in Benagil, Algarve, Algarve, Portugal"
+  },
+  {
+    "name": "Algarve Voetgolf (Desert Pines)",
+    "location": "Vale do Lobo, Algarve",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "Voetgolf combineert de leukste elementen van voetbal en golf op een speciaal aangelegde baan met 9 of 18 holes. Het is een laagdrempelige activiteit waar kinderen van alle niveaus net zoveel plezier aan beleven als ervaren spelers.",
+    "kidFeatures": [],
+    "ageRange": "2-12",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Algarve Voetgolf (Desert Pines) in Vale do Lobo, Algarve, Algarve, Portugal"
+  },
+  {
+    "name": "MAR Shopping Algarve",
+    "location": "Algarve (Loulé area)",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Een winkelcentrum met binnenspeeltuinen en uitgebreide faciliteiten voor gezinnen met baby's.",
+    "kidFeatures": [],
+    "ageRange": "Gezinnen; beschikt over familielounges en babyverschoningsfaciliteiten.",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.travel4baby.com/algarve/guides-tips/beyond-the-beach-must-do-family-activities-in-the-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "MAR Shopping Algarve in Algarve (Loulé area), Algarve, Portugal"
+  },
+  {
+    "name": "Pickleball Clube Alvor",
+    "location": "Alvor",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "Een sportclub waar je pickleball kunt spelen, een toegankelijke mix van tennis, badminton en tafeltennis. Het is minder fysiek belastend en daardoor ideaal voor families.",
+    "kidFeatures": [],
+    "ageRange": "Geschikt voor het hele gezin, ongeacht de leeftijd.",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://tomorrowalgarve.com/oct-2025-family-friendly-activities-which-wont-break-the-budget/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Pickleball Clube Alvor in Alvor, Algarve, Portugal"
+  },
+  {
+    "name": "Balaia Golf Village",
+    "location": "Balaia, Albufeira",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "sport",
+    "description": "Een resort met een pittoreske 9-holes golfbaan, perfect voor diegenen die hun vaardigheden willen verbeteren zonder de druk van een grote baan.",
+    "kidFeatures": [],
+    "ageRange": "Geschikt voor beginners en kinderen.",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://tomorrowalgarve.com/oct-2025-family-friendly-activities-which-wont-break-the-budget/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Balaia Golf Village in Balaia, Albufeira, Algarve, Portugal"
+  },
+  {
+    "name": "Pedagogical Farm (Portugal Farm Experience)",
+    "location": "Silves",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Een interactieve en educatieve boerderijervaring in de Algarve waar gezinnen alles kunnen leren over duurzame landbouw, fruit plukken, en in contact kunnen komen met paarden en ezels. De tour is inclusief een welkom op de boerderij, vers sinaasappelsap, zelfgemaakte limonade en een proeverij van regionale culinaire lekkernijen. Portugal Farm Experience",
+    "kidFeatures": [],
+    "ageRange": "Geschikt voor alle leeftijden (fun and education for alle leeftijden!) Portugal Farm Experience",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.portugalfarmexperience.com/tours/pedagogical-farm/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Pedagogical Farm (Portugal Farm Experience) in Silves, Algarve, Portugal"
+  },
+  {
+    "name": "Rota Vicentina",
+    "location": "West-Algarve",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "nature_walk",
+    "description": "Een indrukwekkend netwerk van wandel- en fietspaden langs de ongerepte westkust.",
+    "kidFeatures": [],
+    "ageRange": "Iets oudere kinderen",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.responsiblevacation.com/vacations/algarve/travel-guide/family-activities"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Rota Vicentina in West-Algarve, Algarve, Portugal"
+  },
+  {
+    "name": "Silves Medieval Festival",
+    "location": "Silves",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Een jaarlijks evenement in augustus waarbij de stad terugkeert naar de middeleeuwen met ridders en marktkramen.",
+    "kidFeatures": [],
+    "ageRange": "Alle leeftijden",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.responsiblevacation.com/vacations/algarve/travel-guide/family-activities"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Silves Medieval Festival in Silves, Algarve, Portugal"
+  },
+  {
+    "name": "Limite Zero (Tokkelbaan)",
+    "location": "Alcoutim",
+    "latitude": 0,
+    "longitude": 0,
+    "category": "activity",
+    "description": "Een unieke tokkelbaan die de grens overbrugt tussen Spanje en Portugal over de rivier de Guadiana.",
+    "kidFeatures": [],
+    "ageRange": "Niet gespecificeerd",
+    "cost": "",
+    "openingHours": "",
+    "tip": "",
+    "sources": [
+      "https://www.responsiblevacation.com/vacations/algarve/travel-guide/family-activities"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Limite Zero (Tokkelbaan) in Alcoutim, Algarve, Portugal"
   }
 ]

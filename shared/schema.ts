@@ -33,13 +33,17 @@ export interface Suggestion {
   createdAt: string;
 }
 
-export interface Review {
-  id: string;
-  placeId: string;
-  rating: number; // 1-5
-  comment: string;
-  author: string;
-  createdAt: string;
+export interface UrlImportResult {
+  name: string;
+  location: string;
+  category: Place['category'];
+  description: string;
+  latitude: number;
+  longitude: number;
+  website: string;
+  googleMapsUrl: string;
+  instagramUrl: string;
+  imageUrl: string;
 }
 
 export interface WeatherData {

@@ -16,7 +16,6 @@ import {
   Utensils,
   CheckCircle,
   Send,
-  Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -24,7 +23,7 @@ import { CategoryBadge, CategoryIcon } from "@/components/CategoryIcon";
 import { apiRequest } from "@/lib/queryClient";
 import { useT } from "@/lib/i18n";
 import { getDistance, LAGOA_LAT, LAGOA_LNG } from "@/lib/geo";
-import type { Place, Review } from "@shared/schema";
+import type { Place } from "@shared/schema";
 
 const categoryHeroGradient: Record<string, string> = {
   restaurant: "from-[hsl(15,45%,55%)] to-[hsl(15,45%,65%)]",
@@ -61,37 +60,11 @@ function DetailHeroImage({ src, alt, category }: { src: string; alt: string; cat
   );
 }
 
-function StarRating({ rating, onRate, interactive = false }: { rating: number; onRate?: (r: number) => void; interactive?: boolean }) {
-  return (
-    <div className="flex gap-0.5">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <button
-          key={i}
-          type={interactive ? "button" : undefined}
-          onClick={() => interactive && onRate?.(i)}
-          className={interactive ? "cursor-pointer" : "cursor-default"}
-          disabled={!interactive}
-        >
-          <Star
-            className={`h-4 w-4 ${
-              i <= rating ? "fill-amber-400 text-amber-400" : "text-muted-foreground/30"
-            }`}
-          />
-        </button>
-      ))}
-    </div>
-  );
-}
-
 export default function PlaceDetail() {
   const params = useParams<{ id: string }>();
   const [, navigate] = useLocation();
   const queryClient = useQueryClient();
   const t = useT();
-
-  const [reviewAuthor, setReviewAuthor] = useState("");
-  const [reviewComment, setReviewComment] = useState("");
-  const [reviewRating, setReviewRating] = useState(0);
 
   const { data: place, isLoading } = useQuery<Place>({
     queryKey: [`/api/places/${params.id}`],
@@ -103,10 +76,6 @@ export default function PlaceDetail() {
 
   const { data: visitedIds = [] } = useQuery<string[]>({
     queryKey: ["/api/visited"],
-  });
-
-  const { data: reviews = [] } = useQuery<Review[]>({
-    queryKey: [`/api/places/${params.id}/reviews`],
   });
 
   const isFavorite = place ? favorites.includes(place.id) : false;
@@ -125,25 +94,6 @@ export default function PlaceDetail() {
       queryClient.invalidateQueries({ queryKey: ["/api/visited"] });
     },
   });
-
-  const submitReview = useMutation({
-    mutationFn: () =>
-      apiRequest("POST", `/api/places/${params.id}/reviews`, {
-        rating: reviewRating,
-        comment: reviewComment.trim(),
-        author: reviewAuthor.trim(),
-      }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [`/api/places/${params.id}/reviews`] });
-      setReviewAuthor("");
-      setReviewComment("");
-      setReviewRating(0);
-    },
-  });
-
-  const avgRating = reviews.length > 0
-    ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-    : 0;
 
   if (isLoading) {
     return (
@@ -237,12 +187,6 @@ export default function PlaceDetail() {
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent">
                   <CheckCircle className="h-3 w-3" />
                   {t("alBezocht")}
-                </span>
-              )}
-              {reviews.length > 0 && (
-                <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-                  <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                  {avgRating.toFixed(1)} ({reviews.length})
                 </span>
               )}
             </div>
@@ -384,77 +328,7 @@ export default function PlaceDetail() {
           </Button>
         </div>
 
-        {/* Reviews Section */}
-        <div className="mb-6">
-          <h2 className="text-lg font-bold font-serif text-foreground mb-1">{t("reviews")}</h2>
-          <div className="w-8 h-0.5 bg-primary/40 rounded-full mb-4" />
 
-          {reviews.length > 0 && (
-            <div className="space-y-3 mb-6">
-              {reviews.map((review) => (
-                <Card key={review.id} className="shadow-sm">
-                  <CardContent className="p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-semibold text-foreground">{review.author}</span>
-                      <StarRating rating={review.rating} />
-                    </div>
-                    {review.comment && (
-                      <p className="text-sm text-muted-foreground">{review.comment}</p>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
-
-          {/* Add Review Form */}
-          <Card className="shadow-sm">
-            <CardContent className="p-4">
-              <h3 className="text-sm font-semibold text-foreground mb-3">{t("schrijfReview")}</h3>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  if (reviewRating > 0 && reviewAuthor.trim()) {
-                    submitReview.mutate();
-                  }
-                }}
-                className="space-y-3"
-              >
-                <div>
-                  <label className="block text-xs text-muted-foreground mb-1">{t("naam")}</label>
-                  <input
-                    type="text"
-                    value={reviewAuthor}
-                    onChange={(e) => setReviewAuthor(e.target.value)}
-                    placeholder={t("naam")}
-                    className="w-full px-3 py-2 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs text-muted-foreground mb-1">Rating</label>
-                  <StarRating rating={reviewRating} onRate={setReviewRating} interactive />
-                </div>
-                <div>
-                  <label className="block text-xs text-muted-foreground mb-1">{t("opmerking")}</label>
-                  <textarea
-                    value={reviewComment}
-                    onChange={(e) => setReviewComment(e.target.value)}
-                    placeholder={t("opmerking")}
-                    rows={2}
-                    className="w-full px-3 py-2 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary resize-none"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  disabled={reviewRating === 0 || !reviewAuthor.trim()}
-                  className="w-full h-10 shadow-sm"
-                >
-                  {t("verstuur")}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </motion.div>
   );

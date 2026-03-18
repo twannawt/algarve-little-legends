@@ -9,11 +9,11 @@
     "description": "Club Nau ligt direct op het zandstrand van Praia Grande in Ferragudo, waardoor je kinderen alle ruimte hebben om te rennen en in het zand te graven terwijl jij met je voeten praktisch in het zand eet. De sfeer in de late namiddag en bij zonsondergang is rustig en ontspannen — perfect voor vermoeide gezinnen. Traditionele cataplana (visstoofpot) en sangria zijn de favorieten van het huis.",
     "description_en": "Club Nau sits directly on the sandy beach of Praia Grande in Ferragudo, giving kids all the space they need to run and dig in the sand while parents eat with their feet virtually in the sand. The late-afternoon and sunset atmosphere is calm and unhurried — perfect for exhausted families. Traditional cataplana (fish stew) and sangria are house favourites.",
     "kidFeatures": [
-      "beach location",
-      "open sand play area",
-      "fenced playground in sand nearby",
+      "locatie aan het strand",
+      "open zandspeelruimte",
+      "omheinde speeltuin in het zand in de buurt",
       "relaxed atmosphere",
-      "high chairs"
+      "kinderstoelen"
     ],
     "ageRange": "0-12",
     "address": "Praia Grande, Ferragudo, 8400 Carvoeiro",
@@ -37,10 +37,10 @@
     "description": "Miam ligt direct naast het kleine, beschutte strand van Burgau, waardoor het de ideale lunch- of dinerplek is voor gezinnen. Het eten is oprecht lekker — stijlvol zonder stijf te zijn — en de informele, gezellige sfeer is perfect voor kleintjes. Ouders kunnen ontspannen op het terras terwijl kinderen op een steenworp afstand op het strand spelen.",
     "description_en": "Miam is located right next to the small, sheltered Burgau beach, making it the ideal lunch or dinner spot for families. The food is genuinely good — stylish without being stiff — and the informal, cozy atmosphere suits little ones perfectly. Parents can relax on the terrace while children play on the beach steps away.",
     "kidFeatures": [
-      "directly beside beach",
+      "direct naast het strand",
       "informal relaxed atmosphere",
-      "stroller accessible terrace",
-      "high chairs"
+      "buggy-toegankelijk terras",
+      "kinderstoelen"
     ],
     "ageRange": "0-10",
     "address": "Burgau Beach, Burgau, Lagos 8600",
@@ -63,12 +63,12 @@
     "description": "Kinoah is een gezinsvriendelijk café en restaurant net buiten het dorpje Praia da Luz, ongeveer 10 minuten van Lagos. Het heeft een grote buitenruimte met een zwembad (seizoensgebonden), open terrein waar kinderen vrij kunnen rondlopen, en een biologisch, gezond menu voor ontbijt en lunch. De sfeer is ontspannen en bohemien — populair bij expat-gezinnen en gezondheidsbewuste bezoekers.",
     "description_en": "Kinoah is a family-friendly café and restaurant just outside the village of Praia da Luz, about 10 minutes from Lagos. It features a large outdoor space with a pool (seasonal), open grounds for kids to roam, and an organic, healthy menu covering breakfast and lunch. The vibe is relaxed and bohemian — popular with expat families and health-conscious visitors.",
     "kidFeatures": [
-      "large outdoor play space",
-      "pool (seasonal)",
-      "baby-changing facilities",
-      "high chairs",
-      "stroller accessible",
-      "kids can roam freely"
+      "grote buitenspeelruimte",
+      "zwembad (seizoensgebonden)",
+      "babyverschoonfaciliteiten",
+      "kinderstoelen",
+      "buggy-toegankelijk",
+      "kinderen kunnen vrij rondlopen"
     ],
     "ageRange": "0-12",
     "address": "Rua Monte Lemos, Praia da Luz, Lagos 8600-123",
@@ -92,12 +92,12 @@
     "description": "The Shack in Quinta do Lago wordt algemeen beschouwd als dé ultieme plek voor gezinnen in de Algarve. Gelegen direct aan de lagune, biedt het ondiep water, een zandstrand aan de lagune, waterspeel-faciliteiten, livemuziek en een ontspannen rustieke sfeer. Het menu omvat taco's, salades, burgers en vis met smoothies en milkshakes.",
     "description_en": "The Shack at Quinta do Lago is widely regarded as the ultimate family dining spot in the Algarve. Located right on the lagoon, it offers shallow water, a sandy lagoon beach, water play facilities, live music, and a relaxed rustic-shack atmosphere. The menu covers tacos, salads, burgers, and seafood with smoothies and milkshakes.",
     "kidFeatures": [
-      "lagoon beach with shallow water",
-      "water play facilities",
-      "sandy play area",
+      "lagunestrand met ondiep water",
+      "waterspeelfaciliteiten",
+      "zandspeelruimte",
       "live music",
-      "milkshakes and kid-friendly food",
-      "high chairs"
+      "milkshakes en kindvriendelijk eten",
+      "kinderstoelen"
     ],
     "ageRange": "0-12",
     "address": "Quinta do Lago, Almancil, Loulé 8135",
@@ -121,10 +121,10 @@
     "description": "The Biergarten in Porches is een verborgen pareltje voor gezinnen. Ondanks de naam is het een gezellig, informeel restaurant en biertuin met meerdere speelfaciliteiten waar kinderen zich helemaal zelf kunnen vermaken. Het eten is casual en ongecompliceerd — burgers, worstjes, schnitzels en eenvoudige hoofdgerechten — terwijl ouders in alle rust van een biertje of wijntje kunnen genieten.",
     "description_en": "The Biergarten in Porches is a hidden gem for families. Despite the name, it's a cozy, informal restaurant and beer garden with multiple play facilities that let children entertain themselves completely. The food is casual and unfussy — burgers, sausages, schnitzels, and simple mains — while parents can relax with a beer or wine in peace.",
     "kidFeatures": [
-      "multiple play facilities",
-      "outdoor garden setting",
+      "meerdere speelfaciliteiten",
+      "buitentuinomgeving",
       "casual relaxed atmosphere",
-      "kids can self-entertain"
+      "kinderen kunnen zichzelf vermaken"
     ],
     "ageRange": "1-12",
     "address": "Porches, Lagoa 8400",
@@ -147,11 +147,11 @@
     "description": "Sandbanks Restaurant in Vale do Lobo heeft een toplocatie aan het plein met uitzicht op de Atlantische Oceaan en de lagune. Kinderen kunnen veilig spelen in het ondiepe lagunewater terwijl ouders genieten van cataplana, gegrilde vis of verse zeevruchten. Iedere zondag livemuziek bij de lunch in de lente en zomer.",
     "description_en": "Sandbanks Restaurant in Vale do Lobo occupies a prime spot on the praça overlooking the Atlantic and the lagoon, making it one of the most family-relaxed spots in the Golden Triangle area. Children can safely play in the shallow lagoon water while parents enjoy cataplana, grilled fish, or fresh seafood. Live lunchtime music every Sunday in spring and summer.",
     "kidFeatures": [
-      "lagoon shallow water play",
-      "wide open terrace",
+      "ondiep waterspel in de lagune",
+      "groot open terras",
       "live Sunday music",
-      "kids can play on beach",
-      "high chairs"
+      "kinderen kunnen op het strand spelen",
+      "kinderstoelen"
     ],
     "ageRange": "0-12",
     "address": "Praça de Vale do Lobo, Vale do Lobo, Almancil 8135",
@@ -175,12 +175,12 @@
     "description": "Parrilla Natural is een spectaculair Uruguayaans steakhouse in een prachtige tuin vlak bij Vale do Lobo. De echte trekpleister voor gezinnen is de volledig uitgeruste en begeleide speelruimte met glijbanen, attracties, een openluchtbioscoop, een popcornkraam en ijsjes in de zomer — plus schmink-entertainment. Volwassenen genieten van premium Uruguayaans grasgevoerd rundvlees met een sommelier tot je beschikking.",
     "description_en": "Parrilla Natural is a spectacular Uruguayan steakhouse set in its own beautiful gardens near Vale do Lobo. The real draw for families is the fully equipped and supervised play area with slides, rides, an open-air cinema, a popcorn stall, and ice cream during summer — plus face-painting entertainment. Adults feast on premium Uruguayan grass-fed beef with a sommelier on hand.",
     "kidFeatures": [
-      "supervised outdoor playground",
-      "open-air cinema for kids",
+      "buitenspeeltuin met toezicht",
+      "openluchtbioscoop voor kinderen",
       "face painting (summer)",
       "popcorn stall",
-      "kids menu",
-      "fully fenced play zone"
+      "kindermenu",
+      "volledig omheinde speelzone"
     ],
     "ageRange": "2-12",
     "address": "Em 527 Encosta do Lobo, Almancil, Loulé 8135-855",
@@ -205,11 +205,11 @@
     "description": "KOKO Lane is een ontspannen dagcafé en restaurant in Quinta do Lago, gelegen naast de Driving Range met uitzicht op de minigolf. De houtoven-pizza, verse pannenkoeken, burgers, salades en verse sapjes zijn ideaal voor het hele gezin. Een speeltuin direct naast het openluchtrestaurant laat kinderen vrij spelen terwijl ouders eten.",
     "description_en": "KOKO Lane is a relaxed all-day café and restaurant in Quinta do Lago, located next to the Driving Range and overlooking the mini golf. The wood-fired pizza, fresh pancakes, burgers, salads, and fresh juices cater to the whole family. A playground right beside the open-air restaurant lets kids play freely while parents eat.",
     "kidFeatures": [
-      "playground adjacent to restaurant",
-      "kids menu",
+      "speeltuin naast het restaurant",
+      "kindermenu",
       "wood-fired pizza",
-      "pancakes with Nutella for kids",
-      "high chairs",
+      "pannenkoeken met Nutella voor kinderen",
+      "kinderstoelen",
       "takeaway/delivery option"
     ],
     "ageRange": "0-12",
@@ -235,10 +235,10 @@
     "description": "NoSoloÁgua is een populair strandclub-restaurant op het strand van Vilamoura, direct naast de lagune. Overdag werkt het uitstekend voor gezinnen — kinderen hebben het strand en de lagune om in te spelen terwijl ouders genieten van een maaltijd in een stijlvolle maar ontspannen setting. De lunch is het beste moment om met jonge kinderen te komen.",
     "description_en": "NoSoloÁgua is a popular beach club restaurant on the Vilamoura beach, right next to the lagoon. During the day it works very well for families — children have the beach and lagoon to play in while parents enjoy a meal in a stylish but relaxed setting. Lunch is the best time to visit with young children.",
     "kidFeatures": [
-      "beach and lagoon access",
-      "open space for kids to roam",
-      "high chairs",
-      "stroller accessible terrace"
+      "strand- en lagunetoegang",
+      "open ruimte voor kinderen om te spelen",
+      "kinderstoelen",
+      "buggy-toegankelijk terras"
     ],
     "ageRange": "0-12",
     "address": "Praia de Vilamoura, Vilamoura, Loulé 8125",
@@ -262,10 +262,10 @@
     "description": "Wok Loulé is een populair all-you-can-eat Chinees buffet- en sushirestaurant in het centrum van Loulé. Het onderscheidt zich voor gezinnen door de speciale softplay-ruimte met een glazen wand — ouders kunnen hun kinderen veilig zien spelen terwijl ze in alle rust eten. Meerdere tv-schermen dragen bij aan de makkelijke, stressvrije sfeer.",
     "description_en": "Wok Loulé is a popular all-you-can-eat Chinese buffet and sushi restaurant in central Loulé. It stands out for families because of its dedicated soft-play area with a glass wall — parents can watch their children playing safely while eating in peace. Multiple TV screens add to the easy, no-stress atmosphere.",
     "kidFeatures": [
-      "dedicated soft-play room with glass wall",
-      "all-you-can-eat buffet (easy for picky eaters)",
-      "high chairs",
-      "parking available"
+      "speciale softplay-ruimte met glazen wand",
+      "all-you-can-eat buffet (makkelijk voor kieskeurige eters)",
+      "kinderstoelen",
+      "parkeren beschikbaar"
     ],
     "ageRange": "1-10",
     "address": "Praceta Boa Entrada 3-43, Loulé 8100-713",
@@ -290,11 +290,11 @@
     "description": "La Gioconda is een gevestigde Italiaanse pizzeria en trattoria aan de hoofdstraat van Praia da Rocha, met uitzicht op het strand. Het uitgebreide menu van pizza, pasta, risotto en grilgerechten heeft voor elke kieskeurige eter iets. Kinderstoelen zijn beschikbaar en de open, luchtige ruimte is ideaal voor gezinnen. Beoordeeld met 4.2/5 op TripAdvisor met 885+ reviews.",
     "description_en": "La Gioconda is a long-established Italian pizzeria and trattoria on the main strip at Praia da Rocha, facing the beach. The broad menu of pizza, pasta, risotto, and grills has something for every fussy eater. High chairs are available and the open, airy space suits families well. Rated 4.2/5 on TripAdvisor with 885+ reviews.",
     "kidFeatures": [
-      "kids menu options",
-      "high chairs available",
-      "pizza and pasta for picky eaters",
-      "wheelchair accessible",
-      "beach strip location"
+      "kindermenu-opties",
+      "kinderstoelen beschikbaar",
+      "pizza en pasta voor kieskeurige eters",
+      "rolstoeltoegankelijk",
+      "locatie aan de strandstrook"
     ],
     "ageRange": "0-12",
     "address": "Avenida Tomás Cabreira, Edifício Torres da Rocha loja 1, Praia da Rocha, Portimão 8500-802",
@@ -318,10 +318,10 @@
     "description": "Ciao Baby is een authentieke Italiaanse pizzeria in het charmante vissersdorpje Alvor, die door gezinnen consequent wordt geprezen om het echte Italiaanse eten en de uitzonderlijk warme, vriendelijke bediening. Gezinnen komen al jarenlang terug — het is een Travellers' Choice-winnaar op TripAdvisor met 967+ reviews. Het menu omvat pizza, pasta, vlees- en visgerechten tegen eerlijke prijzen.",
     "description_en": "Ciao Baby is an authentic Italian pizzeria in the charming fishing village of Alvor, consistently praised by families for its genuine Italian food and exceptionally warm, friendly service. Families return year after year — it's a Travellers' Choice winner on TripAdvisor with 967+ reviews. Menu covers pizza, pasta, meat and fish dishes at honest prices.",
     "kidFeatures": [
-      "kids-friendly welcoming staff",
-      "pizza and pasta for picky eaters",
+      "kindvriendelijk en gastvrij personeel",
+      "pizza en pasta voor kieskeurige eters",
       "relaxed atmosphere",
-      "family-favourite for 10+ years"
+      "gezinsfavoriet al 10+ jaar"
     ],
     "ageRange": "0-12",
     "address": "Rua Doutor António José de Almeida 29, Alvor, Portimão 8500-017",
@@ -345,11 +345,11 @@
     "description": "BJ's Oceanside is een charmant, strandtentachtig restaurant direct aan de rand van Praia de Almargem. Gerund door een stel met eigen kinderen, is het restaurant ontworpen met gezinnen in gedachten — verse gegrilde vis, livemuziek en een verkleedkist voor kinderen. De strandlocatie betekent dat kinderen in het zand spelen terwijl ouders eten.",
     "description_en": "BJ's Oceanside is a charming, shack-styled beachfront restaurant right at the edge of Praia de Almargem. Run by a couple with children themselves, the restaurant is designed with families in mind — fresh grilled fish, live music, and a dressing-up box for kids. The beachside setting means children play in the sand while parents eat.",
     "kidFeatures": [
-      "beachside location",
-      "dressing-up box for kids",
+      "locatie aan het strand",
+      "verkleedkist voor kinderen",
       "live music on Sundays",
-      "kids can play in sand",
-      "family-owned by parents"
+      "kinderen kunnen in het zand spelen",
+      "familiebedrijf van ouders"
     ],
     "ageRange": "0-12",
     "address": "Praia de Almargem, Vale do Lobo, Almancil",
@@ -373,11 +373,11 @@
     "description": "Café Inglês is een geliefd restaurant net onder het kasteel van Silves, met een fantastische terrastuin op de historische kasteeltrappen. De pizza is uitstekend, de taarten zijn indrukwekkend en op zondagmiddag speelt er een liveband in de tuin. Kinderen vinden het heerlijk om rond te rennen op de brede terrassen en tussen de sinaasappelbomen te spelen terwijl ze op het eten wachten.",
     "description_en": "Café Inglês is a beloved restaurant just below Silves Castle, with a fantastic terraced garden on the historic castle steps. The pizza is excellent, the cakes are impressive, and on Sunday afternoons a live band plays in the garden. Children love to run around on the wide terraced steps and play between the orange trees while waiting for food.",
     "kidFeatures": [
-      "terraced garden for running around",
+      "terrastuin om in rond te rennen",
       "live music Sunday afternoons",
       "relaxed informal atmosphere",
-      "pizza kids love",
-      "car-accessible parking"
+      "pizza waar kinderen van houden",
+      "goed bereikbare parkeerplaats"
     ],
     "ageRange": "2-12",
     "address": "Rua do Castelo 11, Silves 8300",
@@ -400,9 +400,9 @@
     "description": "Quinta do Mel is een idyllisch biologisch restaurant op een eigen boerderijtje in Olhos de Água, omgeven door kruidentuinen en fruitbomen. De keuken gebruikt producten van het land voor seizoensgebonden Portugese gerechten. De grote omringende tuin is een natuurlijke speelplaats voor kinderen die vrij kunnen ontdekken in een veilige landelijke omgeving.",
     "description_en": "Quinta do Mel is an idyllic organic restaurant set on its own small farm in Olhos de Água, surrounded by herb gardens and fruit trees. The kitchen uses produce from the land to create seasonal Portuguese dishes. The large surrounding garden is a natural playground for children who can explore freely in a safe rural setting.",
     "kidFeatures": [
-      "large garden for free play",
-      "farm setting with animals/plants",
-      "organic child-friendly food",
+      "grote tuin om vrij te spelen",
+      "boerderijomgeving met dieren en planten",
+      "biologisch kindvriendelijk eten",
       "relaxed atmosphere"
     ],
     "ageRange": "0-12",
@@ -426,11 +426,11 @@
     "description": "Restaurante Ricco is het best beoordeelde kindvriendelijke restaurant in Albufeira op TheFork, met een 9.2 beoordeling en 970+ reviews. Dit Italiaanse restaurant aan de Avenida 25 de Abril biedt een uitgebreid menu van pasta, pizza en grilgerechten in een gastvrije sfeer. Kinderstoelen zijn beschikbaar en de ruime indeling kan goed overweg met buggy's en actieve kinderen.",
     "description_en": "Restaurante Ricco is the top-rated kid-friendly restaurant in Albufeira on TheFork, with a 9.2 rating and 970+ reviews. This Italian restaurant on Avenida 25 de Abril offers a broad menu of pasta, pizza, and grills in a welcoming atmosphere. High chairs are available and the spacious layout handles pushchairs and active children well.",
     "kidFeatures": [
-      "kids menu",
-      "high chairs",
-      "wheelchair accessible",
+      "kindermenu",
+      "kinderstoelen",
+      "rolstoeltoegankelijk",
       "spacious layout",
-      "terrace seating"
+      "terrasplaatsen"
     ],
     "ageRange": "0-12",
     "address": "Av. 25 de Abril 26, Albufeira 8200",
@@ -453,10 +453,10 @@
     "description": "Tasca Portuguesa aan de Albufeira Marina serveert uitstekende Portugese tapas — calamares, bacalhau, vleeswaren, kazen en salades — in een autovrije marina-omgeving. Het aangrenzende open plein waar geen auto's rijden en de goed omheinde waterkant betekenen dat jonge kinderen veilig rond kunnen lopen terwijl ouders van het eten genieten.",
     "description_en": "Tasca Portuguesa at the Albufeira Marina serves excellent Portuguese tapas — calamares, bacalhau, cured meats, cheeses, and salads — in a car-free marina setting. The adjacent open plaza where no cars drive and the waterfront is well-fenced means young children can move around safely while parents enjoy the food.",
     "kidFeatures": [
-      "car-free marina plaza",
-      "fenced waterfront",
-      "safe area for toddlers to walk",
-      "lots of small dishes kids can try"
+      "autovrij marinaplein",
+      "omheinde waterkant",
+      "veilig gedeelte voor peuters om te lopen",
+      "veel kleine gerechten die kinderen kunnen proberen"
     ],
     "ageRange": "1-12",
     "address": "Marina de Albufeira, Albufeira 8200",
@@ -479,11 +479,11 @@
     "description": "Tertúlia Algarvia ligt aan het charmante Praça do Afonso III in de ommuurde oude stad van Faro (Vila Adentro) — een autovrij geplaveide plein met ooievaars die nestelen op de kathedraal erboven. Het restaurant heeft een kindermenu en een zonnig terras, en kinderen kunnen vrij ronddwalen op het voetgangersplein. Traditionele Algarve-gerechten en verse vis zijn de specialiteit.",
     "description_en": "Tertúlia Algarvia sits on the charming Praça do Afonso III in Faro's walled old town (Vila Adentro) — a car-free cobbled square with storks nesting on the cathedral tower above. The restaurant has a kids' menu and a sunny terrace, and children can freely roam the pedestrian square. Traditional Algarvian dishes and fresh fish are the speciality.",
     "kidFeatures": [
-      "car-free pedestrian square",
-      "kids menu items",
-      "strollers welcome",
+      "autovrij voetgangersplein",
+      "kindermenu beschikbaar",
+      "buggy's welkom",
       "charming historical setting",
-      "outdoor terrace seating"
+      "zitplaatsen op het buitenterras"
     ],
     "ageRange": "0-12",
     "address": "Praça do Afonso III, Vila Adentro, Faro 8000",
@@ -506,10 +506,10 @@
     "description": "Acqua e Sale is een hoog beoordeeld Italiaans restaurant in Tavira met uitstekende houtoven-pizza, pasta en lasagne tegen zeer redelijke prijzen. Het personeel is warm en meegaand met gezinnen, en het menu heeft volop keuze die jonge kinderen aanspreekt. Centraal gelegen in Tavira en makkelijk te voet bereikbaar vanaf de rivieroever.",
     "description_en": "Acqua e Sale is a highly-rated Italian restaurant in Tavira offering excellent wood-fired pizza, pasta, and lasagne at very reasonable prices. The staff are warm and accommodating with families, and the menu has plenty of choices that appeal to young children. Located in central Tavira and easy to reach on foot from the riverside.",
     "kidFeatures": [
-      "kids favourite pizza and pasta menu",
-      "welcoming family staff",
+      "favoriet pizza- en pastamenu voor kinderen",
+      "gastvrij en gezinsvriendelijk personeel",
       "reasonable prices",
-      "outdoor seating available"
+      "buitenzitplaatsen beschikbaar"
     ],
     "ageRange": "0-12",
     "address": "Travessa Cais Herculano, Tavira 8800",
@@ -532,11 +532,11 @@
     "description": "Corso en Cafe Horizon zijn twee zaken op dezelfde plek, direct boven het strand van Burgau — de ene een ochtendcafé voor ontbijt en koffie, de andere een prima pizza- en grillplek voor het diner. Allebei heerlijk informeel, goede kwaliteit en op een steenworp van het beschutte strand van Burgau. Een betrouwbare gezinsplek van ontbijt tot diner.",
     "description_en": "Corso and Cafe Horizon are two venues in the same spot, right above Burgau beach — one a morning café for breakfast and coffees, the other a great pizza and grill spot for dinner. Both are perfectly informal, high-quality, and located a stone's throw from the sheltered Burgau beach. A reliable family choice from breakfast through to dinner.",
     "kidFeatures": [
-      "directly above beach",
+      "direct boven het strand",
       "informal atmosphere",
       "breakfast through dinner",
-      "high chairs",
-      "easy beach access for kids"
+      "kinderstoelen",
+      "makkelijke strandtoegang voor kinderen"
     ],
     "ageRange": "0-12",
     "address": "Largo dos Pescadores, Burgau, Lagos 8600",
@@ -559,10 +559,10 @@
     "description": "Restaurante-Bistro Rainha is het best beoordeelde gezinsrestaurant in Silves op TripAdvisor (4.8/5, 427+ reviews), gelegen op het platteland van Silves in Santo Estêvão. Gezinsreizigers prijzen consequent de royale porties, de uitstekende kwaliteit Portugees-mediterraan eten en de warme, gastvrije bediening. De landelijke tuinomgeving geeft kinderen de ruimte om te ademen.",
     "description_en": "Restaurante-Bistro Rainha is the top-rated family restaurant in Silves on TripAdvisor (4.8/5, 427+ reviews), set in the rural Silves countryside in Santo Estêvão. Family travellers consistently praise the generous portions, excellent quality Portuguese-Mediterranean food, and warm, welcoming service. The rural garden setting gives children space to breathe.",
     "kidFeatures": [
-      "rural garden setting",
-      "welcoming family atmosphere",
+      "landelijke tuinomgeving",
+      "gastvrije gezinssfeer",
       "generous portions",
-      "traditional Portuguese food kids can try"
+      "traditioneel Portugees eten dat kinderen kunnen proberen"
     ],
     "ageRange": "2-12",
     "address": "Santo Estêvão, Silves 8300-047",
@@ -585,10 +585,10 @@
     "description": "Kaya's Restaurant in Almancil is een fijne optie voor gezinnen die het nabijgelegen AquaShow waterpark bezoeken. Ze bieden een speciaal kindermenu én halve porties van volwassengerechten, waardoor kinderen meer keuze hebben. Op vrijdag is de speciale kabeljauw met huisgemaakte frietjes een Portugese variant op de klassieker. Een spelhoek houdt kinderen bezig als ze onrustig worden.",
     "description_en": "Kaya's Restaurant in Almancil is a great option for families visiting the AquaShow waterpark nearby. They offer a dedicated kids' menu as well as half-portions of adult dishes, giving children more choice. On Fridays, the special cod and homemade chips is a Portuguese take on the classic. A games area keeps kids occupied if they're restless.",
     "kidFeatures": [
-      "kids menu",
-      "half-portions available",
-      "games sofa area",
-      "near AquaShow waterpark"
+      "kindermenu",
+      "halve porties beschikbaar",
+      "spelletjeshoek met banken",
+      "vlakbij AquaShow waterpark"
     ],
     "ageRange": "2-12",
     "address": "Almancil, Loulé 8135",
@@ -612,10 +612,10 @@
     "description": "Ristorante Pizzeria Napoli in Alvor heeft een indrukwekkende 4.8/5 beoordeling op TripAdvisor met 1.877+ reviews — een van de hoogst beoordeelde restaurants in het hele Portimão-gebied. Bekend om uitzonderlijke authentieke Napolitaanse pizza, pasta en calzone. Gezinnen houden van de vriendelijke bediening, ontspannen sfeer en betrouwbare kwaliteit.",
     "description_en": "Ristorante Pizzeria Napoli in Alvor has an impressive 4.8/5 rating on TripAdvisor with 1,877+ reviews — one of the most highly rated restaurants in the entire Portimão area. Known for exceptional authentic Neapolitan pizza, pasta, and calzone. Families love the friendly service, relaxed atmosphere, and reliable quality.",
     "kidFeatures": [
-      "kid-friendly Italian menu",
-      "welcoming family staff",
-      "pizza and pasta kids love",
-      "high chairs"
+      "kindvriendelijk Italiaans menu",
+      "gastvrij en gezinsvriendelijk personeel",
+      "pizza en pasta waar kinderen van houden",
+      "kinderstoelen"
     ],
     "ageRange": "0-12",
     "address": "Alvor, Portimão 8500",
@@ -638,10 +638,10 @@
     "description": "A Boia is een legendarisch visrestaurant in het piepkleine vissersdorpje Salema, op een steenworp van het strand. Het personeel brengt verse visopties naar je tafel zodat je kunt kiezen voordat ze op houtskool worden gegrild. Gezinnen met kinderen zitten graag op het lager gelegen terras direct naast het strand — oudere kinderen spelen op het zand terwijl ouders hun maaltijd afmaken. Kinderstoelen beschikbaar.",
     "description_en": "A Boia is a legendary seafood restaurant in the tiny fishing village of Salema, steps from the beach. Staff bring fresh fish options to the table for you to choose before grilling them over charcoal. Families with children love sitting on the lower patio directly beside the beach — older kids play on the sand while parents finish their meal. High chairs available.",
     "kidFeatures": [
-      "steps from beach",
-      "kids play on sand while parents eat",
-      "high chairs",
-      "simple grilled fish kids enjoy"
+      "op loopafstand van het strand",
+      "kinderen spelen in het zand terwijl ouders eten",
+      "kinderstoelen",
+      "simpele gegrilde vis waar kinderen van genieten"
     ],
     "ageRange": "2-12",
     "address": "Praia de Salema, Salema, Vila do Bispo 8650",
@@ -653,5 +653,1162 @@
     ],
     "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-s/04/6d/52/20/restaurante-boia-bar.jpg",
     "imageAlt": "Exterior view of Restaurante Boia Bar in Salema, Algarve, Portugal, beachfront location near Lagos"
+  },
+  {
+    "name": "Guli",
+    "location": "Aljezur",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit restaurant serveert heerlijke Mediterrane gerechten in een ontspannen sfeer. Het is een fijne plek om met het hele gezin van kwalitatief eten te genieten.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Guli in Aljezur, Algarve, Portugal"
+  },
+  {
+    "name": "Mums",
+    "location": "Sagres",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een vegetarisch en vegan-vriendelijk restaurant met een gezellige sfeer. Voor ouders zijn de cocktails en wijnen een aanrader, terwijl de kids genieten van gezonde snacks.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Mums in Sagres, Algarve, Portugal"
+  },
+  {
+    "name": "Pisco",
+    "location": "Vila do Bispo",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een volledig veganistisch restaurant waar je verrassende gerechten kunt ontdekken. De informele sfeer maakt het een makkelijke plek om met kinderen te eten.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Pisco in Vila do Bispo, Algarve, Portugal"
+  },
+  {
+    "name": "The Square by Raquel",
+    "location": "Carvoeiro",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit restaurant biedt gerechten van topkwaliteit tegen de prijzen van een brasserie. Een uitstekende keuze voor gezinnen die chique willen eten zonder de hoofdprijs te betalen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "The Square by Raquel in Carvoeiro, Algarve, Portugal"
+  },
+  {
+    "name": "O Pescador",
+    "location": "Benagil (Lagoa)",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een sfeervol restaurant in het vissersdorp Benagil. Perfect om te lunchen of dineren na een bezoek aan de beroemde grotten.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "O Pescador in Benagil (Lagoa), Algarve, Portugal"
+  },
+  {
+    "name": "Zazu Beach Club",
+    "location": "Luz",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een hippe maar toegankelijke plek aan het strand van Luz. Kinderen kunnen lekker rondrennen terwijl ouders genieten van het uitzicht en een hapje.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Zazu Beach Club in Luz, Algarve, Portugal"
+  },
+  {
+    "name": "Microbar",
+    "location": "Carrapateira",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een gezellige bar met een kaart waar het water je van in de mond loopt. De relaxte vibe past perfect bij de surfcultuur van het nabijgelegen Praia do Amado.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Microbar in Carrapateira, Algarve, Portugal"
+  },
+  {
+    "name": "Em Lume Brando",
+    "location": "Salema",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een fijn restaurant in Salema waar je in een gemoedelijke omgeving kunt eten. Zeer gastvrij naar families met kinderen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Em Lume Brando in Salema, Algarve, Portugal"
+  },
+  {
+    "name": "Green Room",
+    "location": "Lagos",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een populaire plek in Lagos met een informele sfeer. Het is een favoriet bij zowel locals als toeristen voor een goede maaltijd.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Green Room in Lagos, Algarve, Portugal"
+  },
+  {
+    "name": "Tasca de Petrol",
+    "location": "Monchique",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een authentieke klassieker in de bergen van Monchique. Een geweldige ervaring voor kinderen om kennis te maken met de traditionele Portugese keuken.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Tasca de Petrol in Monchique, Algarve, Portugal"
+  },
+  {
+    "name": "Adega dos Arcos",
+    "location": "Sagres",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een pretentieloos restaurant gespecialiseerd in BBQ en zeevruchten. Het is 'cheap and cheerful', wat het ideaal maakt voor grote gezinnen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Adega dos Arcos in Sagres, Algarve, Portugal"
+  },
+  {
+    "name": "Restaurante Carlos",
+    "location": "Sagres",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit restaurant serveert eerlijke Portugese gerechten. De sfeer is warm en verwelkomend voor gezinnen met kinderen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Restaurante Carlos in Sagres, Algarve, Portugal"
+  },
+  {
+    "name": "O Saphino",
+    "location": "Figueira",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een ideale plek voor een snelle en lekkere lunch. De dagschotels zijn altijd vers en bieden een goede prijs-kwaliteitverhouding voor gezinnen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "O Saphino in Figueira, Algarve, Portugal"
+  },
+  {
+    "name": "O Lourenço",
+    "location": "Salema",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een geliefd adresje in Salema voor de lunch. Het personeel is gewend aan kinderen, wat zorgt voor een ontspannen maaltijd.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "O Lourenço in Salema, Algarve, Portugal"
+  },
+  {
+    "name": "Agua Na Boca",
+    "location": "Salema",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Voor gezinnen die van vlees houden is dit de plek bij uitstek. Ze hebben ook een uitstekende wijnkaart voor de ouders.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Agua Na Boca in Salema, Algarve, Portugal"
+  },
+  {
+    "name": "Dois Irmãos",
+    "location": "Lagos",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een historisch restaurant waar je kunt genieten van verse zeevruchten op een tapas-achtige manier ('petisco'). Leuk voor kids om verschillende hapjes te proeven.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Dois Irmãos in Lagos, Algarve, Portugal"
+  },
+  {
+    "name": "KISA’Real Italian Food",
+    "location": "Rua Silva Lopes 24, Lagos",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een gezellig Italiaans restaurant dat is ingericht in een hippe surfstyle, compleet met een surfshop beneden. De pizza's zijn van hoge kwaliteit en er zijn goede opties voor vegetariërs en mensen met een glutenallergie.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://kleineglobetrotter.nl/lagos-met-kinderen-heerlijke-plek-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "KISA’Real Italian Food in Rua Silva Lopes 24, Lagos, Algarve, Portugal"
+  },
+  {
+    "name": "London Tiger Coffee",
+    "location": "Rua Marreiros Neto 14, Lagos",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een knus koffietentje in het historische centrum van Lagos waar je terecht kunt voor uitstekende koffie en huisgemaakte lekkernijen. De vriendelijke sfeer en lekkere broodjes maken het een ideale stop.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://kleineglobetrotter.nl/lagos-met-kinderen-heerlijke-plek-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "London Tiger Coffee in Rua Marreiros Neto 14, Lagos, Algarve, Portugal"
+  },
+  {
+    "name": "A Sereia",
+    "location": "Sagres (Haven)",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een informele visplek in de haven van Sagres die bekend staat om zijn verse vangst. De sfeer is ontspannen en toegankelijk, wat het ideaal maakt voor een lunch met het hele gezin na een ochtend op zee. Het eten is van topkwaliteit en erg vers.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    ],
+    "imageUrl": "",
+    "imageAlt": "A Sereia in Sagres (Haven), Algarve, Portugal"
+  },
+  {
+    "name": "Three Little Birds",
+    "location": "Sagres",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit restaurant heeft een menu dat speciaal is afgestemd op kinderen met opties zoals mini-sliders en fruitplateaus. Het is een gezellige en hippe plek om de dag af te sluiten in Sagres met het hele gezin. De ontspannen sfeer zorgt ervoor dat kinderen zich direct thuis voelen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Three Little Birds in Sagres, Algarve, Portugal"
+  },
+  {
+    "name": "Eattico",
+    "location": "Lagos",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit restaurant in het oude centrum van Lagos is een hit voor gezinnen vanwege de heerlijke vis-tapas en de gastvrijheid. Ze bieden speelgoed en spelletjes aan tafel aan, waardoor de kinderen zich uitstekend vermaken terwijl de ouders rustig kunnen eten. Het is een gezellige plek met een geweldige sfeer.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Eattico in Lagos, Algarve, Portugal"
+  },
+  {
+    "name": "Restaurante Castelejo",
+    "location": "Castelejo Beach",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een charmant restaurant direct aan het strand waar je kunt genieten van een lunch met een spectaculair uitzicht op de surfers. Het is een handige en sfeervolle plek voor een gezinsmaaltijd zonder dat je het zand hoeft te verlaten. Het eten is eerlijk en de locatie is ongeëvenaard voor gezinnen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Restaurante Castelejo in Castelejo Beach, Algarve, Portugal"
+  },
+  {
+    "name": "Ribeira do Poço",
+    "location": "Vila do Bispo",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een gezellige familiefavoriet die bekend staat om zijn verse vis en traditionele Portugese gerechten. Het is een authentieke plek waar gezinnen hartelijk worden ontvangen en kunnen genieten van lokale smaken in een ongedwongen sfeer. Het is een ideale stop voor een stevig diner na een dag aan de westkust.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Ribeira do Poço in Vila do Bispo, Algarve, Portugal"
+  },
+  {
+    "name": "Restaurante Ramires",
+    "location": "Guia",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit is de plek waar de beroemde piri piri kip is uitgevonden, een eenvoudige maar heerlijke maaltijd die bij de meeste kinderen in de smaak valt. Het is een levendig en kindvriendelijk restaurant met een authentieke Portugese sfeer.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Restaurante Ramires in Guia, Algarve, Portugal"
+  },
+  {
+    "name": "The Garden",
+    "location": "Lagos",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een zeer kindvriendelijk restaurant waar je letterlijk met je voeten in het zand zit, wat zorgt voor een ontspannen vakantiegevoel. De informele buitenlucht setting maakt het een fijne plek voor een diner met het hele gezin.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://reismetkinderen.nl/europa/algarve-met-kinderen/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "The Garden in Lagos, Algarve, Portugal"
+  },
+  {
+    "name": "Letzte Bratwurst vor Amerika",
+    "location": "Cabo de São Vicente",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een iconische braadworstkraam op het zuidwestelijkste puntje van Europa. Het is een leuke en smakelijke stop voor gezinnen die de vuurtoren en de kliffen van Sagres bezoeken.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.gezinopreis.nl/algarve-met-kinderen/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Letzte Bratwurst vor Amerika in Cabo de São Vicente, Algarve, Portugal"
+  },
+  {
+    "name": "KOKO",
+    "location": "Quinta do Lago",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit restaurant heeft een speelruimte waar kinderen zich kunnen vermaken terwijl ze op hun eten wachten. De nabijgelegen midgetgolfbaan maakt het een ideale plek voor een gezellige gezinsdag.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "KOKO in Quinta do Lago, Algarve, Portugal"
+  },
+  {
+    "name": "Dano’s",
+    "location": "Quinta do Lago",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een sportbar met een ontspannen terras, perfect voor gezinnen die van sport houden. De inrichting met sportmemorabilia en het menu met klassieke hamburgers zijn erg geliefd bij kinderen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Dano’s in Quinta do Lago, Algarve, Portugal"
+  },
+  {
+    "name": "Bovino",
+    "location": "Quinta do Lago",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit luxe steakhouse heeft een prachtige speelruimte die de kleintjes gelukkig houdt terwijl de ouders dineren. Het biedt een verfijnde ervaring die toch zeer toegankelijk is voor gezinnen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Bovino in Quinta do Lago, Algarve, Portugal"
+  },
+  {
+    "name": "Amore",
+    "location": "Vale do Lobo",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Gelegen aan de Praca met uitzicht op de oceaan en elke avond livemuziek op het centrale podium. Het menu met pizza en pasta is altijd een succes bij kinderen van alle leeftijden.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Amore in Vale do Lobo, Algarve, Portugal"
+  },
+  {
+    "name": "Mughal Clay Indian Restaurant",
+    "location": "Vilamoura",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit restaurant in de jachthaven staat bekend om zijn uiterst vriendelijke personeel en gastvrije sfeer voor gezinnen. Er zijn veel milde opties op de kaart die zeer geschikt zijn voor kinderen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Mughal Clay Indian Restaurant in Vilamoura, Algarve, Portugal"
+  },
+  {
+    "name": "U&Co",
+    "location": "Vale do Lobo, Algarve",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een fantastisch restaurant met uitzicht op de oceaan dat een warm welkom biedt aan gezinnen. Het is een perfecte plek voor een ontspannen maaltijd na een dag vol activiteiten aan de kust.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "U&Co in Vale do Lobo, Algarve, Algarve, Portugal"
+  },
+  {
+    "name": "La Piazza Pizzeria en Sports Bar",
+    "location": "Vale do Lobo, Algarve",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Gevestigd binnen ParTee Family Park, biedt deze plek vers gemaakte pizza's, salades en snacks. Het is de ideale plek voor een snelle maaltijd of een traktatie terwijl de kinderen spelen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "La Piazza Pizzeria en Sports Bar in Vale do Lobo, Algarve, Algarve, Portugal"
+  },
+  {
+    "name": "Lobos in Dunas Douradas",
+    "location": "Dunas Douradas, Algarve",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een vriendelijke nieuwe ruimte (vanaf 2025) waar gezinnen kunnen genieten van heerlijke maaltijden en ontspanning. Het is een fijne plek waar de lokale gemeenschap en bezoekers samenkomen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Lobos in Dunas Douradas in Dunas Douradas, Algarve, Algarve, Portugal"
+  },
+  {
+    "name": "Casa do Lago Restaurant",
+    "location": "Quinta do Lago, nabij Rotunda 6",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit iconische restaurant aan het meer heeft een informele strandsfeer en een prachtig uitzicht. Kinderen kunnen spelen op het kleine strandje bij het terras terwijl ze wachten op hun maaltijd.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Casa do Lago Restaurant in Quinta do Lago, nabij Rotunda 6, Algarve, Portugal"
+  },
+  {
+    "name": "Vila Vita Biergarten Restaurant",
+    "location": "EN 125, Porches",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit restaurant brengt een stukje Beieren naar de Algarve met een ruime tuin en houten banken. Het is zeer geschikt voor grote groepen en gezinnen die van een informele sfeer houden.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Vila Vita Biergarten Restaurant in EN 125, Porches, Algarve, Portugal"
+  },
+  {
+    "name": "Praia Dourada Beach Restaurant",
+    "location": "Praia dos Pescadores, Armação de Pêra",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit stijlvolle restaurant ligt direct aan het strand en biedt een moderne sfeer die jonge gezinnen aanspreekt. Kinderen kunnen heerlijk rennen op de kilometerslange zandstranden direct voor de deur.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Praia Dourada Beach Restaurant in Praia dos Pescadores, Armação de Pêra, Algarve, Portugal"
+  },
+  {
+    "name": "Julia's - the Original Beach Restaurant",
+    "location": "Praia do Garrão, Quinta do Lago",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Al meer dan 40 jaar een favoriete plek aan het strand met een levendige sfeer en live muziek. Er is een speciale strandbar en een kindermenu, waardoor het ideaal is voor een dagje uit.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Julia's - the Original Beach Restaurant in Praia do Garrão, Quinta do Lago, Algarve, Portugal"
+  },
+  {
+    "name": "Windsurf",
+    "location": "Praia de Alvor, Alvor",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een uniek strandrestaurant in Alvor zonder tv of luide muziek, wat uitnodigt tot echte familiegesprekken. De locatie direct aan het uitgestrekte zandstrand is ideaal voor kinderen om te spelen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Windsurf in Praia de Alvor, Alvor, Algarve, Portugal"
+  },
+  {
+    "name": "NANA on the Beach",
+    "location": "Praia dos Pescadores, Armação de Pêra",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Dit kleurrijke restaurant brengt zomerse sferen met heerlijke Grieks-mediterrane gerechten. De informele setting aan het strand is perfect voor een ontspannen gezinsontbijt of lunch.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "NANA on the Beach in Praia dos Pescadores, Armação de Pêra, Algarve, Portugal"
+  },
+  {
+    "name": "Arte Náutica Beach Restaurant",
+    "location": "Praia dos Pescadores, Armação de Pêra",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een stijlvol restaurant met een nautisch thema dat direct aan het gouden zand van Armação de Pêra ligt. Ondanks de chique uitstraling is het zeer gastvrij voor gezinnen met kinderen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Arte Náutica Beach Restaurant in Praia dos Pescadores, Armação de Pêra, Algarve, Portugal"
+  },
+  {
+    "name": "O Escondidinho",
+    "location": "Carvoeiro",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een lokaal restaurant in Carvoeiro dat werd aanbevolen door de Airbnb-host; de familie vond het eten hier fantastisch.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.eileenandco.com/travelblog/2022/12/12/my-guide-to-the-algarve-region-of-portugal-with-kids"
+    ],
+    "imageUrl": "",
+    "imageAlt": "O Escondidinho in Carvoeiro, Algarve, Portugal"
+  },
+  {
+    "name": "O Sitio do Rio",
+    "location": "Praia Da Bordeira (nabij Sagres)",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een fijn lunchtentje aan de westkust van de Algarve, gelegen nabij Praia Da Bordeira.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "O Sitio do Rio in Praia Da Bordeira (nabij Sagres), Algarve, Portugal"
+  },
+  {
+    "name": "O Terraço",
+    "location": "Sagres (Martinhal)",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Restaurant met een prachtig uitzicht over de oceaan waar de gangen voor de kinderen eerder worden geserveerd.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "O Terraço in Sagres (Martinhal), Algarve, Portugal"
+  },
+  {
+    "name": "As Dunas",
+    "location": "Sagres (Martinhal)",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Restaurant met een mooie speeltuin ernaast, inclusief speelkasteel, zandbak en trampoline.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "As Dunas in Sagres (Martinhal), Algarve, Portugal"
+  },
+  {
+    "name": "Restaurante Batedor",
+    "location": "Sagres",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een simpel Portugees restaurant met een ruim terras met picknickbanken en een mooi uitzicht op de oceaan.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Restaurante Batedor in Sagres, Algarve, Portugal"
+  },
+  {
+    "name": "Rocamar",
+    "location": "Albufeira",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een trendy ingericht restaurant in een boutique hotel aan de Esplanada Dr. Silva met een fantastisch uitzicht.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Rocamar in Albufeira, Algarve, Portugal"
+  },
+  {
+    "name": "O Caixote",
+    "location": "Olhos d’Agua",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een plek waar je vis, vlees of simpelweg frietjes en een tosti kunt eten.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "O Caixote in Olhos d’Agua, Algarve, Portugal"
+  },
+  {
+    "name": "Taberna Forja",
+    "location": "Olhos d’Agua",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een klein restaurantje dat heerlijke traditionele Portugese gerechten bereidt.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Taberna Forja in Olhos d’Agua, Algarve, Portugal"
+  },
+  {
+    "name": "Sleepy Donky",
+    "location": "Olhos d’Agua",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een gezellige plek voor tapas of een heerlijk bolletje ijs.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Sleepy Donky in Olhos d’Agua, Algarve, Portugal"
+  },
+  {
+    "name": "Restaurante Bar a Lagosteira",
+    "location": "Olhos d’Agua",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een restaurant met een achtertuin waar kinderen kunnen spelen met een speelhuisje en speelrekken.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Restaurante Bar a Lagosteira in Olhos d’Agua, Algarve, Portugal"
+  },
+  {
+    "name": "Pasteleria Gardy",
+    "location": "Faro",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een leuk zaakje in een autovrij winkelgebied waar je typische Portugese zoetigheden kunt eten.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Pasteleria Gardy in Faro, Algarve, Portugal"
+  },
+  {
+    "name": "L’Osteria",
+    "location": "Faro",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een Italiaans restaurant gelegen aan een plein waar kinderen veilig kunnen rondlopen.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "L’Osteria in Faro, Algarve, Portugal"
+  },
+  {
+    "name": "Elementos",
+    "location": "Faro Strand",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een restaurant aan het strand met een prachtig terras en uitzicht over de oceaan.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Elementos in Faro Strand, Algarve, Portugal"
+  },
+  {
+    "name": "Chelsea Coffee & Brunch",
+    "location": "Faro",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een esthetisch café met heerlijke brunchgerechten zoals pannenkoeken en gepocheerde eieren.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Chelsea Coffee & Brunch in Faro, Algarve, Portugal"
+  },
+  {
+    "name": "La Forchetta",
+    "location": "Faro (Rua Conselheiro Bivar)",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een Italiaans restaurant gelegen in een autovrije straat, ideaal voor een gezinsdiner met pasta en pizza.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "La Forchetta in Faro (Rua Conselheiro Bivar), Algarve, Portugal"
+  },
+  {
+    "name": "Demo Urban Bakery",
+    "location": "Faro",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een bakkerij waar je de traditionele Portugese Pastel de Nata kunt proeven, evenals verse croissants.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Demo Urban Bakery in Faro, Algarve, Portugal"
+  },
+  {
+    "name": "São Gabriel Thai Garden",
+    "location": "Quinta do Lago, Algarve",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een uitstekend Thais restaurant gevestigd in een sfeervol oud landhuis met een tuin, waar gezinnen welkom zijn om te genieten van authentieke gerechten.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.nibbleandsqueak.com/new-blog/2018/1/24/family-friendly-restaurants-in-portugal"
+    ],
+    "imageUrl": "",
+    "imageAlt": "São Gabriel Thai Garden in Quinta do Lago, Algarve, Algarve, Portugal"
+  },
+  {
+    "name": "Vila Velha",
+    "location": "Sagres, Algarve",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een langdurige favoriet in Sagres voor familiediners, bekend om de uitstekende service en een breed aanbod aan Portugese en internationale gerechten, inclusief vegetarische opties.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.nibbleandsqueak.com/new-blog/2018/1/24/family-friendly-restaurants-in-portugal"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Vila Velha in Sagres, Algarve, Algarve, Portugal"
+  },
+  {
+    "name": "Vivendos",
+    "location": "Meia Praia, Lagos, Algarve",
+    "latitude": 0,
+    "longitude": 0,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Een charmant, klein restaurant nabij Lagos, ideaal voor een lunchstop tijdens een dagtrip. Het staat bekend om zijn dagverse specialiteiten.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [
+      "https://www.nibbleandsqueak.com/new-blog/2018/1/24/family-friendly-restaurants-in-portugal"
+    ],
+    "imageUrl": "",
+    "imageAlt": "Vivendos in Meia Praia, Lagos, Algarve, Algarve, Portugal"
+  },
+  {
+    "name": "Restaurante O Barradas",
+    "location": "Ferragudo",
+    "latitude": 37.1247,
+    "longitude": -8.4931,
+    "cuisine": "",
+    "priceRange": "€€",
+    "description": "Restaurante O Barradas in Ferragudo.",
+    "kidFeatures": [],
+    "ageRange": "0-12",
+    "address": "",
+    "website": "",
+    "tip": "",
+    "sources": [],
+    "imageUrl": "",
+    "imageAlt": "Restaurante O Barradas in Ferragudo"
   }
 ]

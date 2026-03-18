@@ -1,4 +1,4 @@
-import { type Place, type Suggestion, type Review, type WeatherData } from "@shared/schema";
+import { type Place, type Suggestion, type WeatherData } from "@shared/schema";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -119,9 +119,8 @@ export interface IStorage {
   addSuggestion(s: Omit<Suggestion, "id" | "createdAt">): Suggestion;
   getSuggestions(): Suggestion[];
   getWeather(): Promise<WeatherData | null>;
-  getReviews(placeId: string): Review[];
-  addReview(placeId: string, review: Omit<Review, "id" | "placeId" | "createdAt">): Review;
   getDagplan(): { restaurant: Place; activity: Place; playground: Place };
+  addPlace(place: Omit<Place, "id">): Place;
 }
 
 export class MemStorage implements IStorage {
@@ -129,14 +128,12 @@ export class MemStorage implements IStorage {
   private favorites: Set<string>;
   private visited: Set<string>;
   private suggestions: Suggestion[];
-  private reviews: Review[];
   private weatherCache: { data: WeatherData; fetchedAt: number } | null;
 
   constructor() {
     this.favorites = new Set();
     this.visited = new Set();
     this.suggestions = [];
-    this.reviews = [];
     this.weatherCache = null;
     this.places = [];
 
@@ -157,72 +154,6 @@ export class MemStorage implements IStorage {
       console.error("Failed to load research data:", e);
     }
 
-    // Seed reviews for popular places
-    this.seedReviews();
-  }
-
-  private seedReviews() {
-    const placeIds = this.places.slice(0, 8).map((p) => p.id);
-    const seedData: { placeId: string; rating: number; comment: string; author: string }[] = [];
-
-    if (placeIds[0]) {
-      seedData.push(
-        { placeId: placeIds[0], rating: 5, comment: "Geweldige plek voor de kinderen! Eten was ook lekker.", author: "Marieke" },
-        { placeId: placeIds[0], rating: 4, comment: "Fijne sfeer, aanrader voor gezinnen.", author: "Pieter" },
-      );
-    }
-    if (placeIds[1]) {
-      seedData.push(
-        { placeId: placeIds[1], rating: 5, comment: "Prachtig strand, kinderen vonden het fantastisch!", author: "Sanne" },
-        { placeId: placeIds[1], rating: 4, comment: "Mooi rustig, goed voor kleine kinderen.", author: "Tom" },
-        { placeId: placeIds[1], rating: 5, comment: "Onze favoriet! We komen hier elke vakantie.", author: "Lisa" },
-      );
-    }
-    if (placeIds[2]) {
-      seedData.push(
-        { placeId: placeIds[2], rating: 4, comment: "Leuke speeltuin, goed onderhouden.", author: "Jan" },
-        { placeId: placeIds[2], rating: 5, comment: "De kinderen wilden niet meer weg!", author: "Eva" },
-      );
-    }
-    if (placeIds[3]) {
-      seedData.push(
-        { placeId: placeIds[3], rating: 5, comment: "Super activiteit voor het hele gezin.", author: "Mark" },
-        { placeId: placeIds[3], rating: 3, comment: "Leuk maar een beetje prijzig.", author: "Anna" },
-      );
-    }
-    if (placeIds[4]) {
-      seedData.push(
-        { placeId: placeIds[4], rating: 4, comment: "Mooie attractie, kinderen genoten ervan.", author: "Karin" },
-        { placeId: placeIds[4], rating: 5, comment: "Een must-visit! Heel leerzaam voor de kleintjes.", author: "Dennis" },
-      );
-    }
-    if (placeIds[5]) {
-      seedData.push(
-        { placeId: placeIds[5], rating: 4, comment: "Fijne locatie, goed bereikbaar.", author: "Sandra" },
-      );
-    }
-    if (placeIds[6]) {
-      seedData.push(
-        { placeId: placeIds[6], rating: 5, comment: "Toplocatie voor een dagje uit met de kids!", author: "Wouter" },
-        { placeId: placeIds[6], rating: 4, comment: "Lekker eten en kindvriendelijk personeel.", author: "Inge" },
-      );
-    }
-    if (placeIds[7]) {
-      seedData.push(
-        { placeId: placeIds[7], rating: 5, comment: "Absoluut een van de beste plekken hier.", author: "Bas" },
-      );
-    }
-
-    for (const s of seedData) {
-      this.reviews.push({
-        id: `review-${this.reviews.length + 1}`,
-        placeId: s.placeId,
-        rating: s.rating,
-        comment: s.comment,
-        author: s.author,
-        createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
-      });
-    }
   }
 
   getAllPlaces(): Place[] {
@@ -299,6 +230,104 @@ export class MemStorage implements IStorage {
     return suggestion;
   }
 
+  addPlace(place: Omit<Place, "id">): Place {
+    const id = `${place.category}-${slugify(place.name)}-${Date.now()}`;
+    const newPlace: Place = { id, ...place };
+    this.places.push(newPlace);
+
+    // Also persist to the appropriate research JSON file
+    try {
+      const researchDir = path.join(process.cwd(), "research");
+      let filePath: string;
+      let entry: any;
+
+      if (place.category === "restaurant") {
+        filePath = path.join(researchDir, "restaurants.json");
+        entry = {
+          name: place.name,
+          location: place.location,
+          latitude: place.latitude,
+          longitude: place.longitude,
+          cuisine: place.cuisine || "",
+          priceRange: place.priceRange || "€€",
+          description: place.description,
+          kidFeatures: place.kidFeatures,
+          ageRange: place.ageRange,
+          address: "",
+          website: place.website || "",
+          tip: place.tip || "",
+          sources: [],
+          imageUrl: place.imageUrl || "",
+          imageAlt: place.imageAlt || `${place.name} in ${place.location}`,
+        };
+      } else if (place.category === "beach") {
+        filePath = path.join(researchDir, "beaches.json");
+        entry = {
+          name: place.name,
+          location: place.location,
+          latitude: place.latitude,
+          longitude: place.longitude,
+          description: place.description,
+          kidFeatures: place.kidFeatures,
+          facilities: place.facilities || [],
+          bestSeason: "June–September",
+          ageRange: place.ageRange,
+          tip: place.tip || "",
+          sources: [],
+          imageUrl: place.imageUrl || "",
+          imageAlt: place.imageAlt || `${place.name} in ${place.location}`,
+        };
+      } else if (place.category === "playground" || place.category === "activity") {
+        filePath = path.join(researchDir, "playgrounds_activities.json");
+        entry = {
+          name: place.name,
+          location: place.location,
+          latitude: place.latitude,
+          longitude: place.longitude,
+          category: place.category === "playground" ? "playground" : "activity",
+          description: place.description,
+          kidFeatures: place.kidFeatures,
+          ageRange: place.ageRange,
+          cost: place.cost || "",
+          openingHours: place.openingHours || "",
+          tip: place.tip || "",
+          sources: [],
+          imageUrl: place.imageUrl || "",
+          imageAlt: place.imageAlt || `${place.name} in ${place.location}`,
+        };
+      } else {
+        filePath = path.join(researchDir, "attractions.json");
+        entry = {
+          name: place.name,
+          location: place.location,
+          latitude: place.latitude,
+          longitude: place.longitude,
+          category: "attraction",
+          description: place.description,
+          kidFeatures: place.kidFeatures,
+          ageRange: place.ageRange,
+          priceAdult: place.priceAdult || "",
+          priceChild: place.priceChild || "",
+          openingHours: place.openingHours || "",
+          season: "Year-round",
+          website: place.website || "",
+          tip: place.tip || "",
+          sources: [],
+          imageUrl: place.imageUrl || "",
+          imageAlt: place.imageAlt || `${place.name} in ${place.location}`,
+        };
+      }
+
+      const existing = loadJSON(filePath);
+      existing.push(entry);
+      fs.writeFileSync(filePath, JSON.stringify(existing, null, 2), "utf-8");
+    } catch (e) {
+      console.error("Failed to persist place:", e);
+    }
+
+    return newPlace;
+  }
+
   getSuggestions(): Suggestion[] {
     return this.suggestions;
   }
@@ -331,21 +360,6 @@ export class MemStorage implements IStorage {
       console.error("Weather fetch failed:", e);
       return this.weatherCache?.data ?? null;
     }
-  }
-
-  getReviews(placeId: string): Review[] {
-    return this.reviews.filter((r) => r.placeId === placeId);
-  }
-
-  addReview(placeId: string, review: Omit<Review, "id" | "placeId" | "createdAt">): Review {
-    const newReview: Review = {
-      ...review,
-      id: `review-${Date.now()}`,
-      placeId,
-      createdAt: new Date().toISOString(),
-    };
-    this.reviews.push(newReview);
-    return newReview;
   }
 
   getDagplan(): { restaurant: Place; activity: Place; playground: Place } {

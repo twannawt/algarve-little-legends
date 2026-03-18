@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { importFromUrls } from "./url-import";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -82,17 +83,46 @@ export async function registerRoutes(
     res.json(storage.getDagplan());
   });
 
-  app.get("/api/places/:id/reviews", (req, res) => {
-    res.json(storage.getReviews(req.params.id));
+  // URL import — extract place info from URLs
+  app.post("/api/import-url", async (req, res) => {
+    const { googleMapsUrl, websiteUrl, instagramUrl } = req.body;
+    if (!googleMapsUrl && !websiteUrl && !instagramUrl) {
+      return res.status(400).json({ message: "Vul minimaal één URL in" });
+    }
+    try {
+      const result = await importFromUrls(
+        googleMapsUrl || "",
+        websiteUrl || "",
+        instagramUrl || ""
+      );
+      res.json(result);
+    } catch (e) {
+      console.error("URL import failed:", e);
+      res.status(500).json({ message: "Kon de URL niet verwerken" });
+    }
   });
 
-  app.post("/api/places/:id/reviews", (req, res) => {
-    const { rating, comment, author } = req.body;
-    if (!rating || !author) {
-      return res.status(400).json({ message: "Rating en naam zijn verplicht" });
+  // Add a new place directly to the database
+  app.post("/api/places", (req, res) => {
+    const { name, location, category, description, latitude, longitude, website, imageUrl } = req.body;
+    if (!name || !location || !category) {
+      return res.status(400).json({ message: "Naam, locatie en categorie zijn verplicht" });
     }
-    const review = storage.addReview(req.params.id, { rating, comment: comment || "", author });
-    res.json(review);
+    const place = storage.addPlace({
+      name,
+      location,
+      latitude: latitude || 0,
+      longitude: longitude || 0,
+      category,
+      description: description || "",
+      kidFeatures: [],
+      ageRange: "0-12",
+      tip: "",
+      website: website || undefined,
+      imageUrl: imageUrl || undefined,
+      imageAlt: `${name} in ${location}`,
+    });
+    res.json(place);
   });
 
   return httpServer;

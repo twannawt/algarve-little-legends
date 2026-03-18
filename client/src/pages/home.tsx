@@ -219,6 +219,7 @@ export default function HomePage() {
   const nearbyLng = userLocation?.lng ?? LAGOA_LNG;
 
   const nearbyPlaces = [...places]
+    .filter((p) => !todayOpen || placeMatchesSeason(p))
     .map((p) => ({
       ...p,
       distance: getDistance(nearbyLat, nearbyLng, p.latitude, p.longitude),
@@ -226,7 +227,7 @@ export default function HomePage() {
     .sort((a, b) => a.distance - b.distance)
     .slice(0, 6);
 
-  const seasonalPlaces = getSeasonalPlaces(places);
+  const seasonalPlaces = getSeasonalPlaces(todayOpen ? places.filter((p) => placeMatchesSeason(p)) : places);
   const currentMonth = dutchMonths[new Date().getMonth()];
 
   const weeklyTip = getWeeklyTip(places);
@@ -259,7 +260,7 @@ export default function HomePage() {
     }
   }
 
-  const showResults = search || activeCategory || ageFilter || todayOpen;
+  const showResults = search || activeCategory || ageFilter;
 
   return (
     <div className="max-w-5xl mx-auto pb-24">

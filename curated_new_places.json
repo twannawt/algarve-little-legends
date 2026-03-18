@@ -1,0 +1,1238 @@
+{
+  "beach": [
+    {
+      "name": "Praia de Ingrina",
+      "location": "Vila do Bispo",
+      "category": "beach",
+      "description_nl": "Dit strand heeft een kleine baai waardoor kinderen niet te ver kunnen weglopen. Dit geeft ouders een goed overzicht terwijl de kleintjes veilig spelen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Ideaal als je veel spullen en tenten mee moet nemen.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Praia de Zavial",
+      "location": "Vila do Bispo",
+      "category": "beach",
+      "description_nl": "Dit strand ligt naast Ingrina en is iets breder. Het is erg geliefd bij kinderen vanwege de leuke golfjes waar ze in kunnen spelen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Goed alternatief voor Ingrina als je van iets meer ruimte houdt.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Boulders Beach",
+      "location": "Lagos Zoo, Barão de São João",
+      "category": "beach",
+      "description_nl": "Boulders Beach is een uniek zwemstrandje gelegen binnen de Lagos Zoo waar kinderen heerlijk kunnen afkoelen. Het bijzondere aan deze plek is dat kinderen in het water kunnen spelen terwijl de Afrikaanse pinguïns vlak naast hen rondzwemmen. Dit biedt een onvergetelijke en veilige waterervaring voor de allerkleinsten.",
+      "age_range": "Alle leeftijden",
+      "tip": "Het strandje is geopend van april tot en met september.",
+      "_source": "https://www.monterosaportugal.com/nl/activiteiten/met-de-kids/"
+    },
+    {
+      "name": "Praia do Camilo",
+      "location": "Lagos",
+      "category": "beach",
+      "description_nl": "Dit fotogenieke strand in Lagos is een paradijs voor kinderen die graag op ontdekkingstocht gaan. De rotstunnels en baaitjes bieden eindeloos speelplezier en een spannend avontuur aan zee.",
+      "age_range": "Alle leeftijden",
+      "tip": "Kinderen vinden het geweldig om de tunnels in de rotsen te verkennen.",
+      "_source": "https://fullsuitcase.com/algarve-with-kids/"
+    },
+    {
+      "name": "Praia da Batata",
+      "location": "Lagos",
+      "category": "beach",
+      "description_nl": "Dit populaire zandstrand heeft rustig en helder water, wat ideaal is voor kinderen om in te zwemmen. Het strand bestaat uit kleine strandjes die via doorgangen in de rotsen met elkaar verbonden zijn.",
+      "age_range": "Alle leeftijden",
+      "tip": "Vanwege de ligging nabij het centrum kan het hier in de zomermaanden erg druk zijn.",
+      "_source": "https://kleineglobetrotter.nl/lagos-met-kinderen-heerlijke-plek-in-de-algarve/"
+    },
+    {
+      "name": "Praia de Monte Clérigo",
+      "location": "Aljezur (Westkust)",
+      "category": "beach",
+      "description_nl": "Een sfeervol strand bij een authentiek vissersdorpje met kleurrijke huisjes. Bij laag water ontstaan er poeltjes tussen de rotsen waar kinderen urenlang kunnen zoeken naar visjes en krabbetjes.",
+      "age_range": "Alle leeftijden",
+      "tip": "Bezoek dit strand vooral tijdens eb zodat de kinderen in de rotspoeltjes kunnen spelen.",
+      "_source": "https://www.gezinopreis.nl/algarve-met-kinderen/"
+    },
+    {
+      "name": "Ilha do Farol",
+      "location": "Ria Formosa",
+      "category": "beach",
+      "description_nl": "Een idyllisch eiland met een markante vuurtoren en prachtige zandstranden. Het is een heerlijke plek om een dagje te ontsnappen aan de drukte en te genieten van de zon en zee.",
+      "age_range": "Alle leeftijden",
+      "tip": "Er zijn hier diverse goede restaurantjes waar je lekker kunt eten.",
+      "_source": "https://www.gezinopreis.nl/algarve-met-kinderen/"
+    },
+    {
+      "name": "Praia de Almargem",
+      "location": "Quarteira / Almancil",
+      "category": "beach",
+      "description_nl": "Een heerlijk zandstrand waar kinderen veilig kunnen spelen in de branding en zandkastelen kunnen bouwen. Het grenst direct aan gezinsvriendelijke faciliteiten zoals BJ's Oceanside.",
+      "age_range": "Alle leeftijden",
+      "tip": "Neem strandspeelgoed mee zodat de kinderen zich kunnen vermaken terwijl je op het strand bent.",
+      "_source": "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    },
+    {
+      "name": "Armação de Pêra (strand)",
+      "location": "Armação de Pêra, Algarve",
+      "category": "beach",
+      "description_nl": "Dit brede zandstrand is ideaal voor beginners die willen leren surfen. De golven zijn hier vaak rustig genoeg voor kinderen die hun eerste stappen op een surfboard willen zetten.",
+      "age_range": "Surflessen vanaf 6 jaar",
+      "tip": "Blue Xperiences biedt hier surflessen aan onder begeleiding van gecertificeerde instructeurs.",
+      "_source": "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    },
+    {
+      "category": "beach",
+      "age_info": "Toegang via een tunnel met trappen.",
+      "description_nl": "Een uniek strand dat bereikbaar is via een 'geheime' tunnel met trappen die in de rotsen zijn uitgehouwen.",
+      "name": "Praia do Carvalho",
+      "location": "Algarve",
+      "_source": "https://www.eileenandco.com/travelblog/2022/12/12/my-guide-to-the-algarve-region-of-portugal-with-kids"
+    },
+    {
+      "category": "beach",
+      "age_info": "Bevat veel trappen naar het strand.",
+      "description_nl": "Een klein, verborgen strandje tussen twee kliffen; bereikbaar via een flinke trap naar beneden.",
+      "name": "Praia do Paraiso",
+      "location": "Carvoeiro area",
+      "_source": "https://www.eileenandco.com/travelblog/2022/12/12/my-guide-to-the-algarve-region-of-portugal-with-kids"
+    },
+    {
+      "category": "beach",
+      "name": "Praia dos Caneiros",
+      "location": "Algarve",
+      "age_info": "Veel open ruimte waar kinderen heerlijk kunnen rennen.",
+      "description_nl": "Een van de favoriete stranden van de familie met een bar/restaurant op het strand en veel speelruimte.",
+      "_source": "https://www.eileenandco.com/travelblog/2022/12/12/my-guide-to-the-algarve-region-of-portugal-with-kids"
+    },
+    {
+      "name": "Faro Strand (Praia de Faro)",
+      "age_info": "Alle leeftijden; ideaal voor zandkastelen bouwen en het zoeken naar zeesterren.",
+      "description_nl": "Een langgerekt zandstrand bereikbaar met de veerboot, perfect voor een gezinsdag aan zee.",
+      "category": "beach",
+      "location": "Faro Strand (Praia de Faro)",
+      "_source": "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    },
+    {
+      "age_info": "Alle leeftijden",
+      "description_nl": "Een vredig eiland in het natuurpark Ria Formosa, ideaal voor een rustige stranddag met het gezin.",
+      "location": "Ria Formosa (Olhão)",
+      "name": "Ilha da Culatra",
+      "category": "beach",
+      "_source": "https://www.responsiblevacation.com/vacations/algarve/travel-guide/family-activities"
+    },
+    {
+      "category": "beach",
+      "name": "Praia dos Salgados",
+      "location": "Armação de Pêra",
+      "description_nl": "Een prachtig strand in een natuurreservaat, ideaal voor gezinnen die van ruimte en rust houden.",
+      "age_info": "Alle leeftijden",
+      "_source": "https://www.responsiblevacation.com/vacations/algarve/travel-guide/family-activities"
+    }
+  ],
+  "playground_activity": [
+    {
+      "name": "Praia do Amado",
+      "location": "Aljezur / Carrapateira",
+      "category": "activity",
+      "description_nl": "Een van de bekendste surfstranden van de regio. Het is een geweldige plek voor kinderen om naar surfers te kijken of zelf hun eerste golven te trotseren.",
+      "age_range": "Vanaf 6 jaar (voor surfen)",
+      "tip": "Houd rekening met de getijden en de swell voor de beste ervaring.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Praia do Beliche",
+      "location": "Sagres",
+      "category": "activity",
+      "description_nl": "Een beschut strand dat bekend staat als een uitstekende surfspot. De omliggende kliffen zorgen voor een indrukwekkend decor voor een sportieve gezinsdag.",
+      "age_range": "Vanaf 6 jaar",
+      "tip": "Controleer de windcondities voordat je gaat.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Odeceixe Cliff Walks",
+      "location": "Odeceixe",
+      "category": "activity",
+      "description_nl": "Prachtige wandelingen bovenop de kliffen met adembenemende uitzichten. Voor actieve gezinnen is dit een geweldige manier om de natuur van de Algarve te verkennen.",
+      "age_range": "Vanaf 6 jaar (i.v.m. afstand en hoogtes)",
+      "tip": "Zorg voor goede wandelschoenen en zonnebrandcrème.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Musette Bike",
+      "location": "Lagos (en regio)",
+      "category": "activity",
+      "description_nl": "Organiseert de mooiste fietstochten en fietsvakanties in de Algarve. Voor jonge kinderen hebben ze handige 'follow-me' systemen zodat ze veilig mee kunnen fietsen.",
+      "age_range": "Alle leeftijden (vanaf 4 jaar voor eigen fiets/follow-me)",
+      "tip": "Kijk op hun website voor op maat gemaakte familietours.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Monte Rosa",
+      "location": "Barão de São João",
+      "category": "activity",
+      "description_nl": "Op Monte Rosa kunnen kinderen hutten bouwen, spelen op het sportveldje of gebruik maken van de schommels en de glijbaan. Er is ook een verkleedkist en een gemeenschappelijke ruimte met veel spelletjes en boeken voor urenlang plezier. Kinderen mogen bovendien de kippen voeren en verse eitjes uit het leg-hok halen, wat een geweldige ervaring is.",
+      "age_range": "Alle leeftijden",
+      "tip": "Kinderen kunnen ook helpen in de biologische moestuin en er is een verlicht zwembad voor de avonduren.",
+      "_source": "https://www.monterosaportugal.com/nl/activiteiten/met-de-kids/"
+    },
+    {
+      "name": "Quinta Paraíso Alto",
+      "location": "Lagos area (nabij Monte Rosa)",
+      "category": "activity",
+      "description_nl": "Bij Quinta Paraíso Alto kunnen kinderen een begeleide ponyrit maken van ongeveer twintig minuten door de natuur. Het is een interactieve ervaring waarbij kinderen ook kunnen helpen met het borstelen en opzadelen van hun pony. Voor de oudere kinderen en ouders zijn er uitdagendere ritten van een of twee uur in de mooie omgeving beschikbaar.",
+      "age_range": "Vanaf jonge leeftijd voor ponyritten; oudere kinderen voor buitenritten",
+      "tip": "Een korte ponyrit kost €12 en er kunnen ook lessen worden gevolgd bij de Quinta.",
+      "_source": "https://www.monterosaportugal.com/nl/activiteiten/met-de-kids/"
+    },
+    {
+      "name": "Parque Aventura Lagos",
+      "location": "Lagos",
+      "category": "activity",
+      "description_nl": "Parque Aventura in Lagos biedt een uitdagend klimparcours in de bomen met verschillende moeilijkheidsgraden voor verschillende leeftijden. Kinderen klimmen en klouteren via hangbruggen, netten en zip lines van boom naar boom in een veilige omgeving. Het park heeft drie niveaus (curious, adventurous en fearless), zodat elk kind op zijn eigen tempo kan grensverleggen.",
+      "age_range": "Vanaf 4 jaar (minimale lengte 100 cm)",
+      "tip": "De prijs voor het park begint vanaf €12.",
+      "_source": "https://www.monterosaportugal.com/nl/activiteiten/met-de-kids/"
+    },
+    {
+      "name": "Kajakken bij Ponta da Piedade",
+      "location": "Lagos",
+      "category": "activity",
+      "description_nl": "Kajakken langs de grillige kustlijn van Lagos is een actieve manier om de natuurlijke schoonheid van de Algarve te ontdekken. Kinderen vanaf ongeveer 4 jaar kunnen al mee op avontuur langs spectaculaire rotsen en grotten.",
+      "age_range": "Vanaf 4-6 jaar (afhankelijk van de organisatie)",
+      "tip": "De meeste tours duren ongeveer 2 uur. Het is raadzaam om vooraf te reserveren.",
+      "_source": "https://fullsuitcase.com/algarve-with-kids/"
+    },
+    {
+      "name": "Kajakken vanuit Albufeira",
+      "location": "Albufeira",
+      "category": "activity",
+      "description_nl": "Vanaf het water ontdek je verborgen grotten en strandjes bij Albufeira die over land niet bereikbaar zijn. Het is een leuke en sportieve activiteit die een spannend nieuw perspectief biedt op de Portugese kust.",
+      "age_range": "Vanaf 4-6 jaar",
+      "tip": "Boek een tour van tevoren om zeker te zijn van een plekje.",
+      "_source": "https://fullsuitcase.com/algarve-with-kids/"
+    },
+    {
+      "name": "Parasailing",
+      "location": "Albufeira Marina",
+      "category": "activity",
+      "description_nl": "Zweven aan een parachute achter een boot is een opwindende ervaring die kinderen vanaf 6 jaar een geweldig uitzicht over de kust geeft. Het is een veilige maar spannende manier om de Algarve vanuit de lucht te bewonderen.",
+      "age_range": "Vanaf 6 jaar",
+      "tip": "Kinderen onder de 12 jaar krijgen meestal korting. De vlucht zelf duurt ongeveer 10 minuten.",
+      "_source": "https://fullsuitcase.com/algarve-with-kids/"
+    },
+    {
+      "name": "Fonte Grande de Alte",
+      "location": "Alte",
+      "category": "activity",
+      "description_nl": "In het hart van het dorpje Alte vind je deze natuurlijke bronnen waar je heerlijk kunt afkoelen in het kristalheldere water. De schaduwrijke plekken en het ondiepe water maken het een ideale picknickplaats voor gezinnen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Er zijn toiletfaciliteiten en een klein café ter plaatse. De toegang is gratis.",
+      "_source": "https://fullsuitcase.com/algarve-with-kids/"
+    },
+    {
+      "name": "Parque Aventura",
+      "location": "Albufeira, Lagos en Vila Real de Santo António",
+      "category": "activity",
+      "description_nl": "Dit klimbos in de bomen biedt verschillende uitdagende parcoursen die zijn afgestemd op lengte en ervaring. Het is een geweldige plek voor actieve kinderen om hun fysieke grenzen te verleggen in een veilige omgeving.",
+      "age_range": "Vanaf 4 jaar",
+      "tip": "Het park is het hele jaar door geopend. Voor kleine groepen is reserveren meestal niet nodig.",
+      "_source": "https://fullsuitcase.com/algarve-with-kids/"
+    },
+    {
+      "name": "Seven Hanging Valleys Trail",
+      "location": "Tussen Praia da Marinha en Vale Centeanes",
+      "category": "activity",
+      "description_nl": "Deze spectaculaire kustwandeling voert langs de mooiste kliffen en uitzichtpunten van de regio. Hoewel de wandeling soms wat inspanning vraagt, belonen de prachtige panorama's en de strandstops onderweg alle moeite.",
+      "age_range": "Vanaf 5-6 jaar (kinderen moeten gewend zijn aan wandelen)",
+      "tip": "Reken op minimaal 2,5 tot 3 uur voor de wandeling. Het pad is niet geschikt voor buggy's.",
+      "_source": "https://fullsuitcase.com/algarve-with-kids/"
+    },
+    {
+      "name": "Indoor Karting Albufeira",
+      "location": "Albufeira Marina",
+      "category": "activity",
+      "description_nl": "In de jachthaven van Albufeira kunnen tieners en snelheidsduivels hun hart ophalen op de kartbaan. Omdat het een binnenbaan is, vormt het een perfect uitje voor als de zon even niet schijnt.",
+      "age_range": "Tieners en oudere kinderen",
+      "tip": "Gevestigd in de parkeergarage van de Marina van Albufeira.",
+      "_source": "https://fullsuitcase.com/algarve-with-kids/"
+    },
+    {
+      "name": "Mar Ilimitado",
+      "location": "Sagres (Haven)",
+      "category": "activity",
+      "description_nl": "Maak een spannende tocht op een zodiac boot om de kust te verkennen en hopelijk dolfijnen te spotten. Het is een avontuurlijke ervaring waarbij je met hoge snelheid over de golven zoeft, wat kinderen fantastisch zullen vinden. De tours zijn educatief en gericht op respect voor het mariene leven.",
+      "age_range": "Alle leeftijden",
+      "tip": "Zelfs als je geen dolfijnen ziet, is de boottocht zelf een geweldig avontuur voor de kinderen.",
+      "_source": "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    },
+    {
+      "name": "O Ninho Family Bar",
+      "location": "Lagos",
+      "category": "activity",
+      "description_nl": "Een geweldige combinatie van een koffiebar en een speelruimte met een ruime keuze aan speelgoed, boeken en activiteiten. Het is de perfecte plek voor een tussenstop waar kinderen veilig kunnen spelen terwijl ouders genieten van een goede koffie. De ruimte is speciaal ingericht op de behoeften van jonge gezinnen.",
+      "age_range": "Baby's en jonge kinderen",
+      "tip": "Ideaal voor een ontspannen middagpauze als de kinderen even wat energie kwijt moeten in een veilige omgeving.",
+      "_source": "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    },
+    {
+      "name": "Amado Surfcamp",
+      "location": "Praia do Amado",
+      "category": "activity",
+      "description_nl": "Dit kamp biedt surflessen die speciaal zijn ontworpen voor kinderen vanaf 6 jaar. Het is een geweldige manier voor kinderen om op een veilige en speelse manier kennis te maken met de golven onder professionele begeleiding. De energie op het strand is aanstekelijk voor actieve kinderen.",
+      "age_range": "Vanaf 6 jaar",
+      "tip": "Boek de lessen van tevoren om verzekerd te zijn van een plekje, vooral in het hoogseizoen.",
+      "_source": "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    },
+    {
+      "name": "Ria Formosa Lagoon Cruise",
+      "location": "Olhão / Faro",
+      "category": "activity",
+      "description_nl": "Een rustige boottocht door een labyrint van kanalen en eilanden vol met bijzondere vogels en zeedieren. Het is een geweldige manier voor kinderen om meer te leren over natuurbehoud en de beschermde zeepaardjes.",
+      "age_range": "Alle leeftijden",
+      "tip": "De dagtour van Odyssey Tours is een aanrader omdat je drie verschillende eilanden bezoekt.",
+      "_source": "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    },
+    {
+      "name": "Santa Bernarda Pirate Ship",
+      "location": "Portimão",
+      "category": "activity",
+      "description_nl": "Stap aan boord van een traditioneel houten schip en beleef een dag als een echte piraat op de Atlantische Oceaan. Met speciale piratenspellen en entertainment is dit een absolute hit bij jonge avonturiers.",
+      "age_range": "Vooral leuk voor 4 tot 12 jaar",
+      "tip": "De halve dagtocht is perfect om de spectaculaire kustlijn en grotten vanaf het water te zien.",
+      "_source": "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    },
+    {
+      "name": "Minigolf Adventure Park",
+      "location": "Albufeira",
+      "category": "activity",
+      "description_nl": "Een populaire 20-holes minigolfbaan die uitdagend genoeg is voor het hele gezin. De baan is mooi aangelegd en biedt een gezellige sfeer voor een sportieve middag met de kinderen.",
+      "age_range": "Vanaf circa 4 jaar",
+      "tip": "Er is een fijn terras aanwezig waar je na het spel kunt genieten van een koud drankje of ijsje.",
+      "_source": "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    },
+    {
+      "name": "Adventure Golf Alvor",
+      "location": "Alvor",
+      "category": "activity",
+      "description_nl": "Een minigolfbaan met een spannend dinosaurus-thema, compleet met grote beelden van prehistorische dieren langs de holes. Kinderen wanen zich in Jurassic Park terwijl ze proberen hun balletje in de hole te krijgen.",
+      "age_range": "Vanaf circa 4 jaar",
+      "tip": "Dit is een absolute must-visit voor jonge dinosaurusliefhebbers die op vakantie zijn in de Algarve.",
+      "_source": "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    },
+    {
+      "name": "Albufeira Riding Centre",
+      "location": "Albufeira",
+      "category": "activity",
+      "description_nl": "Een manege waar kinderen vanaf 4 jaar hun eerste stapjes op een pony kunnen zetten onder professionele begeleiding. Voor tieners zijn er prachtige ritten langs de kust of bij zonsondergang mogelijk.",
+      "age_range": "Vanaf 4 jaar",
+      "tip": "Rijhelmen en laarzen zijn ter plaatse beschikbaar, dus je hoeft geen eigen uitrusting mee te nemen.",
+      "_source": "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    },
+    {
+      "name": "Salema Eco Camp",
+      "location": "Salema",
+      "category": "activity",
+      "description_nl": "Een milieuvriendelijke camping vlakbij het strand waar gezinnen kunnen verblijven in een natuurlijke omgeving. Het is een goede uitvalsbasis om de westelijke Algarve te verkennen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Gelegen op ongeveer 1 kilometer afstand van het strand van Salema.",
+      "_source": "https://www.gezinopreis.nl/algarve-met-kinderen/"
+    },
+    {
+      "name": "The Campus",
+      "location": "Quinta do Lago",
+      "category": "activity",
+      "description_nl": "Een hoogwaardige sportfaciliteit waar gezinnen samen kunnen tennissen of aan andere sporten kunnen deelnemen. Het is een gezonde en actieve manier om quality time door te brengen.",
+      "age_range": "Kinderen en volwassenen",
+      "tip": "Bezoek Dano's Sports Bar direct na je sportactiviteit voor een verfrissend drankje.",
+      "_source": "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    },
+    {
+      "name": "Electric Karting Albufeira Marina",
+      "location": "Albufeira, Algarve",
+      "category": "activity",
+      "description_nl": "Een overdekte kartbaan van 400 meter met snelle, stille en milieuvriendelijke elektrische karts. Het is de perfecte activiteit voor tieners die houden van actie en competitie, ongeacht het weer.",
+      "age_range": "Vanaf 12 jaar (minimale lengte 1,5m)",
+      "tip": "Vooraf reserveren is aangeraden en vervoer kan vanaf elke locatie in de Algarve geregeld worden.",
+      "_source": "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    },
+    {
+      "name": "Blue Xperiences - Benagil Cave SUP & Kayak Tours",
+      "location": "Benagil, Algarve",
+      "category": "activity",
+      "description_nl": "Verken de magische grotten van Benagil van dichtbij met een begeleide kajak- of Stand Up Paddle (SUP) tour vanaf het strand. Het is een onvergetelijke manier voor gezinnen om de natuurlijke schoonheid van de kustlijn te ontdekken.",
+      "age_range": "Vanaf 6 jaar (voor surflessen), alle leeftijden voor SUP/kajak",
+      "tip": "Inclusief gratis GoPro-foto's van je tour om je herinneringen vast te leggen.",
+      "_source": "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    },
+    {
+      "name": "Algarve Voetgolf (Desert Pines)",
+      "location": "Vale do Lobo, Algarve",
+      "category": "activity",
+      "description_nl": "Voetgolf combineert de leukste elementen van voetbal en golf op een speciaal aangelegde baan met 9 of 18 holes. Het is een laagdrempelige activiteit waar kinderen van alle niveaus net zoveel plezier aan beleven als ervaren spelers.",
+      "age_range": "Alle leeftijden",
+      "tip": "Geen speciale uitrusting nodig, alleen sportschoenen; reserveren is aanbevolen voor groepen.",
+      "_source": "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    },
+    {
+      "name": "MAR Shopping Algarve",
+      "location": "Algarve (Loulé area)",
+      "category": "playground_activity",
+      "age_info": "Gezinnen; beschikt over familielounges en babyverschoningsfaciliteiten.",
+      "description_nl": "Een winkelcentrum met binnenspeeltuinen en uitgebreide faciliteiten voor gezinnen met baby's.",
+      "_source": "https://www.travel4baby.com/algarve/guides-tips/beyond-the-beach-must-do-family-activities-in-the-algarve"
+    },
+    {
+      "category": "playground_activity",
+      "location": "Alvor",
+      "name": "Pickleball Clube Alvor",
+      "description_nl": "Een sportclub waar je pickleball kunt spelen, een toegankelijke mix van tennis, badminton en tafeltennis. Het is minder fysiek belastend en daardoor ideaal voor families.",
+      "age_info": "Geschikt voor het hele gezin, ongeacht de leeftijd.",
+      "_source": "https://tomorrowalgarve.com/oct-2025-family-friendly-activities-which-wont-break-the-budget/"
+    },
+    {
+      "location": "Balaia, Albufeira",
+      "name": "Balaia Golf Village",
+      "age_info": "Geschikt voor beginners en kinderen.",
+      "description_nl": "Een resort met een pittoreske 9-holes golfbaan, perfect voor diegenen die hun vaardigheden willen verbeteren zonder de druk van een grote baan.",
+      "category": "playground_activity",
+      "_source": "https://tomorrowalgarve.com/oct-2025-family-friendly-activities-which-wont-break-the-budget/"
+    },
+    {
+      "description_nl": "Een interactieve en educatieve boerderijervaring in de Algarve waar gezinnen alles kunnen leren over duurzame landbouw, fruit plukken, en in contact kunnen komen met paarden en ezels. De tour is inclusief een welkom op de boerderij, vers sinaasappelsap, zelfgemaakte limonade en een proeverij van regionale culinaire lekkernijen. [Portugal Farm Experience](https://www.portugalfarmexperience.com/tours/pedagogical-farm/)",
+      "location": "Silves, Algarve (45 min van Faro / 20 min van Portimão) [Portugal Farm Experience](https://www.portugalfarmexperience.com/tours/pedagogical-farm/)",
+      "age_info": "Geschikt voor alle leeftijden (fun and education for all ages!) [Portugal Farm Experience](https://www.portugalfarmexperience.com/tours/pedagogical-farm/)",
+      "category": "playground_activity",
+      "name": "Pedagogical Farm [Portugal Farm Experience](https://www.portugalfarmexperience.com/tours/pedagogical-farm/)",
+      "_source": "https://www.portugalfarmexperience.com/tours/pedagogical-farm/"
+    },
+    {
+      "location": "West-Algarve",
+      "name": "Rota Vicentina",
+      "category": "playground_activity",
+      "age_info": "Iets oudere kinderen",
+      "description_nl": "Een indrukwekkend netwerk van wandel- en fietspaden langs de ongerepte westkust.",
+      "_source": "https://www.responsiblevacation.com/vacations/algarve/travel-guide/family-activities"
+    },
+    {
+      "location": "Silves",
+      "name": "Silves Medieval Festival",
+      "category": "playground_activity",
+      "description_nl": "Een jaarlijks evenement in augustus waarbij de stad terugkeert naar de middeleeuwen met ridders en marktkramen.",
+      "age_info": "Alle leeftijden",
+      "_source": "https://www.responsiblevacation.com/vacations/algarve/travel-guide/family-activities"
+    },
+    {
+      "location": "Alcoutim",
+      "name": "Limite Zero (Tokkelbaan)",
+      "category": "playground_activity",
+      "description_nl": "Een unieke tokkelbaan die de grens overbrugt tussen Spanje en Portugal over de rivier de Guadiana.",
+      "age_info": "Niet gespecificeerd",
+      "_source": "https://www.responsiblevacation.com/vacations/algarve/travel-guide/family-activities"
+    }
+  ],
+  "restaurant": [
+    {
+      "name": "Guli",
+      "location": "Aljezur",
+      "category": "restaurant",
+      "description_nl": "Dit restaurant serveert heerlijke Mediterrane gerechten in een ontspannen sfeer. Het is een fijne plek om met het hele gezin van kwalitatief eten te genieten.",
+      "age_range": "Alle leeftijden",
+      "tip": "Probeer de lokale specialiteiten op de kaart.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Mums",
+      "location": "Sagres",
+      "category": "restaurant",
+      "description_nl": "Een vegetarisch en vegan-vriendelijk restaurant met een gezellige sfeer. Voor ouders zijn de cocktails en wijnen een aanrader, terwijl de kids genieten van gezonde snacks.",
+      "age_range": "Alle leeftijden",
+      "tip": "Ideaal voor liefhebbers van cocktails en wijn.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Pisco",
+      "location": "Vila do Bispo",
+      "category": "restaurant",
+      "description_nl": "Een volledig veganistisch restaurant waar je verrassende gerechten kunt ontdekken. De informele sfeer maakt het een makkelijke plek om met kinderen te eten.",
+      "age_range": "Alle leeftijden",
+      "tip": "Ook voor niet-vegans een culinaire verrassing.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "The Square by Raquel",
+      "location": "Carvoeiro",
+      "category": "restaurant",
+      "description_nl": "Dit restaurant biedt gerechten van topkwaliteit tegen de prijzen van een brasserie. Een uitstekende keuze voor gezinnen die chique willen eten zonder de hoofdprijs te betalen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Reserveren kan handig zijn gezien de populariteit.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "O Pescador",
+      "location": "Benagil (Lagoa)",
+      "category": "restaurant",
+      "description_nl": "Een sfeervol restaurant in het vissersdorp Benagil. Perfect om te lunchen of dineren na een bezoek aan de beroemde grotten.",
+      "age_range": "Alle leeftijden",
+      "tip": "Combineer dit met een boottocht naar de Benagil grotten.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Zazu Beach Club",
+      "location": "Luz",
+      "category": "restaurant",
+      "description_nl": "Een hippe maar toegankelijke plek aan het strand van Luz. Kinderen kunnen lekker rondrennen terwijl ouders genieten van het uitzicht en een hapje.",
+      "age_range": "Alle leeftijden",
+      "tip": "Mooie plek voor een zonsondergang.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Microbar",
+      "location": "Carrapateira",
+      "category": "restaurant",
+      "description_nl": "Een gezellige bar met een kaart waar het water je van in de mond loopt. De relaxte vibe past perfect bij de surfcultuur van het nabijgelegen Praia do Amado.",
+      "age_range": "Alle leeftijden",
+      "tip": "Heerlijk voor een snelle maar kwalitatieve lunch.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Em Lume Brando",
+      "location": "Salema",
+      "category": "restaurant",
+      "description_nl": "Een fijn restaurant in Salema waar je in een gemoedelijke omgeving kunt eten. Zeer gastvrij naar families met kinderen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Vraag naar de dagschotels.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Green Room",
+      "location": "Lagos",
+      "category": "restaurant",
+      "description_nl": "Een populaire plek in Lagos met een informele sfeer. Het is een favoriet bij zowel locals als toeristen voor een goede maaltijd.",
+      "age_range": "Alle leeftijden",
+      "tip": "Gezellige plek in het hart van de stad.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Tasca de Petrol",
+      "location": "Monchique",
+      "category": "restaurant",
+      "description_nl": "Een authentieke klassieker in de bergen van Monchique. Een geweldige ervaring voor kinderen om kennis te maken met de traditionele Portugese keuken.",
+      "age_range": "Alle leeftijden",
+      "tip": "Een mooie stop tijdens een rit door het binnenland.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Adega dos Arcos",
+      "location": "Sagres",
+      "category": "restaurant",
+      "description_nl": "Een pretentieloos restaurant gespecialiseerd in BBQ en zeevruchten. Het is 'cheap and cheerful', wat het ideaal maakt voor grote gezinnen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Probeer de gegrilde vis of het vlees van de BBQ.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Restaurante Carlos",
+      "location": "Sagres",
+      "category": "restaurant",
+      "description_nl": "Dit restaurant serveert eerlijke Portugese gerechten. De sfeer is warm en verwelkomend voor gezinnen met kinderen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Perfect voor een authentieke Portugese avond.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "O Saphino",
+      "location": "Figueira",
+      "category": "restaurant",
+      "description_nl": "Een ideale plek voor een snelle en lekkere lunch. De dagschotels zijn altijd vers en bieden een goede prijs-kwaliteitverhouding voor gezinnen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Kies voor de dagschotel (prato do dia).",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "O Lourenço",
+      "location": "Salema",
+      "category": "restaurant",
+      "description_nl": "Een geliefd adresje in Salema voor de lunch. Het personeel is gewend aan kinderen, wat zorgt voor een ontspannen maaltijd.",
+      "age_range": "Alle leeftijden",
+      "tip": "Combineer met een wandeling door het vissersdorpje.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Agua Na Boca",
+      "location": "Salema",
+      "category": "restaurant",
+      "description_nl": "Voor gezinnen die van vlees houden is dit de plek bij uitstek. Ze hebben ook een uitstekende wijnkaart voor de ouders.",
+      "age_range": "Alle leeftijden",
+      "tip": "Reserveren is aanbevolen voor het diner.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "Dois Irmãos",
+      "location": "Lagos",
+      "category": "restaurant",
+      "description_nl": "Een historisch restaurant waar je kunt genieten van verse zeevruchten op een tapas-achtige manier ('petisco'). Leuk voor kids om verschillende hapjes te proeven.",
+      "age_range": "Alle leeftijden",
+      "tip": "Bestel verschillende 'petiscos' om te delen.",
+      "_source": "https://www.lievevandenweghe.com/stories/portugalhotspots"
+    },
+    {
+      "name": "KISA’Real Italian Food",
+      "location": "Rua Silva Lopes 24, Lagos",
+      "category": "restaurant",
+      "description_nl": "Een gezellig Italiaans restaurant dat is ingericht in een hippe surfstyle, compleet met een surfshop beneden. De pizza's zijn van hoge kwaliteit en er zijn goede opties voor vegetariërs en mensen met een glutenallergie.",
+      "age_range": "Alle leeftijden",
+      "tip": "Ideaal voor een makkelijke maar smakelijke avondmaaltijd na een dagje verkennen.",
+      "_source": "https://kleineglobetrotter.nl/lagos-met-kinderen-heerlijke-plek-in-de-algarve/"
+    },
+    {
+      "name": "London Tiger Coffee",
+      "location": "Rua Marreiros Neto 14, Lagos",
+      "category": "restaurant",
+      "description_nl": "Een knus koffietentje in het historische centrum van Lagos waar je terecht kunt voor uitstekende koffie en huisgemaakte lekkernijen. De vriendelijke sfeer en lekkere broodjes maken het een ideale stop.",
+      "age_range": "Alle leeftijden",
+      "tip": "Probeer zeker de huisgemaakte scones en fudge, die zijn een absolute aanrader.",
+      "_source": "https://kleineglobetrotter.nl/lagos-met-kinderen-heerlijke-plek-in-de-algarve/"
+    },
+    {
+      "name": "A Sereia",
+      "location": "Sagres (Haven)",
+      "category": "restaurant",
+      "description_nl": "Een informele visplek in de haven van Sagres die bekend staat om zijn verse vangst. De sfeer is ontspannen en toegankelijk, wat het ideaal maakt voor een lunch met het hele gezin na een ochtend op zee. Het eten is van topkwaliteit en erg vers.",
+      "age_range": "Alle leeftijden",
+      "tip": "Probeer de verse vis van de dag voor de meest authentieke ervaring.",
+      "_source": "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    },
+    {
+      "name": "Three Little Birds",
+      "location": "Sagres",
+      "category": "restaurant",
+      "description_nl": "Dit restaurant heeft een menu dat speciaal is afgestemd op kinderen met opties zoals mini-sliders en fruitplateaus. Het is een gezellige en hippe plek om de dag af te sluiten in Sagres met het hele gezin. De ontspannen sfeer zorgt ervoor dat kinderen zich direct thuis voelen.",
+      "age_range": "Alle leeftijden",
+      "tip": "De mini-sliders zijn perfect voor kleine handjes en een grote hit bij kinderen.",
+      "_source": "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    },
+    {
+      "name": "Eattico",
+      "location": "Lagos",
+      "category": "restaurant",
+      "description_nl": "Dit restaurant in het oude centrum van Lagos is een hit voor gezinnen vanwege de heerlijke vis-tapas en de gastvrijheid. Ze bieden speelgoed en spelletjes aan tafel aan, waardoor de kinderen zich uitstekend vermaken terwijl de ouders rustig kunnen eten. Het is een gezellige plek met een geweldige sfeer.",
+      "age_range": "Alle leeftijden",
+      "tip": "Vraag bij aankomst direct naar het beschikbare speelgoed voor aan tafel.",
+      "_source": "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    },
+    {
+      "name": "Restaurante Castelejo",
+      "location": "Castelejo Beach",
+      "category": "restaurant",
+      "description_nl": "Een charmant restaurant direct aan het strand waar je kunt genieten van een lunch met een spectaculair uitzicht op de surfers. Het is een handige en sfeervolle plek voor een gezinsmaaltijd zonder dat je het zand hoeft te verlaten. Het eten is eerlijk en de locatie is ongeëvenaard voor gezinnen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Houd er rekening mee dat ze mogelijk alleen contant geld accepteren.",
+      "_source": "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    },
+    {
+      "name": "Ribeira do Poço",
+      "location": "Vila do Bispo",
+      "category": "restaurant",
+      "description_nl": "Een gezellige familiefavoriet die bekend staat om zijn verse vis en traditionele Portugese gerechten. Het is een authentieke plek waar gezinnen hartelijk worden ontvangen en kunnen genieten van lokale smaken in een ongedwongen sfeer. Het is een ideale stop voor een stevig diner na een dag aan de westkust.",
+      "age_range": "Alle leeftijden",
+      "tip": "Dit is de perfecte plek om de echte Portugese keuken te proeven in een gastvrije omgeving.",
+      "_source": "https://minijetsetter.com/blogs/news/kid-friendly-guide-to-the-algarve-portugal"
+    },
+    {
+      "name": "Restaurante Ramires",
+      "location": "Guia",
+      "category": "restaurant",
+      "description_nl": "Dit is de plek waar de beroemde piri piri kip is uitgevonden, een eenvoudige maar heerlijke maaltijd die bij de meeste kinderen in de smaak valt. Het is een levendig en kindvriendelijk restaurant met een authentieke Portugese sfeer.",
+      "age_range": "Alle leeftijden",
+      "tip": "Vraag om de kip zonder piri piri saus voor de kinderen als ze niet van pittig eten houden.",
+      "_source": "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    },
+    {
+      "name": "The Garden",
+      "location": "Lagos",
+      "category": "restaurant",
+      "description_nl": "Een zeer kindvriendelijk restaurant waar je letterlijk met je voeten in het zand zit, wat zorgt voor een ontspannen vakantiegevoel. De informele buitenlucht setting maakt het een fijne plek voor een diner met het hele gezin.",
+      "age_range": "Alle leeftijden",
+      "tip": "Ideaal voor een gezellig diner na een dagje verkennen in Lagos.",
+      "_source": "https://reismetkinderen.nl/europa/algarve-met-kinderen/"
+    },
+    {
+      "name": "Letzte Bratwurst vor Amerika",
+      "location": "Cabo de São Vicente",
+      "category": "restaurant",
+      "description_nl": "Een iconische braadworstkraam op het zuidwestelijkste puntje van Europa. Het is een leuke en smakelijke stop voor gezinnen die de vuurtoren en de kliffen van Sagres bezoeken.",
+      "age_range": "Alle leeftijden",
+      "tip": "Een bekende plek voor een snelle hap op een bijzondere locatie.",
+      "_source": "https://www.gezinopreis.nl/algarve-met-kinderen/"
+    },
+    {
+      "name": "KOKO",
+      "location": "Quinta do Lago",
+      "category": "restaurant",
+      "description_nl": "Dit restaurant heeft een speelruimte waar kinderen zich kunnen vermaken terwijl ze op hun eten wachten. De nabijgelegen midgetgolfbaan maakt het een ideale plek voor een gezellige gezinsdag.",
+      "age_range": "Alle leeftijden",
+      "tip": "Combineer je bezoek met een spelletje midgetgolf op de nabijgelegen baan.",
+      "_source": "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    },
+    {
+      "name": "Dano’s",
+      "location": "Quinta do Lago",
+      "category": "restaurant",
+      "description_nl": "Een sportbar met een ontspannen terras, perfect voor gezinnen die van sport houden. De inrichting met sportmemorabilia en het menu met klassieke hamburgers zijn erg geliefd bij kinderen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Een uitstekende stop voor een hapje na een bezoek aan de Ria Formosa of de tennisbanen.",
+      "_source": "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    },
+    {
+      "name": "Bovino",
+      "location": "Quinta do Lago",
+      "category": "restaurant",
+      "description_nl": "Dit luxe steakhouse heeft een prachtige speelruimte die de kleintjes gelukkig houdt terwijl de ouders dineren. Het biedt een verfijnde ervaring die toch zeer toegankelijk is voor gezinnen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Geniet van de bekroonde cocktails terwijl de kinderen veilig in de speelruimte spelen.",
+      "_source": "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    },
+    {
+      "name": "Amore",
+      "location": "Vale do Lobo",
+      "category": "restaurant",
+      "description_nl": "Gelegen aan de Praca met uitzicht op de oceaan en elke avond livemuziek op het centrale podium. Het menu met pizza en pasta is altijd een succes bij kinderen van alle leeftijden.",
+      "age_range": "Alle leeftijden",
+      "tip": "Maak na het eten een strandwandeling bij zonsondergang langs de nabijgelegen kust.",
+      "_source": "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    },
+    {
+      "name": "Mughal Clay Indian Restaurant",
+      "location": "Vilamoura",
+      "category": "restaurant",
+      "description_nl": "Dit restaurant in de jachthaven staat bekend om zijn uiterst vriendelijke personeel en gastvrije sfeer voor gezinnen. Er zijn veel milde opties op de kaart die zeer geschikt zijn voor kinderen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Gelegen in de jachthaven van Vilamoura, ideaal te combineren met een wandeling langs de boten.",
+      "_source": "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    },
+    {
+      "name": "U&Co",
+      "location": "Vale do Lobo, Algarve",
+      "category": "restaurant",
+      "description_nl": "Een fantastisch restaurant met uitzicht op de oceaan dat een warm welkom biedt aan gezinnen. Het is een perfecte plek voor een ontspannen maaltijd na een dag vol activiteiten aan de kust.",
+      "age_range": "Alle leeftijden",
+      "tip": "Gelegen direct naast het ParTee Family Park voor extra gemak.",
+      "_source": "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    },
+    {
+      "name": "La Piazza Pizzeria en Sports Bar",
+      "location": "Vale do Lobo, Algarve",
+      "category": "restaurant",
+      "description_nl": "Gevestigd binnen ParTee Family Park, biedt deze plek vers gemaakte pizza's, salades en snacks. Het is de ideale plek voor een snelle maaltijd of een traktatie terwijl de kinderen spelen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Bekijk het menu online voor de diverse opties voor het hele gezin.",
+      "_source": "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    },
+    {
+      "name": "Lobos in Dunas Douradas",
+      "location": "Dunas Douradas, Algarve",
+      "category": "restaurant",
+      "description_nl": "Een vriendelijke nieuwe ruimte (vanaf 2025) waar gezinnen kunnen genieten van heerlijke maaltijden en ontspanning. Het is een fijne plek waar de lokale gemeenschap en bezoekers samenkomen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Een aanrader voor wie op zoek is naar een gemoedelijke sfeer en goede gastvrijheid.",
+      "_source": "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    },
+    {
+      "name": "Casa do Lago Restaurant",
+      "location": "Quinta do Lago, nabij Rotunda 6",
+      "category": "restaurant",
+      "description_nl": "Dit iconische restaurant aan het meer heeft een informele strandsfeer en een prachtig uitzicht. Kinderen kunnen spelen op het kleine strandje bij het terras terwijl ze wachten op hun maaltijd.",
+      "age_range": "Alle leeftijden",
+      "tip": "Een perfecte locatie voor een gezinsontbijt aan de waterkant tijdens het hoogseizoen.",
+      "_source": "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    },
+    {
+      "name": "Vila Vita Biergarten Restaurant",
+      "location": "EN 125, Porches",
+      "category": "restaurant",
+      "description_nl": "Dit restaurant brengt een stukje Beieren naar de Algarve met een ruime tuin en houten banken. Het is zeer geschikt voor grote groepen en gezinnen die van een informele sfeer houden.",
+      "age_range": "Alle leeftijden",
+      "tip": "Bezoek ook de bijbehorende Duitse slagerij (Metzgerei) voor kwaliteitsvlees en huisgemaakte worsten.",
+      "_source": "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    },
+    {
+      "name": "Praia Dourada Beach Restaurant",
+      "location": "Praia dos Pescadores, Armação de Pêra",
+      "category": "restaurant",
+      "description_nl": "Dit stijlvolle restaurant ligt direct aan het strand en biedt een moderne sfeer die jonge gezinnen aanspreekt. Kinderen kunnen heerlijk rennen op de kilometerslange zandstranden direct voor de deur.",
+      "age_range": "Alle leeftijden",
+      "tip": "Er is ruime parkeergelegenheid aan de achterzijde van het restaurant.",
+      "_source": "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    },
+    {
+      "name": "Julia's - the Original Beach Restaurant",
+      "location": "Praia do Garrão, Quinta do Lago",
+      "category": "restaurant",
+      "description_nl": "Al meer dan 40 jaar een favoriete plek aan het strand met een levendige sfeer en live muziek. Er is een speciale strandbar en een kindermenu, waardoor het ideaal is voor een dagje uit.",
+      "age_range": "Alle leeftijden",
+      "tip": "Reserveer tijdig, vooral voor de populaire live muziek sessies op zondagmiddag.",
+      "_source": "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    },
+    {
+      "name": "Windsurf",
+      "location": "Praia de Alvor, Alvor",
+      "category": "restaurant",
+      "description_nl": "Een uniek strandrestaurant in Alvor zonder tv of luide muziek, wat uitnodigt tot echte familiegesprekken. De locatie direct aan het uitgestrekte zandstrand is ideaal voor kinderen om te spelen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Perfect voor gezinnen die op zoek zijn naar een rustige maaltijd met een prachtig panorama.",
+      "_source": "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    },
+    {
+      "name": "NANA on the Beach",
+      "location": "Praia dos Pescadores, Armação de Pêra",
+      "category": "restaurant",
+      "description_nl": "Dit kleurrijke restaurant brengt zomerse sferen met heerlijke Grieks-mediterrane gerechten. De informele setting aan het strand is perfect voor een ontspannen gezinsontbijt of lunch.",
+      "age_range": "Alle leeftijden",
+      "tip": "Geniet van de live muziek sessies op woensdag- en donderdagavonden in de zomer.",
+      "_source": "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    },
+    {
+      "name": "Arte Náutica Beach Restaurant",
+      "location": "Praia dos Pescadores, Armação de Pêra",
+      "category": "restaurant",
+      "description_nl": "Een stijlvol restaurant met een nautisch thema dat direct aan het gouden zand van Armação de Pêra ligt. Ondanks de chique uitstraling is het zeer gastvrij voor gezinnen met kinderen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Probeer de verse vis van de dag, die rechtstreeks van de lokale markten komt.",
+      "_source": "https://www.myguidealgarve.com/lists/best-child-friendly-restaurants-in-algarve"
+    },
+    {
+      "description_nl": "Een lokaal restaurant in Carvoeiro dat werd aanbevolen door de Airbnb-host; de familie vond het eten hier fantastisch.",
+      "age_info": "Geschikt voor families.",
+      "name": "O Escondidinho",
+      "location": "Carvoeiro",
+      "category": "restaurant",
+      "_source": "https://www.eileenandco.com/travelblog/2022/12/12/my-guide-to-the-algarve-region-of-portugal-with-kids"
+    },
+    {
+      "category": "restaurant",
+      "name": "O Sitio do Rio",
+      "age_info": "Niet gespecificeerd",
+      "location": "Praia Da Bordeira (nabij Sagres)",
+      "description_nl": "Een fijn lunchtentje aan de westkust van de Algarve, gelegen nabij Praia Da Bordeira.",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "description_nl": "Restaurant met een prachtig uitzicht over de oceaan waar de gangen voor de kinderen eerder worden geserveerd.",
+      "location": "Sagres (Martinhal)",
+      "age_info": "Kinderen",
+      "category": "restaurant",
+      "name": "O Terraço",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "age_info": "Kinderen",
+      "name": "As Dunas",
+      "category": "restaurant",
+      "description_nl": "Restaurant met een mooie speeltuin ernaast, inclusief speelkasteel, zandbak en trampoline.",
+      "location": "Sagres (Martinhal)",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "age_info": "Niet gespecificeerd",
+      "name": "Restaurante Batedor",
+      "category": "restaurant",
+      "description_nl": "Een simpel Portugees restaurant met een ruim terras met picknickbanken en een mooi uitzicht op de oceaan.",
+      "location": "Sagres",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "name": "Rocamar",
+      "category": "restaurant",
+      "age_info": "Niet gespecificeerd",
+      "location": "Albufeira",
+      "description_nl": "Een trendy ingericht restaurant in een boutique hotel aan de Esplanada Dr. Silva met een fantastisch uitzicht.",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "age_info": "Niet gespecificeerd",
+      "category": "restaurant",
+      "name": "O Caixote",
+      "description_nl": "Een plek waar je vis, vlees of simpelweg frietjes en een tosti kunt eten.",
+      "location": "Olhos d’Agua",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "description_nl": "Een klein restaurantje dat heerlijke traditionele Portugese gerechten bereidt.",
+      "location": "Olhos d’Agua",
+      "age_info": "Niet gespecificeerd",
+      "category": "restaurant",
+      "name": "Taberna Forja",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "description_nl": "Een gezellige plek voor tapas of een heerlijk bolletje ijs.",
+      "location": "Olhos d’Agua",
+      "age_info": "Niet gespecificeerd",
+      "name": "Sleepy Donky",
+      "category": "restaurant",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "name": "Restaurante Bar a Lagosteira",
+      "category": "restaurant",
+      "age_info": "Kinderen",
+      "location": "Olhos d’Agua",
+      "description_nl": "Een restaurant met een achtertuin waar kinderen kunnen spelen met een speelhuisje en speelrekken.",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "location": "Faro",
+      "description_nl": "Een leuk zaakje in een autovrij winkelgebied waar je typische Portugese zoetigheden kunt eten.",
+      "category": "restaurant",
+      "name": "Pasteleria Gardy",
+      "age_info": "Niet gespecificeerd",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "location": "Faro",
+      "description_nl": "Een Italiaans restaurant gelegen aan een plein waar kinderen veilig kunnen rondlopen.",
+      "category": "restaurant",
+      "name": "L’Osteria",
+      "age_info": "Kinderen",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "description_nl": "Een restaurant aan het strand met een prachtig terras en uitzicht over de oceaan.",
+      "category": "restaurant",
+      "location": "Faro Strand",
+      "name": "Elementos",
+      "age_info": "Alle leeftijden (geen specifiek kindermenu aanwezig).",
+      "_source": "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    },
+    {
+      "age_info": "Zeer gezinsvriendelijk.",
+      "name": "Chelsea Coffee & Brunch",
+      "location": "Faro",
+      "category": "restaurant",
+      "description_nl": "Een esthetisch café met heerlijke brunchgerechten zoals pannenkoeken en gepocheerde eieren.",
+      "_source": "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    },
+    {
+      "age_info": "Alle leeftijden",
+      "name": "La Forchetta",
+      "location": "Faro (Rua Conselheiro Bivar)",
+      "category": "restaurant",
+      "description_nl": "Een Italiaans restaurant gelegen in een autovrije straat, ideaal voor een gezinsdiner met pasta en pizza.",
+      "_source": "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    },
+    {
+      "name": "Demo Urban Bakery",
+      "age_info": "Alle leeftijden",
+      "description_nl": "Een bakkerij waar je de traditionele Portugese Pastel de Nata kunt proeven, evenals verse croissants.",
+      "category": "restaurant",
+      "location": "Faro",
+      "_source": "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    },
+    {
+      "name": "São Gabriel Thai Garden",
+      "location": "Quinta do Lago, Algarve",
+      "age_info": "Gezinsvriendelijk (geen specifieke leeftijden vermeld).",
+      "category": "restaurant",
+      "description_nl": "Een uitstekend Thais restaurant gevestigd in een sfeervol oud landhuis met een tuin, waar gezinnen welkom zijn om te genieten van authentieke gerechten.",
+      "_source": "https://www.nibbleandsqueak.com/new-blog/2018/1/24/family-friendly-restaurants-in-portugal"
+    },
+    {
+      "location": "Sagres, Algarve",
+      "age_info": "Gezinsvriendelijk (geen specifieke leeftijden vermeld).",
+      "category": "restaurant",
+      "description_nl": "Een langdurige favoriet in Sagres voor familiediners, bekend om de uitstekende service en een breed aanbod aan Portugese en internationale gerechten, inclusief vegetarische opties.",
+      "name": "Vila Velha",
+      "_source": "https://www.nibbleandsqueak.com/new-blog/2018/1/24/family-friendly-restaurants-in-portugal"
+    },
+    {
+      "location": "Meia Praia, Lagos, Algarve",
+      "age_info": "Gezinsvriendelijk (geen specifieke leeftijden vermeld).",
+      "description_nl": "Een charmant, klein restaurant nabij Lagos, ideaal voor een lunchstop tijdens een dagtrip. Het staat bekend om zijn dagverse specialiteiten.",
+      "category": "restaurant",
+      "name": "Vivendos",
+      "_source": "https://www.nibbleandsqueak.com/new-blog/2018/1/24/family-friendly-restaurants-in-portugal"
+    }
+  ],
+  "attraction": [
+    {
+      "name": "Queda do Vigário (Waterval)",
+      "location": "Alte",
+      "category": "attraction",
+      "description_nl": "Deze verborgen waterval bij Alte is een sprookjesachtige plek waar kinderen kunnen zwemmen in een natuurlijke omgeving. Na een flinke regenbui is het schouwspel van het vallende water extra indrukwekkend.",
+      "age_range": "Alle leeftijden",
+      "tip": "In de zomer kan de waterval droogstaan; het is het mooist na periodes met regen.",
+      "_source": "https://fullsuitcase.com/algarve-with-kids/"
+    },
+    {
+      "name": "Aqualand",
+      "location": "Alcantarilha",
+      "category": "attraction",
+      "description_nl": "Dit waterpark biedt een meer ontspannen sfeer met minder drukte, wat prettig kan zijn voor gezinnen met kleine kinderen. Er zijn diverse glijbanen en zwembaden die zorgen voor een dag vol plezier zonder al te lange wachtrijen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Ideaal als je op zoek bent naar een rustiger waterpark dan de meer bekende alternatieven.",
+      "_source": "https://fullsuitcase.com/algarve-with-kids/"
+    },
+    {
+      "name": "Forte do Pau da Bandeira",
+      "location": "Lagos",
+      "category": "attraction",
+      "description_nl": "Dit 17e-eeuwse fort werd gebouwd om de haven en stad te verdedigen. Voor kinderen is het een spannende plek om de geschiedenis van de regio te ontdekken terwijl ze genieten van het uitzicht over de oceaan.",
+      "age_range": "Alle leeftijden",
+      "tip": "Je kunt op het nabijgelegen strand een kano huren om naar Ponte da Piedade te varen.",
+      "_source": "https://kleineglobetrotter.nl/lagos-met-kinderen-heerlijke-plek-in-de-algarve/"
+    },
+    {
+      "name": "Oude stadsmuur",
+      "location": "Avenida dos Descobrimentos, Lagos",
+      "category": "attraction",
+      "description_nl": "Een deel van de 16e-eeuwse stadsmuur staat nog overeind en biedt een prachtig uitzicht over de stad en de baai. Het is een leuke, actieve manier voor kinderen om de stad van bovenaf te bekijken.",
+      "age_range": "Alle leeftijden",
+      "tip": "Het best bewaarde deel ligt aan de Avenida dos Descobrimentos, tegenover het fort.",
+      "_source": "https://kleineglobetrotter.nl/lagos-met-kinderen-heerlijke-plek-in-de-algarve/"
+    },
+    {
+      "name": "Castelo do Castro Marim",
+      "location": "Castro Marim",
+      "category": "attraction",
+      "description_nl": "Een historisch kasteel op de grens met Spanje, gebouwd op Romeinse en Moorse resten. Kinderen kunnen hier dwalen door de middeleeuwse vestingwerken en meer leren over de verdediging van de regio.",
+      "age_range": "Vanaf circa 4 jaar",
+      "tip": "Vanaf de muren heb je een schitterend uitzicht over de omliggende zoutpannen en de grensrivier.",
+      "_source": "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    },
+    {
+      "name": "Parque da Mina",
+      "location": "Monchique",
+      "category": "attraction",
+      "description_nl": "Een uniek themapark waar kinderen ontdekken hoe men vroeger in de Algarve leefde, inclusief een bezoek aan een oude boerderij en een mijn. Ze kunnen boerderijdieren voeren en een spannende afdaling maken in een gedemonteerde kolenmijn.",
+      "age_range": "Alle leeftijden",
+      "tip": "Dit is een uitstekend alternatief voor een stranddag als je het groene binnenland van de Algarve wilt ontdekken.",
+      "_source": "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    },
+    {
+      "name": "Caldas de Monchique",
+      "location": "Monchique",
+      "category": "attraction",
+      "description_nl": "De beroemde thermale bronnen van Monchique liggen in een prachtig groen gebied en staan bekend om hun geneeskrachtige werking. Het is een rustgevende plek waar kinderen kunnen genieten van de natuur en de frisse berglucht.",
+      "age_range": "Alle leeftijden",
+      "tip": "Er zijn diverse korte wandelpaden in de buurt die ook voor kleine kinderen goed te doen zijn.",
+      "_source": "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    },
+    {
+      "name": "Mount Fóia",
+      "location": "Monchique",
+      "category": "attraction",
+      "description_nl": "Het hoogste punt van de Algarve biedt een adembenemend panoramisch uitzicht dat tot aan de kust reikt. Je kunt met de auto tot bijna bovenaan komen, waardoor het voor elk gezin bereikbaar is.",
+      "age_range": "Alle leeftijden",
+      "tip": "Neem op een heldere dag een verrekijker mee om de boten op de oceaan te kunnen spotten.",
+      "_source": "https://www.mummytravels.com/things-to-do-in-the-algarve-with-kids/"
+    },
+    {
+      "name": "Igreja da Miscericórdia",
+      "location": "Tavira",
+      "category": "attraction",
+      "description_nl": "Een prachtig versierde kerk die bekend staat om zijn karakteristieke blauw-witte siertegels (azulejos). Je kunt de kerktoren beklimmen voor een mooi uitzicht over de stad Tavira.",
+      "age_range": "Alle leeftijden",
+      "tip": "Let op de prachtige gouden details van het altaar.",
+      "_source": "https://www.gezinopreis.nl/algarve-met-kinderen/"
+    },
+    {
+      "name": "Romeinse ruïnes van Milreu",
+      "location": "Estoi",
+      "category": "attraction",
+      "description_nl": "De overblijfselen van een luxe Romeinse villa, compleet met prachtige mozaïeken en een badhuis. Het is een kleinschalige en interessante plek om met kinderen de Romeinse geschiedenis te ontdekken.",
+      "age_range": "Alle leeftijden",
+      "tip": "Deze archeologische site bevindt zich in het stadje Estoi.",
+      "_source": "https://www.gezinopreis.nl/algarve-met-kinderen/"
+    },
+    {
+      "name": "Arabische markt van Loulé",
+      "location": "Loulé",
+      "category": "attraction",
+      "description_nl": "Een prachtige markthal in Moorse stijl waar je dagelijks terecht kunt voor de meest verse lokale producten. De levendige sfeer en de geuren van kruiden en vis maken het een leuk uitstapje voor het hele gezin.",
+      "age_range": "Alle leeftijden",
+      "tip": "De markt is gevestigd aan de Praça da República.",
+      "_source": "https://www.gezinopreis.nl/algarve-met-kinderen/"
+    },
+    {
+      "name": "Quinta do Paraiso",
+      "location": "Carvoeiro area",
+      "category": "attraction",
+      "description_nl": "Een populair vakantiepark dat zeer geliefd is bij gezinnen vanwege de vele faciliteiten en de kindvriendelijke sfeer. Het is een ruim opgezet park waar kinderen alle ruimte hebben om te spelen.",
+      "age_range": "Alle leeftijden",
+      "tip": "Dit is een van de meest bekende kindvriendelijke parken in de regio.",
+      "_source": "https://www.gezinopreis.nl/algarve-met-kinderen/"
+    },
+    {
+      "name": "Vilamoura Marina",
+      "location": "Vilamoura",
+      "category": "attraction",
+      "description_nl": "Een levendige jachthaven vol boten en gezelligheid waar kinderen hun ogen uitkijken. Er zijn tal van winkeltjes en plekken voor een ijsje die een wandeling hier erg leuk maken.",
+      "age_range": "Alle leeftijden",
+      "tip": "Mughal Clay is een uitstekende keuze voor een diner aan de haven.",
+      "_source": "https://algarvefun.com/algarve-tips/top-family-friendly-restaurants/"
+    },
+    {
+      "name": "Fiesa Zandsculpturen Festival",
+      "location": "Algarve regio (Pêra/Lagoa)",
+      "category": "attraction",
+      "description_nl": "Dit fascinerende festival brengt elk jaar enorme en gedetailleerde zandsculpturen tot leven. Kinderen zullen versteld staan van de prachtige creaties die door internationale kunstenaars zijn gemaakt.",
+      "age_range": "Alle leeftijden",
+      "tip": "Ideaal voor een middaguitje om de indrukwekkende kunstwerken van zand te bewonderen.",
+      "_source": "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    },
+    {
+      "name": "Cerro da Vila museum",
+      "location": "Vilamoura, Algarve",
+      "category": "attraction",
+      "description_nl": "In dit museum kunnen kinderen echte Romeinse overblijfselen zien die de inspiratie vormden voor het thema van het nabijgelegen Family Golf Park. Het biedt een interessant en leerzaam kijkje in de geschiedenis van de Algarve.",
+      "age_range": "Alle leeftijden",
+      "tip": "Combineer een bezoek aan het museum met een potje minigolf in Vilamoura.",
+      "_source": "https://www.myguidealgarve.com/nl/lists/top-5-dingen-waar-uw-kinderen-van-zullen-houden-in-de-algarve"
+    },
+    {
+      "category": "attraction",
+      "location": "Portimão",
+      "name": "3D ART Museum Portimão",
+      "age_info": "Leuk voor alle leeftijden.",
+      "description_nl": "Een interactief museum met 3D-kunst waar bezoekers zelf onderdeel kunnen worden van de kunstwerken. Het is een perfecte plek voor creatieve foto's en biedt vermaak voor het hele gezin.",
+      "_source": "https://tomorrowalgarve.com/oct-2025-family-friendly-activities-which-wont-break-the-budget/"
+    },
+    {
+      "category": "attraction",
+      "description_nl": "Een kleinschalig dierenasiel in Guia waar kinderen kunnen kennismaken met reddingshonden en kunnen helpen door met ze te wandelen.",
+      "age_info": "Zeer leerzaam voor kinderen.",
+      "location": "Guia",
+      "name": "Tiny Shelter",
+      "_source": "https://tomorrowalgarve.com/oct-2025-family-friendly-activities-which-wont-break-the-budget/"
+    },
+    {
+      "category": "attraction",
+      "age_info": "Een lonende ervaring voor families.",
+      "description_nl": "Een dierenopvangcentrum in Foz do Ribeiro waar families welkom zijn om met honden te wandelen in een prachtige natuurlijke omgeving.",
+      "name": "ARA (Animal Rescue Algarve) Cabrita Sanctuary",
+      "location": "Foz do Ribeiro",
+      "_source": "https://tomorrowalgarve.com/oct-2025-family-friendly-activities-which-wont-break-the-budget/"
+    },
+    {
+      "description_nl": "Een schitterende plek voor wandelingen langs de kliffen met een natuurlijk zwembad dat in de rotsen ligt.",
+      "age_info": "Wandelingen langs kliffen; toezicht op kleine kinderen is nodig.",
+      "name": "Algar Seco",
+      "location": "Carvoeiro",
+      "category": "attraction",
+      "_source": "https://www.eileenandco.com/travelblog/2022/12/12/my-guide-to-the-algarve-region-of-portugal-with-kids"
+    },
+    {
+      "name": "Capela dos Ossos",
+      "age_info": "Voor kinderen die wel van een beetje spanning houden.",
+      "location": "Faro",
+      "category": "attraction",
+      "description_nl": "Een indrukwekkende kapel gemaakt van botten, die doet denken aan een scène uit Pirates of the Caribbean.",
+      "_source": "https://www.sunweb.be/nl/blog/algarve-met-kinderen/"
+    },
+    {
+      "name": "Kasteel Paderne",
+      "location": "Paderne",
+      "age_info": "Niet specifiek vermeld.",
+      "category": "attraction",
+      "description_nl": "Een historisch kasteel in het binnenland van de Algarve dat afgebeeld staat op de Portugese vlag. Het wordt vaak bezocht tijdens jeeptours door de regio.",
+      "_source": "https://travelnauts.nl/reisblogs/portugal/de-leukste-tips-voor-kinderen-aan-de-algarve-kust/"
+    },
+    {
+      "name": "Rio Famosa (Ria Formosa)",
+      "category": "attraction",
+      "description_nl": "Een rustiger natuurgebied ten oosten van Faro met moerassen en riviertjes waar je per boot op zoek kunt gaan naar flamingo's en andere bijzondere vogels.",
+      "location": "Ten oosten van Faro",
+      "age_info": "Niet specifiek vermeld.",
+      "_source": "https://travelnauts.nl/reisblogs/portugal/de-leukste-tips-voor-kinderen-aan-de-algarve-kust/"
+    },
+    {
+      "location": "Albufeira",
+      "description_nl": "Een kitscherig jachthaventje in Albufeira met vrolijk gekleurde gebouwen eromheen.",
+      "category": "attraction",
+      "name": "Marina van Albufeira",
+      "age_info": "Niet gespecificeerd",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "age_info": "Niet gespecificeerd",
+      "category": "attraction",
+      "name": "Olhos d’Agua",
+      "description_nl": "Een rustig dorpje in de buurt van Albufeira met veel toeristische appartementen.",
+      "location": "Algarve (nabij Albufeira)",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "name": "Vila Adentro (Oude vesting)",
+      "category": "attraction",
+      "age_info": "Niet gespecificeerd",
+      "location": "Faro",
+      "description_nl": "De oude vesting van Faro met sfeervolle pleintjes en terrassen.",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "location": "Faro (Vila Adentro)",
+      "description_nl": "Een leuk pleintje in de oude vesting van Faro met een paar gezellige terrassen.",
+      "name": "Praça do Afonso III",
+      "category": "attraction",
+      "age_info": "Niet gespecificeerd",
+      "_source": "https://www.leukmetkids.nl/de-leukste-kindvriendelijke-restaurants-in-de-algarve/"
+    },
+    {
+      "name": "LOVE FARO Sign",
+      "age_info": "Alle leeftijden",
+      "description_nl": "Een groot rood 'LOVE FARO'-bord bij de jachthaven van Faro, een populaire plek voor een gezinsfoto.",
+      "category": "attraction",
+      "location": "Faro (Jachthaven)",
+      "_source": "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    },
+    {
+      "location": "Faro",
+      "description_nl": "De monumentale toegangspoort die leidt naar de historische oude stad van Faro.",
+      "category": "attraction",
+      "age_info": "Alle leeftijden",
+      "name": "Arco da Vila",
+      "_source": "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    },
+    {
+      "age_info": "Geschikt voor kinderen; een goede activiteit voor op een regenachtige dag.",
+      "name": "Maritiem Museum (Museu Marítimo)",
+      "location": "Faro",
+      "description_nl": "Een gratis maritiem museum met diverse objecten gerelateerd aan de zeevaart en visserij.",
+      "category": "attraction",
+      "_source": "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    },
+    {
+      "name": "Gemeentelijk Museum van Faro (Museu Municipal)",
+      "age_info": "Alle leeftijden",
+      "category": "attraction",
+      "description_nl": "Een historisch museum in een voormalig klooster met archeologische vondsten en kunst.",
+      "location": "Faro (Oude Stad)",
+      "_source": "https://alexjessicamills.com/faro-portugal-with-kids-best-family-activities-in-the-algarve/"
+    },
+    {
+      "name": "Aljezur Castle",
+      "description_nl": "De historische ruïnes van een kasteel nabij het Praia do Canal resort, een leuke plek voor een kort bezoek.",
+      "location": "Aljezur",
+      "age_info": "Alle leeftijden",
+      "category": "attraction",
+      "_source": "https://www.totheseastories.com/post/the-algarve-for-families-and-where-to-stay"
+    },
+    {
+      "location": "Lagos",
+      "name": "Quinta Alfarrobeira",
+      "category": "attraction",
+      "description_nl": "Een kleinschalige agroturismo in het achterland van Lagos, perfect voor families die rust en natuur zoeken.",
+      "age_info": "Alle leeftijden",
+      "_source": "https://www.responsiblevacation.com/vacations/algarve/travel-guide/family-activities"
+    },
+    {
+      "name": "Burros e Artes (Ezelopvang)",
+      "location": "Aljezur",
+      "category": "attraction",
+      "age_info": "Alle leeftijden",
+      "description_nl": "Een opvangcentrum waar kinderen kunnen kennismaken met ezels en kunnen deelnemen aan kunstzinnige workshops.",
+      "_source": "https://www.responsiblevacation.com/vacations/algarve/travel-guide/family-activities"
+    }
+  ]
+}
