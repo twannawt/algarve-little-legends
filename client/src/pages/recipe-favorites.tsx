@@ -50,14 +50,15 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 },
 };
 
+// Bali Green + Warm Terracotta palette for category badges
 function getCategoryColor(cat: RecipeCategory): string {
   switch (cat) {
-    case "ontbijt": return "bg-amber-50 text-amber-800/70 dark:bg-amber-900/20 dark:text-amber-300/80";
-    case "lunch": return "bg-emerald-50 text-emerald-800/70 dark:bg-emerald-900/20 dark:text-emerald-300/80";
-    case "diner": return "bg-stone-100 text-stone-700 dark:bg-stone-800/30 dark:text-stone-400";
-    case "snack": return "bg-lime-50 text-lime-800/70 dark:bg-lime-900/20 dark:text-lime-300/80";
-    case "tussendoortje": return "bg-teal-50 text-teal-800/70 dark:bg-teal-900/20 dark:text-teal-300/80";
-    default: return "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400";
+    case "ontbijt": return "bg-[hsl(18,45%,93%)] text-[hsl(18,45%,38%)] dark:bg-[hsl(18,45%,15%)] dark:text-[hsl(18,45%,72%)]";
+    case "lunch": return "bg-[hsl(115,13%,92%)] text-[hsl(115,13%,38%)] dark:bg-[hsl(115,13%,15%)] dark:text-[hsl(115,13%,65%)]";
+    case "diner": return "bg-[hsl(18,35%,89%)] text-[hsl(18,40%,34%)] dark:bg-[hsl(18,35%,15%)] dark:text-[hsl(18,40%,68%)]";
+    case "snack": return "bg-[hsl(115,10%,90%)] text-[hsl(115,13%,40%)] dark:bg-[hsl(115,10%,15%)] dark:text-[hsl(115,13%,62%)]";
+    case "tussendoortje": return "bg-[hsl(18,30%,91%)] text-[hsl(18,35%,40%)] dark:bg-[hsl(18,30%,15%)] dark:text-[hsl(18,30%,65%)]";
+    default: return "bg-muted text-muted-foreground";
   }
 }
 
@@ -254,7 +255,7 @@ function FavRecipeCard({
 
   return (
     <motion.div variants={fadeIn} transition={{ duration: 0.2 }}>
-      <Card className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border">
+      <Card className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border ${approvals.length > 0 ? "border-[hsl(18,45%,65%)]/40 dark:border-[hsl(18,45%,55%)]/50" : "border-border"}`}>
         {/* Image */}
         {recipe.imageUrl && (
           <a href={recipe.url} target="_blank" rel="noopener noreferrer">
@@ -266,8 +267,8 @@ function FavRecipeCard({
                 loading="lazy"
               />
               {recipe.cooked && (
-                <div className="absolute top-2 left-2 bg-green-500 text-white rounded-full p-1.5 shadow-sm">
-                  <Check className="h-3.5 w-3.5" />
+                <div className="absolute top-2 left-2 bg-[hsl(18,45%,52%)] text-white rounded-full p-1.5 shadow-sm">
+                  <ChefHat className="h-3.5 w-3.5" />
                 </div>
               )}
               {approvals.length > 0 && (
@@ -275,9 +276,10 @@ function FavRecipeCard({
                   {approvals.map((tag) => (
                     <span
                       key={tag}
-                      className="bg-primary text-white rounded-full px-2 py-0.5 text-[10px] font-semibold shadow-sm"
+                      className="bg-[hsl(18,45%,52%)] text-white rounded-full px-2 py-0.5 text-[10px] font-semibold shadow-sm flex items-center gap-0.5"
                     >
-                      {tag === "beiden" ? "👫" : tag === "charlie" ? "👧" : "👦"}
+                      {tag === "beiden" ? <Users className="h-3 w-3" /> : <User className="h-3 w-3" />}
+                      <span className="capitalize">{tag}</span>
                     </span>
                   ))}
                 </div>
@@ -321,7 +323,7 @@ function FavRecipeCard({
                 onClick={onToggleCooked}
                 className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   recipe.cooked
-                    ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                    ? "bg-[hsl(18,45%,92%)] text-[hsl(18,45%,38%)] dark:bg-[hsl(18,45%,18%)] dark:text-[hsl(18,45%,70%)]"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
