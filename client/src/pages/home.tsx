@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
@@ -145,6 +145,66 @@ function getSeasonalPlaces(places: Place[]): Place[] {
     if (!seasonField) return false;
     return placeMatchesSeason(p);
   }).slice(0, 6);
+}
+
+function getAge(birthDate: Date): { years: number; months: number; days: number } {
+  const now = new Date();
+  let years = now.getFullYear() - birthDate.getFullYear();
+  let months = now.getMonth() - birthDate.getMonth();
+  let days = now.getDate() - birthDate.getDate();
+  if (days < 0) {
+    months--;
+    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    days += prevMonth.getDate();
+  }
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+  return { years, months, days };
+}
+
+function KidsTracker() {
+  const [, setTick] = useState(0);
+
+  // Update once per day at midnight
+  useEffect(() => {
+    const now = new Date();
+    const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    const msUntilMidnight = tomorrow.getTime() - now.getTime();
+    const timeout = setTimeout(() => {
+      setTick((t) => t + 1);
+    }, msUntilMidnight);
+    return () => clearTimeout(timeout);
+  });
+
+  const charlie = getAge(new Date(2020, 7, 18)); // 18 aug 2020
+  const bodi = getAge(new Date(2024, 4, 10));     // 10 mei 2024
+
+  return (
+    <div className="flex gap-3 mb-5">
+      {/* Charlie */}
+      <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[hsl(345,30%,95%)] dark:bg-[hsl(345,20%,15%)] border border-[hsl(345,25%,85%)] dark:border-[hsl(345,15%,25%)]">
+        <span className="text-xl" role="img" aria-label="meisje">👧</span>
+        <div className="min-w-0">
+          <span className="text-sm font-semibold text-foreground">Charlie</span>
+          <p className="text-xs text-muted-foreground">
+            {charlie.years} jaar{charlie.months > 0 ? `, ${charlie.months} ${charlie.months === 1 ? "maand" : "maanden"}` : ""}
+          </p>
+        </div>
+      </div>
+      {/* Bodi */}
+      <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[hsl(210,30%,95%)] dark:bg-[hsl(210,20%,15%)] border border-[hsl(210,25%,85%)] dark:border-[hsl(210,15%,25%)]">
+        <span className="text-xl" role="img" aria-label="jongen">👦</span>
+        <div className="min-w-0">
+          <span className="text-sm font-semibold text-foreground">Bodi</span>
+          <p className="text-xs text-muted-foreground">
+            {bodi.years} jaar{bodi.months > 0 ? `, ${bodi.months} ${bodi.months === 1 ? "maand" : "maanden"}` : ""}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 const fadeIn = {
@@ -298,6 +358,9 @@ export default function HomePage() {
       </motion.section>
 
       <div className="px-4">
+        {/* Kids Age Tracker */}
+        <KidsTracker />
+
         {/* Quick Actions */}
         <div className="flex flex-col gap-3 mb-6 sm:flex-row">
           <button
