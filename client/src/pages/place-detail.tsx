@@ -34,6 +34,33 @@ const categoryHeroGradient: Record<string, string> = {
   attraction: "from-[hsl(345,25%,60%)] to-[hsl(345,25%,70%)]",
 };
 
+/** Hero image with loading state + gradient fallback on error */
+function DetailHeroImage({ src, alt, category }: { src: string; alt: string; category: string }) {
+  const [status, setStatus] = useState<"loading" | "loaded" | "error">("loading");
+
+  return (
+    <>
+      {/* Gradient background shows while loading or on error */}
+      <div className={`absolute inset-0 bg-gradient-to-br ${categoryHeroGradient[category]} flex items-center justify-center`}>
+        {status === "error" && (
+          <CategoryIcon category={category} className="h-12 w-12 !text-white/80" />
+        )}
+      </div>
+      {status !== "error" && (
+        <img
+          src={src}
+          alt={alt}
+          onLoad={() => setStatus("loaded")}
+          onError={() => setStatus("error")}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+            status === "loaded" ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      )}
+    </>
+  );
+}
+
 function StarRating({ rating, onRate, interactive = false }: { rating: number; onRate?: (r: number) => void; interactive?: boolean }) {
   return (
     <div className="flex gap-0.5">
@@ -166,9 +193,21 @@ export default function PlaceDetail() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
     >
-      {/* Category hero with icon */}
-      <div className={`h-[120px] bg-gradient-to-br ${categoryHeroGradient[place.category]} flex items-center justify-center`}>
-        <CategoryIcon category={place.category} className="h-12 w-12 !text-white/80" />
+      {/* Hero: photo or category gradient */}
+      <div className="h-[180px] relative overflow-hidden">
+        {place.imageUrl ? (
+          <DetailHeroImage
+            src={place.imageUrl}
+            alt={place.imageAlt || place.name}
+            category={place.category}
+          />
+        ) : (
+          <div className={`absolute inset-0 bg-gradient-to-br ${categoryHeroGradient[place.category]} flex items-center justify-center`}>
+            <CategoryIcon category={place.category} className="h-12 w-12 !text-white/80" />
+          </div>
+        )}
+        {/* Dark overlay at bottom for readability */}
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/30 to-transparent" />
       </div>
 
       <div className="max-w-3xl mx-auto px-4 pb-24">

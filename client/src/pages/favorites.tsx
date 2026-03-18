@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Heart, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { PlaceCard } from "@/components/PlaceCard";
-import { PerplexityAttribution } from "@/components/PerplexityAttribution";
+
 import { useT } from "@/lib/i18n";
 import type { Place } from "@shared/schema";
 
@@ -104,7 +104,7 @@ export default function FavoritesPage() {
         </motion.div>
       )}
 
-      <PerplexityAttribution />
+
     </div>
   );
 }

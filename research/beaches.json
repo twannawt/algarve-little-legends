@@ -25,7 +25,9 @@
     "bestSeason": "June–September (lifeguards June–September; water calmer in Jun, Jul, Sep)",
     "ageRange": "0–12",
     "tip": "Kom vóór 10 uur in juli/augustus — het strand loopt snel vol en ongeveer een kwart van het zand is gereserveerd voor boten. De boardwalk naar de Algar Seco-rotsformaties (10 min lopen naar het oosten) is buggyvriendelijk en leuk voor oudere peuters. In de zomer kan de uitlaat van boten en zeeverkeer het water troebel maken; eerder op de dag is beter.",
-    "tip_en": "Arrive before 10am in July/August — the beach fills fast and around a quarter of the sand is reserved for boats. The boardwalk to Algar Seco rock formations (10 min walk east) is stroller-friendly and great for older toddlers. In high summer, boat exhaust and sea traffic can make the water murky; earlier in the day is better."
+    "tip_en": "Arrive before 10am in July/August — the beach fills fast and around a quarter of the sand is reserved for boats. The boardwalk to Algar Seco rock formations (10 min walk east) is stroller-friendly and great for older toddlers. In high summer, boat exhaust and sea traffic can make the water murky; earlier in the day is better.",
+    "imageUrl": "https://algarvetips.b-cdn.net/wp-content/uploads/2020/07/Praia-do-Carvoeiro-aerial-view.jpg",
+    "imageAlt": "Aerial view of Praia do Carvoeiro beach in Carvoeiro, Lagoa, Algarve, Portugal"
   },
   {
     "name": "Praia Grande (Ferragudo)",
@@ -52,7 +54,9 @@
     "bestSeason": "May–October",
     "ageRange": "0–10",
     "tip": "Dit is dé allerbeste keuze voor kinderen van 0–3 in het hele Lagoa-gebied. Het water heeft letterlijk geen golven. Loop 10 minuten naar het westen langs het strand richting het kasteel voor een rustiger plekje. Parkeren is gratis. Slechts 9,6 km van Lagoa.",
-    "tip_en": "This is the single best choice for children aged 0–3 in the whole Lagoa area. The water literally has no waves. Walk 10 minutes westward along the beach toward the castle for a quieter spot. Parking is free. Only 9.6 km from Lagoa."
+    "tip_en": "This is the single best choice for children aged 0–3 in the whole Lagoa area. The water literally has no waves. Walk 10 minutes westward along the beach toward the castle for a quieter spot. Parking is free. Only 9.6 km from Lagoa.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/28/Ferragudo1.jpg",
+    "imageAlt": "Aerial view of Praia Grande beach in Ferragudo, Algarve, Portugal, showing golden sand, calm waters, cliffs, and distant views"
   },
   {
     "name": "Praia da Marinha",
@@ -76,7 +80,9 @@
     "bestSeason": "May–September (arrive before 10am; beach disappears at high tide)",
     "ageRange": "2–12",
     "tip": "Ga alleen bij laag tij — bij vloed krimpt het strand tot bijna niets. De waterdiepte neemt snel toe voorbij de kustlijn, dus houd peuters aan de rand. Kom vóór 9:30 in de zomer; de parkeerplaats loopt snel vol en er is geen alternatief in de buurt. Neem een picknicklunch mee — het café is klein. Toegang via een verhard pad met steile trappen.",
-    "tip_en": "Only visit at low tide — at high tide the beach shrinks to almost nothing. Water depth drops off quickly past the shore, so keep toddlers right at the edge. Arrive by 9:30am in summer; parking fills up fast and there is no alternative nearby. Bring picnic lunch — the café is small. Access is via a paved trail with steep steps."
+    "tip_en": "Only visit at low tide — at high tide the beach shrinks to almost nothing. Water depth drops off quickly past the shore, so keep toddlers right at the edge. Arrive by 9:30am in summer; parking fills up fast and there is no alternative nearby. Bring picnic lunch — the café is small. Access is via a paved trail with steep steps.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Praia_da_Marinha_%282012-09-27%29%2C_by_Klugschnacker_in_Wikipedia_%2886%29.JPG",
+    "imageAlt": "Aerial view of Praia da Marinha beach in Caramujeira, Lagoa, Algarve, Portugal, featuring golden sands, turquoise waters, dramatic cliffs, sea arches, and rock formations"
   },
   {
     "name": "Praia de Vale de Centeanes",
@@ -102,12 +108,14 @@
     "bestSeason": "May–September",
     "ageRange": "2–12",
     "tip": "Een betere keuze dan het hoofdstrand van Carvoeiro als je meer ruimte wilt. Rij of maak een wandeling van 30 minuten vanuit het centrum van Carvoeiro. De grot aan het eind van het strand is toegankelijk bij laag tij en betoverend voor kleine ontdekkers — neem waterschoenen mee.",
-    "tip_en": "A better choice than Carvoeiro main beach if you want more space. Drive or take a 30-minute walk from Carvoeiro town centre. The cave at the far end of the beach is accessible at low tide and delights young explorers — bring water shoes."
+    "tip_en": "A better choice than Carvoeiro main beach if you want more space. Drive or take a 30-minute walk from Carvoeiro town centre. The cave at the far end of the beach is accessible at low tide and delights young explorers — bring water shoes.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vale_Centeanes_beach_%2819613849961%29.jpg/1280px-Vale_Centeanes_beach_%2819613849961%29.jpg",
+    "imageAlt": "Aerial view of Praia de Vale de Centeanes beach in Carvoeiro, Algarve, Portugal, showing golden sands, cliffs, and ocean waves"
   },
   {
     "name": "Praia de Benagil",
     "location": "Benagil, Lagoa",
-    "latitude": 37.0880,
+    "latitude": 37.088,
     "longitude": -8.4263,
     "description": "Een klein, charmant strandbaaitje dat beroemd is als vertrekpunt voor boottochten naar de iconische Benagil-zeegrot. Het strand zelf is compact en beschut, met kalm water en een paar cafés in de buurt. Buggy's kunnen tot bovenaan het pad worden meegenomen. Ondanks de bekendheid heeft het vroeg op de dag een verrassend ontspannen sfeer.",
     "description_en": "A small, charming cove beach famous as the departure point for boat tours to the iconic Benagil sea cave. The beach itself is compact and sheltered, with calm water and a few cafés nearby. Strollers can be brought to the top of the access path. Despite its fame it has a surprisingly relaxed atmosphere early in the day.",
@@ -127,12 +135,14 @@
     "bestSeason": "June–September",
     "ageRange": "2–12",
     "tip": "Parkeer boven op de heuvel en draag jongere peuters naar beneden — het pad is kort maar steil. Het strand wordt heel druk rond het middaguur; ga vroeg in de ochtend of laat in de middag. Boek van tevoren een boottocht naar de beroemde grotboog — kinderen vanaf 2 jaar kunnen veilig de korte tocht maken en het interieur van de grot is magisch.",
-    "tip_en": "Park up the hill and carry younger toddlers down — the path is short but steep. The beach gets very busy midday; go early morning or late afternoon. Book a boat tour to the famous cave arch in advance — children ages 2+ can safely do the short trip and the cave interior is magical."
+    "tip_en": "Park up the hill and carry younger toddlers down — the path is short but steep. The beach gets very busy midday; go early morning or late afternoon. Book a boat tour to the famous cave arch in advance — children ages 2+ can safely do the short trip and the cave interior is magical.",
+    "imageUrl": "https://www.algarveportugaltourism.com/images/benagil-beach-portugal.jpg",
+    "imageAlt": "Aerial view of Praia de Benagil beach in Lagoa, Algarve, Portugal, showing the sandy shoreline, cliffs, and ocean with boats"
   },
   {
     "name": "Praia da Dona Ana",
     "location": "Lagos",
-    "latitude": 37.0850,
+    "latitude": 37.085,
     "longitude": -8.6741,
     "description": "Een plaatjesperfecte kleine inham net ten zuiden van Lagos, omringd door hoge gouden kliffen die het water beschermen tegen de wind en het prachtig kalm houden. Het heldere blauwgroene water en zachte zand zijn ideaal voor jonge zwemmers. Gecombineerd met een bezoek aan de rotsformaties van Ponta da Piedade in de buurt, wordt dit een onvergetelijke dag.",
     "description_en": "A picture-perfect small cove just south of Lagos, hemmed in by tall golden cliffs that shelter the water from wind, keeping it beautifully calm. The clear blue-green water and soft sand are ideal for young swimmers. Combined with a visit to Ponta da Piedade rock formations nearby, this makes for a memorable day.",
@@ -154,7 +164,9 @@
     "bestSeason": "May–September",
     "ageRange": "2–12",
     "tip": "Toegang is via trappen vanaf de parkeerplaats — niet geschikt voor buggy's; neem een draagzak mee voor kinderen onder de 2. Het strand kan bij vloed verdwijnen, dus check de getijden vooraf. Combineer met een bezoek aan Ponta da Piedade (buggyvriendelijk klifpad) voor een volle dag uit.",
-    "tip_en": "Access is via stairs from the car park — not suitable for pushchairs; bring a baby carrier for children under 2. The beach can disappear at high tide, so check times before going. Combine with a visit to Ponta da Piedade (stroller-friendly cliff path) for a full day out."
+    "tip_en": "Access is via stairs from the car park — not suitable for pushchairs; bring a baby carrier for children under 2. The beach can disappear at high tide, so check times before going. Combine with a visit to Ponta da Piedade (stroller-friendly cliff path) for a full day out.",
+    "imageUrl": "https://www.algarvetips.com/wp-content/uploads/2019/08/Praia-da-Dona-Ana-beach-overview.jpg",
+    "imageAlt": "Overview of Praia da Dona Ana beach in Lagos, Algarve, Portugal, featuring golden sands, turquoise waters, and dramatic cliffs"
   },
   {
     "name": "Praia de Meia Praia",
@@ -181,7 +193,9 @@
     "bestSeason": "May–September",
     "ageRange": "0–12",
     "tip": "Het westelijke uiteinde (dichtst bij de marina van Lagos) is het drukst; parkeer verder naar het oosten voor meer ruimte. Vroeg in de ochtend is perfect — het vlakke strand en meerdere cafés betekenen dat je ontspannen kunt aankomen en alles binnen handbereik is. Ideaal voor net-lopertjes want het zand is breed, vlak en stevig.",
-    "tip_en": "The western end (closest to Lagos marina) is the busiest; park further east for more space. Early morning is perfect — the flat beach and multiple cafés mean you can arrive relaxed and everything is on hand. Great for very early walkers since the sand is wide, flat and firm."
+    "tip_en": "The western end (closest to Lagos marina) is the busiest; park further east for more space. Early morning is perfect — the flat beach and multiple cafés mean you can arrive relaxed and everything is on hand. Great for very early walkers since the sand is wide, flat and firm.",
+    "imageUrl": "https://www.lagosportugaltourism.com/images/meia-praia.jpg",
+    "imageAlt": "Aerial view of Praia de Meia Praia beach in Lagos, Algarve, Portugal, showing the long stretch of golden sand, calm ocean waters, and distant town skyline"
   },
   {
     "name": "Praia da Luz",
@@ -210,7 +224,9 @@
     "bestSeason": "May–September",
     "ageRange": "0–10",
     "tip": "Een van de meest aanbevolen stranden voor kinderen van 0–3 in de westelijke Algarve. De zachte helling betekent dat zelfs een 1-jarige veilig kan pootjebaden. Het dorpje is compact en vlak, ideaal om na het strand rond te wandelen met een buggy. Kom vóór 10 uur in juli/augustus voor een goed plekje.",
-    "tip_en": "One of the top-recommended beaches for ages 0–3 in the western Algarve. The gentle slope means even a 1-year-old can paddle safely. The village is compact and flat, great for post-beach wandering with a buggy. Arrive by 10am in July/August for a good spot."
+    "tip_en": "One of the top-recommended beaches for ages 0–3 in the western Algarve. The gentle slope means even a 1-year-old can paddle safely. The village is compact and flat, great for post-beach wandering with a buggy. Arrive by 10am in July/August for a good spot.",
+    "imageUrl": "https://www.algarvetips.com/wp-content/uploads/2019/06/Praia-da-Luz-from-above.jpg",
+    "imageAlt": "Aerial view of Praia da Luz beach, Luz, Lagos, Algarve, Portugal"
   },
   {
     "name": "Praia do Burgau",
@@ -236,7 +252,9 @@
     "bestSeason": "May–September",
     "ageRange": "0–10",
     "tip": "Dit is een lokale favoriet die zelfs in augustus rustig blijft. Parkeer bovenaan en wandel via de geplaveide straatjes naar beneden — te doen met een buggy. Het water is hier kalmer dan op veel West-Algarve-stranden. Kom voor de sfeer net zo goed als voor het zand. Combineer met een maaltijd bij een dorpscafé.",
-    "tip_en": "This is a local favourite that stays peaceful even in August. Park at the top and walk down the cobbled streets — manageable with a stroller. Water is calmer here than at many west Algarve beaches. Come for the atmosphere as much as the sand. Combine with a meal at a village café."
+    "tip_en": "This is a local favourite that stays peaceful even in August. Park at the top and walk down the cobbled streets — manageable with a stroller. Water is calmer here than at many west Algarve beaches. Come for the atmosphere as much as the sand. Combine with a meal at a village café.",
+    "imageUrl": "https://images.turismoenportugal.org/Praia-do-Burgau-Algarve.jpg",
+    "imageAlt": "Aerial view of Praia do Burgau beach in Burgau, Algarve, Portugal, showing golden sands, cliffs, and ocean waves"
   },
   {
     "name": "Praia da Salema",
@@ -262,7 +280,9 @@
     "bestSeason": "May–September",
     "ageRange": "0–12",
     "tip": "Check de getijden als je de rotspoeltjes wilt verkennen — die zijn alleen toegankelijk bij laag tij. Kom vroeg in de zomer voor parkeren dichtbij het strand. Neem een parasol mee want er is weinig natuurlijke schaduw. Het dorpje is een korte wandeling na het strand waard.",
-    "tip_en": "Check tide times if you want to explore the rock pools — they are only accessible at low tide. Arrive early in summer to secure parking closest to the beach. Bring a sun umbrella as natural shade is limited. The village is worth a short post-beach walk."
+    "tip_en": "Check tide times if you want to explore the rock pools — they are only accessible at low tide. Arrive early in summer to secure parking closest to the beach. Bring a sun umbrella as natural shade is limited. The village is worth a short post-beach walk.",
+    "imageUrl": "https://www.algarveportugaltourism.com/images/salema-beach.jpg",
+    "imageAlt": "High-quality aerial view of Praia da Salema beach in Salema, Algarve, Portugal, featuring golden sand, Atlantic waves, and surrounding cliffs"
   },
   {
     "name": "Praia do Martinhal",
@@ -289,7 +309,9 @@
     "bestSeason": "May–September (wind picks up in afternoon — visit mornings)",
     "ageRange": "0–12",
     "tip": "Ga 's ochtends — de baai is kalmer voordat de middagwestenwind opkomt. De faciliteiten van het Martinhal Resort zijn ook beschikbaar voor niet-gasten bij de strandbar en het restaurant. De omgeving binnen het Parque Natural do Sudoeste Alentejano is prachtig en zelfs in juli niet druk.",
-    "tip_en": "Go in the morning — the bay is calmer before the afternoon westerly wind kicks in. The Martinhal Resort's facilities are available to non-guests at the beach bar and restaurant. The setting inside the Parque Natural do Sudoeste Alentejano is beautiful and uncrowded even in July."
+    "tip_en": "Go in the morning — the bay is calmer before the afternoon westerly wind kicks in. The Martinhal Resort's facilities are available to non-guests at the beach bar and restaurant. The setting inside the Parque Natural do Sudoeste Alentejano is beautiful and uncrowded even in July.",
+    "imageUrl": "https://www.algarveportugaltourism.com/images/praia-do-martinhal-algarve.jpg",
+    "imageAlt": "Aerial view of Praia do Martinhal beach in Sagres, Algarve, Portugal, showing the sandy shoreline, dunes, and ocean waves"
   },
   {
     "name": "Praia dos Três Irmãos",
@@ -316,7 +338,9 @@
     "bestSeason": "May–September",
     "ageRange": "2–12",
     "tip": "Ga niet onder de kliffen of bij de grote rotsen aan de oostkant zitten — risico op steenval. Het westelijke (duin)deel is veiliger voor peuters. Kom vroeg in de zomer — parkeren is vól tegen 10 uur. De korte wandeling naar Prainha (verder naar het oosten langs de rotsen) is te doen bij laag tij en onthult verborgen inhammen.",
-    "tip_en": "Do not stay under the cliffs or near the large rocks on the eastern side — rockfall risk. The western (dune) end is safer for toddlers. Arrive early in summer — parking fills by 10am. The short walk to Prainha (further east past the rocks) is manageable at low tide and reveals hidden coves."
+    "tip_en": "Do not stay under the cliffs or near the large rocks on the eastern side — rockfall risk. The western (dune) end is safer for toddlers. Arrive early in summer — parking fills by 10am. The short walk to Prainha (further east past the rocks) is manageable at low tide and reveals hidden coves.",
+    "imageUrl": "https://www.algarveportugaltourism.com/images/praia-tres-irmaos-algarve.jpg",
+    "imageAlt": "Aerial view of Praia dos Três Irmãos beach in Alvor, Portimão, Algarve, Portugal, featuring golden sands, turquoise waters, and distinctive rock formations"
   },
   {
     "name": "Praia do Vau",
@@ -344,7 +368,9 @@
     "bestSeason": "May–September",
     "ageRange": "0–12",
     "tip": "Een echt lokaal strand dat minder toeristen trekt dan Praia da Rocha ernaast. Loop na aankomst bij laag tij naar het westen naar Praia do Alemão voor fantastische natuurlijke rotspoeltjes — het water erin is warmer dan de zee en kinderen vinden het geweldig. Parkeren is vól tegen 9:30 in de zomer.",
-    "tip_en": "A genuinely local beach that sees fewer tourists than Praia da Rocha next door. After settling in, walk west at low tide to Praia do Alemão for excellent natural rock pools — the water inside them is warmer than the sea and children love exploring them. Parking fills by 9:30am in summer."
+    "tip_en": "A genuinely local beach that sees fewer tourists than Praia da Rocha next door. After settling in, walk west at low tide to Praia do Alemão for excellent natural rock pools — the water inside them is warmer than the sea and children love exploring them. Parking fills by 9:30am in summer.",
+    "imageUrl": "https://visitportimao.com/wp-content/uploads/2022/06/Praia-do-Vau_5-scaled.jpg",
+    "imageAlt": "Aerial view of Praia do Vau beach in Portimão, Algarve, Portugal, showing golden sands, clear turquoise waters, and surrounding cliffs"
   },
   {
     "name": "Praia da Rocha",
@@ -372,7 +398,9 @@
     "bestSeason": "May–September",
     "ageRange": "0–12",
     "tip": "Het beste voor gezinnen die alles bij de hand willen hebben zonder te hoeven plannen. Het kan levendig en luidruchtig zijn in de avond — kom voor strandbezoek overdag en verken de stad Portimão voor het diner. Het oostelijke eind bij het Fort Santa Catarina is iets rustiger dan het centrum.",
-    "tip_en": "Best for families who want everything on hand without planning. It can be lively and noisy in the evening — come for daytime beach visits and explore Portimão town for dinner. The eastern end near the Santa Catarina Fort is slightly less crowded than the centre."
+    "tip_en": "Best for families who want everything on hand without planning. It can be lively and noisy in the evening — come for daytime beach visits and explore Portimão town for dinner. The eastern end near the Santa Catarina Fort is slightly less crowded than the centre.",
+    "imageUrl": "https://visitportimao.com/wp-content/uploads/2022/06/Praia-da-Rocha-1-scaled.jpg",
+    "imageAlt": "Aerial view of Praia da Rocha beach in Portimão, Algarve, Portugal, showing golden sands, cliffs, and ocean waves"
   },
   {
     "name": "Praia de Alvor",
@@ -398,7 +426,9 @@
     "bestSeason": "May–September",
     "ageRange": "3–12",
     "tip": "Stromingen kunnen sterk zijn op dit open strand — het oostelijke eind (dichter bij de monding) is kalmer voor peuters. Het naburige Praia dos Três Irmãos (oostelijk eind) is beter voor 0–3 jarigen. De Alvor-boardwalk door het moerasgebied is een van de mooiste van de Algarve — uitstekend voor buggy's en leerzaam voor kinderen.",
-    "tip_en": "Currents can be strong on this open beach — the eastern end (closer to the estuary) is calmer for toddlers. The neighbouring Praia dos Três Irmãos (eastern end) is better for 0–3 year olds. The Alvor boardwalk walk through the estuary marshland is one of the best in the Algarve — excellent for strollers and educational for children."
+    "tip_en": "Currents can be strong on this open beach — the eastern end (closer to the estuary) is calmer for toddlers. The neighbouring Praia dos Três Irmãos (eastern end) is better for 0–3 year olds. The Alvor boardwalk walk through the estuary marshland is one of the best in the Algarve — excellent for strollers and educational for children.",
+    "imageUrl": "https://visitportimao.com/wp-content/uploads/2022/06/Praia-de-Alvor-1-768x490.jpg",
+    "imageAlt": "Aerial view of Praia de Alvor beach in Alvor, Portimão, Algarve, Portugal, showing golden sands, ocean waves, dunes, and boardwalk"
   },
   {
     "name": "Praia de São Rafael",
@@ -422,13 +452,15 @@
     "bestSeason": "May–September",
     "ageRange": "2–12",
     "tip": "Bij vloed in de middag reikt het water tot tweederde van het strand — het zandoppervlak krimpt flink. Ga 's ochtends voor de meeste ruimte. In bepaalde weken in de zomer (juli/augustus) kan er zeewier in het water zitten. Het wandelpad naar Praia da Coelha (5,79 km) volgt de klifrand en passeert meerdere stranden.",
-    "tip_en": "At afternoon high tide, the water reaches two-thirds up the beach — the sand area shrinks significantly. Visit in the morning for the most space. Water can have algae during certain weeks in summer (reported July/August). The walking trail to Praia da Coelha (5.79 km) follows the clifftop and passes several beaches."
+    "tip_en": "At afternoon high tide, the water reaches two-thirds up the beach — the sand area shrinks significantly. Visit in the morning for the most space. Water can have algae during certain weeks in summer (reported July/August). The walking trail to Praia da Coelha (5.79 km) follows the clifftop and passes several beaches.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ea/132PT_13_November_2013_Praia_de_S%C3%A3o_rafael.JPG",
+    "imageAlt": "High-quality photograph of Praia de São Rafael beach in Albufeira, Algarve, Portugal, showing the sandy beach, cliffs, and ocean"
   },
   {
     "name": "Praia da Falésia",
     "location": "Olhos de Água / Vilamoura, Albufeira",
     "latitude": 37.0861,
-    "longitude": -8.1680,
+    "longitude": -8.168,
     "description": "Een spectaculair strand van 6 km onder torenhoge roestode en witte kliffen — een van de visueel meest indrukwekkende stranden van heel Portugal. Doordat het zo lang is, voel je je vrijwel nooit te druk. Het vlakke, brede zand en het doorgaans kalme water maken het zeer praktisch voor gezinnen. Meerdere toegangspunten met wisselende faciliteiten langs het strand.",
     "description_en": "A spectacular 6 km beach beneath towering rust-red and white cliffs — one of the most visually striking in all of Portugal. Because it is so long, it is almost impossible to feel crowded. The flat, wide sand and generally calm water make it very practical for families. Multiple access points with varying facilities along its length.",
     "kidFeatures": [
@@ -450,7 +482,9 @@
     "bestSeason": "May–September",
     "ageRange": "0–12",
     "tip": "Gebruik het toegangspunt Praia dos Tomates (oostelijke/Vilamoura-kant) voor de makkelijkste toegang — de kliffen zijn lager en de afdaling korter. Houd kinderen weg van de voet van de kliffen — steenvalrisico is reëel en duidelijk aangegeven. Aan de Vilamoura-kant zijn de beste restaurants. Uitstekend voor een vroege ochtendwandeling met een buggy.",
-    "tip_en": "Use the Praia dos Tomates access point (eastern/Vilamoura end) for the easiest access — the cliffs are lower and the walk down is shorter. Keep children away from the cliff base — rockfall risk is real and clearly signed. The Vilamoura end has the best restaurant options. Excellent for a long early-morning walk with a buggy."
+    "tip_en": "Use the Praia dos Tomates access point (eastern/Vilamoura end) for the easiest access — the cliffs are lower and the walk down is shorter. Keep children away from the cliff base — rockfall risk is real and clearly signed. The Vilamoura end has the best restaurant options. Excellent for a long early-morning walk with a buggy.",
+    "imageUrl": "https://www.albufeiraportugaltourism.com/images/praia-da-falesia-albufeira.jpg",
+    "imageAlt": "Aerial view of Praia da Falésia beach with golden sands, turquoise waters, and dramatic orange cliffs in Olhos de Água / Vilamoura, Albufeira, Algarve, Portugal"
   },
   {
     "name": "Olhos de Água Beach",
@@ -475,7 +509,9 @@
     "bestSeason": "May–September",
     "ageRange": "2–12",
     "tip": "De rotspoeltjes tussen de twee stranddelen zijn de grote trekpleister voor kinderen — ga bij laag tij voor het beste ontdekplezier. Let op: het groene zeewier in de poeltjes maakt de rotsen glad; waterschoenen zijn een must. De boardwalk erboven leidt naar een schitterend zonsondergangs-uitzichtpunt langs rode kliffen met pijnbomen.",
-    "tip_en": "The rock pools between the two beach sections are the main attraction for children — go at low tide for the best exploration. Note the green seaweed in the pools makes the rocks slippery; water shoes are essential. The boardwalk above leads to a stunning sunset viewpoint along red cliffs lined with pine trees."
+    "tip_en": "The rock pools between the two beach sections are the main attraction for children — go at low tide for the best exploration. Note the green seaweed in the pools makes the rocks slippery; water shoes are essential. The boardwalk above leads to a stunning sunset viewpoint along red cliffs lined with pine trees.",
+    "imageUrl": "https://algarvetips.b-cdn.net/wp-content/uploads/2019/08/Priaa-dos-Olhos-de-Agua-aerial.jpg",
+    "imageAlt": "Aerial view of Olhos de Água Beach, Albufeira, Algarve, Portugal"
   },
   {
     "name": "Praia do Barril",
@@ -502,7 +538,9 @@
     "bestSeason": "June–September (peak; mini-train runs all summer)",
     "ageRange": "0–12",
     "tip": "Kinderen onder de 4 rijden gratis met het treintje — op zich al een hoogtepunt. Reserveer parasols van tevoren in het hoogseizoen want die zijn uitverkocht. Er is geen gratis straatparkeren bij het station in de zomer. Het strand kijkt weg van de Atlantische wind en is daardoor een van de kalmste stranden van de Algarve — perfect voor peuters. Combineer met een bezoek aan het stadje Tavira voor de lunch.",
-    "tip_en": "Children under 4 ride the train free — a highlight in itself. Pre-book sunshades in peak season as they sell out. There is no free street parking near the train station in summer. The beach faces away from Atlantic winds, so it is one of the calmest in the Algarve — perfect for toddlers. Combine with a visit to Tavira town for lunch."
+    "tip_en": "Children under 4 ride the train free — a highlight in itself. Pre-book sunshades in peak season as they sell out. There is no free street parking near the train station in summer. The beach faces away from Atlantic winds, so it is one of the calmest in the Algarve — perfect for toddlers. Combine with a visit to Tavira town for lunch.",
+    "imageUrl": "https://www.algarvetips.com/wp-content/uploads/2026/02/pedras-del-rei-praia-do-barril-v.jpg",
+    "imageAlt": "Aerial view of Pedras d'El Rei and Praia do Barril beach in Tavira, Algarve, Portugal"
   },
   {
     "name": "Praia da Quinta do Lago",
@@ -530,7 +568,9 @@
     "bestSeason": "May–September",
     "ageRange": "0–12",
     "tip": "De houten brugwandeling (ongeveer 10 minuten) is onderdeel van het plezier — kinderen vinden het heerlijk om flamingo's en vogels in de lagune te spotten. Het oostelijke deel van het strand is rustiger en nog dichter bij het natuurpark. Het water is hier iets koeler dan bij meer beschutte Oost-Algarve-stranden. Kom vroeg in juli/augustus want de parkeerplaats loopt vol.",
-    "tip_en": "The wooden bridge walk (about 10 minutes) is part of the fun — children love spotting flamingos and birds in the lagoon. The eastern section of the beach is quieter and even closer to the nature park. Water is slightly cooler here than more sheltered east Algarve beaches. Arrive early in July/August as the car park fills."
+    "tip_en": "The wooden bridge walk (about 10 minutes) is part of the fun — children love spotting flamingos and birds in the lagoon. The eastern section of the beach is quieter and even closer to the nature park. Water is slightly cooler here than more sheltered east Algarve beaches. Arrive early in July/August as the car park fills.",
+    "imageUrl": "https://www.algarveportugaltourism.com/images/quinta-do-lago-praia.jpg",
+    "imageAlt": "Aerial view of Praia da Quinta do Lago beach in Almancil, Loulé, Algarve, Portugal, showing golden sands, ocean waves, and surrounding dunes"
   },
   {
     "name": "Praia da Manta Rota",
@@ -557,6 +597,8 @@
     "bestSeason": "May–September",
     "ageRange": "0–10",
     "tip": "Dit wordt door meerdere bronnen beoordeeld als een van de allerbeste stranden in Portugal voor kinderen van 0–4, specifiek vanwege hoe geleidelijk het water dieper wordt. De sfeer is ontspannen en voornamelijk Portugese/Spaanse gezinnen — minder internationaal toeristisch publiek dan de centrale Algarve. Bij laag tij verschijnt een eilandje dat kinderen heerlijk te voet kunnen verkennen.",
-    "tip_en": "This is rated by multiple sources as one of the very best beaches in Portugal for children aged 0–4, specifically because of how gradually the water deepens. The atmosphere is relaxed and mostly Portuguese/Spanish families — less international tourist crowd than central Algarve. At low tide a small island appears which children love to explore on foot."
+    "tip_en": "This is rated by multiple sources as one of the very best beaches in Portugal for children aged 0–4, specifically because of how gradually the water deepens. The atmosphere is relaxed and mostly Portuguese/Spanish families — less international tourist crowd than central Algarve. At low tide a small island appears which children love to explore on foot.",
+    "imageUrl": "https://www.algarveportugaltourism.com/images/praia-de-manta-rota-algarve.jpg",
+    "imageAlt": "Aerial view of Praia da Manta Rota beach in Algarve, Portugal, showing golden sands, calm waters, and dunes"
   }
 ]

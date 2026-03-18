@@ -5,7 +5,7 @@ import { UtensilsCrossed, Bike, TreePine, MapPin, Navigation, RefreshCw } from "
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CategoryBadge } from "@/components/CategoryIcon";
-import { PerplexityAttribution } from "@/components/PerplexityAttribution";
+
 import { apiRequest } from "@/lib/queryClient";
 import { useT } from "@/lib/i18n";
 import type { Place } from "@shared/schema";
@@ -153,7 +153,7 @@ export default function DagplannerPage() {
         {t("nieuwDagplan")}
       </Button>
 
-      <PerplexityAttribution />
+
     </motion.div>
   );
 }

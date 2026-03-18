@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { useT } from "@/lib/i18n";
-import { PerplexityAttribution } from "@/components/PerplexityAttribution";
+
 
 const categoryOptions = [
   { value: "restaurant", labelKey: "restaurant" as const },
@@ -157,7 +157,7 @@ export default function SuggestPage() {
         </CardContent>
       </Card>
 
-      <PerplexityAttribution />
+
     </motion.div>
   );
 }

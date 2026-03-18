@@ -29,6 +29,8 @@ function normalizeRestaurants(data: any[]): Place[] {
     cuisine: r.cuisine,
     priceRange: r.priceRange,
     website: r.website || undefined,
+    imageUrl: r.imageUrl,
+    imageAlt: r.imageAlt,
   }));
 }
 
@@ -46,6 +48,8 @@ function normalizeBeaches(data: any[]): Place[] {
     tip: b.tip || "",
     facilities: b.facilities,
     bestSeason: b.bestSeason,
+    imageUrl: b.imageUrl,
+    imageAlt: b.imageAlt,
   }));
 }
 
@@ -71,6 +75,8 @@ function normalizePlaygroundsActivities(data: any[]): Place[] {
       priceAdult: p.priceAdult,
       priceChild: p.priceChild,
       season: p.season,
+      imageUrl: p.imageUrl,
+      imageAlt: p.imageAlt,
     };
   });
 }
@@ -94,6 +100,8 @@ function normalizeAttractions(data: any[]): Place[] {
     website: a.website || undefined,
     priceAdult: a.priceAdult,
     priceChild: a.priceChild,
+    imageUrl: a.imageUrl,
+    imageAlt: a.imageAlt,
   }));
 }
 

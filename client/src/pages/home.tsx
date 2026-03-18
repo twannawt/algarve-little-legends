@@ -29,7 +29,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SearchBar } from "@/components/SearchBar";
 import { PlaceCard } from "@/components/PlaceCard";
 import { CategoryBadge } from "@/components/CategoryIcon";
-import { PerplexityAttribution } from "@/components/PerplexityAttribution";
+
 import { apiRequest } from "@/lib/queryClient";
 import { useT } from "@/lib/i18n";
 import { getDistance, LAGOA_LAT, LAGOA_LNG } from "@/lib/geo";
@@ -581,7 +581,7 @@ export default function HomePage() {
           </button>
         </div>
 
-        <PerplexityAttribution />
+
       </div>
     </div>
   );

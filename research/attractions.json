@@ -22,7 +22,9 @@
     "season": "April–October (reopens 1 April 2026)",
     "website": "https://www.slidesplash.com/en/",
     "tip": "Koop online early bird-tickets voor 15% korting. Kom bij opening om de rijen te vermijden. Het Tropical Paradise-gedeelte is ideaal voor je 2-jarige — schaduwrijk, ondiep en rustig.",
-    "tip_en": "Buy online early bird tickets for a 15% discount. Arrive at opening to beat queues. The Tropical Paradise area is ideal for your 2-year-old – shaded, shallow, and calm."
+    "tip_en": "Buy online early bird tickets for a 15% discount. Arrive at opening to beat queues. The Tropical Paradise area is ideal for your 2-year-old – shaded, shallow, and calm.",
+    "imageUrl": "https://www.slidesplash.com/wp-content/uploads/2025/11/area_residentes.jpg",
+    "imageAlt": "Aerial view of Slide & Splash water park in Estombar, Lagoa, Algarve, Portugal, showing the pools, slides, and surrounding green areas"
   },
   {
     "name": "Aquashow Park – Outdoor Waterpark",
@@ -47,7 +49,9 @@
     "season": "May–September (outdoor); reopens 1 May 2026",
     "website": "https://aquashowpark.com/en/",
     "tip": "Boek online voor 5% korting. Het buitenpark is seizoensgebonden; bezoek het indoor park in de winter voor jaarrond plezier.",
-    "tip_en": "Book online for a 5% discount. The outdoor park is seasonal; visit the indoor park in winter for year-round fun."
+    "tip_en": "Book online for a 5% discount. The outdoor park is seasonal; visit the indoor park in winter for year-round fun.",
+    "imageUrl": "https://aquashowpark.com/wp-content/uploads/2022/12/Galeria-03.jpg",
+    "imageAlt": "Aquashow Park Outdoor Waterpark in Quarteira, Algarve, Portugal, showing water slides and pools"
   },
   {
     "name": "Aquashow Park – Indoor Waterpark & Spa",
@@ -73,7 +77,9 @@
     "season": "Year-round (indoor open Oct–Apr; outdoor May–Sep)",
     "website": "https://aquashowpark.com/en/plan-your-visit-to-the-indoor-park/",
     "tip": "Perfecte regendag-optie. Het 2-uurspakket is ruim voldoende voor peuters. Zwemluiers verplicht voor baby's — verkrijgbaar in de parkwinkel.",
-    "tip_en": "Perfect rainy-day option. The 2-hour pack is plenty for toddlers. Swim nappies required for babies – available in the park shop."
+    "tip_en": "Perfect rainy-day option. The 2-hour pack is plenty for toddlers. Swim nappies required for babies – available in the park shop.",
+    "imageUrl": "https://amusementlogic.com/wp-content/uploads/2022/10/APERTURA-AQUASHOW-INDOOR-5.jpg",
+    "imageAlt": "Aquashow Park Indoor Waterpark exterior view, Quarteira, Algarve, Portugal"
   },
   {
     "name": "Zoomarine Algarve",
@@ -104,7 +110,9 @@
     "season": "March–November (check calendar; some days/weeks closed in shoulder season)",
     "website": "https://www.zoomarine.pt/en/",
     "tip": "Dolfijnenshows zijn inbegrepen bij de parktoegang — check het rooster bij aankomst. De dolfijnenontmoeting (in het water) kost extra (~€50) en vereist doorgaans leeftijd 8+. Gratis voor kinderen onder 1 meter. Boek online om tot 15% te besparen.",
-    "tip_en": "Dolphin shows are included in park entry – check the timetable upon arrival. Dolphin encounter (in-water) costs extra (~€50) and typically requires age 8+. Free entry for children under 1m tall. Book online to save up to 15%."
+    "tip_en": "Dolphin shows are included in park entry – check the timetable upon arrival. Dolphin encounter (in-water) costs extra (~€50) and typically requires age 8+. Free entry for children under 1m tall. Book online to save up to 15%.",
+    "imageUrl": "https://fullsuitcase.com/wp-content/uploads/2023/07/Zoomarine-Algarve-theme-park-aerial-view-from-Big-Wheel.jpg",
+    "imageAlt": "Aerial view of Zoomarine Algarve theme park in Guia, Albufeira, Portugal, from the Big Wheel, showing the park's attractions, pools, and layout"
   },
   {
     "name": "Krazy World Zoo & Activity Park",
@@ -133,7 +141,9 @@
     "season": "Year-round",
     "website": "https://krazyworld.com/en/",
     "tip": "Als inwoners van Lagoa komen jullie in aanmerking voor de inwonerskorting — neem een bewijs van adres en ID mee. De kinderboerderij is een hoogtepunt voor 2-jarigen. Ga doordeweeks om de drukte te vermijden.",
-    "tip_en": "As Lagoa residents, you qualify for the resident discount – bring proof of address and ID. The petting farm is a highlight for 2-year-olds. Visit on a weekday to avoid crowds."
+    "tip_en": "As Lagoa residents, you qualify for the resident discount – bring proof of address and ID. The petting farm is a highlight for 2-year-olds. Visit on a weekday to avoid crowds.",
+    "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/16/51/44/7d.jpg",
+    "imageAlt": "Entrance photo of Krazy World Zoo & Activity Park in Algoz, Portugal"
   },
   {
     "name": "Parque Zoológico de Lagos (Lagos Zoo)",
@@ -158,7 +168,9 @@
     "season": "Year-round",
     "website": "https://zoolagos.com/en/",
     "tip": "Boek online voor €2 korting. Het beste 's ochtends te bezoeken wanneer de dieren het meest actief zijn. Combineer met een bezoek aan het stadje Lagos voor een volle dagtip.",
-    "tip_en": "Book online for a €2 discount. Best visited in the morning when animals are most active. Combine with a visit to Lagos town for a full day trip."
+    "tip_en": "Book online for a €2 discount. Best visited in the morning when animals are most active. Combine with a visit to Lagos town for a full day trip.",
+    "imageUrl": "https://zoolagos.com/wp-content/uploads/2018/04/IMG_9918_compressed.jpg",
+    "imageAlt": "High-quality photo of Parque Zoológico de Lagos (Zoo de Lagos) showing zoo features and animals in Barão de São João, Lagos, Algarve, Portugal"
   },
   {
     "name": "Dolphin Watching – Lagos Marina (Sealife)",
@@ -182,7 +194,9 @@
     "season": "Year-round (best May–October)",
     "website": "https://www.algarvecavetours.com/best-dolphin-watching-with-kids-algarve/",
     "tip": "Boek bij een bedrijf dat kleinere boten gebruikt en een zeebioloog meeneemt voor de beste ervaring. Ochtendvaarten hebben vaak kalmer water — beter voor peuters die last kunnen krijgen van zeeziekte.",
-    "tip_en": "Book with a company that uses smaller boats and includes a marine biologist for the best experience. Morning departures often have calmer seas – better for toddlers prone to seasickness."
+    "tip_en": "Book with a company that uses smaller boats and includes a marine biologist for the best experience. Morning departures often have calmer seas – better for toddlers prone to seasickness.",
+    "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/38/d3/30.jpg",
+    "imageAlt": "Photo of Dolphin Watching boat at Lagos Marina Sealife, Lagos, Algarve, Portugal"
   },
   {
     "name": "Benagil Cave Boat Tour (Carvoeiro Caves)",
@@ -206,7 +220,9 @@
     "season": "Year-round (weather dependent)",
     "website": "https://www.carvoeirocaves.com/en/",
     "tip": "Dit is letterlijk om de hoek vanuit Lagoa! De korte tocht (1,5 uur) is ideaal met peuters. Ga vroeg in de ochtend in de zomer om hitte en deining te vermijden. Vraag bij de kassa om zeeziektetabletten als dat nodig is.",
-    "tip_en": "This is literally on your doorstep from Lagoa! The short tour (1.5hrs) is ideal with toddlers. Go early morning in summer to avoid heat and chop. Ask for seasickness pills at the ticket office if needed."
+    "tip_en": "This is literally on your doorstep from Lagoa! The short tour (1.5hrs) is ideal with toddlers. Go early morning in summer to avoid heat and chop. Ask for seasickness pills at the ticket office if needed.",
+    "imageUrl": "https://images.myguide-cdn.com/algarve/companies/carvoeiro-caves/large/carvoeiro-caves-641715.jpg",
+    "imageAlt": "High-quality photo of boat used for Carvoeiro Caves and Benagil Cave boat tours departing from Carvoeiro Beach, Lagoa, Algarve, Portugal"
   },
   {
     "name": "Ria Formosa Natural Park Boat Tour",
@@ -230,7 +246,9 @@
     "season": "Year-round",
     "website": "https://www.getyourguide.com/algarve-l66/faro-ria-formosa-faro-islands-boat-tour-t64208/",
     "tip": "Kies een tocht van 2–3 uur voor peuters in plaats van de hele-dag-optie. De lagune is beschut dus er is geen risico op zeeziekte. Flamingo's zijn het hele jaar door aanwezig in de Ria Formosa.",
-    "tip_en": "Choose a 2–3 hour tour for toddlers rather than the full-day option. The lagoon is sheltered so there's no seasickness risk. Flamingos are present year-round in the Ria Formosa."
+    "tip_en": "Choose a 2–3 hour tour for toddlers rather than the full-day option. The lagoon is sheltered so there's no seasickness risk. Flamingos are present year-round in the Ria Formosa.",
+    "imageUrl": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/25/f4/1c.jpg",
+    "imageAlt": "Eco Boat Tour boat in Ria Formosa Natural Park from Faro Marina, Algarve, Portugal"
   },
   {
     "name": "Castelo de Silves (Silves Castle)",
@@ -254,7 +272,9 @@
     "season": "Year-round (closed Christmas Day and New Year's Day)",
     "website": "https://www.visitalgarve.pt/en/",
     "tip": "Combineer met het nabijgelegen Museu de Arqueologia (€3,90 combiticket). Silves heeft een prachtige markt aan de rivier op zaterdag. De middeleeuwse kermis in augustus is spectaculair voor gezinnen.",
-    "tip_en": "Combine with the nearby Museu de Arqueologia (€3.90 combined ticket). Silves has a wonderful riverside market on Saturdays. The medieval fair in August is spectacular for families."
+    "tip_en": "Combine with the nearby Museu de Arqueologia (€3.90 combined ticket). Silves has a wonderful riverside market on Saturdays. The medieval fair in August is spectacular for families.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Castelo_de_Silves_-_Algarve%2C_Portugal_-_11.03.2023.jpg",
+    "imageAlt": "High-resolution photo of Castelo de Silves (Silves Castle) in Algarve, Portugal, showing the red sandstone walls and towers of the Moorish castle"
   },
   {
     "name": "Castelo de Tavira (Tavira Castle)",
@@ -278,7 +298,9 @@
     "season": "Year-round",
     "website": "https://www.taviraportugaltourism.com/guide/castle.html",
     "tip": "Tavira is ongeveer 1 uur ten oosten van Lagoa — maak er een hele dag van door te combineren met een veertocht naar Ilha de Tavira, een van de mooiste stranden van de Algarve.",
-    "tip_en": "Tavira is about 1 hour east of Lagoa – make a full day of it by combining with a ferry trip to Ilha de Tavira, one of the Algarve's most beautiful beaches."
+    "tip_en": "Tavira is about 1 hour east of Lagoa – make a full day of it by combining with a ferry trip to Ilha de Tavira, one of the Algarve's most beautiful beaches.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Castelo_de_Tavira_-_Portugal_%2836786635770%29.jpg",
+    "imageAlt": "High-quality photograph of Castelo de Tavira (Tavira Castle) in Tavira, Algarve, Portugal, showing the historic castle structure"
   },
   {
     "name": "Centro Ciência Viva de Lagos (Science Museum)",
@@ -302,7 +324,9 @@
     "season": "Year-round",
     "website": "https://www.ccvlagos.pt/",
     "tip": "Ga via het marktgebouw van Lagos naar binnen en neem de lift naar de bovenste verdieping om de steile heuvel te vermijden. Gezinspakket (2 volwassenen + kinderen): €7. Combineer met het verkennen van de oude stad van Lagos en het strand.",
-    "tip_en": "Enter via the Lagos Municipal Market building and take the elevator to the top floor to avoid the steep hill. Family pack (2 adults + children): €7. Combine with exploring Lagos old town and the beach."
+    "tip_en": "Enter via the Lagos Municipal Market building and take the elevator to the top floor to avoid the steep hill. Family pack (2 adults + children): €7. Combine with exploring Lagos old town and the beach.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Casa_Foga%C3%A7a_Lagos.JPG",
+    "imageAlt": "Exterior view of the Centro Ciência Viva de Lagos science museum building in Lagos, Algarve, Portugal"
   },
   {
     "name": "Museu de Portimão",
@@ -327,7 +351,9 @@
     "season": "Year-round (August hours shift to evening 15:00–23:00)",
     "website": "https://museudeportimao.pt/",
     "tip": "Op zondag gratis vóór 12 uur. Een 3-jarige reviewer merkte op dat ze dol was op het onderzeeboot-gevoel en het indrukken van knoppen. Gelegen direct aan de jachthaven — combineer met een wandeling langs de rivier.",
-    "tip_en": "Free on Sundays before noon. A 3-year-old reviewing the museum noted they loved the submarine feel and pressing buttons. Located right on the marina – combine with a riverside walk."
+    "tip_en": "Free on Sundays before noon. A 3-year-old reviewing the museum noted they loved the submarine feel and pressing buttons. Located right on the marina – combine with a riverside walk.",
+    "imageUrl": "https://images.turismoenportugal.org/Museu-de-Portimao.jpg",
+    "imageAlt": "Exterior view of Museu de Portimão building in Portimão, Algarve, Portugal"
   },
   {
     "name": "Adventure HQ",
@@ -355,7 +381,9 @@
     "season": "Year-round",
     "website": "https://adventure-hq.fun",
     "tip": "Dit is jullie dichtstbijzijnde grote indoor speeloptie vanuit Lagoa (ongeveer 10 minuten). Volwassenen komen helemaal gratis — je betaalt alleen voor de kinderen. Doordeweeks in de ochtend is het rustiger. Het eten is vers en scherp geprijsd.",
-    "tip_en": "This is your closest big indoor play option from Lagoa (about 10 minutes). Adults enter completely free – just pay for the kids. Weekday mornings are quieter. Food is fresh and well-priced."
+    "tip_en": "This is your closest big indoor play option from Lagoa (about 10 minutes). Adults enter completely free – just pay for the kids. Weekday mornings are quieter. Food is fresh and well-priced.",
+    "imageUrl": "https://adventure-hq.fun/images/box-play.jpg",
+    "imageAlt": "High-quality photo of the multilevel indoor playground at Adventure HQ in Alcantarilha, Algarve, Portugal"
   },
   {
     "name": "Tigre Feliz (Happy Tiger)",
@@ -382,7 +410,9 @@
     "season": "Year-round",
     "website": "https://tigrefeliz.com",
     "tip": "Reviewers noemen specifiek dat 2-jarigen het hier heerlijk vinden. Het wordt drukker na 12:00, dus kom bij opening. De Speelgoedzone is perfect voor de allerkleinste peuters. Je kunt ook eten bestellen bij het Thaise restaurant ernaast.",
-    "tip_en": "Reviewers specifically mention 2-year-olds loving it here. It gets busier after 12:00, so arrive when it opens. The Toy Zone is perfect for the youngest toddlers. You can order food from the Thai restaurant next door too."
+    "tip_en": "Reviewers specifically mention 2-year-olds loving it here. It gets busier after 12:00, so arrive when it opens. The Toy Zone is perfect for the youngest toddlers. You can order food from the Thai restaurant next door too.",
+    "imageUrl": "https://tigrefeliz.com/wp-content/uploads/2024/07/Tigre-Feliz_d00a_01a-1.webp",
+    "imageAlt": "Interior view of Tigre Feliz (Happy Tiger) indoor play centre in Vilamoura, Quarteira, Algarve, Portugal"
   },
   {
     "name": "Smile Park",
@@ -407,7 +437,9 @@
     "season": "Year-round",
     "website": "https://www.instagram.com/smile.park.algarve/",
     "tip": "Gelegen op 3 minuten van de jachthaven van Vilamoura. Open tot 21 uur — geweldig voor avondvermaak. Neem sokken mee (verplicht voor de trampolines).",
-    "tip_en": "Located 3 minutes from Vilamoura Marina. Open until 9pm – great for evening entertainment. Bring socks (required for trampolines)."
+    "tip_en": "Located 3 minutes from Vilamoura Marina. Open until 9pm – great for evening entertainment. Bring socks (required for trampolines).",
+    "imageUrl": "https://images.myguide-cdn.com/algarve/companies/smile-park/large/smile-park-5427215.jpg",
+    "imageAlt": "Exterior view of Smile Park inflatable playground in Quarteira, Algarve, Portugal near Vilamoura Marina"
   },
   {
     "name": "Bowling Alvor",
@@ -432,7 +464,9 @@
     "season": "Year-round",
     "website": "https://www.tripadvisor.com/Attraction_Review-g642199-d4430647-Reviews-Bowling_Alvor",
     "tip": "Alleen contant betalen — neem euro's mee! Gaat open om 14:00. De eigenaar is vriendelijk en helpt jonge kinderen. Een gezinsspelletje voor 2 volwassenen + 1 kind kost ongeveer €14–€21.",
-    "tip_en": "Cash only – bring euros! Opens at 2pm. The owner is friendly and will help young children. Combined family game for 2 adults + 1 child is around €14–€21."
+    "tip_en": "Cash only – bring euros! Opens at 2pm. The owner is friendly and will help young children. Combined family game for 2 adults + 1 child is around €14–€21.",
+    "imageUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/bd/46/03/bowling-alvor.jpg?w=1200&amp;h=-1&amp;s=1",
+    "imageAlt": "Exterior view of Bowling Alvor building in Alvor, Portugal"
   },
   {
     "name": "Hot Shot Bowling & Leisure Centre",
@@ -457,7 +491,9 @@
     "season": "Year-round",
     "website": "https://www.myguidealgarve.com/things-to-do/hot-shot-bowling",
     "tip": "Ga vóór 14:00 voor goedkopere tarieven (€7,50 in plaats van €10). De marina-omgeving is prachtig — combineer met een lunch bij een van de vele restaurants aan het water.",
-    "tip_en": "Go before 2pm for cheaper rates (€7.50 vs €10). The marina setting is beautiful – combine with lunch at one of the many waterfront restaurants."
+    "tip_en": "Go before 2pm for cheaper rates (€7.50 vs €10). The marina setting is beautiful – combine with lunch at one of the many waterfront restaurants.",
+    "imageUrl": "https://cdn1.sun-hat-villas.com/media/6382/3.jpg?width=716&amp;height=472&amp;quality=80&amp;rnd=132048943871270000",
+    "imageAlt": "Exterior view of Hot Shot Bowling & Leisure Centre at Albufeira Marina, Algarve, Portugal"
   },
   {
     "name": "Algarcine Cinemas",
@@ -480,7 +516,9 @@
     "season": "Year-round",
     "website": "https://www.wanderlog.com/place/details/4014503/algarcine",
     "tip": "Films worden in het Engels vertoond met Portugese ondertiteling. Check social media voor het actuele programma. Met €5 is dit een van de goedkoopste bioscoopkaartjes van Portugal.",
-    "tip_en": "Films shown in English with Portuguese subtitles. Check social media for current showings. At €5, this is one of the cheapest cinema tickets in Portugal."
+    "tip_en": "Films shown in English with Portuguese subtitles. Check social media for current showings. At €5, this is one of the cheapest cinema tickets in Portugal.",
+    "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-s/13/60/cf/6f/algarcine-cinemas-de.jpg",
+    "imageAlt": "Exterior view of Algarcine Cinemas building in Portimão, Algarve, Portugal"
   },
   {
     "name": "Cineplace – Continente Portimão",
@@ -503,7 +541,9 @@
     "season": "Year-round",
     "website": "https://www.cineplace.pt/",
     "tip": "Gelegen in Continente Portimão. Te combineren met een shoppingtrip. Check de tijden online — populaire films in het weekend kunnen uitverkocht raken.",
-    "tip_en": "Located inside Continente Portimão. Combined with a shopping trip. Check times online – popular films on weekends can sell out."
+    "tip_en": "Located inside Continente Portimão. Combined with a shopping trip. Check times online – popular films on weekends can sell out.",
+    "imageUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/e2/04/6f/entrada-do-centro-continente.jpg?w=1200&amp;h=-1&amp;s=1",
+    "imageAlt": "Exterior view of Cineplace – Continente Portimão shopping center building in Portimão, Algarve, Portugal"
   },
   {
     "name": "Family Golf Park",
@@ -527,7 +567,9 @@
     "season": "Year-round",
     "website": "https://familygolfpark.pt",
     "tip": "Ga 's avonds als de temperaturen lager zijn — het park is verlicht en heeft een heerlijke sfeer. Clubs en ballen worden verstrekt. Geen ervaring nodig.",
-    "tip_en": "Visit in the evening when temperatures are cooler – the park is lit up and has a lovely atmosphere. Clubs and balls are provided. No experience needed."
+    "tip_en": "Visit in the evening when temperatures are cooler – the park is lit up and has a lovely atmosphere. Clubs and balls are provided. No experience needed.",
+    "imageUrl": "https://familygolfpark.pt/wp-content/uploads/2019/05/family-golf-park-01-min-1.jpg",
+    "imageAlt": "Exterior view of Family Golf Park mini golf courses in Vilamoura, Quarteira, Algarve, Portugal"
   },
   {
     "name": "Portugal Farm Experience – Animal Farm / Donkey Tours",
@@ -552,7 +594,9 @@
     "season": "Year-round (best Oct–May in cooler weather)",
     "website": "https://www.portugalfarmexperience.com/animals-tours-algarve/",
     "tip": "De Sinaasappelproeverij met Ezels is perfect voor een 2-jarige — rustig, hands-on en ontzettend schattig. Boek van tevoren want tochten zijn in kleine groepen.",
-    "tip_en": "The Orange Tasting with Donkeys is perfect for a 2-year-old – slow-paced, hands-on, and utterly charming. Book in advance as tours are small group."
+    "tip_en": "The Orange Tasting with Donkeys is perfect for a 2-year-old – slow-paced, hands-on, and utterly charming. Book in advance as tours are small group.",
+    "imageUrl": "https://www.portugalfarmexperience.com/wp-content/uploads/sites/2986/2022/12/donkey-tour.jpeg",
+    "imageAlt": "Donkey tour at the animal farm in Central Algarve, Portugal Farm Experience"
   },
   {
     "name": "Country Riding Centre",
@@ -576,7 +620,9 @@
     "season": "Year-round",
     "website": "https://www.facebook.com/countryridingcentre/",
     "tip": "4,9 sterren uit 169 reviews — een van de best beoordeelde paardrij-ervaringen in de Algarve. Gelegen op slechts 15 minuten van Lagoa. Boek van tevoren want plekken zijn snel vol.",
-    "tip_en": "4.9 stars from 169 reviews – one of the best-rated horse riding experiences in the Algarve. Located just 15 minutes from Lagoa. Book in advance as spots fill up quickly."
+    "tip_en": "4.9 stars from 169 reviews – one of the best-rated horse riding experiences in the Algarve. Located just 15 minutes from Lagoa. Book in advance as spots fill up quickly.",
+    "imageUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/21/62/c5/7e/caption.jpg?w=1200&amp;h=-1&amp;s=1",
+    "imageAlt": "High-quality photo of Country Riding Centre stables and facilities in Silves, Algarve, Portugal"
   },
   {
     "name": "Birdwatching – Ria Formosa Natural Park",
@@ -600,7 +646,9 @@
     "season": "Year-round (flamingos and waders present all year)",
     "website": "https://www.viator.com/Algarve-tours/Dolphin-Watching/d774-tag21454",
     "tip": "Zelfs zonder begeleide tocht kun je flamingo's spotten vanaf de oever bij Olhão of het Quinta do Lago/Vale do Lobo-gebied, helemaal gratis. Het Natuurpark is uitstekend voor een gratis wandeling met een buggy.",
-    "tip_en": "Even without a guided tour, you can spot flamingos from the shore near Olhão or the Quinta do Lago/Vale do Lobo area for free. The Parque Natural is excellent for a free stroll with a buggy."
+    "tip_en": "Even without a guided tour, you can spot flamingos from the shore near Olhão or the Quinta do Lago/Vale do Lobo area for free. The Parque Natural is excellent for a free stroll with a buggy.",
+    "imageUrl": "https://www.passeios-ria-formosa.com/wp-content/uploads/2020/12/featured-birdwatching-mar-olhao.jpg",
+    "imageAlt": "Birdwatching boat tour in Ria Formosa Natural Park near Olhão, Algarve, Portugal"
   },
   {
     "name": "FATACIL – International Algarve Fair",
@@ -626,7 +674,9 @@
     "season": "Annual – August only (10 days)",
     "website": "https://www.fatacil.com.pt/",
     "tip": "Dit is letterlijk om de hoek in Lagoa! Perfect voor een zomeravond met de kinderen. Gratis parkeren in de omliggende velden. Inwoners krijgen korting. De paardenshows zijn een hoogtepunt.",
-    "tip_en": "This is on your doorstep in Lagoa! Perfect for a summer evening with the kids. Free parking in surrounding fields. Locals get a residents' discount. The horse shows are a highlight."
+    "tip_en": "This is on your doorstep in Lagoa! Perfect for a summer evening with the kids. Free parking in surrounding fields. Locals get a residents' discount. The horse shows are a highlight.",
+    "imageUrl": "https://www.inside-algarve.com/wp-content/uploads/2024/11/Fatacil-Showground-of-Lagoa-provided-an-excellent-location-for-the-garden-fair.jpg",
+    "imageAlt": "Fatacil Showground in Lagoa, Algarve, Portugal, hosting a garden fair"
   },
   {
     "name": "Silves Saturday Market",
@@ -650,7 +700,9 @@
     "season": "Year-round (every Saturday)",
     "website": "https://www.visitalgarve.pt/",
     "tip": "Combineer met een bezoek aan het kasteel van Silves voor een perfecte zaterdagochtend. Koop vers lokaal fruit en gebakjes bij de marktkramen. De wandeling langs de rivier is ideaal voor kleine beentjes.",
-    "tip_en": "Combine with Silves Castle visit for a perfect Saturday morning. Buy fresh local fruit and pastries from the market stalls. The riverside walk is ideal for little legs."
+    "tip_en": "Combine with Silves Castle visit for a perfect Saturday morning. Buy fresh local fruit and pastries from the market stalls. The riverside walk is ideal for little legs.",
+    "imageUrl": "https://c8.alamy.com/comp/DGGDMJ/portugal-the-algarve-silves-market-DGGDMJ.jpg",
+    "imageAlt": "High-quality photo of Silves market stalls in Algarve, Portugal, showing vegetable produce and local vendors"
   },
   {
     "name": "Centro Ciência Viva do Algarve (Faro Science Centre)",
@@ -675,6 +727,8 @@
     "season": "Year-round",
     "website": "https://algarve.cienciaviva.pt/",
     "tip": "Gezinsticket beschikbaar voor 2 volwassenen + kinderen. Combineer met een bezoek aan de oude stad van Faro en de kathedraal voor een volle dagtip.",
-    "tip_en": "Family ticket available for 2 adults + children. Combine with a visit to Faro Old Town and the Cathedral for a full day trip."
+    "tip_en": "Family ticket available for 2 adults + children. Combine with a visit to Faro Old Town and the Cathedral for a full day trip.",
+    "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4qq1r8zQ3nTpeRt5j-t4nEqV9nsi8uzredh5UewQuwxOk-O3XEAsarmmC7nD1SWteTtuoE7aO1qeDbUvBmPKYys7_t5nmcavjo2wG5rTTU04vMUriZIo91WDB-Eo136iXzr28LyUQUcg/s1600/DSC_3107.jpg",
+    "imageAlt": "Exterior view of Centro Ciência Viva de Lagos science museum building in Lagos, Algarve, Portugal"
   }
 ]

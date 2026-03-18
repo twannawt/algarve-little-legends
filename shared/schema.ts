@@ -20,6 +20,8 @@ export interface Place {
   facilities?: string[];
   bestSeason?: string;
   cost?: string;
+  imageUrl?: string;
+  imageAlt?: string;
 }
 
 export interface Suggestion {

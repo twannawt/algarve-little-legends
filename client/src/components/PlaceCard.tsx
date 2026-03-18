@@ -17,6 +17,35 @@ const categoryGradient: Record<string, string> = {
   attraction: "from-[hsl(345,30%,55%)] to-[hsl(350,28%,68%)]",
 };
 
+/** Image with loading skeleton + fallback to SVG illustration on error */
+function PlaceImage({ src, alt, category }: { src: string; alt: string; category: string }) {
+  const [status, setStatus] = useState<"loading" | "loaded" | "error">("loading");
+
+  return (
+    <>
+      {status === "loading" && (
+        <div className={`absolute inset-0 bg-gradient-to-br ${categoryGradient[category]} animate-pulse`} />
+      )}
+      {status === "error" ? (
+        <div className={`absolute inset-0 bg-gradient-to-br ${categoryGradient[category]}`}>
+          <CardIllustration category={category} />
+        </div>
+      ) : (
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          onLoad={() => setStatus("loaded")}
+          onError={() => setStatus("error")}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+            status === "loaded" ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      )}
+    </>
+  );
+}
+
 // SVG scene illustrations per category
 function CardIllustration({ category }: { category: string }) {
   const common = "absolute inset-0 w-full h-full";
@@ -223,9 +252,19 @@ export function PlaceCard({ place }: { place: Place }) {
       className="cursor-pointer rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden"
       onClick={() => navigate(`/place/${place.id}`)}
     >
-      {/* Illustrated category header */}
-      <div className={`h-20 bg-gradient-to-br ${categoryGradient[place.category]} relative overflow-hidden`}>
-        <CardIllustration category={place.category} />
+      {/* Photo or illustrated category header */}
+      <div className={`h-28 relative overflow-hidden`}>
+        {place.imageUrl ? (
+          <PlaceImage
+            src={place.imageUrl}
+            alt={place.imageAlt || place.name}
+            category={place.category}
+          />
+        ) : (
+          <div className={`absolute inset-0 bg-gradient-to-br ${categoryGradient[place.category]}`}>
+            <CardIllustration category={place.category} />
+          </div>
+        )}
       </div>
       <CardContent className="p-4">
         <div className="flex items-start justify-between gap-2">

@@ -16,6 +16,18 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor: React core (shared by all pages)
+          "vendor-react": ["react", "react-dom"],
+          // Leaflet only loads when map page is visited
+          "vendor-leaflet": ["leaflet"],
+          // Framer Motion is used broadly but is heavy
+          "vendor-motion": ["framer-motion"],
+        },
+      },
+    },
   },
   server: {
     fs: {

@@ -1,32 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Switch, Route, Router, useLocation } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { motion } from "framer-motion";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { I18nProvider, useI18n } from "@/lib/i18n";
 import { useOnlineStatus } from "@/hooks/use-online";
 import { Header } from "@/components/Header";
 import { BottomNav } from "@/components/BottomNav";
-import HomePage from "@/pages/home";
-import PlaceDetail from "@/pages/place-detail";
-import MapView from "@/pages/map";
-import FavoritesPage from "@/pages/favorites";
-import SuggestPage from "@/pages/suggest";
-import DagplannerPage from "@/pages/dagplanner";
-import NotFound from "@/pages/not-found";
 
-function AnimatedRoute({ component: Component }: { component: React.ComponentType }) {
+// Eager-load home (initial route)
+import HomePage from "@/pages/home";
+
+// Lazy-load all other pages — loaded on demand
+const PlaceDetail = lazy(() => import("@/pages/place-detail"));
+const MapView = lazy(() => import("@/pages/map"));
+const FavoritesPage = lazy(() => import("@/pages/favorites"));
+const SuggestPage = lazy(() => import("@/pages/suggest"));
+const DagplannerPage = lazy(() => import("@/pages/dagplanner"));
+const NotFound = lazy(() => import("@/pages/not-found"));
+
+function PageLoader() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.2 }}
-    >
-      <Component />
-    </motion.div>
+    <div className="flex items-center justify-center min-h-[40vh]">
+      <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+    </div>
   );
 }
 
@@ -40,29 +39,17 @@ function ScrollToTop() {
 
 function AppRouter() {
   return (
-    <Switch>
-        <Route path="/">
-          <AnimatedRoute component={HomePage} />
-        </Route>
-        <Route path="/place/:id">
-          <AnimatedRoute component={PlaceDetail} />
-        </Route>
-        <Route path="/map">
-          <AnimatedRoute component={MapView} />
-        </Route>
-        <Route path="/favorites">
-          <AnimatedRoute component={FavoritesPage} />
-        </Route>
-        <Route path="/suggest">
-          <AnimatedRoute component={SuggestPage} />
-        </Route>
-        <Route path="/dagplanner">
-          <AnimatedRoute component={DagplannerPage} />
-        </Route>
-        <Route>
-          <AnimatedRoute component={NotFound} />
-        </Route>
-    </Switch>
+    <Suspense fallback={<PageLoader />}>
+      <Switch>
+        <Route path="/" component={HomePage} />
+        <Route path="/place/:id" component={PlaceDetail} />
+        <Route path="/map" component={MapView} />
+        <Route path="/favorites" component={FavoritesPage} />
+        <Route path="/suggest" component={SuggestPage} />
+        <Route path="/dagplanner" component={DagplannerPage} />
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 }
 
