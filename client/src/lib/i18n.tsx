@@ -154,6 +154,12 @@ const translations = {
   bulkUrlLocatieBeschrijving: "Plak een URL van een pagina met meerdere locaties",
   bulkUrlPlaceholder: "https://www.ah.nl/allerhande/recepten/...",
   bulkLocatiePlaceholder: "https://www.google.com/maps/...",
+  // Recept dagplanner
+  receptDagplan: "Dagplan",
+  receptDagplanTitle: "Wat eten we vandaag?",
+  receptDagplanSubtitle: "Een dagmenu samengesteld uit jullie recepten",
+  nieuwReceptDagplan: "Nieuw dagmenu",
+  geenReceptenVoorCategorie: "Nog geen recepten in deze categorie",
   // Bottom nav per section
   navToevoegen: "Toevoegen",
   navLocaties: "Locaties",

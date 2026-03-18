@@ -128,6 +128,11 @@ export async function registerRoutes(
     res.json(place);
   });
 
+  app.get("/api/recept-dagplan", async (_req, res) => {
+    const plan = await storage.getRecipeDagplan();
+    res.json(plan);
+  });
+
   // ===== Recipe API =====
 
   app.get("/api/recipes", async (_req, res) => {

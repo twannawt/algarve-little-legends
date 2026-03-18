@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { useT } from "@/lib/i18n";
 
 // Pages that belong to the "Wat gaan we eten" (recipes) section
-const RECIPE_PATHS = new Set(["/recepten", "/recept-favorieten"]);
+const RECIPE_PATHS = new Set(["/recepten", "/recept-favorieten", "/recept-dagplan"]);
 
 // Pages that belong to the "Wat gaan we doen" (activities) section
 const ACTIVITY_PATHS = new Set(["/", "/dagplanner", "/map", "/favorites", "/suggest", "/place"]);
@@ -41,6 +41,7 @@ export function BottomNav() {
 
   const recipeNav: NavItem[] = [
     { path: "/recepten", label: t("navRecepten"), icon: UtensilsCrossed },
+    { path: "/recept-dagplan", label: t("receptDagplan"), icon: CalendarDays },
     { path: "/recept-favorieten", label: t("receptFavorieten"), icon: Star },
   ];
 
@@ -51,8 +52,8 @@ export function BottomNav() {
   // Dispatch a custom event for the recipes page to listen to
   function handleAddClick() {
     if (inRecipes) {
-      // If on favorites page, navigate to recipes first, then open the add form
-      if (location === "/recept-favorieten") {
+      // If not on main recipes page, navigate there first, then open the add form
+      if (location !== "/recepten") {
         navigate("/recepten");
         // Small delay so the recipes page mounts before we dispatch
         setTimeout(() => {

@@ -9,7 +9,7 @@ const tabs = [
 
 // Show tabs on main section pages
 const ACTIVITY_TAB_PATHS = new Set(["/", "/dagplanner", "/map", "/favorites", "/suggest"]);
-const RECIPE_TAB_PATHS = new Set(["/recepten", "/recept-favorieten"]);
+const RECIPE_TAB_PATHS = new Set(["/recepten", "/recept-favorieten", "/recept-dagplan"]);
 
 export function AppTabs() {
   const [location, navigate] = useLocation();

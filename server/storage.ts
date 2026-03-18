@@ -131,6 +131,7 @@ export interface IStorage {
   toggleRecipeCooked(id: string): Promise<boolean>;
   toggleRecipeKidApproval(id: string, tag: KidApproval): Promise<KidApproval[]>;
   updateRecipeCategories(id: string, categories: RecipeCategory[]): Promise<Recipe | null>;
+  getRecipeDagplan(): Promise<{ ontbijt: Recipe | null; lunch: Recipe | null; diner: Recipe | null }>;
 }
 
 // ============================================================
@@ -447,6 +448,16 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
       createdAt: r.createdAt,
     };
   }
+
+  async getRecipeDagplan(): Promise<{ ontbijt: Recipe | null; lunch: Recipe | null; diner: Recipe | null }> {
+    const all = await this.getAllRecipes();
+    const pick = (cat: RecipeCategory): Recipe | null => {
+      const matching = all.filter((r) => (r.categories || []).includes(cat));
+      if (matching.length === 0) return null;
+      return matching[Math.floor(Math.random() * matching.length)];
+    };
+    return { ontbijt: pick("ontbijt"), lunch: pick("lunch"), diner: pick("diner") };
+  }
 }
 
 // ============================================================
@@ -572,6 +583,16 @@ export class MemStorage extends BasePlaceStorage implements IStorage {
     recipe.categories = categories;
     this.persistRecipes();
     return recipe;
+  }
+
+  async getRecipeDagplan(): Promise<{ ontbijt: Recipe | null; lunch: Recipe | null; diner: Recipe | null }> {
+    const all = await this.getAllRecipes();
+    const pick = (cat: RecipeCategory): Recipe | null => {
+      const matching = all.filter((r) => (r.categories || []).includes(cat));
+      if (matching.length === 0) return null;
+      return matching[Math.floor(Math.random() * matching.length)];
+    };
+    return { ontbijt: pick("ontbijt"), lunch: pick("lunch"), diner: pick("diner") };
   }
 }
 
