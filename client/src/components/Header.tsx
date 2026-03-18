@@ -127,7 +127,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-sm">
+    <header className="sticky top-0 z-50 backdrop-blur border-b shadow-sm bg-[--header-bg] border-[--header-border]">
       <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
         <button
           data-testid="logo-home"

@@ -58,6 +58,14 @@
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 
+  /* Surface layering — Bali Green header/nav, warm terracotta tabs */
+  --header-bg: hsl(140 14% 93% / 0.97);
+  --header-border: hsl(140 16% 82%);
+  --tabs-bg: hsl(18 30% 95% / 0.95);
+  --tabs-border: hsl(18 20% 87%);
+  --nav-bg: hsl(140 14% 93% / 0.97);
+  --nav-border: hsl(140 16% 82%);
+
 /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
   --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
@@ -135,6 +143,14 @@
   --shadow-lg: 0 8px 24px rgba(0,0,0, 0.35);
   --shadow-xl: 0 12px 32px rgba(0,0,0, 0.40);
   --shadow-2xl: 0 16px 40px rgba(0,0,0, 0.45);
+
+  /* Surface layering — dark mode: Bali Green header/nav, warm terracotta tabs */
+  --header-bg: hsl(140 16% 11% / 0.97);
+  --header-border: hsl(140 14% 18%);
+  --tabs-bg: hsl(18 18% 12% / 0.95);
+  --tabs-border: hsl(18 14% 20%);
+  --nav-bg: hsl(140 16% 11% / 0.97);
+  --nav-border: hsl(140 14% 18%);
 
 /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
