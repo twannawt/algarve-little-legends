@@ -11,13 +11,14 @@ import {
   Ticket,
 } from "lucide-react";
 import type { Place } from "@shared/schema";
+import { FloatingResetButton } from "@/components/FloatingResetButton";
 
 const categories = [
-  { key: "restaurant", labelKey: "restaurants" as const, icon: UtensilsCrossed, color: "bg-[hsl(15,45%,55%)] text-white" },
+  { key: "restaurant", labelKey: "restaurants" as const, icon: UtensilsCrossed, color: "bg-[hsl(140,20%,42%)] text-white" },
   { key: "beach", labelKey: "stranden" as const, icon: Waves, color: "bg-[hsl(195,20%,55%)] text-white" },
-  { key: "playground", labelKey: "speeltuinen" as const, icon: TreePine, color: "bg-[hsl(155,25%,42%)] text-white" },
+  { key: "playground", labelKey: "speeltuinen" as const, icon: TreePine, color: "bg-[hsl(95,18%,48%)] text-white" },
   { key: "activity", labelKey: "activiteiten" as const, icon: Bike, color: "bg-[hsl(35,55%,65%)] text-white" },
-  { key: "attraction", labelKey: "attracties" as const, icon: Ticket, color: "bg-[hsl(345,25%,60%)] text-white" },
+  { key: "attraction", labelKey: "attracties" as const, icon: Ticket, color: "bg-[hsl(170,18%,50%)] text-white" },
 ] as const;
 
 export default function MapView() {
@@ -77,6 +78,11 @@ export default function MapView() {
           onPlaceClick={(id) => navigate(`/place/${id}`)}
         />
       </div>
+
+      <FloatingResetButton
+        visible={activeFilters.size > 0}
+        onReset={() => setActiveFilters(new Set())}
+      />
     </div>
   );
 }

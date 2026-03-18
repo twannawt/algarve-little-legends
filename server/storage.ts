@@ -1,6 +1,9 @@
-import { type Place, type Suggestion, type WeatherData } from "@shared/schema";
+import { type Place, type Suggestion, type WeatherData, type Recipe, type RecipeCategory } from "@shared/schema";
+import { eq } from "drizzle-orm";
 import * as fs from "fs";
 import * as path from "path";
+import { getDb, hasDatabase } from "./db";
+import { recipes as recipesTable, favorites as favoritesTable, visited as visitedTable } from "./db/schema";
 
 function loadJSON(filePath: string): any[] {
   const raw = fs.readFileSync(filePath, "utf-8");
@@ -15,7 +18,7 @@ function slugify(text: string): string {
 }
 
 function normalizeRestaurants(data: any[]): Place[] {
-  return data.map((r, i) => ({
+  return data.map((r) => ({
     id: `restaurant-${slugify(r.name)}`,
     name: r.name,
     location: r.location,
@@ -35,7 +38,7 @@ function normalizeRestaurants(data: any[]): Place[] {
 }
 
 function normalizeBeaches(data: any[]): Place[] {
-  return data.map((b, i) => ({
+  return data.map((b) => ({
     id: `beach-${slugify(b.name)}`,
     name: b.name,
     location: b.location,
@@ -54,7 +57,7 @@ function normalizeBeaches(data: any[]): Place[] {
 }
 
 function normalizePlaygroundsActivities(data: any[]): Place[] {
-  return data.map((p, i) => {
+  return data.map((p) => {
     const cat = p.category;
     const isPlayground = cat === "playground" || cat === "park";
     return {
@@ -82,7 +85,7 @@ function normalizePlaygroundsActivities(data: any[]): Place[] {
 }
 
 function normalizeAttractions(data: any[]): Place[] {
-  return data.map((a, i) => ({
+  return data.map((a) => ({
     id: `attraction-${slugify(a.name)}`,
     name: a.name,
     location: a.location,
@@ -112,31 +115,34 @@ export interface IStorage {
   searchPlaces(query: string): Place[];
   getCategoryCounts(): Record<string, number>;
   getRandomPlace(): Place;
-  getFavorites(): string[];
-  toggleFavorite(id: string): boolean;
-  getVisited(): string[];
-  toggleVisited(id: string): boolean;
+  getFavorites(): Promise<string[]>;
+  toggleFavorite(id: string): Promise<boolean>;
+  getVisited(): Promise<string[]>;
+  toggleVisited(id: string): Promise<boolean>;
   addSuggestion(s: Omit<Suggestion, "id" | "createdAt">): Suggestion;
   getSuggestions(): Suggestion[];
   getWeather(): Promise<WeatherData | null>;
   getDagplan(): { restaurant: Place; activity: Place; playground: Place };
   addPlace(place: Omit<Place, "id">): Place;
+  // Recipe methods — all async for PostgreSQL
+  getAllRecipes(): Promise<Recipe[]>;
+  addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidFavorite">): Promise<Recipe>;
+  deleteRecipe(id: string): Promise<boolean>;
+  toggleRecipeCooked(id: string): Promise<boolean>;
+  toggleRecipeKidFavorite(id: string): Promise<boolean>;
+  updateRecipeCategories(id: string, categories: RecipeCategory[]): Promise<Recipe | null>;
 }
 
-export class MemStorage implements IStorage {
-  private places: Place[];
-  private favorites: Set<string>;
-  private visited: Set<string>;
-  private suggestions: Suggestion[];
-  private weatherCache: { data: WeatherData; fetchedAt: number } | null;
+// ============================================================
+// Base class with shared place logic (read-only from JSON)
+// ============================================================
+
+class BasePlaceStorage {
+  protected places: Place[] = [];
+  protected suggestions: Suggestion[] = [];
+  protected weatherCache: { data: WeatherData; fetchedAt: number } | null = null;
 
   constructor() {
-    this.favorites = new Set();
-    this.visited = new Set();
-    this.suggestions = [];
-    this.weatherCache = null;
-    this.places = [];
-
     const researchDir = path.join(process.cwd(), "research");
     try {
       const restaurants = loadJSON(path.join(researchDir, "restaurants.json"));
@@ -153,7 +159,6 @@ export class MemStorage implements IStorage {
     } catch (e) {
       console.error("Failed to load research data:", e);
     }
-
   }
 
   getAllPlaces(): Place[] {
@@ -192,34 +197,6 @@ export class MemStorage implements IStorage {
     return this.places[idx];
   }
 
-  getFavorites(): string[] {
-    return Array.from(this.favorites);
-  }
-
-  toggleFavorite(id: string): boolean {
-    if (this.favorites.has(id)) {
-      this.favorites.delete(id);
-      return false;
-    } else {
-      this.favorites.add(id);
-      return true;
-    }
-  }
-
-  getVisited(): string[] {
-    return Array.from(this.visited);
-  }
-
-  toggleVisited(id: string): boolean {
-    if (this.visited.has(id)) {
-      this.visited.delete(id);
-      return false;
-    } else {
-      this.visited.add(id);
-      return true;
-    }
-  }
-
   addSuggestion(s: Omit<Suggestion, "id" | "createdAt">): Suggestion {
     const suggestion: Suggestion = {
       ...s,
@@ -230,12 +207,16 @@ export class MemStorage implements IStorage {
     return suggestion;
   }
 
+  getSuggestions(): Suggestion[] {
+    return this.suggestions;
+  }
+
   addPlace(place: Omit<Place, "id">): Place {
     const id = `${place.category}-${slugify(place.name)}-${Date.now()}`;
     const newPlace: Place = { id, ...place };
     this.places.push(newPlace);
 
-    // Also persist to the appropriate research JSON file
+    // Persist to the appropriate research JSON file
     try {
       const researchDir = path.join(process.cwd(), "research");
       let filePath: string;
@@ -244,76 +225,37 @@ export class MemStorage implements IStorage {
       if (place.category === "restaurant") {
         filePath = path.join(researchDir, "restaurants.json");
         entry = {
-          name: place.name,
-          location: place.location,
-          latitude: place.latitude,
-          longitude: place.longitude,
-          cuisine: place.cuisine || "",
-          priceRange: place.priceRange || "€€",
-          description: place.description,
-          kidFeatures: place.kidFeatures,
-          ageRange: place.ageRange,
-          address: "",
-          website: place.website || "",
-          tip: place.tip || "",
-          sources: [],
-          imageUrl: place.imageUrl || "",
+          name: place.name, location: place.location, latitude: place.latitude, longitude: place.longitude,
+          cuisine: place.cuisine || "", priceRange: place.priceRange || "€€", description: place.description,
+          kidFeatures: place.kidFeatures, ageRange: place.ageRange, address: "", website: place.website || "",
+          tip: place.tip || "", sources: [], imageUrl: place.imageUrl || "",
           imageAlt: place.imageAlt || `${place.name} in ${place.location}`,
         };
       } else if (place.category === "beach") {
         filePath = path.join(researchDir, "beaches.json");
         entry = {
-          name: place.name,
-          location: place.location,
-          latitude: place.latitude,
-          longitude: place.longitude,
-          description: place.description,
-          kidFeatures: place.kidFeatures,
-          facilities: place.facilities || [],
-          bestSeason: "June–September",
-          ageRange: place.ageRange,
-          tip: place.tip || "",
-          sources: [],
-          imageUrl: place.imageUrl || "",
-          imageAlt: place.imageAlt || `${place.name} in ${place.location}`,
+          name: place.name, location: place.location, latitude: place.latitude, longitude: place.longitude,
+          description: place.description, kidFeatures: place.kidFeatures, facilities: place.facilities || [],
+          bestSeason: "June–September", ageRange: place.ageRange, tip: place.tip || "", sources: [],
+          imageUrl: place.imageUrl || "", imageAlt: place.imageAlt || `${place.name} in ${place.location}`,
         };
       } else if (place.category === "playground" || place.category === "activity") {
         filePath = path.join(researchDir, "playgrounds_activities.json");
         entry = {
-          name: place.name,
-          location: place.location,
-          latitude: place.latitude,
-          longitude: place.longitude,
-          category: place.category === "playground" ? "playground" : "activity",
-          description: place.description,
-          kidFeatures: place.kidFeatures,
-          ageRange: place.ageRange,
-          cost: place.cost || "",
-          openingHours: place.openingHours || "",
-          tip: place.tip || "",
-          sources: [],
-          imageUrl: place.imageUrl || "",
+          name: place.name, location: place.location, latitude: place.latitude, longitude: place.longitude,
+          category: place.category, description: place.description, kidFeatures: place.kidFeatures,
+          ageRange: place.ageRange, cost: place.cost || "", openingHours: place.openingHours || "",
+          tip: place.tip || "", sources: [], imageUrl: place.imageUrl || "",
           imageAlt: place.imageAlt || `${place.name} in ${place.location}`,
         };
       } else {
         filePath = path.join(researchDir, "attractions.json");
         entry = {
-          name: place.name,
-          location: place.location,
-          latitude: place.latitude,
-          longitude: place.longitude,
-          category: "attraction",
-          description: place.description,
-          kidFeatures: place.kidFeatures,
-          ageRange: place.ageRange,
-          priceAdult: place.priceAdult || "",
-          priceChild: place.priceChild || "",
-          openingHours: place.openingHours || "",
-          season: "Year-round",
-          website: place.website || "",
-          tip: place.tip || "",
-          sources: [],
-          imageUrl: place.imageUrl || "",
+          name: place.name, location: place.location, latitude: place.latitude, longitude: place.longitude,
+          category: "attraction", description: place.description, kidFeatures: place.kidFeatures,
+          ageRange: place.ageRange, priceAdult: place.priceAdult || "", priceChild: place.priceChild || "",
+          openingHours: place.openingHours || "", season: "Year-round", website: place.website || "",
+          tip: place.tip || "", sources: [], imageUrl: place.imageUrl || "",
           imageAlt: place.imageAlt || `${place.name} in ${place.location}`,
         };
       }
@@ -326,10 +268,6 @@ export class MemStorage implements IStorage {
     }
 
     return newPlace;
-  }
-
-  getSuggestions(): Suggestion[] {
-    return this.suggestions;
   }
 
   async getWeather(): Promise<WeatherData | null> {
@@ -377,4 +315,252 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// ============================================================
+// PostgreSQL storage — recipes, favorites, visited in database
+// ============================================================
+
+export class PgStorage extends BasePlaceStorage implements IStorage {
+  async getFavorites(): Promise<string[]> {
+    const db = getDb();
+    const rows = await db.select().from(favoritesTable);
+    return rows.map((r) => r.placeId);
+  }
+
+  async toggleFavorite(id: string): Promise<boolean> {
+    const db = getDb();
+    const existing = await db.select().from(favoritesTable).where(eq(favoritesTable.placeId, id));
+    if (existing.length > 0) {
+      await db.delete(favoritesTable).where(eq(favoritesTable.placeId, id));
+      return false;
+    } else {
+      await db.insert(favoritesTable).values({ placeId: id, createdAt: new Date().toISOString() });
+      return true;
+    }
+  }
+
+  async getVisited(): Promise<string[]> {
+    const db = getDb();
+    const rows = await db.select().from(visitedTable);
+    return rows.map((r) => r.placeId);
+  }
+
+  async toggleVisited(id: string): Promise<boolean> {
+    const db = getDb();
+    const existing = await db.select().from(visitedTable).where(eq(visitedTable.placeId, id));
+    if (existing.length > 0) {
+      await db.delete(visitedTable).where(eq(visitedTable.placeId, id));
+      return false;
+    } else {
+      await db.insert(visitedTable).values({ placeId: id, createdAt: new Date().toISOString() });
+      return true;
+    }
+  }
+
+  async getAllRecipes(): Promise<Recipe[]> {
+    const db = getDb();
+    const rows = await db.select().from(recipesTable);
+    return rows.map((r) => ({
+      id: r.id,
+      title: r.title,
+      url: r.url,
+      imageUrl: r.imageUrl || undefined,
+      description: r.description || undefined,
+      siteName: r.siteName || undefined,
+      categories: (r.categories || []) as RecipeCategory[],
+      cooked: r.cooked,
+      kidFavorite: r.kidFavorite,
+      createdAt: r.createdAt,
+    }));
+  }
+
+  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidFavorite">): Promise<Recipe> {
+    const db = getDb();
+    const id = `recipe-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
+    const createdAt = new Date().toISOString();
+    const newRecipe = {
+      id,
+      title: recipe.title,
+      url: recipe.url,
+      imageUrl: recipe.imageUrl || null,
+      description: recipe.description || null,
+      siteName: recipe.siteName || null,
+      categories: recipe.categories as string[],
+      cooked: false,
+      kidFavorite: false,
+      createdAt,
+    };
+    await db.insert(recipesTable).values(newRecipe);
+    return {
+      ...newRecipe,
+      imageUrl: newRecipe.imageUrl || undefined,
+      description: newRecipe.description || undefined,
+      siteName: newRecipe.siteName || undefined,
+      categories: newRecipe.categories as RecipeCategory[],
+    };
+  }
+
+  async deleteRecipe(id: string): Promise<boolean> {
+    const db = getDb();
+    const result = await db.delete(recipesTable).where(eq(recipesTable.id, id));
+    return true;
+  }
+
+  async toggleRecipeCooked(id: string): Promise<boolean> {
+    const db = getDb();
+    const rows = await db.select().from(recipesTable).where(eq(recipesTable.id, id));
+    if (rows.length === 0) return false;
+    const newValue = !rows[0].cooked;
+    await db.update(recipesTable).set({ cooked: newValue }).where(eq(recipesTable.id, id));
+    return newValue;
+  }
+
+  async toggleRecipeKidFavorite(id: string): Promise<boolean> {
+    const db = getDb();
+    const rows = await db.select().from(recipesTable).where(eq(recipesTable.id, id));
+    if (rows.length === 0) return false;
+    const newValue = !rows[0].kidFavorite;
+    await db.update(recipesTable).set({ kidFavorite: newValue }).where(eq(recipesTable.id, id));
+    return newValue;
+  }
+
+  async updateRecipeCategories(id: string, categories: RecipeCategory[]): Promise<Recipe | null> {
+    const db = getDb();
+    const rows = await db.select().from(recipesTable).where(eq(recipesTable.id, id));
+    if (rows.length === 0) return null;
+    await db.update(recipesTable).set({ categories: categories as string[] }).where(eq(recipesTable.id, id));
+    const updated = await db.select().from(recipesTable).where(eq(recipesTable.id, id));
+    const r = updated[0];
+    return {
+      id: r.id,
+      title: r.title,
+      url: r.url,
+      imageUrl: r.imageUrl || undefined,
+      description: r.description || undefined,
+      siteName: r.siteName || undefined,
+      categories: (r.categories || []) as RecipeCategory[],
+      cooked: r.cooked,
+      kidFavorite: r.kidFavorite,
+      createdAt: r.createdAt,
+    };
+  }
+}
+
+// ============================================================
+// In-Memory fallback (no DATABASE_URL)
+// ============================================================
+
+export class MemStorage extends BasePlaceStorage implements IStorage {
+  private favoritesSet: Set<string>;
+  private visitedSet: Set<string>;
+  private recipesArr: Recipe[];
+
+  constructor() {
+    super();
+    this.favoritesSet = new Set();
+    this.visitedSet = new Set();
+    this.recipesArr = [];
+
+    // Load persisted recipes from file
+    const recipesPath = path.join(process.cwd(), "data", "recipes.json");
+    try {
+      if (fs.existsSync(recipesPath)) {
+        this.recipesArr = JSON.parse(fs.readFileSync(recipesPath, "utf-8"));
+      }
+    } catch (e) {
+      console.error("Failed to load recipes:", e);
+    }
+  }
+
+  private persistRecipes() {
+    try {
+      const dataDir = path.join(process.cwd(), "data");
+      if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+      fs.writeFileSync(path.join(dataDir, "recipes.json"), JSON.stringify(this.recipesArr, null, 2), "utf-8");
+    } catch (e) {
+      console.error("Failed to persist recipes:", e);
+    }
+  }
+
+  async getFavorites(): Promise<string[]> {
+    return Array.from(this.favoritesSet);
+  }
+
+  async toggleFavorite(id: string): Promise<boolean> {
+    if (this.favoritesSet.has(id)) {
+      this.favoritesSet.delete(id);
+      return false;
+    } else {
+      this.favoritesSet.add(id);
+      return true;
+    }
+  }
+
+  async getVisited(): Promise<string[]> {
+    return Array.from(this.visitedSet);
+  }
+
+  async toggleVisited(id: string): Promise<boolean> {
+    if (this.visitedSet.has(id)) {
+      this.visitedSet.delete(id);
+      return false;
+    } else {
+      this.visitedSet.add(id);
+      return true;
+    }
+  }
+
+  async getAllRecipes(): Promise<Recipe[]> {
+    return this.recipesArr;
+  }
+
+  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidFavorite">): Promise<Recipe> {
+    const newRecipe: Recipe = {
+      ...recipe,
+      id: `recipe-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      cooked: false,
+      kidFavorite: false,
+      createdAt: new Date().toISOString(),
+    };
+    this.recipesArr.push(newRecipe);
+    this.persistRecipes();
+    return newRecipe;
+  }
+
+  async deleteRecipe(id: string): Promise<boolean> {
+    const idx = this.recipesArr.findIndex((r) => r.id === id);
+    if (idx === -1) return false;
+    this.recipesArr.splice(idx, 1);
+    this.persistRecipes();
+    return true;
+  }
+
+  async toggleRecipeCooked(id: string): Promise<boolean> {
+    const recipe = this.recipesArr.find((r) => r.id === id);
+    if (!recipe) return false;
+    recipe.cooked = !recipe.cooked;
+    this.persistRecipes();
+    return recipe.cooked;
+  }
+
+  async toggleRecipeKidFavorite(id: string): Promise<boolean> {
+    const recipe = this.recipesArr.find((r) => r.id === id);
+    if (!recipe) return false;
+    recipe.kidFavorite = !recipe.kidFavorite;
+    this.persistRecipes();
+    return recipe.kidFavorite;
+  }
+
+  async updateRecipeCategories(id: string, categories: RecipeCategory[]): Promise<Recipe | null> {
+    const recipe = this.recipesArr.find((r) => r.id === id);
+    if (!recipe) return null;
+    recipe.categories = categories;
+    this.persistRecipes();
+    return recipe;
+  }
+}
+
+// ============================================================
+// Export the storage instance — auto-selects based on DATABASE_URL
+// ============================================================
+
+export const storage: IStorage = hasDatabase() ? new PgStorage() : new MemStorage();

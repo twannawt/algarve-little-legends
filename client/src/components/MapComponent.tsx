@@ -4,9 +4,9 @@ import type { Place } from "@shared/schema";
 
 const markerColors: Record<Place["category"], string> = {
   beach: "hsl(195, 20%, 55%)",
-  restaurant: "hsl(15, 45%, 55%)",
-  playground: "hsl(155, 25%, 42%)",
-  attraction: "hsl(345, 25%, 60%)",
+  restaurant: "hsl(140, 20%, 42%)",
+  playground: "hsl(95, 18%, 48%)",
+  attraction: "hsl(170, 18%, 50%)",
   activity: "hsl(35, 55%, 65%)",
 };
 
@@ -76,7 +76,7 @@ export function MapComponent({
         <div style="min-width: 150px;">
           <strong style="font-size: 14px;">${place.name}</strong>
           <p style="margin: 4px 0; font-size: 12px; color: #666;">${place.location}</p>
-          <a href="#/place/${place.id}" style="font-size: 12px; color: hsl(15, 45%, 55%);">Bekijk details</a>
+          <a href="#/place/${place.id}" style="font-size: 12px; color: hsl(140, 20%, 42%);">Bekijk details</a>
         </div>
       `;
 

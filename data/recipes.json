@@ -1,0 +1,358 @@
+[
+  {
+    "id": "recipe-seed-1",
+    "title": "Voedzame quesadilla traybake waar de kids dol op zijn",
+    "url": "https://www.francescakookt.nl/voedzame-quesadilla-traybake-waar-de-kids-dol-op-zijn/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2025/09/voedzame-quesadilla-traybake-1-1024x683.jpg",
+    "description": "Samenwerking – We zijn thuis nog niet helemaal terug in het ritme na de zomervakantie. Wat wel goed lukt, is weer lekker voedzaam eten! En dat kan ook",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner",
+      "lunch"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:00:00.000Z"
+  },
+  {
+    "id": "recipe-seed-2",
+    "title": "Macaroni met tomaat en kipgehakt",
+    "url": "https://www.francescakookt.nl/macaroni-met-tomaat-en-kipgehakt/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2025/04/macaroni-met-tomaat-en-kipgehakt-1-1024x683.jpg",
+    "description": "Op zoek naar een makkelijk en voedzaam pastagerecht waar het hele gezin van smult? Deze macaroni met tomaat en kipgehakt is een absolute aanrader! Boo",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:01:00.000Z"
+  },
+  {
+    "id": "recipe-seed-3",
+    "title": "Volkoren bananenbrood met kaneel en noten",
+    "url": "https://www.francescakookt.nl/volkoren-bananenbrood-met-kaneel-en-noten/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2025/01/volkoren-bananenbrood-met-kaneel-en-noten-1-1024x683.jpg",
+    "description": "Wie mij volgt op Instagram weet ik dat ik een tijdje volkoren bananenbrood recepten heb getest samen met mijn jongste zoon. Ik wilde een volkoren bana",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "ontbijt"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:02:00.000Z"
+  },
+  {
+    "id": "recipe-seed-4",
+    "title": "Loaded nacho's met gehakt, paprika en pico de gallo",
+    "url": "https://www.francescakookt.nl/loaded-nachos-met-gehakt-paprika-en-pico-de-gallo/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2024/10/loaded-nachos-met-gehakt-paprika-en-pico-de-gallo-1-1024x683.jpg",
+    "description": "Samenwerking – Zin in een avondje Tex Mex thuis? Maak dan deze loaded nacho's met gehakt, paprika en pico de gallo! Een loaded nacho's schotel die vol",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:03:00.000Z"
+  },
+  {
+    "id": "recipe-seed-5",
+    "title": "Gnocchi alla sorrentina",
+    "url": "https://www.francescakookt.nl/gnocchi-alla-sorrentina/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2024/07/gnocchi-alla-sorrentina-1-1024x683.jpg",
+    "description": "Vandaag neem ik jullie mee naar de zonnige kust van Italië met een heerlijk gerecht: Gnocchi alla sorrentina. Deze klassieker uit Sorrento, een stadje",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:04:00.000Z"
+  },
+  {
+    "id": "recipe-seed-6",
+    "title": "Geurige tomatenrijst met vissticks",
+    "url": "https://www.francescakookt.nl/geurige-tomatenrijst-met-vissticks/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2024/03/geurige-tomatenrijst-met-vissticks-1-1024x683.jpg",
+    "description": "Samenwerking – Soms heb je van die dagen met veel dingen op je bord, en dan moet je óók nog je eten maken ;-). Met die uitdaging ga ik je dit jaar hel",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:05:00.000Z"
+  },
+  {
+    "id": "recipe-seed-7",
+    "title": "Appelflappen met romige appel-rozijnenvulling",
+    "url": "https://www.francescakookt.nl/appelflappen-met-romige-appel-rozijnenvulling/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2023/12/appelflappen-met-romige-appel-rozijnenvulling-1-1024x683.jpg",
+    "description": "Ik ben mijn hele leven al dol op appelflappen. Tja, wie is er niet groot mee geworden, toch? Maar wat blijkt, ik had nog helemaal geen recept voor app",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "snack"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:06:00.000Z"
+  },
+  {
+    "id": "recipe-seed-8",
+    "title": "Noedels met pindasaus en krokante kip",
+    "url": "https://www.francescakookt.nl/noedels-met-pindasaus-en-krokante-kip/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2023/09/noedels-met-pindasaus-en-krokante-kip-1-1024x683.jpg",
+    "description": "Samenwerking – Noedels met kip gaan er hier thuis altijd in. Zeker als ik het met een zelfgemaakte pindasaus maak! Sowieso gaat alles met pindakaas er",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:07:00.000Z"
+  },
+  {
+    "id": "recipe-seed-9",
+    "title": "Kids BBQ: Broodje kipburger met frietjes en tomatensalade",
+    "url": "https://www.francescakookt.nl/kids-bbq-broodje-kipburger-met-frietjes-en-tomatensalade/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2023/08/kids-bbq-broodje-kipburger-van-de-barbecue-met-frietjes-en-tomatensalade-1-1024x683.jpg",
+    "description": "Samenwerking – In de lente en zomer wordt bij ons thuis de barbecue minstens drie keer per week aangestoken. Het is een verlengstuk van onze keuken ge",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "lunch",
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:08:00.000Z"
+  },
+  {
+    "id": "recipe-seed-10",
+    "title": "Broodje kip hotdog met gekarameliseerde uien en mosterdketchup",
+    "url": "https://www.francescakookt.nl/broodje-kip-hotdog-met-gekarameliseerde-uien-en-mosterdketchup/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2023/06/broodje-kiphotdog-met-gekarameliseerde-uien-en-mosterdketchup-1-1024x683.jpg",
+    "description": "Vandaag zet ik een van de favoriete recepten van mijn mannen in het zonnetje! Helemaal verzot zijn ze op dit broodje kip hotdog met gekarameliseerde u",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "lunch",
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:09:00.000Z"
+  },
+  {
+    "id": "recipe-seed-11",
+    "title": "Tex Mex rijstsalade met kip en knoflook nacho chips",
+    "url": "https://www.francescakookt.nl/tex-mex-rijstsalade-met-kip-en-knoflook-nacho-chips/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2023/06/tex-mex-rijstsalade-met-kip-en-knoflook-nacho-chips-1-1024x683.jpg",
+    "description": "Samenwerking – Tex Mex gerechten hoeven echt niet altijd verpakt te zijn in een tortilla. Is wel heel lekker natuurlijk ;-), maar je kunt met de basis",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "lunch",
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:10:00.000Z"
+  },
+  {
+    "id": "recipe-seed-12",
+    "title": "Kip fajita's met paprika, ui en limoen",
+    "url": "https://www.francescakookt.nl/kip-fajitas-met-paprika-ui-en-limoen/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2023/03/kip-fajita-s-met-paprika-ui-en-limoen-1-1024x683.jpg",
+    "description": "Samenwerking – Fajita's is een heerlijk Tex Mex gerecht voor doordeweeks en je kunt ze supersnel maken. Voor deze fajita's met kip, paprika, ui en lim",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:11:00.000Z"
+  },
+  {
+    "id": "recipe-seed-13",
+    "title": "Japanse stijl curry met vissticks",
+    "url": "https://www.francescakookt.nl/japanse-stijl-curry-met-vissticks/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2023/03/japanse-stijl-curry-met-vissticks-1-1024x683.jpg",
+    "description": "Samenwerking – Onze kinderen zijn dol op curry's, in alle vormen en smaken. Vooral de Japanse katsu curry met krokante kip is favoriet thuis en geïnsp",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:12:00.000Z"
+  },
+  {
+    "id": "recipe-seed-14",
+    "title": "Gnocchi uit de oven met honingtomaten en gekarameliseerde ui",
+    "url": "https://www.francescakookt.nl/gnocchi-uit-de-oven-met-honingtomaten-en-gekarameliseerde-ui/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2023/03/gnocchi-uit-de-oven-met-honingtomaten-en-gekarameliseerde-ui-1-1024x683.jpg",
+    "description": "Ik ben dol op gnocchi uit de oven en we maken het dan ook regelmatig thuis. Vaak met veel kaas erover om te gratineren. Maar deze keer niet. Ik liet m",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:13:00.000Z"
+  },
+  {
+    "id": "recipe-seed-15",
+    "title": "Surinaams gehakt met broccoli en witte rijst",
+    "url": "https://www.francescakookt.nl/surinaams-gehakt-met-broccoli-en-witte-rijst/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2023/02/surinaams-gehakt-met-broccoli-en-witte-rijst-1-1024x683.jpg",
+    "description": "Als ik mijn oudste kind ergens blij mee kan maken op eetgebied dan is het wel met een bordje Surinaams gehakt naar recept van zijn dadi, oftewel oma.",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:14:00.000Z"
+  },
+  {
+    "id": "recipe-seed-16",
+    "title": "Zalm en croûte met krokante aardappeltjes en sperziebonen",
+    "url": "https://www.francescakookt.nl/koemelkvrije-zalm-en-croute-van-annabel/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2022/12/koemelkvrije-zalm-en-croute-van-annabel-1-1024x683.jpg",
+    "description": "Deze kerstdagen maakte ik kennis met vier bijzondere gasten die mij alles vertelden over hun kersttradities. Zo was Annabel op bezoek in mijn kerstkeu",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:15:00.000Z"
+  },
+  {
+    "id": "recipe-seed-17",
+    "title": "Kruidnotentoetje met Griekse yoghurt en mango",
+    "url": "https://www.francescakookt.nl/kruidnotentoetje-met-griekse-yoghurt-en-mango/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2022/11/kruidnotentoetje-met-Griekse-yoghurt-mango-en-mandarijn-1-1024x683.jpg",
+    "description": "Mijn oudste kind kwam laatst thuis van een etentje bij vrienden en vertelde me vol enthousiasme over een toetje wat hij daar had gegeten met een bodem",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "tussendoortje"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:16:00.000Z"
+  },
+  {
+    "id": "recipe-seed-18",
+    "title": "Spaghetti met cherrytomatensaus",
+    "url": "https://www.francescakookt.nl/spaghetti-met-cherrytomatensaus/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2022/10/spaghetti-met-geroosterde-cherrytomatensaus-1-1024x683.jpg",
+    "description": "Een tijdje terug had ik een kilo cherrytomaten in huis die ik besloot te roosteren in de oven. Uiteindelijk werd het een cherrytomatensaus voor mijn s",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:17:00.000Z"
+  },
+  {
+    "id": "recipe-seed-19",
+    "title": "Hartige groentecake met courgette en Honingtomaten",
+    "url": "https://www.francescakookt.nl/hartige-groentecake-met-courgette-en-honingtomaten/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2022/08/hartige-groentecake-met-courgette-en-honingtomaten-1-1024x683.jpg",
+    "description": "Afgelopen week deelde ik met jullie al mijn hartige cupcakes met Honingtomaten en vandaag staat er nog een hartig baksel op de planning. Ik bakte onla",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "lunch",
+      "snack"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:18:00.000Z"
+  },
+  {
+    "id": "recipe-seed-20",
+    "title": "Hartige cupcakes met Honingtomaten voor in de lunchtrommel",
+    "url": "https://www.francescakookt.nl/hartige-cupcakes-met-honingtomaten-voor-in-de-lunchtrommel/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2022/08/hartige-cupcakes-met-honingtomaten-voor-in-de-lunchtrommel-1-1024x683.jpg",
+    "description": "Samenwerking – Na 6 heerlijke zomervakantieweken gaan onze jongens vandaag weer naar school. Zij hebben er onwijs veel zin in, en ik inmiddels ook ;-)",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "lunch",
+      "snack"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:19:00.000Z"
+  },
+  {
+    "id": "recipe-seed-21",
+    "title": "Groente enchilada's met geroosterde kip",
+    "url": "https://www.francescakookt.nl/groente-enchiladas-met-geroosterde-kip/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2022/07/groente-enchiladas-met-geroosterde-kip-1-1024x683.jpg",
+    "description": "Samenwerking – Als ik enchilada's maak als avondeten, zit er vaak niet heel veel groente in.  Terwijl het wel een ideaal gerecht is om veel groente in",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:20:00.000Z"
+  },
+  {
+    "id": "recipe-seed-22",
+    "title": "Pasta met broccoli-courgettesaus en pangrattato",
+    "url": "https://www.francescakookt.nl/pasta-met-broccoli-courgettesaus-en-pangrattato/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2022/07/pasta-met-broccoli-courgettesaus-en-pangrattato-1-1024x683.jpg",
+    "description": "Dit is nou echt een top recept voor het hele gezin in de zomer. Een voedzame pasta met broccoli-courgettesaus die helemaal niet gezond proeft, maar he",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:21:00.000Z"
+  },
+  {
+    "id": "recipe-seed-23",
+    "title": "Klassieke lasagne met veel laagjes",
+    "url": "https://www.francescakookt.nl/klassieke-lasagne-met-veel-laagjes/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2022/05/klassieke-lasagne-met-veel-laagjes-1-1024x683.jpg",
+    "description": "Een van mijn vriendinnen merkte laatst op dat ik al aardig wat lasagne recepten op mijn blog heb staan. Daar heeft ze wellicht een punt ;-). Maar het",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:22:00.000Z"
+  },
+  {
+    "id": "recipe-seed-24",
+    "title": "Vegetarische roerbakschotel met kikkererwten",
+    "url": "https://www.francescakookt.nl/vegetarische-roerbakschotel-met-kikkererwten/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2022/05/vegetarische-roerbakschotel-met-kikkererwten-1-1024x683.jpg",
+    "description": "Wij eten zeker één keer per week een roerbakschotel thuis. Soms gebruik ik daar gesneden groenten voor uit het koelschap en als ik nog groenten over h",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:23:00.000Z"
+  },
+  {
+    "id": "recipe-seed-25",
+    "title": "Kip kerrie met kokos en amandelen",
+    "url": "https://www.francescakookt.nl/kip-kerrie-met-kokos-en-amandelen/",
+    "imageUrl": "https://www.francescakookt.nl/wp-content/uploads/2022/05/kip-kerrie-met-kokos-en-amandelen-1-1024x683.jpg",
+    "description": "Kip kerrie wordt altijd met gejuich ontvangen in ons huis. Ik moet er alleen altijd wel voor zorgen dat ik duidelijk omschrijf welke versie de heren k",
+    "siteName": "Francesca Kookt",
+    "categories": [
+      "diner"
+    ],
+    "cooked": false,
+    "kidFavorite": false,
+    "createdAt": "2026-03-18T12:24:00.000Z"
+  }
+]

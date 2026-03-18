@@ -1,7 +1,8 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { importFromUrls } from "./url-import";
+import { importFromUrls, importRecipeFromUrl, bulkImportRecipes, bulkImportPlaces } from "./url-import";
+import type { RecipeCategory } from "@shared/schema";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -36,12 +37,13 @@ export async function registerRoutes(
     res.json(storage.getCategoryCounts());
   });
 
-  app.get("/api/favorites", (_req, res) => {
-    res.json(storage.getFavorites());
+  app.get("/api/favorites", async (_req, res) => {
+    const favs = await storage.getFavorites();
+    res.json(favs);
   });
 
-  app.post("/api/favorites/:id", (req, res) => {
-    const isFavorite = storage.toggleFavorite(req.params.id);
+  app.post("/api/favorites/:id", async (req, res) => {
+    const isFavorite = await storage.toggleFavorite(req.params.id);
     res.json({ id: req.params.id, isFavorite });
   });
 
@@ -57,12 +59,13 @@ export async function registerRoutes(
     res.json(weather);
   });
 
-  app.get("/api/visited", (_req, res) => {
-    res.json(storage.getVisited());
+  app.get("/api/visited", async (_req, res) => {
+    const vis = await storage.getVisited();
+    res.json(vis);
   });
 
-  app.post("/api/visited/:id", (req, res) => {
-    const isVisited = storage.toggleVisited(req.params.id);
+  app.post("/api/visited/:id", async (req, res) => {
+    const isVisited = await storage.toggleVisited(req.params.id);
     res.json({ id: req.params.id, isVisited });
   });
 
@@ -123,6 +126,143 @@ export async function registerRoutes(
       imageAlt: `${name} in ${location}`,
     });
     res.json(place);
+  });
+
+  // ===== Recipe API =====
+
+  app.get("/api/recipes", async (_req, res) => {
+    const recipes = await storage.getAllRecipes();
+    res.json(recipes);
+  });
+
+  app.post("/api/recipes", async (req, res) => {
+    const { title, url, imageUrl, description, siteName, categories, category } = req.body;
+    if (!title || !url) {
+      return res.status(400).json({ message: "Titel en URL zijn verplicht" });
+    }
+    // Support both 'categories' (array) and legacy 'category' (string)
+    let cats: RecipeCategory[] = [];
+    if (Array.isArray(categories) && categories.length > 0) {
+      cats = categories;
+    } else if (category) {
+      cats = [category];
+    } else {
+      cats = ["overig"];
+    }
+    const recipe = await storage.addRecipe({
+      title,
+      url,
+      imageUrl: imageUrl || undefined,
+      description: description || undefined,
+      siteName: siteName || undefined,
+      categories: cats,
+    });
+    res.json(recipe);
+  });
+
+  app.delete("/api/recipes/:id", async (req, res) => {
+    const deleted = await storage.deleteRecipe(req.params.id);
+    if (!deleted) return res.status(404).json({ message: "Recept niet gevonden" });
+    res.json({ success: true });
+  });
+
+  app.post("/api/recipes/:id/cooked", async (req, res) => {
+    const cooked = await storage.toggleRecipeCooked(req.params.id);
+    res.json({ id: req.params.id, cooked });
+  });
+
+  app.post("/api/recipes/:id/kid-favorite", async (req, res) => {
+    const kidFavorite = await storage.toggleRecipeKidFavorite(req.params.id);
+    res.json({ id: req.params.id, kidFavorite });
+  });
+
+  // Update categories for a recipe
+  app.patch("/api/recipes/:id/categories", async (req, res) => {
+    const { categories } = req.body;
+    if (!Array.isArray(categories)) {
+      return res.status(400).json({ message: "Categorieën moeten een array zijn" });
+    }
+    const recipe = await storage.updateRecipeCategories(req.params.id, categories);
+    if (!recipe) return res.status(404).json({ message: "Recept niet gevonden" });
+    res.json(recipe);
+  });
+
+  app.post("/api/recipes/import-url", async (req, res) => {
+    const { url } = req.body;
+    if (!url) {
+      return res.status(400).json({ message: "URL is verplicht" });
+    }
+    try {
+      const result = await importRecipeFromUrl(url);
+      res.json(result);
+    } catch (e) {
+      console.error("Recipe URL import failed:", e);
+      res.status(500).json({ message: "Kon de URL niet verwerken" });
+    }
+  });
+
+  // Bulk import recipes from a page with multiple recipe links
+  app.post("/api/recipes/import-bulk", async (req, res) => {
+    const { url } = req.body;
+    if (!url) {
+      return res.status(400).json({ message: "URL is verplicht" });
+    }
+    try {
+      const results = await bulkImportRecipes(url);
+      let imported = 0;
+      for (const r of results) {
+        if (r.title && r.url) {
+          await storage.addRecipe({
+            title: r.title,
+            url: r.url,
+            imageUrl: r.imageUrl || undefined,
+            description: r.description || undefined,
+            siteName: r.siteName || undefined,
+            categories: ["overig"],
+          });
+          imported++;
+        }
+      }
+      res.json({ imported, total: results.length });
+    } catch (e) {
+      console.error("Bulk recipe import failed:", e);
+      res.status(500).json({ message: "Kon de pagina niet verwerken" });
+    }
+  });
+
+  // Bulk import places from a page with multiple place links
+  app.post("/api/places/import-bulk", async (req, res) => {
+    const { url } = req.body;
+    if (!url) {
+      return res.status(400).json({ message: "URL is verplicht" });
+    }
+    try {
+      const results = await bulkImportPlaces(url);
+      let imported = 0;
+      for (const p of results) {
+        if (p.name) {
+          storage.addPlace({
+            name: p.name,
+            location: p.location || "Algarve",
+            latitude: p.latitude || 0,
+            longitude: p.longitude || 0,
+            category: (p.category as any) || "attraction",
+            description: p.description || "",
+            kidFeatures: [],
+            ageRange: "0-12",
+            tip: "",
+            website: p.website || undefined,
+            imageUrl: p.imageUrl || undefined,
+            imageAlt: `${p.name} in ${p.location || "Algarve"}`,
+          });
+          imported++;
+        }
+      }
+      res.json({ imported, total: results.length });
+    } catch (e) {
+      console.error("Bulk place import failed:", e);
+      res.status(500).json({ message: "Kon de pagina niet verwerken" });
+    }
   });
 
   return httpServer;

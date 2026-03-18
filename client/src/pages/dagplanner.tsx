@@ -46,8 +46,8 @@ export default function DagplannerPage() {
           icon: UtensilsCrossed,
           label: t("lunch"),
           place: plan.restaurant,
-          color: "bg-[hsl(15,45%,55%)]",
-          lineColor: "border-[hsl(15,45%,55%)]/30",
+          color: "bg-[hsl(140,20%,42%)]",
+          lineColor: "border-[hsl(140,20%,42%)]/30",
         },
         {
           icon: Bike,
@@ -60,8 +60,8 @@ export default function DagplannerPage() {
           icon: TreePine,
           label: t("buitenSpelen"),
           place: plan.playground,
-          color: "bg-[hsl(155,25%,42%)]",
-          lineColor: "border-[hsl(155,25%,42%)]/30",
+          color: "bg-[hsl(95,18%,48%)]",
+          lineColor: "border-[hsl(95,18%,48%)]/30",
         },
       ]
     : [];
@@ -147,7 +147,7 @@ export default function DagplannerPage() {
       <Button
         onClick={fetchPlan}
         disabled={loading}
-        className="w-full h-12 mt-2 bg-gradient-to-r from-[hsl(15,45%,55%)] to-[hsl(345,25%,60%)] text-white hover:opacity-90 shadow-sm"
+        className="w-full h-12 mt-2 bg-gradient-to-r from-[hsl(140,20%,42%)] to-[hsl(170,18%,50%)] text-white hover:opacity-90 shadow-sm"
       >
         <RefreshCw className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`} />
         {t("nieuwDagplan")}

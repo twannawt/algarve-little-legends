@@ -3,7 +3,7 @@
  * No external AI API needed; uses URL parsing and HTML metadata extraction.
  */
 
-import type { UrlImportResult, Place } from "@shared/schema";
+import type { UrlImportResult, Place, RecipeImportResult } from "@shared/schema";
 
 // ============================================================
 // Google Maps URL parsing
@@ -312,4 +312,178 @@ export async function importFromUrls(
   }
 
   return result;
+}
+
+// ============================================================
+// Bulk URL extraction — find links on a page
+// ============================================================
+
+export async function extractLinksFromPage(url: string): Promise<string[]> {
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+
+    const res = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        "User-Agent": "Mozilla/5.0 (compatible; AlgarveLittleLegends/1.0)",
+        Accept: "text/html",
+      },
+    });
+    clearTimeout(timeout);
+
+    const html = await res.text();
+
+    // Extract all <a href="..."> links
+    const linkRegex = /<a[^>]+href=["']([^"'#][^"']*)["']/gi;
+    const links: string[] = [];
+    let match;
+    while ((match = linkRegex.exec(html)) !== null) {
+      let href = match[1];
+      // Resolve relative URLs
+      if (href.startsWith("/")) {
+        try {
+          href = new URL(href, url).href;
+        } catch { continue; }
+      }
+      if (href.startsWith("http")) {
+        links.push(href);
+      }
+    }
+    return [...new Set(links)];
+  } catch {
+    return [];
+  }
+}
+
+export async function bulkImportRecipes(pageUrl: string): Promise<RecipeImportResult[]> {
+  const links = await extractLinksFromPage(pageUrl);
+
+  // Filter links that look like recipe pages (heuristic)
+  const recipeLinks = links.filter((link) => {
+    const lower = link.toLowerCase();
+    return (
+      lower.includes("recept") ||
+      lower.includes("recipe") ||
+      lower.includes("/r/") ||
+      lower.includes("/allerhande/") ||
+      lower.includes("/koken/")
+    );
+  }).slice(0, 20); // Limit to 20 to avoid overloading
+
+  const results: RecipeImportResult[] = [];
+  for (const link of recipeLinks) {
+    try {
+      const result = await importRecipeFromUrl(link);
+      if (result.title) {
+        results.push({ ...result, url: link });
+      }
+    } catch { /* skip failed imports */ }
+  }
+  return results;
+}
+
+export async function bulkImportPlaces(pageUrl: string): Promise<Array<{
+  name: string;
+  location: string;
+  category: string;
+  description: string;
+  latitude: number;
+  longitude: number;
+  website: string;
+  imageUrl: string;
+}>> {
+  const links = await extractLinksFromPage(pageUrl);
+
+  // Filter links that look like Google Maps or place pages
+  const placeLinks = links.filter((link) => {
+    const lower = link.toLowerCase();
+    return (
+      lower.includes("google.com/maps") ||
+      lower.includes("goo.gl/maps") ||
+      lower.includes("maps.app.goo.gl")
+    );
+  }).slice(0, 20);
+
+  const results: Array<{
+    name: string;
+    location: string;
+    category: string;
+    description: string;
+    latitude: number;
+    longitude: number;
+    website: string;
+    imageUrl: string;
+  }> = [];
+
+  for (const link of placeLinks) {
+    try {
+      const result = await importFromUrls(link, "", "");
+      if (result.name) {
+        results.push({
+          name: result.name,
+          location: result.location,
+          category: result.category,
+          description: result.description,
+          latitude: result.latitude,
+          longitude: result.longitude,
+          website: result.website || "",
+          imageUrl: result.imageUrl || "",
+        });
+      }
+    } catch { /* skip */ }
+  }
+
+  // If no Google Maps links found, try extracting from regular page links
+  if (results.length === 0) {
+    // Try fetching each unique-domain link and check for place info
+    const otherLinks = links
+      .filter(link => !link.includes("google.com/maps"))
+      .slice(0, 10);
+
+    for (const link of otherLinks) {
+      try {
+        const result = await importFromUrls("", link, "");
+        if (result.name && result.name.length > 2) {
+          results.push({
+            name: result.name,
+            location: result.location || "Algarve",
+            category: result.category,
+            description: result.description,
+            latitude: result.latitude,
+            longitude: result.longitude,
+            website: link,
+            imageUrl: result.imageUrl || "",
+          });
+        }
+      } catch { /* skip */ }
+    }
+  }
+
+  return results;
+}
+
+// ============================================================
+// Recipe URL import
+// ============================================================
+
+export async function importRecipeFromUrl(url: string): Promise<RecipeImportResult> {
+  const meta = await fetchWebMeta(url);
+  const decodeHtml = (s: string) =>
+    s.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&#x27;/g, "'");
+
+  let title = "";
+  if (meta.title) {
+    title = decodeHtml(meta.title)
+      .replace(/\s*[-|–—]\s*(recept|recipe|recepten).*/i, "")
+      .replace(/\s*[-|–—]\s*(allerhande|ah|jumbo|albert heijn|leuke recepten|smulweb|lekker en simpel|24kitchen).*/i, "")
+      .trim();
+  }
+
+  return {
+    title,
+    imageUrl: meta.image?.startsWith("http") ? meta.image : (meta.image ? new URL(meta.image, url).href : ""),
+    description: meta.description ? decodeHtml(meta.description).slice(0, 300) : "",
+    siteName: meta.siteName ? decodeHtml(meta.siteName) : new URL(url).hostname.replace(/^www\./, ""),
+  };
 }

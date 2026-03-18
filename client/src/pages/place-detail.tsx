@@ -26,11 +26,11 @@ import { getDistance, LAGOA_LAT, LAGOA_LNG } from "@/lib/geo";
 import type { Place } from "@shared/schema";
 
 const categoryHeroGradient: Record<string, string> = {
-  restaurant: "from-[hsl(15,45%,55%)] to-[hsl(15,45%,65%)]",
+  restaurant: "from-[hsl(140,20%,42%)] to-[hsl(140,20%,52%)]",
   beach: "from-[hsl(195,20%,55%)] to-[hsl(195,20%,65%)]",
-  playground: "from-[hsl(155,25%,42%)] to-[hsl(155,25%,52%)]",
+  playground: "from-[hsl(95,18%,48%)] to-[hsl(95,18%,55%)]",
   activity: "from-[hsl(35,55%,65%)] to-[hsl(35,55%,75%)]",
-  attraction: "from-[hsl(345,25%,60%)] to-[hsl(345,25%,70%)]",
+  attraction: "from-[hsl(170,18%,50%)] to-[hsl(170,18%,58%)]",
 };
 
 /** Hero image with loading state + gradient fallback on error */

@@ -11,19 +11,19 @@ const iconMap: Record<Place["category"], React.ComponentType<{ className?: strin
 };
 
 const colorMap: Record<Place["category"], string> = {
-  restaurant: "text-[hsl(15,45%,55%)]",
+  restaurant: "text-[hsl(140,20%,42%)]",
   beach: "text-[hsl(195,20%,55%)]",
-  playground: "text-[hsl(155,25%,42%)]",
+  playground: "text-[hsl(95,18%,48%)]",
   activity: "text-[hsl(35,55%,65%)]",
-  attraction: "text-[hsl(345,25%,60%)]",
+  attraction: "text-[hsl(170,18%,50%)]",
 };
 
 const bgColorMap: Record<Place["category"], string> = {
-  restaurant: "bg-[hsl(15,45%,55%)]/10",
+  restaurant: "bg-[hsl(140,20%,42%)]/10",
   beach: "bg-[hsl(195,20%,55%)]/10",
-  playground: "bg-[hsl(155,25%,42%)]/10",
+  playground: "bg-[hsl(95,18%,48%)]/10",
   activity: "bg-[hsl(35,55%,65%)]/10",
-  attraction: "bg-[hsl(345,25%,60%)]/10",
+  attraction: "bg-[hsl(170,18%,50%)]/10",
 };
 
 const labelKeyMap: Record<Place["category"], "restaurant" | "strand" | "speeltuin" | "activiteit" | "attractie"> = {

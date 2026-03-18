@@ -135,10 +135,7 @@ export function Header() {
           className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
         >
           <AlgarveLittleLegendsLogo />
-          <div className="flex flex-col">
-            <span className="font-serif font-bold text-lg text-foreground leading-tight">Algarve Little Legends</span>
-            <span className="text-[11px] text-muted-foreground leading-tight mt-1">Vandaag iets doen met Charlie & Bodi</span>
-          </div>
+          <span className="font-serif font-bold text-lg text-foreground leading-tight">Algarve Little Legends</span>
         </button>
 
         <Button

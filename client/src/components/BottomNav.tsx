@@ -1,17 +1,60 @@
-import { Home, Map, Heart, CalendarDays } from "lucide-react";
+import { Home, Map, Heart, CalendarDays, Plus, UtensilsCrossed } from "lucide-react";
 import { useLocation } from "wouter";
 import { useT } from "@/lib/i18n";
+
+// Pages that belong to the "Wat gaan we eten" (recipes) section
+const RECIPE_PATHS = new Set(["/recepten"]);
+
+// Pages that belong to the "Wat gaan we doen" (activities) section
+const ACTIVITY_PATHS = new Set(["/", "/dagplanner", "/map", "/favorites", "/suggest", "/place"]);
+
+function isActivitiesSection(location: string): boolean {
+  if (ACTIVITY_PATHS.has(location)) return true;
+  if (location.startsWith("/place/")) return true;
+  return false;
+}
+
+function isRecipesSection(location: string): boolean {
+  return RECIPE_PATHS.has(location);
+}
+
+interface NavItem {
+  path: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  action?: () => void;
+}
 
 export function BottomNav() {
   const [location, navigate] = useLocation();
   const t = useT();
 
-  const navItems = [
+  const inRecipes = isRecipesSection(location);
+
+  // Build navigation items based on current section
+  const activityNav: NavItem[] = [
     { path: "/", label: t("home"), icon: Home },
     { path: "/dagplanner", label: t("dagplanner"), icon: CalendarDays },
     { path: "/map", label: t("kaart"), icon: Map },
     { path: "/favorites", label: t("favorieten"), icon: Heart },
   ];
+
+  const recipeNav: NavItem[] = [
+    { path: "/recepten", label: t("navRecepten"), icon: UtensilsCrossed },
+  ];
+
+  const navItems = inRecipes ? recipeNav : activityNav;
+  const addPath = inRecipes ? "__add-recipe__" : "/suggest";
+  const addLabel = t("navToevoegen");
+
+  // Dispatch a custom event for the recipes page to listen to
+  function handleAddClick() {
+    if (inRecipes) {
+      window.dispatchEvent(new CustomEvent("toggle-add-recipe"));
+    } else {
+      navigate("/suggest");
+    }
+  }
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur" style={{ boxShadow: "0 -2px 10px rgba(60,50,40,0.06)" }}>
@@ -42,6 +85,18 @@ export function BottomNav() {
             </button>
           );
         })}
+
+        {/* Add button — always present */}
+        <button
+          data-testid="nav-toevoegen"
+          onClick={handleAddClick}
+          className="flex flex-col items-center gap-1 px-4 py-3 rounded-lg text-primary hover:text-primary/80 transition-colors"
+        >
+          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 border border-primary/20">
+            <Plus className="h-5 w-5" />
+          </div>
+          <span className="text-xs font-medium">{addLabel}</span>
+        </button>
       </div>
     </nav>
   );

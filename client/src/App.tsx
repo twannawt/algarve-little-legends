@@ -9,6 +9,7 @@ import { I18nProvider, useI18n } from "@/lib/i18n";
 import { useOnlineStatus } from "@/hooks/use-online";
 import { Header } from "@/components/Header";
 import { BottomNav } from "@/components/BottomNav";
+import { AppTabs } from "@/components/AppTabs";
 
 // Eager-load home (initial route)
 import HomePage from "@/pages/home";
@@ -19,6 +20,7 @@ const MapView = lazy(() => import("@/pages/map"));
 const FavoritesPage = lazy(() => import("@/pages/favorites"));
 const SuggestPage = lazy(() => import("@/pages/suggest"));
 const DagplannerPage = lazy(() => import("@/pages/dagplanner"));
+const RecipesPage = lazy(() => import("@/pages/recipes"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function PageLoader() {
@@ -47,6 +49,7 @@ function AppRouter() {
         <Route path="/favorites" component={FavoritesPage} />
         <Route path="/suggest" component={SuggestPage} />
         <Route path="/dagplanner" component={DagplannerPage} />
+        <Route path="/recepten" component={RecipesPage} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
@@ -73,6 +76,7 @@ function App() {
           <Router hook={useHashLocation}>
             <ScrollToTop />
             <Header />
+            <AppTabs />
             <OfflineBanner />
             <main className="min-h-screen">
               <AppRouter />

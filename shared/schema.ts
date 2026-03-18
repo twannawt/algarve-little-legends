@@ -46,6 +46,29 @@ export interface UrlImportResult {
   imageUrl: string;
 }
 
+export type RecipeCategory = 'ontbijt' | 'lunch' | 'diner' | 'snack' | 'tussendoortje' | 'overig';
+
+export interface Recipe {
+  id: string;
+  title: string;
+  url: string;
+  imageUrl?: string;
+  description?: string;
+  siteName?: string;
+  categories: RecipeCategory[];
+  cooked: boolean;
+  kidFavorite: boolean;
+  createdAt: string;
+}
+
+export interface RecipeImportResult {
+  title: string;
+  imageUrl: string;
+  description: string;
+  siteName: string;
+  url?: string;
+}
+
 export interface WeatherData {
   current: {
     temperature: number;

@@ -10,11 +10,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import type { Place } from "@shared/schema";
 
 const categoryGradient: Record<string, string> = {
-  restaurant: "from-[hsl(15,45%,52%)] to-[hsl(25,50%,68%)]",
+  restaurant: "from-[hsl(140,20%,40%)] to-[hsl(130,16%,56%)]",
   beach: "from-[hsl(195,35%,50%)] to-[hsl(185,30%,65%)]",
-  playground: "from-[hsl(155,30%,40%)] to-[hsl(145,25%,55%)]",
+  playground: "from-[hsl(95,20%,46%)] to-[hsl(90,16%,55%)]",
   activity: "from-[hsl(35,60%,58%)] to-[hsl(40,55%,72%)]",
-  attraction: "from-[hsl(345,30%,55%)] to-[hsl(350,28%,68%)]",
+  attraction: "from-[hsl(170,22%,48%)] to-[hsl(165,16%,58%)]",
 };
 
 /** Image with loading skeleton + fallback to SVG illustration on error */

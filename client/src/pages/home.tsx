@@ -19,9 +19,9 @@ import {
   CloudDrizzle,
   CloudLightning,
   CloudFog,
-  Plus,
-  Calendar,
   Navigation,
+  User,
+  Baby,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -33,13 +33,14 @@ import { apiRequest } from "@/lib/queryClient";
 import { useT } from "@/lib/i18n";
 import { getDistance, LAGOA_LAT, LAGOA_LNG } from "@/lib/geo";
 import type { Place, WeatherData } from "@shared/schema";
+import { FloatingResetButton } from "@/components/FloatingResetButton";
 
 const categoryConfig = [
-  { key: "restaurant", labelKey: "restaurants" as const, icon: UtensilsCrossed, color: "bg-[hsl(15,45%,55%)]/10 text-[hsl(15,45%,55%)]" },
+  { key: "restaurant", labelKey: "restaurants" as const, icon: UtensilsCrossed, color: "bg-[hsl(140,20%,42%)]/10 text-[hsl(140,20%,42%)]" },
   { key: "beach", labelKey: "stranden" as const, icon: Waves, color: "bg-[hsl(195,20%,55%)]/10 text-[hsl(195,20%,55%)]" },
-  { key: "playground", labelKey: "speeltuinen" as const, icon: TreePine, color: "bg-[hsl(155,25%,42%)]/10 text-[hsl(155,25%,42%)]" },
+  { key: "playground", labelKey: "speeltuinen" as const, icon: TreePine, color: "bg-[hsl(95,18%,48%)]/10 text-[hsl(95,18%,48%)]" },
   { key: "activity", labelKey: "activiteiten" as const, icon: Bike, color: "bg-[hsl(35,55%,65%)]/10 text-[hsl(35,55%,65%)]" },
-  { key: "attraction", labelKey: "attracties" as const, icon: Ticket, color: "bg-[hsl(345,25%,60%)]/10 text-[hsl(345,25%,60%)]" },
+  { key: "attraction", labelKey: "attracties" as const, icon: Ticket, color: "bg-[hsl(170,18%,50%)]/10 text-[hsl(170,18%,50%)]" },
 ] as const;
 
 function getWeatherIcon(code: number, size = "h-5 w-5"): React.ReactNode {
@@ -184,8 +185,10 @@ function KidsTracker() {
   return (
     <div className="flex gap-3 mb-5">
       {/* Charlie */}
-      <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[hsl(345,30%,95%)] dark:bg-[hsl(345,20%,15%)] border border-[hsl(345,25%,85%)] dark:border-[hsl(345,15%,25%)]">
-        <span className="text-xl" role="img" aria-label="meisje">👧</span>
+      <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[hsl(170,18%,95%)] dark:bg-[hsl(170,18%,15%)] border border-[hsl(170,18%,85%)] dark:border-[hsl(170,15%,25%)]">
+        <div className="w-8 h-8 rounded-full bg-[hsl(170,18%,85%)] dark:bg-[hsl(170,15%,25%)] flex items-center justify-center">
+          <User className="h-4 w-4 text-[hsl(170,18%,48%)]" />
+        </div>
         <div className="min-w-0">
           <span className="text-sm font-semibold text-foreground">Charlie</span>
           <p className="text-xs text-muted-foreground">
@@ -195,7 +198,9 @@ function KidsTracker() {
       </div>
       {/* Bodi */}
       <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[hsl(210,30%,95%)] dark:bg-[hsl(210,20%,15%)] border border-[hsl(210,25%,85%)] dark:border-[hsl(210,15%,25%)]">
-        <span className="text-xl" role="img" aria-label="jongen">👦</span>
+        <div className="w-8 h-8 rounded-full bg-[hsl(210,25%,85%)] dark:bg-[hsl(210,15%,25%)] flex items-center justify-center">
+          <Baby className="h-4 w-4 text-[hsl(210,25%,55%)]" />
+        </div>
         <div className="min-w-0">
           <span className="text-sm font-semibold text-foreground">Bodi</span>
           <p className="text-xs text-muted-foreground">
@@ -233,7 +238,6 @@ export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [randomPlace, setRandomPlace] = useState<Place | null>(null);
   const [ageFilter, setAgeFilter] = useState<string | null>(null);
-  const [todayOpen, setTodayOpen] = useState(false);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [gpsActive, setGpsActive] = useState(false);
   const nearbyRef = useRef<HTMLElement>(null);
@@ -264,15 +268,13 @@ export default function HomePage() {
       p.location.toLowerCase().includes(q) ||
       p.description.toLowerCase().includes(q);
     const matchesAge = placeMatchesAge(p, ageFilter);
-    const matchesSeason = !todayOpen || placeMatchesSeason(p);
-    return matchesCategory && matchesSearch && matchesAge && matchesSeason;
+    return matchesCategory && matchesSearch && matchesAge;
   });
 
   const nearbyLat = userLocation?.lat ?? LAGOA_LAT;
   const nearbyLng = userLocation?.lng ?? LAGOA_LNG;
 
   const nearbyPlaces = [...places]
-    .filter((p) => !todayOpen || placeMatchesSeason(p))
     .map((p) => ({
       ...p,
       distance: getDistance(nearbyLat, nearbyLng, p.latitude, p.longitude),
@@ -280,7 +282,7 @@ export default function HomePage() {
     .sort((a, b) => a.distance - b.distance)
     .slice(0, 6);
 
-  const seasonalPlaces = getSeasonalPlaces(todayOpen ? places.filter((p) => placeMatchesSeason(p)) : places);
+  const seasonalPlaces = getSeasonalPlaces(places);
   const currentMonth = dutchMonths[new Date().getMonth()];
 
   const weatherRec = weather ? getWeatherRecommendation(weather, places) : null;
@@ -366,7 +368,7 @@ export default function HomePage() {
           <button
             data-testid="random-button"
             onClick={fetchRandom}
-            className="flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl bg-gradient-to-r from-[hsl(15,45%,55%)] to-[hsl(345,25%,60%)] text-white text-base font-semibold shadow-sm hover:opacity-90 transition-opacity sm:flex-1"
+            className="flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl bg-gradient-to-r from-[hsl(140,20%,42%)] to-[hsl(115,16%,48%)] text-white text-base font-semibold shadow-sm hover:opacity-90 transition-opacity sm:flex-1"
           >
             <Sparkles className="h-5 w-5" />
             {t("verrasMe")}
@@ -378,18 +380,6 @@ export default function HomePage() {
           >
             <MapPin className="h-5 w-5 text-primary" />
             {t("inDeBuurt")}
-          </button>
-          <button
-            data-testid="today-open-filter"
-            onClick={() => setTodayOpen(!todayOpen)}
-            className={`flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl border text-base font-semibold shadow-sm transition-all sm:flex-1 ${
-              todayOpen
-                ? "border-accent bg-accent/10 text-accent"
-                : "border-border bg-card text-foreground hover:border-accent/30"
-            }`}
-          >
-            <Calendar className="h-5 w-5" />
-            {t("vandaagOpen")}
           </button>
         </div>
 
@@ -604,20 +594,18 @@ export default function HomePage() {
           </motion.section>
         )}
 
-        {/* Suggest link — subtle, near bottom */}
-        <div className="mb-6">
-          <button
-            data-testid="suggest-link"
-            onClick={() => navigate("/suggest")}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 text-xs text-muted-foreground hover:text-primary transition-colors"
-          >
-            <Plus className="h-3.5 w-3.5" />
-            {t("suggestie")}
-          </button>
-        </div>
 
 
       </div>
+
+      <FloatingResetButton
+        visible={!!search || !!activeCategory || !!ageFilter}
+        onReset={() => {
+          setSearch("");
+          setActiveCategory(null);
+          setAgeFilter(null);
+        }}
+      />
     </div>
   );
 }
