@@ -238,6 +238,7 @@ export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [randomPlace, setRandomPlace] = useState<Place | null>(null);
   const [ageFilter, setAgeFilter] = useState<string | null>(null);
+  const [surpriseCategory, setSurpriseCategory] = useState<string | null>(null);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [gpsActive, setGpsActive] = useState(false);
   const nearbyRef = useRef<HTMLElement>(null);
@@ -285,13 +286,11 @@ export default function HomePage() {
   const seasonalPlaces = getSeasonalPlaces(places);
   const currentMonth = dutchMonths[new Date().getMonth()];
 
-  const weatherRec = weather ? getWeatherRecommendation(weather, places) : null;
-
   async function fetchRandom() {
-    const res = await apiRequest("GET", "/api/random");
+    const url = surpriseCategory ? `/api/random?category=${surpriseCategory}` : "/api/random";
+    const res = await apiRequest("GET", url);
     const place = await res.json();
     setRandomPlace(place);
-    // Scroll to suggestion card after render
     setTimeout(() => {
       suggestionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 100);
@@ -363,35 +362,54 @@ export default function HomePage() {
         {/* Kids Age Tracker */}
         <KidsTracker />
 
-        {/* Quick Actions */}
-        <div className="flex flex-col gap-3 mb-6 sm:flex-row">
-          <button
-            data-testid="random-button"
-            onClick={fetchRandom}
-            className="flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl bg-[hsl(18,45%,58%)] text-white text-base font-semibold shadow-sm hover:opacity-90 transition-opacity sm:flex-1"
-          >
-            <Sparkles className="h-5 w-5" />
-            {t("verrasMe")}
-          </button>
-          <button
-            data-testid="nearby-action"
-            onClick={handleNearbyClick}
-            className="flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl border border-border bg-card text-foreground text-base font-semibold shadow-sm hover:border-primary/30 transition-colors sm:flex-1"
-          >
-            <MapPin className="h-5 w-5 text-primary" />
-            {t("inDeBuurt")}
-          </button>
+        {/* Verras me — category chips + button */}
+        <div className="mb-6">
+          <div className="flex gap-2 mb-3 overflow-x-auto pb-1 scrollbar-hide">
+            {categoryConfig.map(({ key, labelKey, icon: Icon }) => (
+              <button
+                key={key}
+                data-testid={`surprise-chip-${key}`}
+                onClick={() => setSurpriseCategory(surpriseCategory === key ? null : key)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border transition-all ${
+                  surpriseCategory === key
+                    ? "border-[hsl(42,35%,62%)] bg-[hsl(42,35%,62%)]/12 text-[hsl(42,30%,40%)] dark:text-[hsl(42,30%,72%)]"
+                    : "border-border bg-card text-muted-foreground hover:border-[hsl(42,35%,62%)]/30"
+                }`}
+              >
+                <Icon className="h-3.5 w-3.5" />
+                {t(labelKey)}
+              </button>
+            ))}
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <button
+              data-testid="random-button"
+              onClick={fetchRandom}
+              className="flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl bg-[hsl(42,35%,62%)] text-white text-base font-semibold shadow-sm hover:opacity-90 transition-opacity sm:flex-1"
+            >
+              <Sparkles className="h-5 w-5" />
+              {t("verrasMe")}
+            </button>
+            <button
+              data-testid="nearby-action"
+              onClick={handleNearbyClick}
+              className="flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl border border-border bg-card text-foreground text-base font-semibold shadow-sm hover:border-primary/30 transition-colors sm:flex-1"
+            >
+              <MapPin className="h-5 w-5 text-primary" />
+              {t("inDeBuurt")}
+            </button>
+          </div>
         </div>
 
-        {/* Random Suggestion */}
+        {/* Random Suggestion — lightest terracotta */}
         {randomPlace && (
-          <Card ref={suggestionRef} className="mb-6 border-primary/20 bg-primary/5 rounded-2xl shadow-sm">
+          <Card ref={suggestionRef} className="mb-6 border-[hsl(42,30%,78%)] bg-[hsl(42,40%,95%)] dark:border-[hsl(42,30%,25%)] dark:bg-[hsl(42,25%,14%)] rounded-2xl shadow-sm">
             <CardContent className="p-4">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <Sparkles className="h-4 w-4 text-accent" />
-                    <span className="text-sm font-medium text-accent">{t("suggestieTekst")}</span>
+                    <Sparkles className="h-4 w-4 text-[hsl(42,35%,62%)]" />
+                    <span className="text-sm font-medium text-[hsl(42,30%,45%)] dark:text-[hsl(42,30%,68%)]">{t("suggestieTekst")}</span>
                   </div>
                   <h3 className="font-semibold text-foreground">{randomPlace.name}</h3>
                   <div className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
@@ -404,7 +422,7 @@ export default function HomePage() {
                   <Button
                     data-testid="random-go"
                     variant="ghost"
-                    className="px-0 mt-2 text-primary hover:text-primary/80 hover:bg-transparent"
+                    className="px-0 mt-2 text-[hsl(42,30%,45%)] hover:text-[hsl(42,30%,35%)] dark:text-[hsl(42,30%,68%)] hover:bg-transparent"
                     onClick={() => navigate(`/place/${randomPlace.id}`)}
                   >
                     {t("bekijkDetails")}
@@ -418,37 +436,6 @@ export default function HomePage() {
                 >
                   <X className="h-4 w-4" />
                 </button>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Weather recommendation */}
-        {weather && weatherRec && !showResults && (
-          <Card
-            className="mb-6 rounded-2xl border-accent/20 overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow"
-            onClick={() => navigate(`/place/${weatherRec.id}`)}
-          >
-            {/* Weather-themed banner */}
-            <div className="relative h-14 bg-gradient-to-r from-accent/15 via-accent/8 to-primary/10 flex items-center gap-3 px-4">
-              <div className="flex items-center justify-center w-9 h-9 rounded-full bg-background/60 backdrop-blur-sm">
-                {getWeatherIcon(weather.current.weathercode, "h-5 w-5")}
-              </div>
-              <div>
-                <span className="text-sm font-semibold text-accent">{t("tipVanHetWeer")}</span>
-                <p className="text-[11px] text-muted-foreground">
-                  {Math.round(weather.current.temperature)}° — {getWeatherLabel(weather.current.weathercode)}
-                </p>
-              </div>
-            </div>
-            <CardContent className="p-4 pt-3">
-              <h3 className="font-semibold text-foreground">{weatherRec.name}</h3>
-              <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
-                <MapPin className="h-3 w-3" />
-                <span>{weatherRec.location}</span>
-              </div>
-              <div className="mt-2">
-                <CategoryBadge category={weatherRec.category} />
               </div>
             </CardContent>
           </Card>

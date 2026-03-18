@@ -114,7 +114,8 @@ export interface IStorage {
   getPlacesByCategory(category: string): Place[];
   searchPlaces(query: string): Place[];
   getCategoryCounts(): Record<string, number>;
-  getRandomPlace(): Place;
+  getRandomPlace(category?: string): Place;
+  getRandomRecipe(category?: string): Promise<Recipe | null>;
   getFavorites(): Promise<string[]>;
   toggleFavorite(id: string): Promise<boolean>;
   getVisited(): Promise<string[]>;
@@ -193,9 +194,17 @@ class BasePlaceStorage {
     return counts;
   }
 
-  getRandomPlace(): Place {
-    const idx = Math.floor(Math.random() * this.places.length);
-    return this.places[idx];
+  getRandomPlace(category?: string): Place {
+    const pool = category ? this.places.filter(p => p.category === category) : this.places;
+    const idx = Math.floor(Math.random() * pool.length);
+    return pool[idx] || this.places[0];
+  }
+
+  async getRandomRecipe(category?: string): Promise<Recipe | null> {
+    const all = await this.getAllRecipes();
+    const pool = category ? all.filter(r => r.categories?.includes(category as RecipeCategory)) : all;
+    if (pool.length === 0) return null;
+    return pool[Math.floor(Math.random() * pool.length)];
   }
 
   addSuggestion(s: Omit<Suggestion, "id" | "createdAt">): Suggestion {

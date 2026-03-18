@@ -48,7 +48,15 @@ export async function registerRoutes(
   });
 
   app.get("/api/random", (_req, res) => {
-    res.json(storage.getRandomPlace());
+    const { category } = _req.query;
+    res.json(storage.getRandomPlace(typeof category === "string" ? category : undefined));
+  });
+
+  app.get("/api/recipes/random", async (_req, res) => {
+    const { category } = _req.query;
+    const recipe = await storage.getRandomRecipe(typeof category === "string" ? category : undefined);
+    if (!recipe) return res.status(404).json({ message: "Geen recepten gevonden" });
+    res.json(recipe);
   });
 
   app.get("/api/weather", async (_req, res) => {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -13,6 +13,9 @@ import {
   Pencil,
   Users,
   User,
+  Sparkles,
+  ArrowRight,
+  UtensilsCrossed,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -51,11 +54,11 @@ const fadeIn = {
 // Bali Green + Warm Terracotta palette for category badges
 function getCategoryColor(cat: RecipeCategory): string {
   switch (cat) {
-    case "ontbijt": return "bg-[hsl(18,45%,93%)] text-[hsl(18,45%,38%)] dark:bg-[hsl(18,45%,15%)] dark:text-[hsl(18,45%,72%)]";
+    case "ontbijt": return "bg-[hsl(42,35%,91%)] text-[hsl(42,30%,35%)] dark:bg-[hsl(42,25%,15%)] dark:text-[hsl(42,30%,72%)]";
     case "lunch": return "bg-[hsl(115,13%,92%)] text-[hsl(115,13%,38%)] dark:bg-[hsl(115,13%,15%)] dark:text-[hsl(115,13%,65%)]";
-    case "diner": return "bg-[hsl(18,35%,89%)] text-[hsl(18,40%,34%)] dark:bg-[hsl(18,35%,15%)] dark:text-[hsl(18,40%,68%)]";
+    case "diner": return "bg-[hsl(42,35%,89%)] text-[hsl(42,40%,34%)] dark:bg-[hsl(42,35%,15%)] dark:text-[hsl(42,40%,68%)]";
     case "snack": return "bg-[hsl(115,10%,90%)] text-[hsl(115,13%,40%)] dark:bg-[hsl(115,10%,15%)] dark:text-[hsl(115,13%,62%)]";
-    case "tussendoortje": return "bg-[hsl(18,30%,91%)] text-[hsl(18,35%,40%)] dark:bg-[hsl(18,30%,15%)] dark:text-[hsl(18,30%,65%)]";
+    case "tussendoortje": return "bg-[hsl(42,30%,91%)] text-[hsl(42,35%,40%)] dark:bg-[hsl(42,30%,15%)] dark:text-[hsl(42,30%,65%)]";
     default: return "bg-muted text-muted-foreground";
   }
 }
@@ -76,6 +79,9 @@ export default function RecipesPage() {
   const [isBulkImporting, setIsBulkImporting] = useState(false);
   const [filter, setFilter] = useState<"all" | "uncooked">("all");
   const [categoryFilters, setCategoryFilters] = useState<RecipeCategory[]>([]);
+  const [surpriseCategory, setSurpriseCategory] = useState<RecipeCategory | null>(null);
+  const [randomRecipe, setRandomRecipe] = useState<Recipe | null>(null);
+  const suggestionRef = useRef<HTMLDivElement>(null);
 
   // Listen for bottom nav "add" button click
   const handleToggleAdd = useCallback(() => {
@@ -200,6 +206,20 @@ export default function RecipesPage() {
     });
   }
 
+  async function fetchRandomRecipe() {
+    const url = surpriseCategory ? `/api/recipes/random?category=${surpriseCategory}` : "/api/recipes/random";
+    try {
+      const res = await apiRequest("GET", url);
+      const recipe = await res.json();
+      setRandomRecipe(recipe);
+      setTimeout(() => {
+        suggestionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
+    } catch {
+      toast({ title: "Geen recepten gevonden", variant: "destructive" });
+    }
+  }
+
   function toggleCategoryFilter(cat: RecipeCategory) {
     setCategoryFilters((prev) =>
       prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
@@ -230,6 +250,77 @@ export default function RecipesPage() {
             {t("receptenSubtitel")}
           </p>
         </div>
+
+        {/* Verras me — recipe category chips + button */}
+        <div className="mb-6">
+          <div className="flex gap-2 mb-3 overflow-x-auto pb-1 scrollbar-hide">
+            {categoryOptions.map(({ key, labelKey }) => (
+              <button
+                key={key}
+                data-testid={`recipe-surprise-chip-${key}`}
+                onClick={() => setSurpriseCategory(surpriseCategory === key ? null : key)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border transition-all ${
+                  surpriseCategory === key
+                    ? "border-[hsl(42,35%,62%)] bg-[hsl(42,35%,62%)]/12 text-[hsl(42,30%,40%)] dark:text-[hsl(42,30%,72%)]"
+                    : "border-border bg-card text-muted-foreground hover:border-[hsl(42,35%,62%)]/30"
+                }`}
+              >
+                {t(labelKey as any)}
+              </button>
+            ))}
+          </div>
+          <button
+            data-testid="recipe-random-button"
+            onClick={fetchRandomRecipe}
+            className="w-full flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl bg-[hsl(42,35%,62%)] text-white text-base font-semibold shadow-sm hover:opacity-90 transition-opacity"
+          >
+            <Sparkles className="h-5 w-5" />
+            {t("verrasMe")}
+          </button>
+        </div>
+
+        {/* Random Recipe Suggestion — lightest terracotta */}
+        {randomRecipe && (
+          <Card ref={suggestionRef} className="mb-6 border-[hsl(42,30%,78%)] bg-[hsl(42,40%,95%)] dark:border-[hsl(42,30%,25%)] dark:bg-[hsl(42,25%,14%)] rounded-2xl shadow-sm">
+            <CardContent className="p-4">
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Sparkles className="h-4 w-4 text-[hsl(42,35%,62%)]" />
+                    <span className="text-sm font-medium text-[hsl(42,30%,45%)] dark:text-[hsl(42,30%,68%)]">{t("suggestieTekst")}</span>
+                  </div>
+                  <h3 className="font-semibold text-foreground">{randomRecipe.title}</h3>
+                  {randomRecipe.siteName && (
+                    <p className="text-xs text-muted-foreground mt-0.5">{randomRecipe.siteName}</p>
+                  )}
+                  <div className="flex gap-1.5 mt-2 flex-wrap">
+                    {(randomRecipe.categories || []).map((cat) => (
+                      <span key={cat} className={`px-2 py-0.5 rounded-full text-[11px] font-medium ${getCategoryColor(cat)}`}>
+                        {t(cat === "lunch" ? "lunchRecept" : cat as any)}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={randomRecipe.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 mt-2 text-sm font-medium text-[hsl(42,30%,45%)] hover:text-[hsl(42,30%,35%)] dark:text-[hsl(42,30%,68%)] transition-colors"
+                  >
+                    {t("bekijkRecept")}
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                </div>
+                <button
+                  data-testid="recipe-random-close"
+                  onClick={() => setRandomRecipe(null)}
+                  className="text-muted-foreground hover:text-foreground p-1"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Add Recipe Form — triggered by bottom nav */}
         <AnimatePresence>
@@ -542,7 +633,7 @@ function RecipeCard({
 
   return (
     <motion.div variants={fadeIn} transition={{ duration: 0.2 }} className="h-full">
-      <Card className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border h-full flex flex-col ${hasAnyApproval ? "border-[hsl(18,45%,65%)]/40 dark:border-[hsl(18,45%,55%)]/50" : "border-border"}`}>
+      <Card className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border h-full flex flex-col ${hasAnyApproval ? "border-[hsl(42,30%,65%)]/40 dark:border-[hsl(42,30%,55%)]/50" : "border-border"}`}>
         {/* Image */}
         {recipe.imageUrl && (
           <a href={recipe.url} target="_blank" rel="noopener noreferrer">
@@ -554,7 +645,7 @@ function RecipeCard({
                 loading="lazy"
               />
               {recipe.cooked && (
-                <div className="absolute top-2 left-2 bg-[hsl(18,45%,52%)] text-white rounded-full p-1.5 shadow-sm">
+                <div className="absolute top-2 left-2 bg-[hsl(42,35%,55%)] text-white rounded-full p-1.5 shadow-sm">
                   <ChefHat className="h-3.5 w-3.5" />
                 </div>
               )}
@@ -563,7 +654,7 @@ function RecipeCard({
                   {approvals.map((tag) => (
                     <span
                       key={tag}
-                      className="bg-[hsl(18,45%,52%)] text-white rounded-full px-2 py-0.5 text-[10px] font-semibold shadow-sm flex items-center gap-0.5"
+                      className="bg-[hsl(42,35%,55%)] text-white rounded-full px-2 py-0.5 text-[10px] font-semibold shadow-sm flex items-center gap-0.5"
                     >
                       {tag === "beiden" ? <Users className="h-3 w-3" /> : <User className="h-3 w-3" />}
                       <span className="capitalize">{tag}</span>
@@ -651,7 +742,7 @@ function RecipeCard({
               onClick={onToggleCooked}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 recipe.cooked
-                  ? "bg-[hsl(18,45%,92%)] text-[hsl(18,45%,38%)] dark:bg-[hsl(18,45%,18%)] dark:text-[hsl(18,45%,70%)]"
+                  ? "bg-[hsl(42,30%,90%)] text-[hsl(42,30%,35%)] dark:bg-[hsl(42,20%,18%)] dark:text-[hsl(42,30%,70%)]"
                   : "bg-muted text-muted-foreground hover:bg-muted/80"
               }`}
             >
