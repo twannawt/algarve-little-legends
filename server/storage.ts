@@ -132,7 +132,7 @@ export class MemStorage implements IStorage {
     this.weatherCache = null;
     this.places = [];
 
-    const researchDir = "/home/user/workspace/research";
+    const researchDir = path.join(process.cwd(), "research");
     try {
       const restaurants = loadJSON(path.join(researchDir, "restaurants.json"));
       const beaches = loadJSON(path.join(researchDir, "beaches.json"));
