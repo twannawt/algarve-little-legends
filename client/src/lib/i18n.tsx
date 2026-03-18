@@ -148,8 +148,8 @@ const translations = {
   receptUrlFout: "Kon de URL niet verwerken",
   titel: "Titel",
   // Bulk import
-  enkeleUrl: "Enkele URL",
-  bulkUrl: "Meerdere URL's",
+  enkeleUrl: "Eén specifiek recept",
+  bulkUrl: "Meerdere recepten vanuit een website",
   bulkUrlBeschrijving: "Plak een URL van een pagina met meerdere recepten (bijv. een overzichtspagina)",
   bulkUrlLocatieBeschrijving: "Plak een URL van een pagina met meerdere locaties",
   bulkUrlPlaceholder: "https://www.ah.nl/allerhande/recepten/...",
