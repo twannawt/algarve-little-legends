@@ -11,7 +11,7 @@ function AlgarveLittleLegendsLogo() {
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="Little Legends Algarve logo"
+      aria-label="Little Legends logo"
       role="img"
     >
       {/* Soft sun glow */}
@@ -135,7 +135,7 @@ export function Header() {
           className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
         >
           <AlgarveLittleLegendsLogo />
-          <span className="font-serif font-bold text-lg text-foreground leading-tight">Little Legends Algarve</span>
+          <span className="font-serif font-bold text-lg text-foreground leading-tight">Little Legends</span>
         </button>
 
         <Button
