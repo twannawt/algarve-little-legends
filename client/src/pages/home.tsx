@@ -368,7 +368,7 @@ export default function HomePage() {
           <button
             data-testid="random-button"
             onClick={fetchRandom}
-            className="flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl bg-primary text-primary-foreground text-base font-semibold shadow-sm hover:opacity-90 transition-opacity sm:flex-1"
+            className="flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl bg-[hsl(18,45%,58%)] text-white text-base font-semibold shadow-sm hover:opacity-90 transition-opacity sm:flex-1"
           >
             <Sparkles className="h-5 w-5" />
             {t("verrasMe")}
