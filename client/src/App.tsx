@@ -21,6 +21,7 @@ const FavoritesPage = lazy(() => import("@/pages/favorites"));
 const SuggestPage = lazy(() => import("@/pages/suggest"));
 const DagplannerPage = lazy(() => import("@/pages/dagplanner"));
 const RecipesPage = lazy(() => import("@/pages/recipes"));
+const RecipeFavoritesPage = lazy(() => import("@/pages/recipe-favorites"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function PageLoader() {
@@ -50,6 +51,7 @@ function AppRouter() {
         <Route path="/suggest" component={SuggestPage} />
         <Route path="/dagplanner" component={DagplannerPage} />
         <Route path="/recepten" component={RecipesPage} />
+        <Route path="/recept-favorieten" component={RecipeFavoritesPage} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>

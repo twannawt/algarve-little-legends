@@ -4,8 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Link as LinkIcon,
   ChefHat,
-  Star,
-  Trash2,
   Check,
   Loader2,
   CookingPot,
@@ -13,6 +11,8 @@ import {
   FileText,
   Link2,
   Pencil,
+  Users,
+  User,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,7 +20,7 @@ import { useT } from "@/lib/i18n";
 import { apiRequest } from "@/lib/queryClient";
 import { queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import type { Recipe, RecipeCategory, RecipeImportResult } from "@shared/schema";
+import type { Recipe, RecipeCategory, KidApproval, RecipeImportResult } from "@shared/schema";
 import { FloatingResetButton } from "@/components/FloatingResetButton";
 
 const categoryOptions: { key: RecipeCategory; labelKey: string }[] = [
@@ -34,9 +34,14 @@ const categoryOptions: { key: RecipeCategory; labelKey: string }[] = [
 
 const filterOptions = [
   { key: "all", labelKey: "alleRecepten" },
-  { key: "uncooked", labelKey: "nogNietGekookt" },
-  { key: "kidFavorite", labelKey: "kidFavorieten" },
+  { key: "uncooked", labelKey: "nogNietGemaakt" },
 ] as const;
+
+const kidApprovalOptions: { key: KidApproval; labelKey: string }[] = [
+  { key: "beiden", labelKey: "beiden" },
+  { key: "charlie", labelKey: "charlie" },
+  { key: "bodi", labelKey: "bodi" },
+];
 
 const fadeIn = {
   hidden: { opacity: 0, y: 8 },
@@ -68,7 +73,7 @@ export default function RecipesPage() {
   const [selectedCategories, setSelectedCategories] = useState<RecipeCategory[]>(["diner"]);
   const [isImporting, setIsImporting] = useState(false);
   const [isBulkImporting, setIsBulkImporting] = useState(false);
-  const [filter, setFilter] = useState<"all" | "uncooked" | "kidFavorite">("all");
+  const [filter, setFilter] = useState<"all" | "uncooked">("all");
   const [categoryFilter, setCategoryFilter] = useState<RecipeCategory | null>(null);
 
   // Listen for bottom nav "add" button click
@@ -97,16 +102,6 @@ export default function RecipesPage() {
     },
   });
 
-  const deleteMutation = useMutation({
-    mutationFn: async (id: string) => {
-      await apiRequest("DELETE", `/api/recipes/${id}`);
-    },
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["/api/recipes"] });
-      toast({ title: t("receptVerwijderd") });
-    },
-  });
-
   const toggleCookedMutation = useMutation({
     mutationFn: async (id: string) => {
       const res = await apiRequest("POST", `/api/recipes/${id}/cooked`);
@@ -117,9 +112,9 @@ export default function RecipesPage() {
     },
   });
 
-  const toggleKidFavMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const res = await apiRequest("POST", `/api/recipes/${id}/kid-favorite`);
+  const toggleKidApprovalMutation = useMutation({
+    mutationFn: async ({ id, tag }: { id: string; tag: KidApproval }) => {
+      const res = await apiRequest("POST", `/api/recipes/${id}/kid-approval`, { tag });
       return res.json();
     },
     onSuccess: () => {
@@ -150,7 +145,6 @@ export default function RecipesPage() {
   function toggleCategory(cat: RecipeCategory) {
     setSelectedCategories((prev) => {
       if (prev.includes(cat)) {
-        // Don't allow removing the last category
         if (prev.length === 1) return prev;
         return prev.filter((c) => c !== cat);
       }
@@ -207,8 +201,6 @@ export default function RecipesPage() {
 
   const filteredRecipes = recipes.filter((r) => {
     if (filter === "uncooked" && r.cooked) return false;
-    if (filter === "kidFavorite" && !r.kidFavorite) return false;
-    // Multi-category filter: show if ANY category matches
     const cats = r.categories || [];
     if (categoryFilter && !cats.includes(categoryFilter)) return false;
     return true;
@@ -496,8 +488,7 @@ export default function RecipesPage() {
                 key={recipe.id}
                 recipe={recipe}
                 onToggleCooked={() => toggleCookedMutation.mutate(recipe.id)}
-                onToggleKidFav={() => toggleKidFavMutation.mutate(recipe.id)}
-                onDelete={() => deleteMutation.mutate(recipe.id)}
+                onToggleKidApproval={(tag) => toggleKidApprovalMutation.mutate({ id: recipe.id, tag })}
                 onUpdateCategories={(cats) => updateCategoriesMutation.mutate({ id: recipe.id, categories: cats })}
               />
             ))}
@@ -519,19 +510,18 @@ export default function RecipesPage() {
 function RecipeCard({
   recipe,
   onToggleCooked,
-  onToggleKidFav,
-  onDelete,
+  onToggleKidApproval,
   onUpdateCategories,
 }: {
   recipe: Recipe;
   onToggleCooked: () => void;
-  onToggleKidFav: () => void;
-  onDelete: () => void;
+  onToggleKidApproval: (tag: KidApproval) => void;
   onUpdateCategories: (categories: RecipeCategory[]) => void;
 }) {
   const t = useT();
   const [editingCategories, setEditingCategories] = useState(false);
   const cats = recipe.categories || [];
+  const approvals = recipe.kidApproval || [];
 
   function toggleCat(cat: RecipeCategory) {
     const current = [...cats];
@@ -543,9 +533,11 @@ function RecipeCard({
     }
   }
 
+  const hasAnyApproval = approvals.length > 0;
+
   return (
     <motion.div variants={fadeIn} transition={{ duration: 0.2 }}>
-      <Card className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border ${recipe.kidFavorite ? "border-amber-300 dark:border-amber-600" : "border-border"}`}>
+      <Card className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border ${hasAnyApproval ? "border-amber-300 dark:border-amber-600" : "border-border"}`}>
         {/* Image */}
         {recipe.imageUrl && (
           <a href={recipe.url} target="_blank" rel="noopener noreferrer">
@@ -556,14 +548,21 @@ function RecipeCard({
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-              {recipe.kidFavorite && (
-                <div className="absolute top-2 right-2 bg-amber-400 text-white rounded-full p-1.5 shadow-sm">
-                  <Star className="h-3.5 w-3.5 fill-white" />
-                </div>
-              )}
               {recipe.cooked && (
                 <div className="absolute top-2 left-2 bg-green-500 text-white rounded-full p-1.5 shadow-sm">
                   <Check className="h-3.5 w-3.5" />
+                </div>
+              )}
+              {hasAnyApproval && (
+                <div className="absolute top-2 right-2 flex gap-1">
+                  {approvals.map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-amber-400 text-white rounded-full px-2 py-0.5 text-[10px] font-semibold shadow-sm"
+                    >
+                      {tag === "beiden" ? "👫" : tag === "charlie" ? "👧" : "👦"}
+                    </span>
+                  ))}
                 </div>
               )}
             </div>
@@ -639,7 +638,8 @@ function RecipeCard({
           </a>
 
           {/* Action buttons */}
-          <div className="flex items-center gap-1 mt-3 pt-2.5 border-t border-border/50">
+          <div className="flex items-center gap-1 mt-3 pt-2.5 border-t border-border/50 flex-wrap">
+            {/* Gemaakt button */}
             <button
               data-testid={`recipe-cooked-${recipe.id}`}
               onClick={onToggleCooked}
@@ -650,29 +650,33 @@ function RecipeCard({
               }`}
             >
               <ChefHat className="h-3.5 w-3.5" />
-              {t("gekookt")}
+              {t("gemaakt")}
             </button>
-            <button
-              data-testid={`recipe-kidfav-${recipe.id}`}
-              onClick={onToggleKidFav}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                recipe.kidFavorite
-                  ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80"
-              }`}
-            >
-              <Star className={`h-3.5 w-3.5 ${recipe.kidFavorite ? "fill-amber-500" : ""}`} />
-              {t("hitBijKids")}
-            </button>
-            <div className="flex-1" />
-            <button
-              data-testid={`recipe-delete-${recipe.id}`}
-              onClick={onDelete}
-              className="p-1.5 rounded-lg text-muted-foreground hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
-              title={t("verwijderen")}
-            >
-              <Trash2 className="h-3.5 w-3.5" />
-            </button>
+
+            {/* Kid approval buttons */}
+            {kidApprovalOptions.map(({ key, labelKey }) => {
+              const isActive = approvals.includes(key);
+              const icon = key === "beiden" ? (
+                <Users className="h-3.5 w-3.5" />
+              ) : (
+                <User className="h-3.5 w-3.5" />
+              );
+              return (
+                <button
+                  key={key}
+                  data-testid={`recipe-approval-${key}-${recipe.id}`}
+                  onClick={() => onToggleKidApproval(key)}
+                  className={`flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                    isActive
+                      ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
+                      : "bg-muted text-muted-foreground hover:bg-muted/80"
+                  }`}
+                >
+                  {icon}
+                  {t(labelKey as any)}
+                </button>
+              );
+            })}
           </div>
         </CardContent>
       </Card>

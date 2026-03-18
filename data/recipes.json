@@ -11,8 +11,10 @@
       "lunch"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:00:00.000Z"
+    "createdAt": "2026-03-18T12:00:00.000Z",
+    "kidApproval": [
+      "charlie"
+    ]
   },
   {
     "id": "recipe-seed-2",
@@ -25,8 +27,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:01:00.000Z"
+    "createdAt": "2026-03-18T12:01:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-3",
@@ -39,8 +41,8 @@
       "ontbijt"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:02:00.000Z"
+    "createdAt": "2026-03-18T12:02:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-4",
@@ -53,8 +55,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:03:00.000Z"
+    "createdAt": "2026-03-18T12:03:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-5",
@@ -67,8 +69,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:04:00.000Z"
+    "createdAt": "2026-03-18T12:04:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-6",
@@ -81,8 +83,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:05:00.000Z"
+    "createdAt": "2026-03-18T12:05:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-7",
@@ -95,8 +97,8 @@
       "snack"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:06:00.000Z"
+    "createdAt": "2026-03-18T12:06:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-8",
@@ -109,8 +111,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:07:00.000Z"
+    "createdAt": "2026-03-18T12:07:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-9",
@@ -124,8 +126,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:08:00.000Z"
+    "createdAt": "2026-03-18T12:08:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-10",
@@ -139,8 +141,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:09:00.000Z"
+    "createdAt": "2026-03-18T12:09:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-11",
@@ -154,8 +156,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:10:00.000Z"
+    "createdAt": "2026-03-18T12:10:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-12",
@@ -168,8 +170,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:11:00.000Z"
+    "createdAt": "2026-03-18T12:11:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-13",
@@ -182,8 +184,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:12:00.000Z"
+    "createdAt": "2026-03-18T12:12:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-14",
@@ -196,8 +198,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:13:00.000Z"
+    "createdAt": "2026-03-18T12:13:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-15",
@@ -210,8 +212,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:14:00.000Z"
+    "createdAt": "2026-03-18T12:14:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-16",
@@ -224,8 +226,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:15:00.000Z"
+    "createdAt": "2026-03-18T12:15:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-17",
@@ -238,8 +240,8 @@
       "tussendoortje"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:16:00.000Z"
+    "createdAt": "2026-03-18T12:16:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-18",
@@ -252,8 +254,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:17:00.000Z"
+    "createdAt": "2026-03-18T12:17:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-19",
@@ -267,8 +269,8 @@
       "snack"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:18:00.000Z"
+    "createdAt": "2026-03-18T12:18:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-20",
@@ -282,8 +284,8 @@
       "snack"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:19:00.000Z"
+    "createdAt": "2026-03-18T12:19:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-21",
@@ -296,8 +298,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:20:00.000Z"
+    "createdAt": "2026-03-18T12:20:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-22",
@@ -310,8 +312,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:21:00.000Z"
+    "createdAt": "2026-03-18T12:21:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-23",
@@ -324,8 +326,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:22:00.000Z"
+    "createdAt": "2026-03-18T12:22:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-24",
@@ -338,8 +340,8 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:23:00.000Z"
+    "createdAt": "2026-03-18T12:23:00.000Z",
+    "kidApproval": []
   },
   {
     "id": "recipe-seed-25",
@@ -352,7 +354,7 @@
       "diner"
     ],
     "cooked": false,
-    "kidFavorite": false,
-    "createdAt": "2026-03-18T12:24:00.000Z"
+    "createdAt": "2026-03-18T12:24:00.000Z",
+    "kidApproval": []
   }
 ]

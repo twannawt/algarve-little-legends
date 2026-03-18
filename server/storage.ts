@@ -1,4 +1,4 @@
-import { type Place, type Suggestion, type WeatherData, type Recipe, type RecipeCategory } from "@shared/schema";
+import { type Place, type Suggestion, type WeatherData, type Recipe, type RecipeCategory, type KidApproval } from "@shared/schema";
 import { eq } from "drizzle-orm";
 import * as fs from "fs";
 import * as path from "path";
@@ -126,10 +126,10 @@ export interface IStorage {
   addPlace(place: Omit<Place, "id">): Place;
   // Recipe methods — all async for PostgreSQL
   getAllRecipes(): Promise<Recipe[]>;
-  addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidFavorite">): Promise<Recipe>;
+  addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidApproval">): Promise<Recipe>;
   deleteRecipe(id: string): Promise<boolean>;
   toggleRecipeCooked(id: string): Promise<boolean>;
-  toggleRecipeKidFavorite(id: string): Promise<boolean>;
+  toggleRecipeKidApproval(id: string, tag: KidApproval): Promise<KidApproval[]>;
   updateRecipeCategories(id: string, categories: RecipeCategory[]): Promise<Recipe | null>;
 }
 
@@ -368,12 +368,12 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
       siteName: r.siteName || undefined,
       categories: (r.categories || []) as RecipeCategory[],
       cooked: r.cooked,
-      kidFavorite: r.kidFavorite,
+      kidApproval: (r.kidApproval || []) as KidApproval[],
       createdAt: r.createdAt,
     }));
   }
 
-  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidFavorite">): Promise<Recipe> {
+  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidApproval">): Promise<Recipe> {
     const db = getDb();
     const id = `recipe-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
     const createdAt = new Date().toISOString();
@@ -386,7 +386,7 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
       siteName: recipe.siteName || null,
       categories: recipe.categories as string[],
       cooked: false,
-      kidFavorite: false,
+      kidApproval: [] as string[],
       createdAt,
     };
     await db.insert(recipesTable).values(newRecipe);
@@ -396,6 +396,7 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
       description: newRecipe.description || undefined,
       siteName: newRecipe.siteName || undefined,
       categories: newRecipe.categories as RecipeCategory[],
+      kidApproval: [] as KidApproval[],
     };
   }
 
@@ -414,12 +415,15 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
     return newValue;
   }
 
-  async toggleRecipeKidFavorite(id: string): Promise<boolean> {
+  async toggleRecipeKidApproval(id: string, tag: KidApproval): Promise<KidApproval[]> {
     const db = getDb();
     const rows = await db.select().from(recipesTable).where(eq(recipesTable.id, id));
-    if (rows.length === 0) return false;
-    const newValue = !rows[0].kidFavorite;
-    await db.update(recipesTable).set({ kidFavorite: newValue }).where(eq(recipesTable.id, id));
+    if (rows.length === 0) return [];
+    const current = (rows[0].kidApproval || []) as KidApproval[];
+    const newValue = current.includes(tag)
+      ? current.filter((t) => t !== tag)
+      : [...current, tag];
+    await db.update(recipesTable).set({ kidApproval: newValue as string[] }).where(eq(recipesTable.id, id));
     return newValue;
   }
 
@@ -439,7 +443,7 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
       siteName: r.siteName || undefined,
       categories: (r.categories || []) as RecipeCategory[],
       cooked: r.cooked,
-      kidFavorite: r.kidFavorite,
+      kidApproval: (r.kidApproval || []) as KidApproval[],
       createdAt: r.createdAt,
     };
   }
@@ -510,15 +514,22 @@ export class MemStorage extends BasePlaceStorage implements IStorage {
   }
 
   async getAllRecipes(): Promise<Recipe[]> {
+    // Migrate legacy kidFavorite → kidApproval if needed
+    for (const r of this.recipesArr) {
+      if (!r.kidApproval) {
+        r.kidApproval = (r as any).kidFavorite ? ["beiden"] : [];
+        delete (r as any).kidFavorite;
+      }
+    }
     return this.recipesArr;
   }
 
-  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidFavorite">): Promise<Recipe> {
+  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidApproval">): Promise<Recipe> {
     const newRecipe: Recipe = {
       ...recipe,
       id: `recipe-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
       cooked: false,
-      kidFavorite: false,
+      kidApproval: [],
       createdAt: new Date().toISOString(),
     };
     this.recipesArr.push(newRecipe);
@@ -542,12 +553,17 @@ export class MemStorage extends BasePlaceStorage implements IStorage {
     return recipe.cooked;
   }
 
-  async toggleRecipeKidFavorite(id: string): Promise<boolean> {
+  async toggleRecipeKidApproval(id: string, tag: KidApproval): Promise<KidApproval[]> {
     const recipe = this.recipesArr.find((r) => r.id === id);
-    if (!recipe) return false;
-    recipe.kidFavorite = !recipe.kidFavorite;
+    if (!recipe) return [];
+    if (!recipe.kidApproval) recipe.kidApproval = [];
+    if (recipe.kidApproval.includes(tag)) {
+      recipe.kidApproval = recipe.kidApproval.filter((t) => t !== tag);
+    } else {
+      recipe.kidApproval.push(tag);
+    }
     this.persistRecipes();
-    return recipe.kidFavorite;
+    return recipe.kidApproval;
   }
 
   async updateRecipeCategories(id: string, categories: RecipeCategory[]): Promise<Recipe | null> {

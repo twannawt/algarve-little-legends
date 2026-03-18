@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { importFromUrls, importRecipeFromUrl, bulkImportRecipes, bulkImportPlaces } from "./url-import";
-import type { RecipeCategory } from "@shared/schema";
+import type { RecipeCategory, KidApproval } from "@shared/schema";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -171,9 +171,14 @@ export async function registerRoutes(
     res.json({ id: req.params.id, cooked });
   });
 
-  app.post("/api/recipes/:id/kid-favorite", async (req, res) => {
-    const kidFavorite = await storage.toggleRecipeKidFavorite(req.params.id);
-    res.json({ id: req.params.id, kidFavorite });
+  app.post("/api/recipes/:id/kid-approval", async (req, res) => {
+    const { tag } = req.body;
+    const validTags: KidApproval[] = ["beiden", "charlie", "bodi"];
+    if (!tag || !validTags.includes(tag)) {
+      return res.status(400).json({ message: "Ongeldige tag" });
+    }
+    const kidApproval = await storage.toggleRecipeKidApproval(req.params.id, tag);
+    res.json({ id: req.params.id, kidApproval });
   });
 
   // Update categories for a recipe

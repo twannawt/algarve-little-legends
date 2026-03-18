@@ -1,9 +1,9 @@
-import { Home, Map, Heart, CalendarDays, Plus, UtensilsCrossed } from "lucide-react";
+import { Home, Map, Heart, CalendarDays, Plus, UtensilsCrossed, Star } from "lucide-react";
 import { useLocation } from "wouter";
 import { useT } from "@/lib/i18n";
 
 // Pages that belong to the "Wat gaan we eten" (recipes) section
-const RECIPE_PATHS = new Set(["/recepten"]);
+const RECIPE_PATHS = new Set(["/recepten", "/recept-favorieten"]);
 
 // Pages that belong to the "Wat gaan we doen" (activities) section
 const ACTIVITY_PATHS = new Set(["/", "/dagplanner", "/map", "/favorites", "/suggest", "/place"]);
@@ -41,6 +41,7 @@ export function BottomNav() {
 
   const recipeNav: NavItem[] = [
     { path: "/recepten", label: t("navRecepten"), icon: UtensilsCrossed },
+    { path: "/recept-favorieten", label: t("receptFavorieten"), icon: Star },
   ];
 
   const navItems = inRecipes ? recipeNav : activityNav;

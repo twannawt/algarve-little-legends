@@ -48,6 +48,8 @@ export interface UrlImportResult {
 
 export type RecipeCategory = 'ontbijt' | 'lunch' | 'diner' | 'snack' | 'tussendoortje' | 'overig';
 
+export type KidApproval = 'beiden' | 'charlie' | 'bodi';
+
 export interface Recipe {
   id: string;
   title: string;
@@ -57,7 +59,7 @@ export interface Recipe {
   siteName?: string;
   categories: RecipeCategory[];
   cooked: boolean;
-  kidFavorite: boolean;
+  kidApproval: KidApproval[];
   createdAt: string;
 }
 
