@@ -50,12 +50,12 @@ const fadeIn = {
 
 function getCategoryColor(cat: RecipeCategory): string {
   switch (cat) {
-    case "ontbijt": return "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400";
-    case "lunch": return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400";
-    case "diner": return "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400";
-    case "snack": return "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400";
-    case "tussendoortje": return "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400";
-    default: return "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-400";
+    case "ontbijt": return "bg-amber-50 text-amber-800/70 dark:bg-amber-900/20 dark:text-amber-300/80";
+    case "lunch": return "bg-emerald-50 text-emerald-800/70 dark:bg-emerald-900/20 dark:text-emerald-300/80";
+    case "diner": return "bg-stone-100 text-stone-700 dark:bg-stone-800/30 dark:text-stone-400";
+    case "snack": return "bg-lime-50 text-lime-800/70 dark:bg-lime-900/20 dark:text-lime-300/80";
+    case "tussendoortje": return "bg-teal-50 text-teal-800/70 dark:bg-teal-900/20 dark:text-teal-300/80";
+    default: return "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400";
   }
 }
 
@@ -74,7 +74,7 @@ export default function RecipesPage() {
   const [isImporting, setIsImporting] = useState(false);
   const [isBulkImporting, setIsBulkImporting] = useState(false);
   const [filter, setFilter] = useState<"all" | "uncooked">("all");
-  const [categoryFilter, setCategoryFilter] = useState<RecipeCategory | null>(null);
+  const [categoryFilters, setCategoryFilters] = useState<RecipeCategory[]>([]);
 
   // Listen for bottom nav "add" button click
   const handleToggleAdd = useCallback(() => {
@@ -199,10 +199,16 @@ export default function RecipesPage() {
     });
   }
 
+  function toggleCategoryFilter(cat: RecipeCategory) {
+    setCategoryFilters((prev) =>
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+    );
+  }
+
   const filteredRecipes = recipes.filter((r) => {
     if (filter === "uncooked" && r.cooked) return false;
     const cats = r.categories || [];
-    if (categoryFilter && !cats.includes(categoryFilter)) return false;
+    if (categoryFilters.length > 0 && !categoryFilters.some((f) => cats.includes(f))) return false;
     return true;
   });
 
@@ -443,24 +449,14 @@ export default function RecipesPage() {
           ))}
         </div>
 
-        {/* Category filters */}
+        {/* Category filters (multi-select) */}
         <div className="flex gap-1.5 mb-5 overflow-x-auto scrollbar-hide">
-          <button
-            onClick={() => setCategoryFilter(null)}
-            className={`h-7 px-2.5 text-[11px] rounded-full border transition-all ${
-              !categoryFilter
-                ? "border-accent bg-accent/10 text-accent font-medium"
-                : "border-border bg-card text-muted-foreground hover:border-accent/30"
-            }`}
-          >
-            Alle
-          </button>
           {categoryOptions.map(({ key, labelKey }) => (
             <button
               key={key}
-              onClick={() => setCategoryFilter(categoryFilter === key ? null : key)}
+              onClick={() => toggleCategoryFilter(key)}
               className={`h-7 px-2.5 text-[11px] rounded-full border whitespace-nowrap transition-all ${
-                categoryFilter === key
+                categoryFilters.includes(key)
                   ? "border-accent bg-accent/10 text-accent font-medium"
                   : "border-border bg-card text-muted-foreground hover:border-accent/30"
               }`}
@@ -468,6 +464,14 @@ export default function RecipesPage() {
               {t(labelKey as any)}
             </button>
           ))}
+          {categoryFilters.length > 0 && (
+            <button
+              onClick={() => setCategoryFilters([])}
+              className="h-7 px-2.5 text-[11px] rounded-full border border-red-200 bg-red-50 text-red-500 whitespace-nowrap transition-all hover:bg-red-100 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400"
+            >
+              Wissen
+            </button>
+          )}
         </div>
 
         {/* Recipe List */}
@@ -497,10 +501,10 @@ export default function RecipesPage() {
       </motion.section>
 
       <FloatingResetButton
-        visible={filter !== "all" || categoryFilter !== null}
+        visible={filter !== "all" || categoryFilters.length > 0}
         onReset={() => {
           setFilter("all");
-          setCategoryFilter(null);
+          setCategoryFilters([]);
         }}
       />
     </div>
@@ -536,8 +540,8 @@ function RecipeCard({
   const hasAnyApproval = approvals.length > 0;
 
   return (
-    <motion.div variants={fadeIn} transition={{ duration: 0.2 }}>
-      <Card className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border ${hasAnyApproval ? "border-primary/40 dark:border-primary/50" : "border-border"}`}>
+    <motion.div variants={fadeIn} transition={{ duration: 0.2 }} className="h-full">
+      <Card className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border h-full flex flex-col ${hasAnyApproval ? "border-primary/40 dark:border-primary/50" : "border-border"}`}>
         {/* Image */}
         {recipe.imageUrl && (
           <a href={recipe.url} target="_blank" rel="noopener noreferrer">
@@ -569,7 +573,7 @@ function RecipeCard({
           </a>
         )}
 
-        <CardContent className="p-3.5">
+        <CardContent className="p-3.5 flex flex-col flex-1">
           {/* Category badges — clickable to edit */}
           <div className="flex items-center gap-1.5 mb-1.5 flex-wrap">
             {cats.map((cat) => (
@@ -638,7 +642,7 @@ function RecipeCard({
           </a>
 
           {/* Action buttons */}
-          <div className="flex items-center gap-1 mt-3 pt-2.5 border-t border-border/50 flex-wrap">
+          <div className="flex items-center gap-1 mt-auto pt-2.5 border-t border-border/50 flex-wrap">
             {/* Gemaakt button */}
             <button
               data-testid={`recipe-cooked-${recipe.id}`}

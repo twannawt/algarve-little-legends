@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { motion } from "framer-motion";
+import { useLocation } from "wouter";
 import {
   ChefHat,
   Check,
@@ -8,6 +9,8 @@ import {
   Users,
   User,
   Trash2,
+  ArrowLeft,
+  UtensilsCrossed,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useT } from "@/lib/i18n";
@@ -49,12 +52,12 @@ const fadeIn = {
 
 function getCategoryColor(cat: RecipeCategory): string {
   switch (cat) {
-    case "ontbijt": return "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400";
-    case "lunch": return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400";
-    case "diner": return "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400";
-    case "snack": return "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400";
-    case "tussendoortje": return "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400";
-    default: return "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-400";
+    case "ontbijt": return "bg-amber-50 text-amber-800/70 dark:bg-amber-900/20 dark:text-amber-300/80";
+    case "lunch": return "bg-emerald-50 text-emerald-800/70 dark:bg-emerald-900/20 dark:text-emerald-300/80";
+    case "diner": return "bg-stone-100 text-stone-700 dark:bg-stone-800/30 dark:text-stone-400";
+    case "snack": return "bg-lime-50 text-lime-800/70 dark:bg-lime-900/20 dark:text-lime-300/80";
+    case "tussendoortje": return "bg-teal-50 text-teal-800/70 dark:bg-teal-900/20 dark:text-teal-300/80";
+    default: return "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400";
   }
 }
 
@@ -62,7 +65,15 @@ export default function RecipeFavoritesPage() {
   const t = useT();
   const { toast } = useToast();
   const qc = useQueryClient();
+  const [, navigate] = useLocation();
   const [filter, setFilter] = useState<FavFilter>("all");
+  const [categoryFilters, setCategoryFilters] = useState<RecipeCategory[]>([]);
+
+  function toggleCategoryFilter(cat: RecipeCategory) {
+    setCategoryFilters((prev) =>
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+    );
+  }
 
   const { data: recipes = [] } = useQuery<Recipe[]>({
     queryKey: ["/api/recipes"],
@@ -104,11 +115,16 @@ export default function RecipeFavoritesPage() {
     const isFavorite = r.cooked || approvals.length > 0;
     if (!isFavorite) return false;
 
-    // Apply filter
-    if (filter === "gemaakt") return r.cooked;
-    if (filter === "beiden") return approvals.includes("beiden");
-    if (filter === "charlie") return approvals.includes("charlie");
-    if (filter === "bodi") return approvals.includes("bodi");
+    // Apply fav filter
+    if (filter === "gemaakt" && !r.cooked) return false;
+    if (filter === "beiden" && !approvals.includes("beiden")) return false;
+    if (filter === "charlie" && !approvals.includes("charlie")) return false;
+    if (filter === "bodi" && !approvals.includes("bodi")) return false;
+
+    // Apply category filter (multi-select, AND with fav filter)
+    const cats = r.categories || [];
+    if (categoryFilters.length > 0 && !categoryFilters.some((f) => cats.includes(f))) return false;
+
     return true;
   });
 
@@ -121,6 +137,16 @@ export default function RecipeFavoritesPage() {
         variants={fadeIn}
         transition={{ duration: 0.25 }}
       >
+        {/* Back to recipes link (visible on desktop where bottom nav is far away) */}
+        <button
+          onClick={() => navigate("/recepten")}
+          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-4"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          <UtensilsCrossed className="h-3.5 w-3.5" />
+          {t("navRecepten")}
+        </button>
+
         <div className="mb-4">
           <h1 className="text-2xl font-bold font-serif text-foreground tracking-tight">
             {t("receptFavorieten")}
@@ -131,7 +157,7 @@ export default function RecipeFavoritesPage() {
         </div>
 
         {/* Filters */}
-        <div className="flex gap-2 mb-5 overflow-x-auto scrollbar-hide">
+        <div className="flex gap-2 mb-3 overflow-x-auto scrollbar-hide">
           {favFilterOptions.map(({ key, labelKey }) => (
             <button
               key={key}
@@ -146,6 +172,31 @@ export default function RecipeFavoritesPage() {
               {t(labelKey as any)}
             </button>
           ))}
+        </div>
+
+        {/* Category filters (multi-select) */}
+        <div className="flex gap-1.5 mb-5 overflow-x-auto scrollbar-hide">
+          {categoryOptions.map(({ key, labelKey }) => (
+            <button
+              key={key}
+              onClick={() => toggleCategoryFilter(key)}
+              className={`h-7 px-2.5 text-[11px] rounded-full border whitespace-nowrap transition-all ${
+                categoryFilters.includes(key)
+                  ? "border-accent bg-accent/10 text-accent font-medium"
+                  : "border-border bg-card text-muted-foreground hover:border-accent/30"
+              }`}
+            >
+              {t(labelKey as any)}
+            </button>
+          ))}
+          {categoryFilters.length > 0 && (
+            <button
+              onClick={() => setCategoryFilters([])}
+              className="h-7 px-2.5 text-[11px] rounded-full border border-red-200 bg-red-50 text-red-500 whitespace-nowrap transition-all hover:bg-red-100 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400"
+            >
+              Wissen
+            </button>
+          )}
         </div>
 
         {/* Favorite Recipe List */}
@@ -179,8 +230,8 @@ export default function RecipeFavoritesPage() {
       </motion.section>
 
       <FloatingResetButton
-        visible={filter !== "all"}
-        onReset={() => setFilter("all")}
+        visible={filter !== "all" || categoryFilters.length > 0}
+        onReset={() => { setFilter("all"); setCategoryFilters([]); }}
       />
     </div>
   );

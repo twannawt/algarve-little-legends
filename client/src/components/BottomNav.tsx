@@ -51,7 +51,16 @@ export function BottomNav() {
   // Dispatch a custom event for the recipes page to listen to
   function handleAddClick() {
     if (inRecipes) {
-      window.dispatchEvent(new CustomEvent("toggle-add-recipe"));
+      // If on favorites page, navigate to recipes first, then open the add form
+      if (location === "/recept-favorieten") {
+        navigate("/recepten");
+        // Small delay so the recipes page mounts before we dispatch
+        setTimeout(() => {
+          window.dispatchEvent(new CustomEvent("toggle-add-recipe"));
+        }, 150);
+      } else {
+        window.dispatchEvent(new CustomEvent("toggle-add-recipe"));
+      }
     } else {
       navigate("/suggest");
     }
@@ -72,17 +81,14 @@ export function BottomNav() {
               key={item.path}
               data-testid={`nav-${item.label.toLowerCase()}`}
               onClick={() => navigate(item.path)}
-              className={`flex flex-col items-center gap-1 px-4 py-3 rounded-lg transition-colors ${
+              className={`flex flex-col items-center gap-1 px-4 py-2.5 rounded-xl transition-all ${
                 isActive
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-primary/12 text-primary border border-primary/25 shadow-sm"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
               }`}
             >
               <Icon className={`h-5 w-5 ${isActive ? "fill-primary/20" : ""}`} />
               <span className="text-xs font-medium">{item.label}</span>
-              {isActive && (
-                <span className="w-1 h-1 rounded-full bg-primary -mt-0.5" />
-              )}
             </button>
           );
         })}
