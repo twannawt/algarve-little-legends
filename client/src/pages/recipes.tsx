@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Link as LinkIcon,
@@ -20,11 +20,11 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ToastAction } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
 import { apiRequest } from "@/lib/queryClient";
-import { queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { useRecipeMutations } from "@/hooks/use-recipe-mutations";
+import { useRecipeFilters } from "@/hooks/use-recipe-filters";
 import type { Recipe, RecipeCategory, RecipeDifficulty, KidApproval, RecipeImportResult } from "@shared/schema";
 import { FloatingResetButton } from "@/components/FloatingResetButton";
 import { RecipeCard } from "@/components/RecipeCard";
@@ -33,9 +33,7 @@ import {
   categoryOptions,
   filterOptions,
   sortOptions,
-  fadeIn,
   getCategoryColor,
-  type SortOption,
 } from "@/lib/recipe-constants";
 
 export default function RecipesPage() {
@@ -43,6 +41,7 @@ export default function RecipesPage() {
   const { toast } = useToast();
   const qc = useQueryClient();
 
+  // Form state
   const [showAddForm, setShowAddForm] = useState(false);
   const [importMode, setImportMode] = useState<"single" | "bulk">("single");
   const [url, setUrl] = useState("");
@@ -52,16 +51,16 @@ export default function RecipesPage() {
   const [selectedCategories, setSelectedCategories] = useState<RecipeCategory[]>(["diner"]);
   const [isImporting, setIsImporting] = useState(false);
   const [isBulkImporting, setIsBulkImporting] = useState(false);
-  const [filter, setFilter] = useState<"all" | "uncooked">("all");
-  const [categoryFilters, setCategoryFilters] = useState<RecipeCategory[]>([]);
-  const [surpriseCategory, setSurpriseCategory] = useState<RecipeCategory | null>(null);
-  const [randomRecipe, setRandomRecipe] = useState<Recipe | null>(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState<SortOption>("nieuwste");
-  const [showSortMenu, setShowSortMenu] = useState(false);
   const [prepTime, setPrepTime] = useState<string>("");
   const [difficulty, setDifficulty] = useState<RecipeDifficulty | "">("");
+
+  // Surprise me state
+  const [surpriseCategory, setSurpriseCategory] = useState<RecipeCategory | null>(null);
+  const [randomRecipe, setRandomRecipe] = useState<Recipe | null>(null);
   const suggestionRef = useRef<HTMLDivElement>(null);
+
+  // Sort dropdown state
+  const [showSortMenu, setShowSortMenu] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
 
   // Listen for bottom nav "add" button click
@@ -90,6 +89,9 @@ export default function RecipesPage() {
     queryKey: ["/api/recipes"],
   });
 
+  const { toggleCooked: toggleCookedMutation, toggleFavorite: toggleFavoriteMutation, toggleKidApproval: toggleKidApprovalMutation, updateCategories: updateCategoriesMutation } = useRecipeMutations();
+  const { filter, setFilter, categoryFilters, toggleCategoryFilter, searchQuery, setSearchQuery, sortBy, setSortBy, filteredRecipes, hasActiveFilters, resetFilters } = useRecipeFilters(recipes);
+
   const addMutation = useMutation({
     mutationFn: async (data: any) => {
       const res = await apiRequest("POST", "/api/recipes", data);
@@ -99,70 +101,6 @@ export default function RecipesPage() {
       qc.invalidateQueries({ queryKey: ["/api/recipes"] });
       toast({ title: t("receptToegevoegd") });
       resetForm();
-    },
-  });
-
-  const toggleCookedMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const res = await apiRequest("POST", `/api/recipes/${id}/cooked`);
-      return res.json();
-    },
-    onSuccess: (data: Recipe, id: string) => {
-      qc.invalidateQueries({ queryKey: ["/api/recipes"] });
-      toast({
-        title: data.cooked ? t("gemaaktAan") : t("gemaaktUit"),
-        action: (
-          <ToastAction altText={t("ongedaanMaken")} onClick={() => toggleCookedMutation.mutate(id)}>
-            {t("ongedaanMaken")}
-          </ToastAction>
-        ),
-      });
-    },
-  });
-
-  const toggleFavoriteMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const res = await apiRequest("POST", `/api/recipes/${id}/favorite`);
-      return res.json();
-    },
-    onSuccess: (data: Recipe, id: string) => {
-      qc.invalidateQueries({ queryKey: ["/api/recipes"] });
-      toast({
-        title: data.favorite ? t("favorietAan") : t("favorietUit"),
-        action: (
-          <ToastAction altText={t("ongedaanMaken")} onClick={() => toggleFavoriteMutation.mutate(id)}>
-            {t("ongedaanMaken")}
-          </ToastAction>
-        ),
-      });
-    },
-  });
-
-  const toggleKidApprovalMutation = useMutation({
-    mutationFn: async ({ id, tag }: { id: string; tag: KidApproval }) => {
-      const res = await apiRequest("POST", `/api/recipes/${id}/kid-approval`, { tag });
-      return res.json();
-    },
-    onSuccess: (_data: Recipe, variables: { id: string; tag: KidApproval }) => {
-      qc.invalidateQueries({ queryKey: ["/api/recipes"] });
-      toast({
-        title: `${variables.tag} bijgewerkt`,
-        action: (
-          <ToastAction altText={t("ongedaanMaken")} onClick={() => toggleKidApprovalMutation.mutate(variables)}>
-            {t("ongedaanMaken")}
-          </ToastAction>
-        ),
-      });
-    },
-  });
-
-  const updateCategoriesMutation = useMutation({
-    mutationFn: async ({ id, categories }: { id: string; categories: RecipeCategory[] }) => {
-      const res = await apiRequest("PATCH", `/api/recipes/${id}/categories`, { categories });
-      return res.json();
-    },
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["/api/recipes"] });
     },
   });
 
@@ -251,52 +189,11 @@ export default function RecipesPage() {
     }
   }
 
-  function toggleCategoryFilter(cat: RecipeCategory) {
-    setCategoryFilters((prev) =>
-      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
-    );
-  }
 
-  const filteredRecipes = useMemo(() =>
-    recipes
-      .filter((r) => {
-        if (filter === "uncooked" && r.cooked) return false;
-        const cats = r.categories || [];
-        if (categoryFilters.length > 0 && !categoryFilters.some((f) => cats.includes(f))) return false;
-        if (searchQuery.trim()) {
-          const q = searchQuery.toLowerCase();
-          const matchTitle = r.title.toLowerCase().includes(q);
-          const matchDesc = (r.description || "").toLowerCase().includes(q);
-          const matchSite = (r.siteName || "").toLowerCase().includes(q);
-          if (!matchTitle && !matchDesc && !matchSite) return false;
-        }
-        return true;
-      })
-      .sort((a, b) => {
-        switch (sortBy) {
-          case "oudste":
-            return (a.createdAt || "").localeCompare(b.createdAt || "");
-          case "az":
-            return a.title.localeCompare(b.title, "nl");
-          case "za":
-            return b.title.localeCompare(a.title, "nl");
-          case "nieuwste":
-          default:
-            return (b.createdAt || "").localeCompare(a.createdAt || "");
-        }
-      }),
-    [recipes, filter, categoryFilters, searchQuery, sortBy]
-  );
 
   return (
     <div className="max-w-5xl mx-auto pb-24 md:pb-8">
-      <motion.section
-        className="px-4 pt-6 pb-4"
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-        transition={{ duration: 0.25 }}
-      >
+      <section className="px-4 pt-6 pb-4 animate-fade-in-up">
         <div className="mb-4">
           <h1 className="text-2xl font-bold font-serif text-foreground tracking-tight">
             {t("receptenTitel")}
@@ -793,16 +690,11 @@ export default function RecipesPage() {
             ))}
           </motion.div>
         )}
-      </motion.section>
+      </section>
 
       <FloatingResetButton
-        visible={filter !== "all" || categoryFilters.length > 0 || searchQuery !== "" || sortBy !== "nieuwste"}
-        onReset={() => {
-          setFilter("all");
-          setCategoryFilters([]);
-          setSearchQuery("");
-          setSortBy("nieuwste");
-        }}
+        visible={hasActiveFilters}
+        onReset={resetFilters}
       />
     </div>
   );

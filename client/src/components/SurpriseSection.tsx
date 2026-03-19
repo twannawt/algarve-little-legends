@@ -37,12 +37,17 @@ export function SurpriseSection() {
 
   async function fetchRandom() {
     const url = surpriseCategory ? `/api/random?category=${surpriseCategory}` : "/api/random";
-    const res = await apiRequest("GET", url);
-    const place = await res.json();
-    setRandomPlace(place);
-    setTimeout(() => {
-      suggestionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 100);
+    try {
+      const res = await apiRequest("GET", url);
+      const place = await res.json();
+      setRandomPlace(place);
+      setTimeout(() => {
+        suggestionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
+    } catch {
+      // API returned 404 or error — no places found
+      setRandomPlace(null);
+    }
   }
 
   return (

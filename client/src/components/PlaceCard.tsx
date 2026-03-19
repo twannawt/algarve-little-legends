@@ -35,6 +35,7 @@ function PlaceImage({ src, alt, category }: { src: string; alt: string; category
           src={src}
           alt={alt}
           loading="lazy"
+          decoding="async"
           onLoad={() => setStatus("loaded")}
           onError={() => setStatus("error")}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${

@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
 import { clerkMiddleware } from "@clerk/express";
+import rateLimit from "express-rate-limit";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
@@ -35,13 +36,25 @@ declare module "http" {
 
 app.use(
   express.json({
+    limit: "100kb",
     verify: (req, _res, buf) => {
       req.rawBody = buf;
     },
   }),
 );
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false, limit: "100kb" }));
+
+// Rate limiting — basis bescherming voor publieke routes
+app.use(
+  "/api/",
+  rateLimit({
+    windowMs: 60 * 1000, // 1 minuut
+    max: 120, // max 120 requests per minuut per IP
+    standardHeaders: true,
+    legacyHeaders: false,
+  }),
+);
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {

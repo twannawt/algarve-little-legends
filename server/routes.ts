@@ -1,5 +1,5 @@
 import type { Express, Request, Response } from "express";
-import { createServer, type Server } from "http";
+import type { Server } from "http";
 import { requireAuth, getAuth } from "@clerk/express";
 import { storage } from "./storage";
 import { importFromUrls, importRecipeFromUrl, bulkImportRecipes, bulkImportPlaces } from "./url-import";
@@ -50,7 +50,9 @@ export async function registerRoutes(
 
   app.get("/api/random", (_req, res) => {
     const { category } = _req.query;
-    res.json(storage.getRandomPlace(typeof category === "string" ? category : undefined));
+    const place = storage.getRandomPlace(typeof category === "string" ? category : undefined);
+    if (!place) return res.status(404).json({ message: "Geen plekken gevonden" });
+    res.json(place);
   });
 
   app.get("/api/weather", async (_req, res) => {
@@ -85,6 +87,12 @@ export async function registerRoutes(
     const { name, location, category, description, latitude, longitude, website, imageUrl } = req.body;
     if (!name || !location || !category) {
       return res.status(400).json({ message: "Naam, locatie en categorie zijn verplicht" });
+    }
+    if (typeof name === "string" && name.length > 200) {
+      return res.status(400).json({ message: "Naam mag maximaal 200 tekens zijn" });
+    }
+    if (typeof description === "string" && description.length > 2000) {
+      return res.status(400).json({ message: "Beschrijving mag maximaal 2000 tekens zijn" });
     }
     const place = storage.addPlace({
       name,
@@ -146,6 +154,12 @@ export async function registerRoutes(
     const { name, location, category, description } = req.body;
     if (!name || !location || !category) {
       return res.status(400).json({ message: "Naam, locatie en categorie zijn verplicht" });
+    }
+    if (typeof name === "string" && name.length > 200) {
+      return res.status(400).json({ message: "Naam mag maximaal 200 tekens zijn" });
+    }
+    if (typeof description === "string" && description.length > 2000) {
+      return res.status(400).json({ message: "Beschrijving mag maximaal 2000 tekens zijn" });
     }
     const suggestion = storage.addSuggestion({ name, location, category, description: description || "" });
     res.json(suggestion);
@@ -230,6 +244,12 @@ export async function registerRoutes(
     const { title, url, imageUrl, description, siteName, categories, category } = req.body;
     if (!title || !url) {
       return res.status(400).json({ message: "Titel en URL zijn verplicht" });
+    }
+    if (typeof title === "string" && title.length > 500) {
+      return res.status(400).json({ message: "Titel mag maximaal 500 tekens zijn" });
+    }
+    if (typeof url === "string" && url.length > 2000) {
+      return res.status(400).json({ message: "URL mag maximaal 2000 tekens zijn" });
     }
     let cats: RecipeCategory[] = [];
     if (Array.isArray(categories) && categories.length > 0) {

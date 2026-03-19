@@ -11,7 +11,8 @@ import { Header } from "@/components/Header";
 import { BottomNav } from "@/components/BottomNav";
 import { AppTabs } from "@/components/AppTabs";
 import { DesktopSidebar } from "@/components/DesktopSidebar";
-import { ClerkProvider, SignIn, SignUp, useAuth, useUser } from "@clerk/clerk-react";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { ClerkProvider, SignIn, SignUp, useAuth } from "@clerk/clerk-react";
 
 // Eager-load home (initial route)
 import HomePage from "@/pages/home";
@@ -159,7 +160,9 @@ function AppShell() {
       <OfflineBanner />
       <DesktopSidebar />
       <main className="min-h-screen md:ml-56">
-        <AppRouter />
+        <ErrorBoundary>
+          <AppRouter />
+        </ErrorBoundary>
       </main>
       <BottomNav />
     </>

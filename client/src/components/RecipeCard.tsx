@@ -66,6 +66,7 @@ export function RecipeCard({
                 alt={recipe.title}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-[hsl(42,30%,92%)] to-[hsl(140,15%,90%)] dark:from-[hsl(42,20%,16%)] dark:to-[hsl(140,15%,14%)] flex items-center justify-center">

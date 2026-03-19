@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "wouter";
 import {
@@ -15,11 +15,8 @@ import {
   Heart,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { ToastAction } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
-import { apiRequest } from "@/lib/queryClient";
-import { queryClient } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+import { useRecipeMutations } from "@/hooks/use-recipe-mutations";
 import type { Recipe, RecipeCategory, KidApproval } from "@shared/schema";
 import { FloatingResetButton } from "@/components/FloatingResetButton";
 import { EmptyState } from "@/components/EmptyState";
@@ -49,9 +46,8 @@ const favFilterOptions: { key: FavFilter; labelKey: string }[] = [
 
 export default function RecipeFavoritesPage() {
   const t = useT();
-  const { toast } = useToast();
-  const qc = useQueryClient();
   const [, navigate] = useLocation();
+  const { toggleCooked: toggleCookedMutation, toggleFavorite: toggleFavoriteMutation, toggleKidApproval: toggleKidApprovalMutation, deleteRecipe: deleteMutation } = useRecipeMutations();
   const [filter, setFilter] = useState<FavFilter>("all");
   const [categoryFilters, setCategoryFilters] = useState<RecipeCategory[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -79,70 +75,6 @@ export default function RecipeFavoritesPage() {
 
   const { data: recipes = [] } = useQuery<Recipe[]>({
     queryKey: ["/api/recipes"],
-  });
-
-  const toggleCookedMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const res = await apiRequest("POST", `/api/recipes/${id}/cooked`);
-      return res.json();
-    },
-    onSuccess: (data: any, id: string) => {
-      qc.invalidateQueries({ queryKey: ["/api/recipes"] });
-      toast({
-        title: data.cooked ? t("gemaaktAan") : t("gemaaktUit"),
-        action: (
-          <ToastAction altText={t("ongedaanMaken")} onClick={() => toggleCookedMutation.mutate(id)}>
-            {t("ongedaanMaken")}
-          </ToastAction>
-        ),
-      });
-    },
-  });
-
-  const toggleKidApprovalMutation = useMutation({
-    mutationFn: async ({ id, tag }: { id: string; tag: KidApproval }) => {
-      const res = await apiRequest("POST", `/api/recipes/${id}/kid-approval`, { tag });
-      return res.json();
-    },
-    onSuccess: (_data: any, variables: { id: string; tag: KidApproval }) => {
-      qc.invalidateQueries({ queryKey: ["/api/recipes"] });
-      toast({
-        title: `${variables.tag} bijgewerkt`,
-        action: (
-          <ToastAction altText={t("ongedaanMaken")} onClick={() => toggleKidApprovalMutation.mutate(variables)}>
-            {t("ongedaanMaken")}
-          </ToastAction>
-        ),
-      });
-    },
-  });
-
-  const deleteMutation = useMutation({
-    mutationFn: async (id: string) => {
-      await apiRequest("DELETE", `/api/recipes/${id}`);
-    },
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["/api/recipes"] });
-      toast({ title: t("receptVerwijderd") });
-    },
-  });
-
-  const toggleFavoriteMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const res = await apiRequest("POST", `/api/recipes/${id}/favorite`);
-      return res.json();
-    },
-    onSuccess: (data: any, id: string) => {
-      qc.invalidateQueries({ queryKey: ["/api/recipes"] });
-      toast({
-        title: data.favorite ? t("favorietAan") : t("favorietUit"),
-        action: (
-          <ToastAction altText={t("ongedaanMaken")} onClick={() => toggleFavoriteMutation.mutate(id)}>
-            {t("ongedaanMaken")}
-          </ToastAction>
-        ),
-      });
-    },
   });
 
   // Only show recipes marked as favorite
@@ -189,13 +121,7 @@ export default function RecipeFavoritesPage() {
 
   return (
     <div className="max-w-5xl mx-auto pb-24 md:pb-8">
-      <motion.section
-        className="px-4 pt-6 pb-4"
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-        transition={{ duration: 0.25 }}
-      >
+      <section className="px-4 pt-6 pb-4 animate-fade-in-up">
         {/* Back to recipes link */}
         <button
           onClick={() => navigate("/recepten")}
@@ -342,7 +268,7 @@ export default function RecipeFavoritesPage() {
             ))}
           </motion.div>
         )}
-      </motion.section>
+      </section>
 
       <FloatingResetButton
         visible={filter !== "all" || categoryFilters.length > 0 || searchQuery !== "" || sortBy !== "nieuwste"}
@@ -379,6 +305,7 @@ function FavRecipeCard({
                 alt={recipe.title}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
               {recipe.cooked && (
                 <div className="absolute top-2 left-2 bg-[hsl(42,35%,55%)] text-white rounded-full p-1.5 shadow-sm">

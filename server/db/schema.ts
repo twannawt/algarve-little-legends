@@ -1,4 +1,4 @@
-import { pgTable, text, boolean, timestamp, primaryKey } from "drizzle-orm/pg-core";
+import { pgTable, text, boolean, timestamp, primaryKey, index } from "drizzle-orm/pg-core";
 
 // Recipes table — stores all recipe data (user-scoped)
 export const recipes = pgTable("recipes", {
@@ -14,7 +14,9 @@ export const recipes = pgTable("recipes", {
   favorite: boolean("favorite").notNull().default(false),
   kidApproval: text("kid_approval").array().notNull().default([]),
   createdAt: text("created_at").notNull(),
-});
+}, (table) => ({
+  userCreatedIdx: index("recipes_user_created_idx").on(table.userId, table.createdAt),
+}));
 
 // Favorites table — stores place IDs that are favorited (user-scoped)
 export const favorites = pgTable("favorites", {
