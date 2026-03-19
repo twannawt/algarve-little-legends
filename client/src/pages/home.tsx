@@ -89,8 +89,15 @@ function getTimeGreeting(t: ReturnType<typeof useT>): string {
 
 type TimeTipData = { tip: string; action: string; icon: React.ComponentType<{ className?: string }>; color: string; onClick: () => void };
 
-function useTimeTip(t: ReturnType<typeof useT>, navigate: (path: string) => void, setCategory: (cat: string | null) => void): TimeTipData {
+function useTimeTip(
+  t: ReturnType<typeof useT>,
+  navigate: (path: string) => void,
+  setCategory: (cat: string | null) => void,
+  weather?: WeatherData | null,
+): TimeTipData {
   const hour = new Date().getHours();
+  const isRainy = weather ? weather.current.weathercode >= 51 : false;
+
   if (hour >= 6 && hour < 12) return {
     tip: t("tipOchtend"),
     action: t("bekijkOntbijt"),
@@ -98,13 +105,24 @@ function useTimeTip(t: ReturnType<typeof useT>, navigate: (path: string) => void
     color: "bg-[hsl(35,55%,65%)]/10 text-[hsl(35,55%,55%)] dark:text-[hsl(35,55%,75%)] border-[hsl(35,55%,65%)]/20",
     onClick: () => navigate("/recepten"),
   };
-  if (hour >= 12 && hour < 17) return {
-    tip: t("tipMiddag"),
-    action: t("bekijkStranden"),
-    icon: Waves,
-    color: "bg-[hsl(195,20%,55%)]/10 text-[hsl(195,20%,45%)] dark:text-[hsl(195,20%,70%)] border-[hsl(195,20%,55%)]/20",
-    onClick: () => { setCategory("beach"); document.getElementById("categories-section")?.scrollIntoView({ behavior: "smooth" }); },
-  };
+  if (hour >= 12 && hour < 17) {
+    if (isRainy) {
+      return {
+        tip: t("tipMiddagRegen"),
+        action: t("bekijkActiviteiten"),
+        icon: Sparkles,
+        color: "bg-[hsl(195,20%,55%)]/10 text-[hsl(195,20%,45%)] dark:text-[hsl(195,20%,70%)] border-[hsl(195,20%,55%)]/20",
+        onClick: () => { setCategory("activity"); document.getElementById("categories-section")?.scrollIntoView({ behavior: "smooth" }); },
+      };
+    }
+    return {
+      tip: t("tipMiddag"),
+      action: t("bekijkStranden"),
+      icon: Waves,
+      color: "bg-[hsl(195,20%,55%)]/10 text-[hsl(195,20%,45%)] dark:text-[hsl(195,20%,70%)] border-[hsl(195,20%,55%)]/20",
+      onClick: () => { setCategory("beach"); document.getElementById("categories-section")?.scrollIntoView({ behavior: "smooth" }); },
+    };
+  }
   if (hour >= 17 && hour < 22) return {
     tip: t("tipAvond"),
     action: t("bekijkRestaurants"),
@@ -141,8 +159,6 @@ export default function HomePage() {
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [gpsActive, setGpsActive] = useState(false);
   const nearbyRef = useRef<HTMLElement>(null);
-  const timeTip = useTimeTip(t, navigate, setActiveCategory);
-
   const { data: places = [] } = useQuery<Place[]>({
     queryKey: ["/api/places"],
   });
@@ -154,6 +170,8 @@ export default function HomePage() {
   const { data: weather } = useQuery<WeatherData>({
     queryKey: ["/api/weather"],
   });
+
+  const timeTip = useTimeTip(t, navigate, setActiveCategory, weather);
 
   const { data: recentlyViewed = [] } = useQuery<Place[]>({
     queryKey: ["/api/recently-viewed"],
