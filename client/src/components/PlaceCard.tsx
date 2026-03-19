@@ -6,6 +6,7 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { apiRequest } from "@/lib/queryClient";
 import { getDistance, LAGOA_LAT, LAGOA_LNG } from "@/lib/geo";
 import { CategoryBadge, CategoryIcon } from "@/components/CategoryIcon";
+import { StarRating } from "@/components/StarRating";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Place } from "@shared/schema";
 
@@ -221,9 +222,11 @@ interface PlaceCardProps {
   place: Place;
   /** Optional pre-fetched favorites array — avoids per-card query */
   favorites?: string[];
+  /** Optional rating (1-5) to display on the card */
+  rating?: number;
 }
 
-export function PlaceCard({ place, favorites: favoriteProp }: PlaceCardProps) {
+export function PlaceCard({ place, favorites: favoriteProp, rating }: PlaceCardProps) {
   const [, navigate] = useLocation();
   const queryClient = useQueryClient();
   const [isMobile, setIsMobile] = useState(false);
@@ -298,6 +301,11 @@ export function PlaceCard({ place, favorites: favoriteProp }: PlaceCardProps) {
               <span className="truncate">{place.location}</span>
               <span>· {distance.toFixed(1)} km</span>
             </div>
+            {rating && rating > 0 && (
+              <div className="mt-1.5">
+                <StarRating rating={rating} size="sm" readOnly />
+              </div>
+            )}
           </div>
           <button
             data-testid={`favorite-${place.id}`}

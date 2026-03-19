@@ -1,7 +1,7 @@
 import type { Recipe, RecipeCategory, KidApproval } from "@shared/schema";
 import { eq, and } from "drizzle-orm";
 import { getDb } from "../db";
-import { recipes as recipesTable, favorites as favoritesTable, visited as visitedTable } from "../db/schema";
+import { recipes as recipesTable, favorites as favoritesTable, visited as visitedTable, ratings as ratingsTable } from "../db/schema";
 import type { IStorage } from "./interface";
 import { BasePlaceStorage } from "./base";
 
@@ -167,5 +167,28 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
       kidApproval: (r.kidApproval || []) as KidApproval[],
       createdAt: r.createdAt,
     };
+  }
+
+  async getRatings(userId: string): Promise<Record<string, number>> {
+    const db = getDb();
+    const rows = await db.select().from(ratingsTable).where(eq(ratingsTable.userId, userId));
+    const map: Record<string, number> = {};
+    for (const r of rows) map[r.placeId] = r.rating;
+    return map;
+  }
+
+  async setRating(userId: string, placeId: string, rating: number): Promise<number> {
+    const db = getDb();
+    const existing = await db.select().from(ratingsTable).where(
+      and(eq(ratingsTable.userId, userId), eq(ratingsTable.placeId, placeId))
+    );
+    if (existing.length > 0) {
+      await db.update(ratingsTable).set({ rating, createdAt: new Date().toISOString() }).where(
+        and(eq(ratingsTable.userId, userId), eq(ratingsTable.placeId, placeId))
+      );
+    } else {
+      await db.insert(ratingsTable).values({ userId, placeId, rating, createdAt: new Date().toISOString() });
+    }
+    return rating;
   }
 }

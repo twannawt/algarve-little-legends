@@ -28,4 +28,7 @@ export interface IStorage {
   getRecipeDagplan(userId: string): Promise<{ ontbijt: Recipe | null; lunch: Recipe | null; diner: Recipe | null }>;
   addRecentlyViewed(userId: string, placeId: string): void;
   getRecentlyViewed(userId: string): string[];
+  // Ratings — 1-5 stars for visited places
+  getRatings(userId: string): Promise<Record<string, number>>;
+  setRating(userId: string, placeId: string, rating: number): Promise<number>;
 }

@@ -1,4 +1,4 @@
-import { pgTable, text, boolean, timestamp, primaryKey, index } from "drizzle-orm/pg-core";
+import { pgTable, text, boolean, timestamp, primaryKey, index, integer } from "drizzle-orm/pg-core";
 
 // Recipes table — stores all recipe data (user-scoped)
 export const recipes = pgTable("recipes", {
@@ -31,6 +31,16 @@ export const favorites = pgTable("favorites", {
 export const visited = pgTable("visited", {
   userId: text("user_id").notNull().default("default"),
   placeId: text("place_id").notNull(),
+  createdAt: text("created_at").notNull(),
+}, (table) => ({
+  pk: primaryKey({ columns: [table.userId, table.placeId] }),
+}));
+
+// Ratings table — 1-5 star ratings for visited places (user-scoped)
+export const ratings = pgTable("ratings", {
+  userId: text("user_id").notNull().default("default"),
+  placeId: text("place_id").notNull(),
+  rating: integer("rating").notNull(),
   createdAt: text("created_at").notNull(),
 }, (table) => ({
   pk: primaryKey({ columns: [table.userId, table.placeId] }),

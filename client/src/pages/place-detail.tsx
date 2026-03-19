@@ -20,6 +20,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CategoryBadge, CategoryIcon } from "@/components/CategoryIcon";
+import { StarRating } from "@/components/StarRating";
 import { apiRequest } from "@/lib/queryClient";
 import { useT } from "@/lib/i18n";
 import { getDistance, LAGOA_LAT, LAGOA_LNG } from "@/lib/geo";
@@ -85,8 +86,13 @@ export default function PlaceDetail() {
     queryKey: ["/api/visited"],
   });
 
+  const { data: ratings = {} } = useQuery<Record<string, number>>({
+    queryKey: ["/api/ratings"],
+  });
+
   const isFavorite = place ? favorites.includes(place.id) : false;
   const isVisited = place ? visitedIds.includes(place.id) : false;
+  const myRating = place ? (ratings[place.id] || 0) : 0;
 
   const toggleFav = useMutation({
     mutationFn: () => apiRequest("POST", `/api/favorites/${params.id}`),
@@ -99,6 +105,13 @@ export default function PlaceDetail() {
     mutationFn: () => apiRequest("POST", `/api/visited/${params.id}`),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/visited"] });
+    },
+  });
+
+  const rateMutation = useMutation({
+    mutationFn: (rating: number) => apiRequest("POST", `/api/ratings/${params.id}`, { rating }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/ratings"] });
     },
   });
 
@@ -291,6 +304,21 @@ export default function PlaceDetail() {
                 <h2 className="text-sm font-bold text-foreground mb-1">{t("tipVoorOuders")}</h2>
                 <p className="text-sm text-foreground/80 leading-relaxed">{place.tip}</p>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* Rating — only visible for visited places */}
+        {isVisited && (
+          <div className="mb-6 p-4 rounded-2xl bg-primary/[0.04] border border-primary/10">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium text-foreground">
+                {myRating > 0 ? t("jouwBeoordeling") : t("geefBeoordeling")}
+              </span>
+              <StarRating
+                rating={myRating}
+                onRate={(r) => rateMutation.mutate(r)}
+              />
             </div>
           </div>
         )}

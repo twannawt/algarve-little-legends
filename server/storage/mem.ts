@@ -13,6 +13,7 @@ export class MemStorage extends BasePlaceStorage implements IStorage {
   private favoritesMap: Map<string, Set<string>> = new Map();
   private visitedMap: Map<string, Set<string>> = new Map();
   private recipesMap: Map<string, Recipe[]> = new Map();
+  private ratingsMap: Map<string, Map<string, number>> = new Map();
 
   constructor() {
     super();
@@ -150,5 +151,17 @@ export class MemStorage extends BasePlaceStorage implements IStorage {
     recipe.categories = categories;
     this.persistRecipes(userId);
     return recipe;
+  }
+
+  async getRatings(userId: string): Promise<Record<string, number>> {
+    const userRatings = this.ratingsMap.get(userId);
+    if (!userRatings) return {};
+    return Object.fromEntries(userRatings);
+  }
+
+  async setRating(userId: string, placeId: string, rating: number): Promise<number> {
+    if (!this.ratingsMap.has(userId)) this.ratingsMap.set(userId, new Map());
+    this.ratingsMap.get(userId)!.set(placeId, rating);
+    return rating;
   }
 }

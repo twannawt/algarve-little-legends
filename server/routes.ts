@@ -213,6 +213,23 @@ export async function registerRoutes(
     res.json({ id: req.params.id, isVisited });
   });
 
+  // Ratings — user-scoped, 1-5 stars
+  app.get("/api/ratings", requireAuth(), async (req, res) => {
+    const userId = getUserId(req);
+    const ratings = await storage.getRatings(userId);
+    res.json(ratings);
+  });
+
+  app.post("/api/ratings/:id", requireAuth(), async (req, res) => {
+    const userId = getUserId(req);
+    const { rating } = req.body;
+    if (typeof rating !== "number" || rating < 1 || rating > 5 || !Number.isInteger(rating)) {
+      return res.status(400).json({ error: "Rating must be an integer between 1 and 5" });
+    }
+    const saved = await storage.setRating(userId, req.params.id, rating);
+    res.json({ id: req.params.id, rating: saved });
+  });
+
   app.get("/api/dagplan", (_req, res) => {
     res.json(storage.getDagplan());
   });

@@ -55,6 +55,14 @@ export async function initDatabase() {
       place_id TEXT PRIMARY KEY,
       created_at TEXT NOT NULL
     );
+
+    CREATE TABLE IF NOT EXISTS ratings (
+      user_id TEXT NOT NULL DEFAULT 'default',
+      place_id TEXT NOT NULL,
+      rating INTEGER NOT NULL,
+      created_at TEXT NOT NULL,
+      PRIMARY KEY (user_id, place_id)
+    );
   `);
 
   console.log("PostgreSQL database initialized");

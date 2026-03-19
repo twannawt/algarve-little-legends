@@ -24,6 +24,10 @@ export default function FavoritesPage() {
     queryKey: ["/api/visited"],
   });
 
+  const { data: ratings = {} } = useQuery<Record<string, number>>({
+    queryKey: ["/api/ratings"],
+  });
+
   const favoritePlaces = places.filter((p) => favoriteIds.includes(p.id));
   const visitedPlaces = places.filter((p) => visitedIds.includes(p.id));
   const activePlaces = tab === "favorites" ? favoritePlaces : visitedPlaces;
@@ -73,7 +77,7 @@ export default function FavoritesPage() {
         >
           {activePlaces.map((place) => (
             <motion.div key={place.id} variants={fadeIn} transition={{ duration: 0.25 }}>
-              <PlaceCard place={place} favorites={favoriteIds} />
+              <PlaceCard place={place} favorites={favoriteIds} rating={tab === "visited" ? ratings[place.id] : undefined} />
             </motion.div>
           ))}
         </motion.div>
