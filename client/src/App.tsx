@@ -10,6 +10,7 @@ import { useOnlineStatus } from "@/hooks/use-online";
 import { Header } from "@/components/Header";
 import { BottomNav } from "@/components/BottomNav";
 import { AppTabs } from "@/components/AppTabs";
+import { DesktopSidebar } from "@/components/DesktopSidebar";
 
 // Eager-load home (initial route)
 import HomePage from "@/pages/home";
@@ -82,7 +83,8 @@ function App() {
             <Header />
             <AppTabs />
             <OfflineBanner />
-            <main className="min-h-screen">
+            <DesktopSidebar />
+            <main className="min-h-screen md:ml-56">
               <AppRouter />
             </main>
             <BottomNav />

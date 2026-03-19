@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Sun, Coffee, UtensilsCrossed, RefreshCw, ExternalLink } from "lucide-react";
+import { Sun, Coffee, UtensilsCrossed, RefreshCw, ExternalLink, ChefHat, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { apiRequest } from "@/lib/queryClient";
@@ -73,7 +73,7 @@ export default function RecipeDagplannerPage() {
 
   return (
     <motion.div
-      className="max-w-3xl mx-auto px-4 py-6 pb-24"
+      className="max-w-3xl mx-auto px-4 py-6 pb-24 md:pb-8"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
@@ -87,8 +87,26 @@ export default function RecipeDagplannerPage() {
       </p>
 
       {loading && (
-        <div className="flex items-center justify-center py-20">
-          <RefreshCw className="h-8 w-8 text-primary animate-spin" />
+        <div className="space-y-0">
+          {[0, 1, 2].map((idx) => (
+            <div key={idx} className="flex gap-4">
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full bg-muted animate-pulse" />
+                {idx < 2 && <div className="w-0 flex-1 border-l-2 border-dashed border-muted my-1" />}
+              </div>
+              <div className="flex-1 pb-6">
+                <div className="h-3 w-16 bg-muted animate-pulse rounded mb-2" />
+                <div className="rounded-2xl border border-border bg-card overflow-hidden">
+                  <div className="h-36 bg-muted animate-pulse" />
+                  <div className="p-4 space-y-2">
+                    <div className="h-4 w-3/4 bg-muted animate-pulse rounded" />
+                    <div className="h-3 w-1/3 bg-muted animate-pulse rounded" />
+                    <div className="h-3 w-full bg-muted animate-pulse rounded" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       )}
 
@@ -124,6 +142,19 @@ export default function RecipeDagplannerPage() {
                               className="w-full h-full object-cover"
                               loading="lazy"
                             />
+                            {/* Status indicators */}
+                            <div className="absolute top-2 left-2 flex gap-1">
+                              {step.recipe.cooked && (
+                                <span className="bg-[hsl(42,35%,55%)] text-white rounded-full p-1.5 shadow-sm">
+                                  <ChefHat className="h-3 w-3" />
+                                </span>
+                              )}
+                              {step.recipe.favorite && (
+                                <span className="bg-red-500 text-white rounded-full p-1.5 shadow-sm">
+                                  <Heart className="h-3 w-3 fill-current" />
+                                </span>
+                              )}
+                            </div>
                           </div>
                         </a>
                       )}

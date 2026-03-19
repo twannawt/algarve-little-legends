@@ -10,6 +10,7 @@ export const recipes = pgTable("recipes", {
   siteName: text("site_name"),
   categories: text("categories").array().notNull().default([]),
   cooked: boolean("cooked").notNull().default(false),
+  favorite: boolean("favorite").notNull().default(false),
   kidApproval: text("kid_approval").array().notNull().default([]),
   createdAt: text("created_at").notNull(),
 });

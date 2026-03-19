@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useLocation, useParams } from "wouter";
 import { motion } from "framer-motion";
@@ -70,6 +70,13 @@ export default function PlaceDetail() {
     queryKey: [`/api/places/${params.id}`],
   });
 
+  // Track recently viewed
+  useEffect(() => {
+    if (params.id) {
+      apiRequest("POST", `/api/recently-viewed/${params.id}`).catch(() => {});
+    }
+  }, [params.id]);
+
   const { data: favorites = [] } = useQuery<string[]>({
     queryKey: ["/api/favorites"],
   });
@@ -97,7 +104,7 @@ export default function PlaceDetail() {
 
   if (isLoading) {
     return (
-      <div className="max-w-3xl mx-auto px-4 py-8 pb-24">
+      <div className="max-w-3xl mx-auto px-4 py-8 pb-24 md:pb-8">
         <div className="animate-pulse space-y-4">
           <div className="h-10 bg-muted rounded-2xl" />
           <div className="h-8 bg-muted rounded w-1/3" />
@@ -160,7 +167,7 @@ export default function PlaceDetail() {
         <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/30 to-transparent" />
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 pb-24">
+      <div className="max-w-3xl mx-auto px-4 pb-24 md:pb-8">
         {/* Back button */}
         <Button
           data-testid="back-button"

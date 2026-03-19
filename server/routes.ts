@@ -37,6 +37,18 @@ export async function registerRoutes(
     res.json(storage.getCategoryCounts());
   });
 
+  // Recently viewed
+  app.get("/api/recently-viewed", (_req, res) => {
+    const ids = storage.getRecentlyViewed();
+    const places = ids.map(id => storage.getPlaceById(id)).filter(Boolean);
+    res.json(places);
+  });
+
+  app.post("/api/recently-viewed/:id", (req, res) => {
+    storage.addRecentlyViewed(req.params.id);
+    res.json({ ok: true });
+  });
+
   app.get("/api/favorites", async (_req, res) => {
     const favs = await storage.getFavorites();
     res.json(favs);
@@ -182,6 +194,11 @@ export async function registerRoutes(
   app.post("/api/recipes/:id/cooked", async (req, res) => {
     const cooked = await storage.toggleRecipeCooked(req.params.id);
     res.json({ id: req.params.id, cooked });
+  });
+
+  app.post("/api/recipes/:id/favorite", async (req, res) => {
+    const favorite = await storage.toggleRecipeFavorite(req.params.id);
+    res.json({ id: req.params.id, favorite });
   });
 
   app.post("/api/recipes/:id/kid-approval", async (req, res) => {

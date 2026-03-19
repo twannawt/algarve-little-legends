@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { UtensilsCrossed, Bike, TreePine, MapPin, Navigation, RefreshCw } from "lucide-react";
+import { UtensilsCrossed, Bike, TreePine, MapPin, Navigation, RefreshCw, Compass, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CategoryBadge } from "@/components/CategoryIcon";
@@ -21,15 +21,17 @@ export default function DagplannerPage() {
   const t = useT();
   const [plan, setPlan] = useState<DagPlan | null>(null);
   const [loading, setLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   async function fetchPlan() {
     setLoading(true);
     try {
+      setHasError(false);
       const res = await apiRequest("GET", "/api/dagplan");
       const data = await res.json();
       setPlan(data);
     } catch {
-      // silently fail
+      setHasError(true);
     } finally {
       setLoading(false);
     }
@@ -68,7 +70,7 @@ export default function DagplannerPage() {
 
   return (
     <motion.div
-      className="max-w-3xl mx-auto px-4 py-6 pb-24"
+      className="max-w-3xl mx-auto px-4 py-6 pb-24 md:pb-8"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
@@ -85,6 +87,32 @@ export default function DagplannerPage() {
         <div className="flex items-center justify-center py-20">
           <RefreshCw className="h-8 w-8 text-primary animate-spin" />
         </div>
+      )}
+
+      {!plan && !loading && hasError && (
+        <motion.div
+          className="flex flex-col items-center justify-center py-16 px-6 text-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+            <Compass className="h-10 w-10 text-primary/60" />
+          </div>
+          <h2 className="text-lg font-semibold text-foreground mb-2">
+            {t("geenPlannen") || "Nog geen plannen voor vandaag"}
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-xs mb-6">
+            {t("dagplannerLeeg") || "Laat ons een leuke dag samenstellen met een restaurant, activiteit en speeltuin!"}
+          </p>
+          <Button
+            onClick={fetchPlan}
+            className="bg-[hsl(42,35%,62%)] text-white hover:opacity-90 shadow-sm px-6"
+          >
+            <Sparkles className="h-4 w-4 mr-2" />
+            {t("genereerDagplan") || "Stel mijn dag samen"}
+          </Button>
+        </motion.div>
       )}
 
       {plan && (

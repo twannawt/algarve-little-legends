@@ -1,4 +1,4 @@
-import { type Place, type Suggestion, type WeatherData, type Recipe, type RecipeCategory, type KidApproval } from "@shared/schema";
+import { type Place, type Suggestion, type WeatherData, type Recipe, type RecipeCategory, type KidApproval, type RecipeDifficulty } from "@shared/schema";
 import { eq } from "drizzle-orm";
 import * as fs from "fs";
 import * as path from "path";
@@ -127,12 +127,15 @@ export interface IStorage {
   addPlace(place: Omit<Place, "id">): Place;
   // Recipe methods — all async for PostgreSQL
   getAllRecipes(): Promise<Recipe[]>;
-  addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidApproval">): Promise<Recipe>;
+  addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "favorite" | "kidApproval"> & { prepTime?: number; difficulty?: RecipeDifficulty }): Promise<Recipe>;
   deleteRecipe(id: string): Promise<boolean>;
   toggleRecipeCooked(id: string): Promise<boolean>;
+  toggleRecipeFavorite(id: string): Promise<boolean>;
   toggleRecipeKidApproval(id: string, tag: KidApproval): Promise<KidApproval[]>;
   updateRecipeCategories(id: string, categories: RecipeCategory[]): Promise<Recipe | null>;
   getRecipeDagplan(): Promise<{ ontbijt: Recipe | null; lunch: Recipe | null; diner: Recipe | null }>;
+  addRecentlyViewed(placeId: string): void;
+  getRecentlyViewed(): string[];
 }
 
 // ============================================================
@@ -143,6 +146,19 @@ class BasePlaceStorage {
   protected places: Place[] = [];
   protected suggestions: Suggestion[] = [];
   protected weatherCache: { data: WeatherData; fetchedAt: number } | null = null;
+  private recentlyViewed: string[] = [];
+
+  addRecentlyViewed(placeId: string): void {
+    // Remove if already exists, then prepend
+    this.recentlyViewed = this.recentlyViewed.filter(id => id !== placeId);
+    this.recentlyViewed.unshift(placeId);
+    // Keep max 5
+    if (this.recentlyViewed.length > 5) this.recentlyViewed = this.recentlyViewed.slice(0, 5);
+  }
+
+  getRecentlyViewed(): string[] {
+    return this.recentlyViewed;
+  }
 
   constructor() {
     const researchDir = path.join(process.cwd(), "research");
@@ -378,12 +394,13 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
       siteName: r.siteName || undefined,
       categories: (r.categories || []) as RecipeCategory[],
       cooked: r.cooked,
+      favorite: r.favorite ?? false,
       kidApproval: (r.kidApproval || []) as KidApproval[],
       createdAt: r.createdAt,
     }));
   }
 
-  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidApproval">): Promise<Recipe> {
+  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "favorite" | "kidApproval">): Promise<Recipe> {
     const db = getDb();
     const id = `recipe-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
     const createdAt = new Date().toISOString();
@@ -396,6 +413,7 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
       siteName: recipe.siteName || null,
       categories: recipe.categories as string[],
       cooked: false,
+      favorite: false,
       kidApproval: [] as string[],
       createdAt,
     };
@@ -422,6 +440,15 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
     if (rows.length === 0) return false;
     const newValue = !rows[0].cooked;
     await db.update(recipesTable).set({ cooked: newValue }).where(eq(recipesTable.id, id));
+    return newValue;
+  }
+
+  async toggleRecipeFavorite(id: string): Promise<boolean> {
+    const db = getDb();
+    const rows = await db.select().from(recipesTable).where(eq(recipesTable.id, id));
+    if (rows.length === 0) return false;
+    const newValue = !rows[0].favorite;
+    await db.update(recipesTable).set({ favorite: newValue }).where(eq(recipesTable.id, id));
     return newValue;
   }
 
@@ -453,6 +480,7 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
       siteName: r.siteName || undefined,
       categories: (r.categories || []) as RecipeCategory[],
       cooked: r.cooked,
+      favorite: r.favorite,
       kidApproval: (r.kidApproval || []) as KidApproval[],
       createdAt: r.createdAt,
     };
@@ -534,21 +562,25 @@ export class MemStorage extends BasePlaceStorage implements IStorage {
   }
 
   async getAllRecipes(): Promise<Recipe[]> {
-    // Migrate legacy kidFavorite → kidApproval if needed
+    // Migrate legacy kidFavorite → kidApproval + ensure favorite field
     for (const r of this.recipesArr) {
       if (!r.kidApproval) {
         r.kidApproval = (r as any).kidFavorite ? ["beiden"] : [];
         delete (r as any).kidFavorite;
       }
+      if (typeof r.favorite !== "boolean") {
+        r.favorite = false;
+      }
     }
     return this.recipesArr;
   }
 
-  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "kidApproval">): Promise<Recipe> {
+  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "favorite" | "kidApproval">): Promise<Recipe> {
     const newRecipe: Recipe = {
       ...recipe,
       id: `recipe-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
       cooked: false,
+      favorite: false,
       kidApproval: [],
       createdAt: new Date().toISOString(),
     };
@@ -584,6 +616,14 @@ export class MemStorage extends BasePlaceStorage implements IStorage {
     }
     this.persistRecipes();
     return recipe.kidApproval;
+  }
+
+  async toggleRecipeFavorite(id: string): Promise<boolean> {
+    const recipe = this.recipesArr.find((r) => r.id === id);
+    if (!recipe) return false;
+    recipe.favorite = !recipe.favorite;
+    this.persistRecipes();
+    return recipe.favorite;
   }
 
   async updateRecipeCategories(id: string, categories: RecipeCategory[]): Promise<Recipe | null> {

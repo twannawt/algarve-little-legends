@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocation } from "wouter";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   UtensilsCrossed,
   Waves,
@@ -22,6 +22,8 @@ import {
   Navigation,
   User,
   Baby,
+  Coffee,
+  Moon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -36,11 +38,11 @@ import type { Place, WeatherData } from "@shared/schema";
 import { FloatingResetButton } from "@/components/FloatingResetButton";
 
 const categoryConfig = [
-  { key: "restaurant", labelKey: "restaurants" as const, icon: UtensilsCrossed, color: "bg-[hsl(140,20%,42%)]/10 text-[hsl(140,20%,42%)]" },
-  { key: "beach", labelKey: "stranden" as const, icon: Waves, color: "bg-[hsl(195,20%,55%)]/10 text-[hsl(195,20%,55%)]" },
-  { key: "playground", labelKey: "speeltuinen" as const, icon: TreePine, color: "bg-[hsl(95,18%,48%)]/10 text-[hsl(95,18%,48%)]" },
-  { key: "activity", labelKey: "activiteiten" as const, icon: Bike, color: "bg-[hsl(35,55%,65%)]/10 text-[hsl(35,55%,65%)]" },
-  { key: "attraction", labelKey: "attracties" as const, icon: Ticket, color: "bg-[hsl(170,18%,50%)]/10 text-[hsl(170,18%,50%)]" },
+  { key: "restaurant", labelKey: "restaurants" as const, icon: UtensilsCrossed, color: "bg-[hsl(140,20%,42%)]/10 text-[hsl(140,20%,42%)] dark:text-[hsl(140,24%,58%)]" },
+  { key: "beach", labelKey: "stranden" as const, icon: Waves, color: "bg-[hsl(195,20%,55%)]/10 text-[hsl(195,20%,55%)] dark:text-[hsl(195,24%,68%)]" },
+  { key: "playground", labelKey: "speeltuinen" as const, icon: TreePine, color: "bg-[hsl(95,18%,48%)]/10 text-[hsl(95,18%,48%)] dark:text-[hsl(95,22%,62%)]" },
+  { key: "activity", labelKey: "activiteiten" as const, icon: Bike, color: "bg-[hsl(35,55%,65%)]/10 text-[hsl(35,55%,65%)] dark:text-[hsl(35,55%,75%)]" },
+  { key: "attraction", labelKey: "attracties" as const, icon: Ticket, color: "bg-[hsl(170,18%,50%)]/10 text-[hsl(170,18%,50%)] dark:text-[hsl(170,22%,64%)]" },
 ] as const;
 
 function getWeatherIcon(code: number, size = "h-5 w-5"): React.ReactNode {
@@ -183,11 +185,11 @@ function KidsTracker() {
   const bodi = getAge(new Date(2024, 4, 10));     // 10 mei 2024
 
   return (
-    <div className="flex gap-3 mb-5">
+    <div className="flex gap-3 mb-4">
       {/* Charlie */}
-      <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[hsl(170,18%,95%)] dark:bg-[hsl(170,18%,15%)] border border-[hsl(170,18%,85%)] dark:border-[hsl(170,15%,25%)]">
-        <div className="w-8 h-8 rounded-full bg-[hsl(170,18%,85%)] dark:bg-[hsl(170,15%,25%)] flex items-center justify-center">
-          <User className="h-4 w-4 text-[hsl(170,18%,48%)]" />
+      <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[hsl(330,30%,96%)] dark:bg-[hsl(330,20%,14%)] border border-[hsl(330,25%,88%)] dark:border-[hsl(330,15%,22%)]">
+        <div className="w-9 h-9 rounded-full bg-[hsl(330,35%,90%)] dark:bg-[hsl(330,20%,22%)] flex items-center justify-center text-lg">
+          👑
         </div>
         <div className="min-w-0">
           <span className="text-sm font-semibold text-foreground">Charlie</span>
@@ -197,9 +199,9 @@ function KidsTracker() {
         </div>
       </div>
       {/* Bodi */}
-      <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[hsl(210,30%,95%)] dark:bg-[hsl(210,20%,15%)] border border-[hsl(210,25%,85%)] dark:border-[hsl(210,15%,25%)]">
-        <div className="w-8 h-8 rounded-full bg-[hsl(210,25%,85%)] dark:bg-[hsl(210,15%,25%)] flex items-center justify-center">
-          <Baby className="h-4 w-4 text-[hsl(210,25%,55%)]" />
+      <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[hsl(200,30%,96%)] dark:bg-[hsl(200,20%,14%)] border border-[hsl(200,25%,88%)] dark:border-[hsl(200,15%,22%)]">
+        <div className="w-9 h-9 rounded-full bg-[hsl(200,35%,90%)] dark:bg-[hsl(200,20%,22%)] flex items-center justify-center text-lg">
+          🐻
         </div>
         <div className="min-w-0">
           <span className="text-sm font-semibold text-foreground">Bodi</span>
@@ -222,6 +224,48 @@ const staggerContainer = {
   visible: { transition: { staggerChildren: 0.05 } },
 };
 
+function getTimeGreeting(t: ReturnType<typeof useT>): string {
+  const hour = new Date().getHours();
+  if (hour >= 6 && hour < 12) return t("heroOchtend");
+  if (hour >= 12 && hour < 17) return t("heroMiddag");
+  if (hour >= 17 && hour < 22) return t("heroAvond");
+  return t("heroNacht");
+}
+
+type TimeTipData = { tip: string; action: string; icon: React.ComponentType<{ className?: string }>; color: string; onClick: () => void };
+
+function useTimeTip(t: ReturnType<typeof useT>, navigate: (path: string) => void, setCategory: (cat: string | null) => void): TimeTipData {
+  const hour = new Date().getHours();
+  if (hour >= 6 && hour < 12) return {
+    tip: t("tipOchtend"),
+    action: t("bekijkOntbijt"),
+    icon: Coffee,
+    color: "bg-[hsl(35,55%,65%)]/10 text-[hsl(35,55%,55%)] dark:text-[hsl(35,55%,75%)] border-[hsl(35,55%,65%)]/20",
+    onClick: () => navigate("/recepten"),
+  };
+  if (hour >= 12 && hour < 17) return {
+    tip: t("tipMiddag"),
+    action: t("bekijkStranden"),
+    icon: Waves,
+    color: "bg-[hsl(195,20%,55%)]/10 text-[hsl(195,20%,45%)] dark:text-[hsl(195,20%,70%)] border-[hsl(195,20%,55%)]/20",
+    onClick: () => { setCategory("beach"); document.getElementById("categories-section")?.scrollIntoView({ behavior: "smooth" }); },
+  };
+  if (hour >= 17 && hour < 22) return {
+    tip: t("tipAvond"),
+    action: t("bekijkRestaurants"),
+    icon: UtensilsCrossed,
+    color: "bg-[hsl(140,20%,42%)]/10 text-[hsl(140,20%,35%)] dark:text-[hsl(140,20%,65%)] border-[hsl(140,20%,42%)]/20",
+    onClick: () => { setCategory("restaurant"); document.getElementById("categories-section")?.scrollIntoView({ behavior: "smooth" }); },
+  };
+  return {
+    tip: t("tipNacht"),
+    action: t("planMorgen"),
+    icon: Moon,
+    color: "bg-[hsl(250,20%,50%)]/10 text-[hsl(250,20%,40%)] dark:text-[hsl(250,20%,72%)] border-[hsl(250,20%,50%)]/20",
+    onClick: () => navigate("/dagplanner"),
+  };
+}
+
 function SectionHeader({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4">
@@ -239,7 +283,9 @@ export default function HomePage() {
   const [randomPlace, setRandomPlace] = useState<Place | null>(null);
   const [ageFilter, setAgeFilter] = useState<string | null>(null);
   const [surpriseCategory, setSurpriseCategory] = useState<string | null>(null);
+  const [weatherExpanded, setWeatherExpanded] = useState(false);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const timeTip = useTimeTip(t, navigate, setActiveCategory);
   const [gpsActive, setGpsActive] = useState(false);
   const nearbyRef = useRef<HTMLElement>(null);
   const suggestionRef = useRef<HTMLDivElement>(null);
@@ -255,6 +301,11 @@ export default function HomePage() {
 
   const { data: weather } = useQuery<WeatherData>({
     queryKey: ["/api/weather"],
+  });
+
+  const { data: recentlyViewed = [] } = useQuery<Place[]>({
+    queryKey: ["/api/recently-viewed"],
+    refetchOnWindowFocus: true,
   });
 
   const getWeatherLabel = useWeatherLabel();
@@ -316,33 +367,46 @@ export default function HomePage() {
   const showResults = search || activeCategory || ageFilter;
 
   return (
-    <div className="max-w-5xl mx-auto pb-24">
-      {/* Hero + Weather */}
+    <div className="max-w-5xl mx-auto pb-24 md:pb-8">
+      {/* Hero — compact greeting + weather */}
       <motion.section
-        className="px-4 pt-6 pb-6 bg-gradient-to-b from-primary/5 via-transparent to-transparent"
+        className="px-4 pt-5 pb-4"
         initial="hidden"
         animate="visible"
         variants={fadeIn}
         transition={{ duration: 0.25 }}
       >
-        <h1 className="text-2xl font-bold font-serif text-foreground tracking-tight">
-          {t("heroTitle")}
-        </h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          {t("heroSubtitle")}
-        </p>
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h1 className="text-2xl font-bold font-serif text-foreground tracking-tight">
+              {getTimeGreeting(t)}
+            </h1>
+            <p className="text-sm text-muted-foreground mt-0.5">
+              {t("heroSubtitle")}
+            </p>
+          </div>
+          {weather && (
+            <button
+              data-testid="weather-widget"
+              onClick={() => setWeatherExpanded(!weatherExpanded)}
+              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors shrink-0"
+            >
+              {getWeatherIcon(weather.current.weathercode, "h-5 w-5")}
+              <span className="text-lg font-bold text-foreground">{Math.round(weather.current.temperature)}°</span>
+            </button>
+          )}
+        </div>
 
-        {weather && (
-          <div data-testid="weather-widget" className="mt-4 flex items-center gap-3">
-            {getWeatherIcon(weather.current.weathercode, "h-8 w-8")}
-            <div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-bold text-foreground">{Math.round(weather.current.temperature)}°</span>
-                <span className="text-sm text-muted-foreground">{getWeatherLabel(weather.current.weathercode)}</span>
-              </div>
-              <p className="text-xs text-primary font-medium">{getWeatherSuggestion(weather)}</p>
-            </div>
-            <div className="ml-auto flex gap-3">
+        {/* Expandable weather forecast */}
+        {weather && weatherExpanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="mt-3 flex items-center gap-4 py-2 px-3 rounded-xl bg-card border border-border"
+          >
+            <p className="text-xs text-primary font-medium whitespace-nowrap">{getWeatherSuggestion(weather)}</p>
+            <div className="flex gap-3 ml-auto">
               {weather.daily.map((day) => {
                 const dayName = new Date(day.date).toLocaleDateString("nl-NL", { weekday: "short" });
                 return (
@@ -354,122 +418,148 @@ export default function HomePage() {
                 );
               })}
             </div>
-          </div>
+          </motion.div>
         )}
       </motion.section>
 
       <div className="px-4">
-        {/* Kids Age Tracker */}
-        <KidsTracker />
-
-        {/* Verras me — category chips + button */}
-        <div className="mb-6">
-          <div className="flex gap-2 mb-3 overflow-x-auto pb-1 scrollbar-hide">
-            {categoryConfig.map(({ key, labelKey, icon: Icon }) => (
+        {/* Time-contextual tip */}
+        {(() => {
+          const { tip: tipText, action: tipAction, icon: TipIcon, color: tipColor, onClick: tipClick } = timeTip;
+          return (
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              data-testid="time-tip"
+              className={`flex items-center gap-3 px-4 py-3 rounded-2xl border mb-4 ${tipColor}`}
+            >
+              <TipIcon className="h-5 w-5 shrink-0" />
+              <span className="text-sm font-medium flex-1">{tipText}</span>
               <button
-                key={key}
-                data-testid={`surprise-chip-${key}`}
-                onClick={() => setSurpriseCategory(surpriseCategory === key ? null : key)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border transition-all ${
-                  surpriseCategory === key
-                    ? "border-[hsl(42,35%,62%)] bg-[hsl(42,35%,62%)]/12 text-[hsl(42,30%,40%)] dark:text-[hsl(42,30%,72%)]"
-                    : "border-border bg-card text-muted-foreground hover:border-[hsl(42,35%,62%)]/30"
-                }`}
+                onClick={tipClick}
+                className="text-xs font-semibold whitespace-nowrap opacity-80 hover:opacity-100 transition-opacity"
               >
-                <Icon className="h-3.5 w-3.5" />
-                {t(labelKey)}
+                {tipAction} →
               </button>
-            ))}
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
+            </motion.div>
+          );
+        })()}
+
+        {/* Quick Start — kids + action buttons */}
+        <div className="mb-5">
+          <KidsTracker />
+          <div className="flex gap-3">
             <button
               data-testid="random-button"
               onClick={fetchRandom}
-              className="flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl bg-[hsl(42,35%,62%)] text-white text-base font-semibold shadow-sm hover:opacity-90 transition-opacity sm:flex-1"
+              className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl bg-[hsl(42,35%,62%)] text-white text-sm font-semibold shadow-sm hover:opacity-90 transition-opacity flex-1"
             >
-              <Sparkles className="h-5 w-5" />
+              <Sparkles className="h-4.5 w-4.5" />
               {t("verrasMe")}
             </button>
             <button
               data-testid="nearby-action"
               onClick={handleNearbyClick}
-              className="flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl border border-border bg-card text-foreground text-base font-semibold shadow-sm hover:border-primary/30 transition-colors sm:flex-1"
+              className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl border border-border bg-card text-foreground text-sm font-semibold shadow-sm hover:border-primary/30 transition-colors flex-1"
             >
-              <MapPin className="h-5 w-5 text-primary" />
+              <MapPin className="h-4.5 w-4.5 text-primary" />
               {t("inDeBuurt")}
             </button>
           </div>
         </div>
 
-        {/* Random Suggestion — lightest terracotta */}
-        {randomPlace && (
-          <Card ref={suggestionRef} className="mb-6 border-[hsl(42,30%,78%)] bg-[hsl(42,40%,95%)] dark:border-[hsl(42,30%,25%)] dark:bg-[hsl(42,25%,14%)] rounded-2xl shadow-sm">
-            <CardContent className="p-4">
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Sparkles className="h-4 w-4 text-[hsl(42,35%,62%)]" />
-                    <span className="text-sm font-medium text-[hsl(42,30%,45%)] dark:text-[hsl(42,30%,68%)]">{t("suggestieTekst")}</span>
-                  </div>
-                  <h3 className="font-semibold text-foreground">{randomPlace.name}</h3>
-                  <div className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
-                    <MapPin className="h-3 w-3" />
-                    <span>{randomPlace.location}</span>
-                  </div>
-                  <div className="mt-2">
-                    <CategoryBadge category={randomPlace.category} />
-                  </div>
-                  <Button
-                    data-testid="random-go"
-                    variant="ghost"
-                    className="px-0 mt-2 text-[hsl(42,30%,45%)] hover:text-[hsl(42,30%,35%)] dark:text-[hsl(42,30%,68%)] hover:bg-transparent"
-                    onClick={() => navigate(`/place/${randomPlace.id}`)}
-                  >
-                    {t("bekijkDetails")}
-                    <ArrowRight className="h-4 w-4 ml-1" />
-                  </Button>
-                </div>
-                <button
-                  data-testid="random-close"
-                  onClick={() => setRandomPlace(null)}
-                  className="text-muted-foreground hover:text-foreground p-1"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Search */}
-        <div className="mb-3">
-          <SearchBar value={search} onChange={setSearch} placeholder={t("zoekPlekken")} />
-        </div>
-
-        {/* Age Filters */}
-        <div className="flex gap-2 mb-6">
-          {[
-            { key: null, labelKey: "alleLeeftijden" as const },
-            { key: "peuter", labelKey: "peuter" as const },
-            { key: "kleuter", labelKey: "kleuter" as const },
-          ].map(({ key, labelKey }) => (
+        {/* Surprise category filter chips */}
+        <div className="relative mb-4">
+          <div className="absolute right-0 top-0 bottom-1 w-8 bg-gradient-to-l from-background to-transparent pointer-events-none z-10 md:hidden" />
+        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+          {categoryConfig.map(({ key, labelKey, icon: Icon }) => (
             <button
-              key={labelKey}
-              data-testid={`age-filter-${key || "all"}`}
-              onClick={() => setAgeFilter(ageFilter === key ? null : key)}
-              className={`h-8 px-3 text-xs rounded-full border transition-all ${
-                ageFilter === key
-                  ? "border-primary bg-primary/10 text-primary font-medium"
-                  : "border-border bg-card text-muted-foreground hover:border-primary/30"
+              key={key}
+              data-testid={`surprise-chip-${key}`}
+              onClick={() => setSurpriseCategory(surpriseCategory === key ? null : key)}
+              className={`flex items-center gap-1.5 px-3 py-2.5 min-h-[44px] rounded-full text-xs font-medium whitespace-nowrap border transition-all ${
+                surpriseCategory === key
+                  ? "border-[hsl(42,35%,62%)] bg-[hsl(42,35%,62%)]/12 text-[hsl(42,30%,40%)] dark:text-[hsl(42,30%,72%)]"
+                  : "border-border bg-card text-muted-foreground hover:border-[hsl(42,35%,62%)]/30"
               }`}
             >
+              <Icon className="h-3.5 w-3.5" />
               {t(labelKey)}
             </button>
           ))}
         </div>
+        </div>
+
+        {/* Random Suggestion — with wow-moment */}
+        <AnimatePresence>
+          {randomPlace && (
+            <motion.div
+              ref={suggestionRef}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -10 }}
+              transition={{ type: "spring", damping: 20, stiffness: 300 }}
+              className="mb-6"
+            >
+              <Card className="border-[hsl(42,30%,72%)] bg-gradient-to-br from-[hsl(42,40%,96%)] to-[hsl(42,30%,92%)] dark:border-[hsl(42,30%,25%)] dark:from-[hsl(42,25%,14%)] dark:to-[hsl(42,20%,12%)] rounded-2xl shadow-md overflow-hidden relative">
+                {/* Shimmer overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_ease-in-out_1]" style={{ animationFillMode: 'forwards' }} />
+                <CardContent className="p-5 relative">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <motion.div
+                        className="flex items-center gap-2 mb-2"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.15 }}
+                      >
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[hsl(42,35%,62%)]/15">
+                          <Sparkles className="h-3.5 w-3.5 text-[hsl(42,35%,55%)]" />
+                          <span className="text-xs font-semibold text-[hsl(42,30%,42%)] dark:text-[hsl(42,30%,68%)]">{t("suggestieTekst")}</span>
+                        </div>
+                      </motion.div>
+                      <motion.h3
+                        className="text-lg font-bold text-foreground"
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.25 }}
+                      >
+                        {randomPlace.name}
+                      </motion.h3>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
+                        <MapPin className="h-3 w-3" />
+                        <span>{randomPlace.location}</span>
+                      </div>
+                      <div className="mt-2.5">
+                        <CategoryBadge category={randomPlace.category} />
+                      </div>
+                      <Button
+                        data-testid="random-go"
+                        variant="ghost"
+                        className="px-0 mt-2.5 text-[hsl(42,30%,42%)] hover:text-[hsl(42,30%,30%)] dark:text-[hsl(42,30%,68%)] hover:bg-transparent font-semibold"
+                        onClick={() => navigate(`/place/${randomPlace.id}`)}
+                      >
+                        {t("bekijkDetails")}
+                        <ArrowRight className="h-4 w-4 ml-1" />
+                      </Button>
+                    </div>
+                    <button
+                      data-testid="random-close"
+                      onClick={() => setRandomPlace(null)}
+                      className="text-muted-foreground hover:text-foreground p-1"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Categories — horizontal scroll on mobile, grid on desktop */}
-        <section className="mb-8">
+        <section id="categories-section" className="mb-6">
           <SectionHeader>{t("categorieen")}</SectionHeader>
           <motion.div
             className="grid grid-cols-3 gap-3 sm:grid-cols-5"
@@ -504,6 +594,31 @@ export default function HomePage() {
             })}
           </motion.div>
         </section>
+
+        {/* Search + Age Filters */}
+        <div className="mb-6">
+          <SearchBar value={search} onChange={setSearch} placeholder={t("zoekPlekken")} />
+          <div className="flex gap-2 mt-3">
+            {[
+              { key: null, labelKey: "alleLeeftijden" as const },
+              { key: "peuter", labelKey: "peuter" as const },
+              { key: "kleuter", labelKey: "kleuter" as const },
+            ].map(({ key, labelKey }) => (
+              <button
+                key={labelKey}
+                data-testid={`age-filter-${key || "all"}`}
+                onClick={() => setAgeFilter(ageFilter === key ? null : key)}
+                className={`min-h-[44px] px-4 text-xs rounded-full border transition-all ${
+                  ageFilter === key
+                    ? "border-primary bg-primary/10 text-primary font-medium"
+                    : "border-border bg-card text-muted-foreground hover:border-primary/30"
+                }`}
+              >
+                {t(labelKey)}
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* Filtered Results */}
         {showResults && (
@@ -543,6 +658,26 @@ export default function HomePage() {
             <SectionHeader>{t("watTeDoen")} {currentMonth}</SectionHeader>
             <div className="flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:overflow-visible scrollbar-hide">
               {seasonalPlaces.map((place) => (
+                <div key={place.id} className="flex-shrink-0 w-64 md:w-auto">
+                  <PlaceCard place={place} />
+                </div>
+              ))}
+            </div>
+          </motion.section>
+        )}
+
+        {/* Recent bekeken */}
+        {!showResults && recentlyViewed.length > 0 && (
+          <motion.section
+            className="mb-8"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ duration: 0.25, delay: 0.1 }}
+          >
+            <SectionHeader>{t("recentBekeken")}</SectionHeader>
+            <div className="flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:overflow-visible scrollbar-hide">
+              {recentlyViewed.map((place) => (
                 <div key={place.id} className="flex-shrink-0 w-64 md:w-auto">
                   <PlaceCard place={place} />
                 </div>

@@ -168,7 +168,7 @@ export default function SuggestPage() {
 
   return (
     <motion.div
-      className="max-w-3xl mx-auto px-4 py-4 pb-24"
+      className="max-w-3xl mx-auto px-4 py-4 pb-24 md:pb-8"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
@@ -196,7 +196,7 @@ export default function SuggestPage() {
         <button
           data-testid="loc-import-mode-single"
           onClick={() => setImportMode("single")}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
             importMode === "single"
               ? "bg-primary/10 text-primary border border-primary/20"
               : "bg-muted text-muted-foreground hover:bg-muted/80"
@@ -208,7 +208,7 @@ export default function SuggestPage() {
         <button
           data-testid="loc-import-mode-bulk"
           onClick={() => setImportMode("bulk")}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
             importMode === "bulk"
               ? "bg-primary/10 text-primary border border-primary/20"
               : "bg-muted text-muted-foreground hover:bg-muted/80"

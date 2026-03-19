@@ -38,7 +38,7 @@ export default function FavoritesPage() {
   const activePlaces = tab === "favorites" ? favoritePlaces : visitedPlaces;
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-6 pb-24">
+    <div className="max-w-5xl mx-auto px-4 py-6 pb-24 md:pb-8">
       <h1 className="text-2xl font-bold font-serif text-foreground mb-1">{t("favBezocht")}</h1>
       <div className="w-8 h-0.5 bg-primary/40 rounded-full mb-6" />
 

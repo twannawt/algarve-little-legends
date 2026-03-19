@@ -22,7 +22,7 @@ export function AppTabs() {
   const inRecipes = RECIPE_TAB_PATHS.has(location);
 
   return (
-    <div className="sticky top-16 z-40 backdrop-blur border-b bg-[--tabs-bg] border-[--tabs-border]">
+    <div className="sticky top-16 z-40 backdrop-blur border-b bg-[--tabs-bg] border-[--tabs-border] md:ml-56">
       <div className="max-w-5xl mx-auto flex gap-2 px-3 py-2">
         {tabs.map((tab) => {
           // Active based on section, not exact path

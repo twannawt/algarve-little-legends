@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -16,14 +16,20 @@ import {
   Sparkles,
   ArrowRight,
   UtensilsCrossed,
+  Search,
+  ArrowUpDown,
+  Heart,
+  Clock,
+  Gauge,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ToastAction } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
 import { apiRequest } from "@/lib/queryClient";
 import { queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import type { Recipe, RecipeCategory, KidApproval, RecipeImportResult } from "@shared/schema";
+import type { Recipe, RecipeCategory, RecipeDifficulty, KidApproval, RecipeImportResult } from "@shared/schema";
 import { FloatingResetButton } from "@/components/FloatingResetButton";
 
 const categoryOptions: { key: RecipeCategory; labelKey: string }[] = [
@@ -44,6 +50,15 @@ const kidApprovalOptions: { key: KidApproval; labelKey: string }[] = [
   { key: "beiden", labelKey: "beiden" },
   { key: "charlie", labelKey: "charlie" },
   { key: "bodi", labelKey: "bodi" },
+];
+
+type SortOption = "nieuwste" | "oudste" | "az" | "za";
+
+const sortOptions: { key: SortOption; labelKey: string }[] = [
+  { key: "nieuwste", labelKey: "nieuwsteEerst" },
+  { key: "oudste", labelKey: "oudsteEerst" },
+  { key: "az", labelKey: "alfabetisch" },
+  { key: "za", labelKey: "alfabetischOmgekeerd" },
 ];
 
 const fadeIn = {
@@ -81,7 +96,13 @@ export default function RecipesPage() {
   const [categoryFilters, setCategoryFilters] = useState<RecipeCategory[]>([]);
   const [surpriseCategory, setSurpriseCategory] = useState<RecipeCategory | null>(null);
   const [randomRecipe, setRandomRecipe] = useState<Recipe | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState<SortOption>("nieuwste");
+  const [showSortMenu, setShowSortMenu] = useState(false);
+  const [prepTime, setPrepTime] = useState<string>("");
+  const [difficulty, setDifficulty] = useState<RecipeDifficulty | "">(""  );
   const suggestionRef = useRef<HTMLDivElement>(null);
+  const sortRef = useRef<HTMLDivElement>(null);
 
   // Listen for bottom nav "add" button click
   const handleToggleAdd = useCallback(() => {
@@ -93,7 +114,19 @@ export default function RecipesPage() {
     return () => window.removeEventListener("toggle-add-recipe", handleToggleAdd);
   }, [handleToggleAdd]);
 
-  const { data: recipes = [] } = useQuery<Recipe[]>({
+  // Close sort dropdown on click outside
+  useEffect(() => {
+    if (!showSortMenu) return;
+    function handleClick(e: MouseEvent) {
+      if (sortRef.current && !sortRef.current.contains(e.target as Node)) {
+        setShowSortMenu(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [showSortMenu]);
+
+  const { data: recipes = [], isLoading } = useQuery<Recipe[]>({
     queryKey: ["/api/recipes"],
   });
 
@@ -114,8 +147,34 @@ export default function RecipesPage() {
       const res = await apiRequest("POST", `/api/recipes/${id}/cooked`);
       return res.json();
     },
-    onSuccess: () => {
+    onSuccess: (data: Recipe, id: string) => {
       qc.invalidateQueries({ queryKey: ["/api/recipes"] });
+      toast({
+        title: data.cooked ? t("gemaaktAan") : t("gemaaktUit"),
+        action: (
+          <ToastAction altText={t("ongedaanMaken")} onClick={() => toggleCookedMutation.mutate(id)}>
+            {t("ongedaanMaken")}
+          </ToastAction>
+        ),
+      });
+    },
+  });
+
+  const toggleFavoriteMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const res = await apiRequest("POST", `/api/recipes/${id}/favorite`);
+      return res.json();
+    },
+    onSuccess: (data: Recipe, id: string) => {
+      qc.invalidateQueries({ queryKey: ["/api/recipes"] });
+      toast({
+        title: data.favorite ? t("favorietAan") : t("favorietUit"),
+        action: (
+          <ToastAction altText={t("ongedaanMaken")} onClick={() => toggleFavoriteMutation.mutate(id)}>
+            {t("ongedaanMaken")}
+          </ToastAction>
+        ),
+      });
     },
   });
 
@@ -124,8 +183,16 @@ export default function RecipesPage() {
       const res = await apiRequest("POST", `/api/recipes/${id}/kid-approval`, { tag });
       return res.json();
     },
-    onSuccess: () => {
+    onSuccess: (_data: Recipe, variables: { id: string; tag: KidApproval }) => {
       qc.invalidateQueries({ queryKey: ["/api/recipes"] });
+      toast({
+        title: `${variables.tag} bijgewerkt`,
+        action: (
+          <ToastAction altText={t("ongedaanMaken")} onClick={() => toggleKidApprovalMutation.mutate(variables)}>
+            {t("ongedaanMaken")}
+          </ToastAction>
+        ),
+      });
     },
   });
 
@@ -147,6 +214,8 @@ export default function RecipesPage() {
     setTitle("");
     setSelectedCategories(["diner"]);
     setImportMode("single");
+    setPrepTime("");
+    setDifficulty("");
   }
 
   function toggleCategory(cat: RecipeCategory) {
@@ -203,6 +272,8 @@ export default function RecipesPage() {
       description: importedData?.description || "",
       siteName: importedData?.siteName || "",
       categories: selectedCategories,
+      ...(prepTime ? { prepTime: parseInt(prepTime, 10) } : {}),
+      ...(difficulty ? { difficulty } : {}),
     });
   }
 
@@ -226,15 +297,37 @@ export default function RecipesPage() {
     );
   }
 
-  const filteredRecipes = recipes.filter((r) => {
-    if (filter === "uncooked" && r.cooked) return false;
-    const cats = r.categories || [];
-    if (categoryFilters.length > 0 && !categoryFilters.some((f) => cats.includes(f))) return false;
-    return true;
-  });
+  const filteredRecipes = recipes
+    .filter((r) => {
+      if (filter === "uncooked" && r.cooked) return false;
+      const cats = r.categories || [];
+      if (categoryFilters.length > 0 && !categoryFilters.some((f) => cats.includes(f))) return false;
+      // Search filter
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        const matchTitle = r.title.toLowerCase().includes(q);
+        const matchDesc = (r.description || "").toLowerCase().includes(q);
+        const matchSite = (r.siteName || "").toLowerCase().includes(q);
+        if (!matchTitle && !matchDesc && !matchSite) return false;
+      }
+      return true;
+    })
+    .sort((a, b) => {
+      switch (sortBy) {
+        case "oudste":
+          return (a.createdAt || "").localeCompare(b.createdAt || "");
+        case "az":
+          return a.title.localeCompare(b.title, "nl");
+        case "za":
+          return b.title.localeCompare(a.title, "nl");
+        case "nieuwste":
+        default:
+          return (b.createdAt || "").localeCompare(a.createdAt || "");
+      }
+    });
 
   return (
-    <div className="max-w-5xl mx-auto pb-24">
+    <div className="max-w-5xl mx-auto pb-24 md:pb-8">
       <motion.section
         className="px-4 pt-6 pb-4"
         initial="hidden"
@@ -251,32 +344,37 @@ export default function RecipesPage() {
           </p>
         </div>
 
-        {/* Verras me — recipe category chips + button */}
-        <div className="mb-6">
-          <div className="flex gap-2 mb-3 overflow-x-auto pb-1 scrollbar-hide">
+        {/* Verras me — compact inline button with optional category dropdown */}
+        <div className="flex items-center gap-2 mb-4">
+          <button
+            data-testid="recipe-random-button"
+            onClick={fetchRandomRecipe}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[hsl(42,35%,62%)] text-white text-sm font-semibold shadow-sm hover:opacity-90 transition-opacity"
+          >
+            <Sparkles className="h-4 w-4" />
+            {t("verrasMe")}
+          </button>
+          {surpriseCategory && (
+            <span className="text-xs text-muted-foreground">
+              {t((categoryOptions.find(c => c.key === surpriseCategory)?.labelKey || "overig") as any)}
+            </span>
+          )}
+          <div className="flex gap-1 overflow-x-auto scrollbar-hide">
             {categoryOptions.map(({ key, labelKey }) => (
               <button
                 key={key}
                 data-testid={`recipe-surprise-chip-${key}`}
                 onClick={() => setSurpriseCategory(surpriseCategory === key ? null : key)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border transition-all ${
+                className={`px-2 py-0.5 rounded text-[10px] font-medium whitespace-nowrap transition-all ${
                   surpriseCategory === key
-                    ? "border-[hsl(42,35%,62%)] bg-[hsl(42,35%,62%)]/12 text-[hsl(42,30%,40%)] dark:text-[hsl(42,30%,72%)]"
-                    : "border-border bg-card text-muted-foreground hover:border-[hsl(42,35%,62%)]/30"
+                    ? "bg-[hsl(42,35%,62%)]/15 text-[hsl(42,30%,40%)] dark:text-[hsl(42,30%,72%)]"
+                    : "text-muted-foreground/60 hover:text-muted-foreground"
                 }`}
               >
                 {t(labelKey as any)}
               </button>
             ))}
           </div>
-          <button
-            data-testid="recipe-random-button"
-            onClick={fetchRandomRecipe}
-            className="w-full flex items-center justify-center gap-2.5 px-4 py-4 rounded-2xl bg-[hsl(42,35%,62%)] text-white text-base font-semibold shadow-sm hover:opacity-90 transition-opacity"
-          >
-            <Sparkles className="h-5 w-5" />
-            {t("verrasMe")}
-          </button>
         </div>
 
         {/* Random Recipe Suggestion — lightest terracotta */}
@@ -350,7 +448,7 @@ export default function RecipesPage() {
                     <button
                       data-testid="import-mode-single"
                       onClick={() => setImportMode("single")}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
                         importMode === "single"
                           ? "bg-primary/10 text-primary border border-primary/20"
                           : "bg-muted text-muted-foreground hover:bg-muted/80"
@@ -362,7 +460,7 @@ export default function RecipesPage() {
                     <button
                       data-testid="import-mode-bulk"
                       onClick={() => setImportMode("bulk")}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
                         importMode === "bulk"
                           ? "bg-primary/10 text-primary border border-primary/20"
                           : "bg-muted text-muted-foreground hover:bg-muted/80"
@@ -462,6 +560,49 @@ export default function RecipesPage() {
                             );
                           })}
                         </div>
+
+                        {/* Prep time & difficulty */}
+                        <div className="flex gap-3 mb-3">
+                          <div className="flex-1">
+                            <label className="text-xs font-medium text-muted-foreground mb-1 block">
+                              <Clock className="inline h-3 w-3 mr-1" />
+                              {t("bereidingstijd")}
+                            </label>
+                            <input
+                              data-testid="prep-time-input"
+                              type="number"
+                              min="1"
+                              max="480"
+                              value={prepTime}
+                              onChange={(e) => setPrepTime(e.target.value)}
+                              placeholder="bijv. 30"
+                              className="w-full px-3 py-2 rounded-xl border border-border bg-card text-sm text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-primary/40"
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <label className="text-xs font-medium text-muted-foreground mb-1 block">
+                              <Gauge className="inline h-3 w-3 mr-1" />
+                              {t("moeilijkheidsgraad")}
+                            </label>
+                            <div className="flex gap-1.5">
+                              {(["makkelijk", "gemiddeld", "moeilijk"] as RecipeDifficulty[]).map((d) => (
+                                <button
+                                  key={d}
+                                  data-testid={`difficulty-${d}`}
+                                  onClick={() => setDifficulty(difficulty === d ? "" : d)}
+                                  className={`flex-1 px-2 py-2 rounded-xl text-xs font-medium border transition-all ${
+                                    difficulty === d
+                                      ? "border-primary bg-primary/10 text-primary"
+                                      : "border-border bg-card text-muted-foreground hover:border-primary/30"
+                                  }`}
+                                >
+                                  {t(d as any)}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+
                         <div className="flex justify-end">
                           <Button
                             data-testid="recipe-submit-btn"
@@ -523,41 +664,29 @@ export default function RecipesPage() {
           )}
         </AnimatePresence>
 
-        {/* Filters */}
-        <div className="flex gap-2 mb-3 overflow-x-auto scrollbar-hide">
-          {filterOptions.map(({ key, labelKey }) => (
-            <button
-              key={key}
-              data-testid={`recipe-filter-${key}`}
-              onClick={() => setFilter(key)}
-              className={`h-8 px-3 text-xs rounded-full border whitespace-nowrap transition-all ${
-                filter === key
-                  ? "border-primary bg-primary/10 text-primary font-medium"
-                  : "border-border bg-card text-muted-foreground hover:border-primary/30"
-              }`}
-            >
-              {t(labelKey as any)}
-            </button>
-          ))}
-        </div>
-
-        {/* Category filters (multi-select) */}
-        <div className="flex gap-1.5 mb-5 overflow-x-auto scrollbar-hide">
-          {categoryOptions.map(({ key, labelKey }) => (
-            <button
-              key={key}
-              onClick={() => toggleCategoryFilter(key)}
-              className={`h-7 px-2.5 text-[11px] rounded-full border whitespace-nowrap transition-all ${
-                categoryFilters.includes(key)
-                  ? "border-accent bg-accent/10 text-accent font-medium"
-                  : "border-border bg-card text-muted-foreground hover:border-accent/30"
-              }`}
-            >
-              {t(labelKey as any)}
-            </button>
-          ))}
+        {/* Category filters + Search + Sort row */}
+        <div className="flex gap-1.5 mb-3 overflow-x-auto scrollbar-hide">
+          {categoryOptions.map(({ key, labelKey }) => {
+            const count = recipes.filter((r) => (r.categories || []).includes(key)).length;
+            return (
+              <button
+                key={key}
+                data-testid={`recipe-cat-filter-${key}`}
+                onClick={() => toggleCategoryFilter(key)}
+                className={`h-7 px-2.5 text-[11px] rounded-full border whitespace-nowrap transition-all ${
+                  categoryFilters.includes(key)
+                    ? "border-accent bg-accent/10 text-accent font-medium"
+                    : "border-border bg-card text-muted-foreground hover:border-accent/30"
+                }`}
+              >
+                {t(labelKey as any)}
+                <span className="ml-1 opacity-60">{count}</span>
+              </button>
+            );
+          })}
           {categoryFilters.length > 0 && (
             <button
+              data-testid="recipe-cat-filter-clear"
               onClick={() => setCategoryFilters([])}
               className="h-7 px-2.5 text-[11px] rounded-full border border-red-200 bg-red-50 text-red-500 whitespace-nowrap transition-all hover:bg-red-100 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400"
             >
@@ -566,8 +695,122 @@ export default function RecipesPage() {
           )}
         </div>
 
-        {/* Recipe List */}
-        {filteredRecipes.length === 0 ? (
+        <div className="flex gap-2 mb-5">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <input
+              data-testid="recipe-search-input"
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={t("zoekRecepten")}
+              className="w-full pl-10 pr-3 py-2 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+            />
+            {searchQuery && (
+              <button
+                data-testid="recipe-search-clear"
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            )}
+          </div>
+          <div className="relative" ref={sortRef}>
+            <button
+              data-testid="recipe-sort-button"
+              onClick={() => setShowSortMenu(!showSortMenu)}
+              className="flex items-center gap-1.5 h-full px-3 rounded-xl border border-border bg-card text-sm text-muted-foreground hover:border-primary/30 transition-all"
+            >
+              <ArrowUpDown className="h-4 w-4" />
+              <span className="hidden sm:inline">{t("sorteerOp")}</span>
+              {(filter !== "all" || sortBy !== "nieuwste") && (
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+              )}
+            </button>
+            <AnimatePresence>
+              {showSortMenu && (
+                <motion.div
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.12 }}
+                  className="absolute right-0 top-full mt-1 z-20 bg-card border border-border rounded-xl shadow-lg py-1 min-w-[160px]"
+                >
+                  {/* Status filter section */}
+                  <div className="px-3 pt-1.5 pb-1 text-[10px] font-semibold text-muted-foreground/60 uppercase tracking-wider">Filter</div>
+                  {filterOptions.map(({ key, labelKey }) => (
+                    <button
+                      key={key}
+                      data-testid={`recipe-filter-${key}`}
+                      onClick={() => { setFilter(key); setShowSortMenu(false); }}
+                      className={`w-full text-left px-3 py-2 text-xs transition-colors ${
+                        filter === key
+                          ? "text-primary font-medium bg-primary/5"
+                          : "text-muted-foreground hover:bg-muted/50"
+                      }`}
+                    >
+                      {t(labelKey as any)}
+                    </button>
+                  ))}
+                  {/* Divider */}
+                  <div className="mx-2 my-1 border-t border-border/50" />
+                  {/* Sort section */}
+                  <div className="px-3 pt-1 pb-1 text-[10px] font-semibold text-muted-foreground/60 uppercase tracking-wider">{t("sorteerOp")}</div>
+                  {sortOptions.map(({ key, labelKey }) => (
+                    <button
+                      key={key}
+                      data-testid={`recipe-sort-${key}`}
+                      onClick={() => { setSortBy(key); setShowSortMenu(false); }}
+                      className={`w-full text-left px-3 py-2 text-xs transition-colors ${
+                        sortBy === key
+                          ? "text-primary font-medium bg-primary/5"
+                          : "text-muted-foreground hover:bg-muted/50"
+                      }`}
+                    >
+                      {t(labelKey as any)}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* Recipe count */}
+        {!isLoading && (
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs text-muted-foreground">
+              {filteredRecipes.length} {filteredRecipes.length === 1 ? 'recept' : 'recepten'}
+              {(categoryFilters.length > 0 || filter !== 'all' || searchQuery) && ` (van ${recipes.length})`}
+            </span>
+          </div>
+        )}
+
+        {/* Skeleton loading */}
+        {isLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="rounded-2xl overflow-hidden border border-border bg-card">
+                <div className="h-40 bg-muted animate-pulse" />
+                <div className="p-3.5 space-y-3">
+                  <div className="flex gap-1.5">
+                    <div className="h-5 w-12 bg-muted animate-pulse rounded-full" />
+                    <div className="h-5 w-20 bg-muted animate-pulse rounded-full ml-auto" />
+                  </div>
+                  <div className="h-4 w-3/4 bg-muted animate-pulse rounded" />
+                  <div className="flex gap-1 pt-2 border-t border-border/50">
+                    <div className="h-7 w-20 bg-muted animate-pulse rounded-lg" />
+                    <div className="h-7 w-16 bg-muted animate-pulse rounded-lg" />
+                    <div className="h-7 w-16 bg-muted animate-pulse rounded-lg" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) :
+        /* Recipe List */
+        filteredRecipes.length === 0 ? (
           <div className="text-center py-12">
             <CookingPot className="h-10 w-10 mx-auto text-muted-foreground/40 mb-3" />
             <p className="text-muted-foreground text-sm">{t("geenRecepten")}</p>
@@ -584,6 +827,7 @@ export default function RecipesPage() {
                 key={recipe.id}
                 recipe={recipe}
                 onToggleCooked={() => toggleCookedMutation.mutate(recipe.id)}
+                onToggleFavorite={() => toggleFavoriteMutation.mutate(recipe.id)}
                 onToggleKidApproval={(tag) => toggleKidApprovalMutation.mutate({ id: recipe.id, tag })}
                 onUpdateCategories={(cats) => updateCategoriesMutation.mutate({ id: recipe.id, categories: cats })}
               />
@@ -593,10 +837,12 @@ export default function RecipesPage() {
       </motion.section>
 
       <FloatingResetButton
-        visible={filter !== "all" || categoryFilters.length > 0}
+        visible={filter !== "all" || categoryFilters.length > 0 || searchQuery !== "" || sortBy !== "nieuwste"}
         onReset={() => {
           setFilter("all");
           setCategoryFilters([]);
+          setSearchQuery("");
+          setSortBy("nieuwste");
         }}
       />
     </div>
@@ -606,11 +852,13 @@ export default function RecipesPage() {
 function RecipeCard({
   recipe,
   onToggleCooked,
+  onToggleFavorite,
   onToggleKidApproval,
   onUpdateCategories,
 }: {
   recipe: Recipe;
   onToggleCooked: () => void;
+  onToggleFavorite: () => void;
   onToggleKidApproval: (tag: KidApproval) => void;
   onUpdateCategories: (categories: RecipeCategory[]) => void;
 }) {
@@ -635,36 +883,52 @@ function RecipeCard({
     <motion.div variants={fadeIn} transition={{ duration: 0.2 }} className="h-full">
       <Card className={`rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border h-full flex flex-col ${hasAnyApproval ? "border-[hsl(42,30%,65%)]/40 dark:border-[hsl(42,30%,55%)]/50" : "border-border"}`}>
         {/* Image */}
-        {recipe.imageUrl && (
-          <a href={recipe.url} target="_blank" rel="noopener noreferrer">
-            <div className="relative h-40 overflow-hidden">
+        <a href={recipe.url} target="_blank" rel="noopener noreferrer">
+          <div className="relative h-40 overflow-hidden">
+            {recipe.imageUrl ? (
               <img
                 src={recipe.imageUrl}
                 alt={recipe.title}
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-              {recipe.cooked && (
-                <div className="absolute top-2 left-2 bg-[hsl(42,35%,55%)] text-white rounded-full p-1.5 shadow-sm">
-                  <ChefHat className="h-3.5 w-3.5" />
-                </div>
-              )}
-              {hasAnyApproval && (
-                <div className="absolute top-2 right-2 flex gap-1">
-                  {approvals.map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-[hsl(42,35%,55%)] text-white rounded-full px-2 py-0.5 text-[10px] font-semibold shadow-sm flex items-center gap-0.5"
-                    >
-                      {tag === "beiden" ? <Users className="h-3 w-3" /> : <User className="h-3 w-3" />}
-                      <span className="capitalize">{tag}</span>
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-          </a>
-        )}
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-[hsl(42,30%,92%)] to-[hsl(140,15%,90%)] dark:from-[hsl(42,20%,16%)] dark:to-[hsl(140,15%,14%)] flex items-center justify-center">
+                <UtensilsCrossed className="h-10 w-10 text-muted-foreground/20" />
+              </div>
+            )}
+            {recipe.cooked && (
+              <div className="absolute top-2 left-2 bg-[hsl(42,35%,55%)] text-white rounded-full p-1.5 shadow-sm">
+                <ChefHat className="h-3.5 w-3.5" />
+              </div>
+            )}
+            {hasAnyApproval && (
+              <div className="absolute top-2 right-2 flex gap-1">
+                {approvals.map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-[hsl(42,35%,55%)] text-white rounded-full px-2 py-0.5 text-[10px] font-semibold shadow-sm flex items-center gap-0.5"
+                  >
+                    {tag === "beiden" ? <Users className="h-3 w-3" /> : <User className="h-3 w-3" />}
+                    <span className="capitalize">{tag}</span>
+                  </span>
+                ))}
+              </div>
+            )}
+            {/* Favorite heart overlay */}
+            <button
+              data-testid={`recipe-fav-${recipe.id}`}
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); onToggleFavorite(); }}
+              className={`absolute bottom-2 right-2 p-1.5 rounded-full shadow-sm transition-all ${
+                recipe.favorite
+                  ? "bg-red-500 text-white"
+                  : "bg-white/80 dark:bg-black/50 text-muted-foreground hover:text-red-500"
+              }`}
+            >
+              <Heart className={`h-4 w-4 ${recipe.favorite ? "fill-current" : ""}`} />
+            </button>
+          </div>
+        </a>
 
         <CardContent className="p-3.5 flex flex-col flex-1">
           {/* Category badges — clickable to edit */}
@@ -680,7 +944,7 @@ function RecipeCard({
             <button
               data-testid={`recipe-edit-cats-${recipe.id}`}
               onClick={() => setEditingCategories(!editingCategories)}
-              className="p-0.5 rounded text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+              className="p-2.5 -m-1 rounded min-w-[44px] min-h-[44px] flex items-center justify-center text-muted-foreground/50 hover:text-muted-foreground transition-colors"
               title="Categorieën bewerken"
             >
               <Pencil className="h-3 w-3" />
@@ -734,43 +998,64 @@ function RecipeCard({
             {recipe.title}
           </a>
 
-          {/* Action buttons */}
-          <div className="flex items-center gap-1 mt-auto pt-2.5 border-t border-border/50 flex-wrap">
-            {/* Gemaakt button */}
+          {/* Prep time & difficulty */}
+          {(recipe.prepTime || recipe.difficulty) && (
+            <div className="flex items-center gap-2 mt-1.5 text-[11px] text-muted-foreground">
+              {recipe.prepTime && (
+                <span className="flex items-center gap-0.5">
+                  <Clock className="h-3 w-3" />
+                  {recipe.prepTime} {t("minuten")}
+                </span>
+              )}
+              {recipe.difficulty && (
+                <span className={`flex items-center gap-0.5 ${
+                  recipe.difficulty === "makkelijk" ? "text-green-600 dark:text-green-400" :
+                  recipe.difficulty === "gemiddeld" ? "text-amber-600 dark:text-amber-400" :
+                  "text-red-600 dark:text-red-400"
+                }`}>
+                  <Gauge className="h-3 w-3" />
+                  {t(recipe.difficulty as any)}
+                </span>
+              )}
+            </div>
+          )}
+
+          {/* Compact action row */}
+          <div className="flex items-center gap-1.5 mt-auto pt-2 border-t border-border/50">
+            {/* Gemaakt toggle — compact icon */}
             <button
               data-testid={`recipe-cooked-${recipe.id}`}
               onClick={onToggleCooked}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              title={t("gemaakt")}
+              className={`flex items-center justify-center w-7 h-7 rounded-full text-xs font-medium transition-all ${
                 recipe.cooked
                   ? "bg-[hsl(42,30%,90%)] text-[hsl(42,30%,35%)] dark:bg-[hsl(42,20%,18%)] dark:text-[hsl(42,30%,70%)]"
                   : "bg-muted text-muted-foreground hover:bg-muted/80"
               }`}
             >
               <ChefHat className="h-3.5 w-3.5" />
-              {t("gemaakt")}
             </button>
 
-            {/* Kid approval buttons */}
-            {kidApprovalOptions.map(({ key, labelKey }) => {
+            <div className="w-px h-4 bg-border/50" />
+
+            {/* Kid approval — compact avatar circles */}
+            {kidApprovalOptions.map(({ key }) => {
               const isActive = approvals.includes(key);
-              const icon = key === "beiden" ? (
-                <Users className="h-3.5 w-3.5" />
-              ) : (
-                <User className="h-3.5 w-3.5" />
-              );
+              const initial = key === "beiden" ? "B" : key === "charlie" ? "C" : "B";
+              const label = key === "beiden" ? "Beiden" : key === "charlie" ? "Charlie" : "Bodi";
               return (
                 <button
                   key={key}
                   data-testid={`recipe-approval-${key}-${recipe.id}`}
                   onClick={() => onToggleKidApproval(key)}
-                  className={`flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  title={label}
+                  className={`flex items-center justify-center w-7 h-7 rounded-full text-[10px] font-bold transition-all ${
                     isActive
-                      ? "bg-primary/15 text-primary dark:bg-primary/20 dark:text-primary"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80"
+                      ? "bg-primary/15 text-primary ring-1 ring-primary/30 dark:bg-primary/20"
+                      : "bg-muted text-muted-foreground/60 hover:bg-muted/80"
                   }`}
                 >
-                  {icon}
-                  {t(labelKey as any)}
+                  {key === "beiden" ? <Users className="h-3.5 w-3.5" /> : initial}
                 </button>
               );
             })}
