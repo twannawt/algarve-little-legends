@@ -4,6 +4,7 @@ import { requireAuth, getAuth } from "@clerk/express";
 import { storage } from "./storage";
 import { importFromUrls, importRecipeFromUrl, bulkImportRecipes, bulkImportPlaces } from "./url-import";
 import type { RecipeCategory, KidApproval } from "@shared/schema";
+import { KID_NAMES } from "@shared/config";
 
 // Helper to extract userId from Clerk auth (falls back to "default" for backward compat)
 function getUserId(req: Request): string {
@@ -271,7 +272,6 @@ export async function registerRoutes(
   app.post("/api/recipes/:id/kid-approval", requireAuth(), async (req, res) => {
     const userId = getUserId(req);
     const { tag } = req.body;
-    const { KID_NAMES } = await import("@shared/config");
     const validTags: KidApproval[] = ["beiden", ...KID_NAMES.map(k => k.key as KidApproval)];
     if (!tag || !validTags.includes(tag)) {
       return res.status(400).json({ message: "Ongeldige tag" });
