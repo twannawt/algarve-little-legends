@@ -1,11 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "wouter";
 import {
   ChefHat,
-  Check,
-  CookingPot,
   Users,
   User,
   Trash2,
@@ -23,59 +21,31 @@ import { apiRequest } from "@/lib/queryClient";
 import { queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import type { Recipe, RecipeCategory, KidApproval } from "@shared/schema";
-import { AnimatePresence } from "framer-motion";
 import { FloatingResetButton } from "@/components/FloatingResetButton";
+import { EmptyState } from "@/components/EmptyState";
+import {
+  categoryOptions,
+  kidApprovalOptions,
+  sortOptions,
+  fadeIn,
+  getCategoryColor,
+  getKidDisplayInfo,
+  type SortOption,
+} from "@/lib/recipe-constants";
+import { KID_NAMES } from "@shared/config";
 
-const categoryOptions: { key: RecipeCategory; labelKey: string }[] = [
-  { key: "ontbijt", labelKey: "ontbijt" },
-  { key: "lunch", labelKey: "lunchRecept" },
-  { key: "diner", labelKey: "diner" },
-  { key: "snack", labelKey: "snack" },
-  { key: "tussendoortje", labelKey: "tussendoortje" },
-  { key: "overig", labelKey: "overig" },
-];
+type FavFilter = "all" | "gemaakt" | KidApproval;
 
-type FavFilter = "all" | "gemaakt" | "beiden" | "charlie" | "bodi";
-
+/** Derived from KID_NAMES config */
 const favFilterOptions: { key: FavFilter; labelKey: string }[] = [
   { key: "all", labelKey: "alleRecepten" },
   { key: "gemaakt", labelKey: "gemaakt" },
   { key: "beiden", labelKey: "beiden" },
-  { key: "charlie", labelKey: "charlie" },
-  { key: "bodi", labelKey: "bodi" },
+  ...KID_NAMES.map((kid) => ({
+    key: kid.key as FavFilter,
+    labelKey: kid.key,
+  })),
 ];
-
-const kidApprovalOptions: { key: KidApproval; labelKey: string }[] = [
-  { key: "beiden", labelKey: "beiden" },
-  { key: "charlie", labelKey: "charlie" },
-  { key: "bodi", labelKey: "bodi" },
-];
-
-type SortOption = "nieuwste" | "oudste" | "az" | "za";
-
-const sortOptions: { key: SortOption; labelKey: string }[] = [
-  { key: "nieuwste", labelKey: "nieuwsteEerst" },
-  { key: "oudste", labelKey: "oudsteEerst" },
-  { key: "az", labelKey: "alfabetisch" },
-  { key: "za", labelKey: "alfabetischOmgekeerd" },
-];
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 8 },
-  visible: { opacity: 1, y: 0 },
-};
-
-// Bali Green + Warm Terracotta palette for category badges
-function getCategoryColor(cat: RecipeCategory): string {
-  switch (cat) {
-    case "ontbijt": return "bg-[hsl(42,35%,91%)] text-[hsl(42,30%,35%)] dark:bg-[hsl(42,25%,15%)] dark:text-[hsl(42,30%,72%)]";
-    case "lunch": return "bg-[hsl(115,13%,92%)] text-[hsl(115,13%,38%)] dark:bg-[hsl(115,13%,15%)] dark:text-[hsl(115,13%,65%)]";
-    case "diner": return "bg-[hsl(42,35%,89%)] text-[hsl(42,40%,34%)] dark:bg-[hsl(42,35%,15%)] dark:text-[hsl(42,40%,68%)]";
-    case "snack": return "bg-[hsl(115,10%,90%)] text-[hsl(115,13%,40%)] dark:bg-[hsl(115,10%,15%)] dark:text-[hsl(115,13%,62%)]";
-    case "tussendoortje": return "bg-[hsl(42,30%,91%)] text-[hsl(42,35%,40%)] dark:bg-[hsl(42,30%,15%)] dark:text-[hsl(42,30%,65%)]";
-    default: return "bg-muted text-muted-foreground";
-  }
-}
 
 export default function RecipeFavoritesPage() {
   const t = useT();
@@ -176,45 +146,46 @@ export default function RecipeFavoritesPage() {
   });
 
   // Only show recipes marked as favorite
-  const favoriteRecipes = recipes
-    .filter((r) => {
-      if (!r.favorite) return false;
-      const approvals = r.kidApproval || [];
+  const favoriteRecipes = useMemo(() =>
+    recipes
+      .filter((r) => {
+        if (!r.favorite) return false;
+        const approvals = r.kidApproval || [];
 
-      // Apply fav filter
-      if (filter === "gemaakt" && !r.cooked) return false;
-      if (filter === "beiden" && !approvals.includes("beiden")) return false;
-      if (filter === "charlie" && !approvals.includes("charlie")) return false;
-      if (filter === "bodi" && !approvals.includes("bodi")) return false;
+        // Apply fav filter
+        if (filter === "gemaakt" && !r.cooked) return false;
+        if (filter !== "all" && filter !== "gemaakt" && !approvals.includes(filter as KidApproval)) return false;
 
-      // Apply category filter
-      const cats = r.categories || [];
-      if (categoryFilters.length > 0 && !categoryFilters.some((f) => cats.includes(f))) return false;
+        // Apply category filter
+        const cats = r.categories || [];
+        if (categoryFilters.length > 0 && !categoryFilters.some((f) => cats.includes(f))) return false;
 
-      // Search filter
-      if (searchQuery.trim()) {
-        const q = searchQuery.toLowerCase();
-        const matchTitle = r.title.toLowerCase().includes(q);
-        const matchDesc = (r.description || "").toLowerCase().includes(q);
-        const matchSite = (r.siteName || "").toLowerCase().includes(q);
-        if (!matchTitle && !matchDesc && !matchSite) return false;
-      }
+        // Search filter
+        if (searchQuery.trim()) {
+          const q = searchQuery.toLowerCase();
+          const matchTitle = r.title.toLowerCase().includes(q);
+          const matchDesc = (r.description || "").toLowerCase().includes(q);
+          const matchSite = (r.siteName || "").toLowerCase().includes(q);
+          if (!matchTitle && !matchDesc && !matchSite) return false;
+        }
 
-      return true;
-    })
-    .sort((a, b) => {
-      switch (sortBy) {
-        case "oudste":
-          return (a.createdAt || "").localeCompare(b.createdAt || "");
-        case "az":
-          return a.title.localeCompare(b.title, "nl");
-        case "za":
-          return b.title.localeCompare(a.title, "nl");
-        case "nieuwste":
-        default:
-          return (b.createdAt || "").localeCompare(a.createdAt || "");
-      }
-    });
+        return true;
+      })
+      .sort((a, b) => {
+        switch (sortBy) {
+          case "oudste":
+            return (a.createdAt || "").localeCompare(b.createdAt || "");
+          case "az":
+            return a.title.localeCompare(b.title, "nl");
+          case "za":
+            return b.title.localeCompare(a.title, "nl");
+          case "nieuwste":
+          default:
+            return (b.createdAt || "").localeCompare(a.createdAt || "");
+        }
+      }),
+    [recipes, filter, categoryFilters, searchQuery, sortBy]
+  );
 
   return (
     <div className="max-w-5xl mx-auto pb-24 md:pb-8">
@@ -225,7 +196,7 @@ export default function RecipeFavoritesPage() {
         variants={fadeIn}
         transition={{ duration: 0.25 }}
       >
-        {/* Back to recipes link (visible on desktop where bottom nav is far away) */}
+        {/* Back to recipes link */}
         <button
           onClick={() => navigate("/recepten")}
           className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-4"
@@ -352,14 +323,7 @@ export default function RecipeFavoritesPage() {
 
         {/* Favorite Recipe List */}
         {favoriteRecipes.length === 0 ? (
-          <div className="text-center py-12">
-            <Heart className="h-10 w-10 mx-auto text-muted-foreground/40 mb-3" />
-            <p className="text-muted-foreground text-sm">
-              {filter === "all"
-                ? "Nog geen favorieten. Tik op het hartje bij een recept om het hier te bewaren."
-                : "Geen recepten gevonden met dit filter."}
-            </p>
-          </div>
+          <EmptyState type="recipe-favorites" />
         ) : (
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
@@ -423,15 +387,18 @@ function FavRecipeCard({
               )}
               {approvals.length > 0 && (
                 <div className="absolute top-2 right-2 flex gap-1">
-                  {approvals.map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-[hsl(42,35%,55%)] text-white rounded-full px-2 py-0.5 text-[10px] font-semibold shadow-sm flex items-center gap-0.5"
-                    >
-                      {tag === "beiden" ? <Users className="h-3 w-3" /> : <User className="h-3 w-3" />}
-                      <span className="capitalize">{tag}</span>
-                    </span>
-                  ))}
+                  {approvals.map((tag) => {
+                    const { label } = getKidDisplayInfo(tag);
+                    return (
+                      <span
+                        key={tag}
+                        className="bg-[hsl(42,35%,55%)] text-white rounded-full px-2 py-0.5 text-[10px] font-semibold shadow-sm flex items-center gap-0.5"
+                      >
+                        {tag === "beiden" ? <Users className="h-3 w-3" /> : <User className="h-3 w-3" />}
+                        <span className="capitalize">{label}</span>
+                      </span>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -467,7 +434,7 @@ function FavRecipeCard({
           {/* Compact action row */}
           <div className="mt-3 pt-2 border-t border-border/50">
             <div className="flex items-center gap-1.5">
-              {/* Gemaakt toggle — compact icon */}
+              {/* Gemaakt toggle */}
               <button
                 data-testid={`fav-cooked-${recipe.id}`}
                 onClick={onToggleCooked}
@@ -483,11 +450,10 @@ function FavRecipeCard({
 
               <div className="w-px h-4 bg-border/50" />
 
-              {/* Kid approval — compact avatar circles */}
+              {/* Kid approval — from config */}
               {kidApprovalOptions.map(({ key }) => {
                 const isActive = approvals.includes(key);
-                const initial = key === "beiden" ? "B" : key === "charlie" ? "C" : "B";
-                const label = key === "beiden" ? "Beiden" : key === "charlie" ? "Charlie" : "Bodi";
+                const { initial, label } = getKidDisplayInfo(key);
                 return (
                   <button
                     key={key}

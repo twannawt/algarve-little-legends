@@ -3,19 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Heart, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { PlaceCard } from "@/components/PlaceCard";
-
+import { EmptyState } from "@/components/EmptyState";
+import { fadeIn, staggerContainer } from "@/lib/animations";
 import { useT } from "@/lib/i18n";
 import type { Place } from "@shared/schema";
-
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.05 } },
-};
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 8 },
-  visible: { opacity: 1, y: 0 },
-};
 
 export default function FavoritesPage() {
   const [tab, setTab] = useState<"favorites" | "visited">("favorites");
@@ -71,23 +62,7 @@ export default function FavoritesPage() {
       </div>
 
       {activePlaces.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-20 text-center">
-          {tab === "favorites" ? (
-            <>
-              <Heart className="h-16 w-16 text-muted-foreground/20 mb-4" />
-              <p className="text-muted-foreground">
-                {t("geenFavorieten")}
-              </p>
-            </>
-          ) : (
-            <>
-              <CheckCircle className="h-16 w-16 text-muted-foreground/20 mb-4" />
-              <p className="text-muted-foreground">
-                {t("geenBezocht")}
-              </p>
-            </>
-          )}
-        </div>
+        <EmptyState type="favorites" />
       ) : (
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
@@ -98,7 +73,7 @@ export default function FavoritesPage() {
         >
           {activePlaces.map((place) => (
             <motion.div key={place.id} variants={fadeIn} transition={{ duration: 0.25 }}>
-              <PlaceCard place={place} />
+              <PlaceCard place={place} favorites={favoriteIds} />
             </motion.div>
           ))}
         </motion.div>

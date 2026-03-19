@@ -2,6 +2,7 @@ import { Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
+import { UserButton } from "@clerk/clerk-react";
 
 function AlgarveLittleLegendsLogo() {
   return (
@@ -138,16 +139,25 @@ export function Header() {
           <span className="font-serif font-bold text-lg text-foreground leading-tight">Little Legends</span>
         </button>
 
-        <Button
-          data-testid="theme-toggle"
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8"
-          onClick={toggleTheme}
-          aria-label={isDark ? "Schakel naar licht thema" : "Schakel naar donker thema"}
-        >
-          {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button
+            data-testid="theme-toggle"
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            onClick={toggleTheme}
+            aria-label={isDark ? "Schakel naar licht thema" : "Schakel naar donker thema"}
+          >
+            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </Button>
+          <UserButton
+            appearance={{
+              elements: {
+                avatarBox: "h-8 w-8",
+              },
+            }}
+          />
+        </div>
       </div>
     </header>
   );

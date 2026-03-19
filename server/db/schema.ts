@@ -1,8 +1,9 @@
-import { pgTable, text, boolean, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, boolean, timestamp, primaryKey } from "drizzle-orm/pg-core";
 
-// Recipes table — stores all recipe data
+// Recipes table — stores all recipe data (user-scoped)
 export const recipes = pgTable("recipes", {
   id: text("id").primaryKey(),
+  userId: text("user_id").notNull().default("default"),
   title: text("title").notNull(),
   url: text("url").notNull(),
   imageUrl: text("image_url"),
@@ -15,14 +16,20 @@ export const recipes = pgTable("recipes", {
   createdAt: text("created_at").notNull(),
 });
 
-// Favorites table — stores place IDs that are favorited
+// Favorites table — stores place IDs that are favorited (user-scoped)
 export const favorites = pgTable("favorites", {
-  placeId: text("place_id").primaryKey(),
+  userId: text("user_id").notNull().default("default"),
+  placeId: text("place_id").notNull(),
   createdAt: text("created_at").notNull(),
-});
+}, (table) => ({
+  pk: primaryKey({ columns: [table.userId, table.placeId] }),
+}));
 
-// Visited table — stores place IDs that have been visited
+// Visited table — stores place IDs that have been visited (user-scoped)
 export const visited = pgTable("visited", {
-  placeId: text("place_id").primaryKey(),
+  userId: text("user_id").notNull().default("default"),
+  placeId: text("place_id").notNull(),
   createdAt: text("created_at").notNull(),
-});
+}, (table) => ({
+  pk: primaryKey({ columns: [table.userId, table.placeId] }),
+}));

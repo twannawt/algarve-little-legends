@@ -1,5 +1,5 @@
 import { type Place, type Suggestion, type WeatherData, type Recipe, type RecipeCategory, type KidApproval, type RecipeDifficulty } from "@shared/schema";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 import * as fs from "fs";
 import * as path from "path";
 import { getDb, hasDatabase } from "./db";
@@ -115,27 +115,27 @@ export interface IStorage {
   searchPlaces(query: string): Place[];
   getCategoryCounts(): Record<string, number>;
   getRandomPlace(category?: string): Place;
-  getRandomRecipe(category?: string): Promise<Recipe | null>;
-  getFavorites(): Promise<string[]>;
-  toggleFavorite(id: string): Promise<boolean>;
-  getVisited(): Promise<string[]>;
-  toggleVisited(id: string): Promise<boolean>;
+  getRandomRecipe(userId: string, category?: string): Promise<Recipe | null>;
+  getFavorites(userId: string): Promise<string[]>;
+  toggleFavorite(userId: string, id: string): Promise<boolean>;
+  getVisited(userId: string): Promise<string[]>;
+  toggleVisited(userId: string, id: string): Promise<boolean>;
   addSuggestion(s: Omit<Suggestion, "id" | "createdAt">): Suggestion;
   getSuggestions(): Suggestion[];
   getWeather(): Promise<WeatherData | null>;
   getDagplan(): { restaurant: Place; activity: Place; playground: Place };
   addPlace(place: Omit<Place, "id">): Place;
-  // Recipe methods — all async for PostgreSQL
-  getAllRecipes(): Promise<Recipe[]>;
-  addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "favorite" | "kidApproval"> & { prepTime?: number; difficulty?: RecipeDifficulty }): Promise<Recipe>;
-  deleteRecipe(id: string): Promise<boolean>;
-  toggleRecipeCooked(id: string): Promise<boolean>;
-  toggleRecipeFavorite(id: string): Promise<boolean>;
-  toggleRecipeKidApproval(id: string, tag: KidApproval): Promise<KidApproval[]>;
-  updateRecipeCategories(id: string, categories: RecipeCategory[]): Promise<Recipe | null>;
-  getRecipeDagplan(): Promise<{ ontbijt: Recipe | null; lunch: Recipe | null; diner: Recipe | null }>;
-  addRecentlyViewed(placeId: string): void;
-  getRecentlyViewed(): string[];
+  // Recipe methods — all async, user-scoped
+  getAllRecipes(userId: string): Promise<Recipe[]>;
+  addRecipe(userId: string, recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "favorite" | "kidApproval"> & { prepTime?: number; difficulty?: RecipeDifficulty }): Promise<Recipe>;
+  deleteRecipe(userId: string, id: string): Promise<boolean>;
+  toggleRecipeCooked(userId: string, id: string): Promise<boolean>;
+  toggleRecipeFavorite(userId: string, id: string): Promise<boolean>;
+  toggleRecipeKidApproval(userId: string, id: string, tag: KidApproval): Promise<KidApproval[]>;
+  updateRecipeCategories(userId: string, id: string, categories: RecipeCategory[]): Promise<Recipe | null>;
+  getRecipeDagplan(userId: string): Promise<{ ontbijt: Recipe | null; lunch: Recipe | null; diner: Recipe | null }>;
+  addRecentlyViewed(userId: string, placeId: string): void;
+  getRecentlyViewed(userId: string): string[];
 }
 
 // ============================================================
@@ -146,18 +146,17 @@ class BasePlaceStorage {
   protected places: Place[] = [];
   protected suggestions: Suggestion[] = [];
   protected weatherCache: { data: WeatherData; fetchedAt: number } | null = null;
-  private recentlyViewed: string[] = [];
+  private recentlyViewedMap: Map<string, string[]> = new Map();
 
-  addRecentlyViewed(placeId: string): void {
-    // Remove if already exists, then prepend
-    this.recentlyViewed = this.recentlyViewed.filter(id => id !== placeId);
-    this.recentlyViewed.unshift(placeId);
-    // Keep max 5
-    if (this.recentlyViewed.length > 5) this.recentlyViewed = this.recentlyViewed.slice(0, 5);
+  addRecentlyViewed(userId: string, placeId: string): void {
+    const list = this.recentlyViewedMap.get(userId) || [];
+    const filtered = list.filter(id => id !== placeId);
+    filtered.unshift(placeId);
+    this.recentlyViewedMap.set(userId, filtered.slice(0, 5));
   }
 
-  getRecentlyViewed(): string[] {
-    return this.recentlyViewed;
+  getRecentlyViewed(userId: string): string[] {
+    return this.recentlyViewedMap.get(userId) || [];
   }
 
   constructor() {
@@ -216,8 +215,8 @@ class BasePlaceStorage {
     return pool[idx] || this.places[0];
   }
 
-  async getRandomRecipe(category?: string): Promise<Recipe | null> {
-    const all = await this.getAllRecipes();
+  async getRandomRecipe(userId: string, category?: string): Promise<Recipe | null> {
+    const all = await this.getAllRecipes(userId);
     const pool = category ? all.filter(r => r.categories?.includes(category as RecipeCategory)) : all;
     if (pool.length === 0) return null;
     return pool[Math.floor(Math.random() * pool.length)];
@@ -339,6 +338,20 @@ class BasePlaceStorage {
       playground: pick(playgrounds),
     };
   }
+
+  // Abstract — implemented by subclasses
+  async getAllRecipes(_userId: string): Promise<Recipe[]> { return []; }
+
+  // Shared: recipe dagplan (identical logic for both storage backends)
+  async getRecipeDagplan(userId: string): Promise<{ ontbijt: Recipe | null; lunch: Recipe | null; diner: Recipe | null }> {
+    const all = await this.getAllRecipes(userId);
+    const pick = (cat: RecipeCategory): Recipe | null => {
+      const matching = all.filter((r) => (r.categories || []).includes(cat));
+      if (matching.length === 0) return null;
+      return matching[Math.floor(Math.random() * matching.length)];
+    };
+    return { ontbijt: pick("ontbijt"), lunch: pick("lunch"), diner: pick("diner") };
+  }
 }
 
 // ============================================================
@@ -346,45 +359,53 @@ class BasePlaceStorage {
 // ============================================================
 
 export class PgStorage extends BasePlaceStorage implements IStorage {
-  async getFavorites(): Promise<string[]> {
+  async getFavorites(userId: string): Promise<string[]> {
     const db = getDb();
-    const rows = await db.select().from(favoritesTable);
+    const rows = await db.select().from(favoritesTable).where(eq(favoritesTable.userId, userId));
     return rows.map((r) => r.placeId);
   }
 
-  async toggleFavorite(id: string): Promise<boolean> {
+  async toggleFavorite(userId: string, id: string): Promise<boolean> {
     const db = getDb();
-    const existing = await db.select().from(favoritesTable).where(eq(favoritesTable.placeId, id));
+    const existing = await db.select().from(favoritesTable).where(
+      and(eq(favoritesTable.userId, userId), eq(favoritesTable.placeId, id))
+    );
     if (existing.length > 0) {
-      await db.delete(favoritesTable).where(eq(favoritesTable.placeId, id));
+      await db.delete(favoritesTable).where(
+        and(eq(favoritesTable.userId, userId), eq(favoritesTable.placeId, id))
+      );
       return false;
     } else {
-      await db.insert(favoritesTable).values({ placeId: id, createdAt: new Date().toISOString() });
+      await db.insert(favoritesTable).values({ userId, placeId: id, createdAt: new Date().toISOString() });
       return true;
     }
   }
 
-  async getVisited(): Promise<string[]> {
+  async getVisited(userId: string): Promise<string[]> {
     const db = getDb();
-    const rows = await db.select().from(visitedTable);
+    const rows = await db.select().from(visitedTable).where(eq(visitedTable.userId, userId));
     return rows.map((r) => r.placeId);
   }
 
-  async toggleVisited(id: string): Promise<boolean> {
+  async toggleVisited(userId: string, id: string): Promise<boolean> {
     const db = getDb();
-    const existing = await db.select().from(visitedTable).where(eq(visitedTable.placeId, id));
+    const existing = await db.select().from(visitedTable).where(
+      and(eq(visitedTable.userId, userId), eq(visitedTable.placeId, id))
+    );
     if (existing.length > 0) {
-      await db.delete(visitedTable).where(eq(visitedTable.placeId, id));
+      await db.delete(visitedTable).where(
+        and(eq(visitedTable.userId, userId), eq(visitedTable.placeId, id))
+      );
       return false;
     } else {
-      await db.insert(visitedTable).values({ placeId: id, createdAt: new Date().toISOString() });
+      await db.insert(visitedTable).values({ userId, placeId: id, createdAt: new Date().toISOString() });
       return true;
     }
   }
 
-  async getAllRecipes(): Promise<Recipe[]> {
+  async getAllRecipes(userId: string): Promise<Recipe[]> {
     const db = getDb();
-    const rows = await db.select().from(recipesTable);
+    const rows = await db.select().from(recipesTable).where(eq(recipesTable.userId, userId));
     return rows.map((r) => ({
       id: r.id,
       title: r.title,
@@ -400,12 +421,13 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
     }));
   }
 
-  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "favorite" | "kidApproval">): Promise<Recipe> {
+  async addRecipe(userId: string, recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "favorite" | "kidApproval">): Promise<Recipe> {
     const db = getDb();
     const id = `recipe-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
     const createdAt = new Date().toISOString();
     const newRecipe = {
       id,
+      userId,
       title: recipe.title,
       url: recipe.url,
       imageUrl: recipe.imageUrl || null,
@@ -428,33 +450,41 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
     };
   }
 
-  async deleteRecipe(id: string): Promise<boolean> {
+  async deleteRecipe(userId: string, id: string): Promise<boolean> {
     const db = getDb();
-    const result = await db.delete(recipesTable).where(eq(recipesTable.id, id));
+    await db.delete(recipesTable).where(
+      and(eq(recipesTable.id, id), eq(recipesTable.userId, userId))
+    );
     return true;
   }
 
-  async toggleRecipeCooked(id: string): Promise<boolean> {
+  async toggleRecipeCooked(userId: string, id: string): Promise<boolean> {
     const db = getDb();
-    const rows = await db.select().from(recipesTable).where(eq(recipesTable.id, id));
+    const rows = await db.select().from(recipesTable).where(
+      and(eq(recipesTable.id, id), eq(recipesTable.userId, userId))
+    );
     if (rows.length === 0) return false;
     const newValue = !rows[0].cooked;
     await db.update(recipesTable).set({ cooked: newValue }).where(eq(recipesTable.id, id));
     return newValue;
   }
 
-  async toggleRecipeFavorite(id: string): Promise<boolean> {
+  async toggleRecipeFavorite(userId: string, id: string): Promise<boolean> {
     const db = getDb();
-    const rows = await db.select().from(recipesTable).where(eq(recipesTable.id, id));
+    const rows = await db.select().from(recipesTable).where(
+      and(eq(recipesTable.id, id), eq(recipesTable.userId, userId))
+    );
     if (rows.length === 0) return false;
     const newValue = !rows[0].favorite;
     await db.update(recipesTable).set({ favorite: newValue }).where(eq(recipesTable.id, id));
     return newValue;
   }
 
-  async toggleRecipeKidApproval(id: string, tag: KidApproval): Promise<KidApproval[]> {
+  async toggleRecipeKidApproval(userId: string, id: string, tag: KidApproval): Promise<KidApproval[]> {
     const db = getDb();
-    const rows = await db.select().from(recipesTable).where(eq(recipesTable.id, id));
+    const rows = await db.select().from(recipesTable).where(
+      and(eq(recipesTable.id, id), eq(recipesTable.userId, userId))
+    );
     if (rows.length === 0) return [];
     const current = (rows[0].kidApproval || []) as KidApproval[];
     const newValue = current.includes(tag)
@@ -464,9 +494,11 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
     return newValue;
   }
 
-  async updateRecipeCategories(id: string, categories: RecipeCategory[]): Promise<Recipe | null> {
+  async updateRecipeCategories(userId: string, id: string, categories: RecipeCategory[]): Promise<Recipe | null> {
     const db = getDb();
-    const rows = await db.select().from(recipesTable).where(eq(recipesTable.id, id));
+    const rows = await db.select().from(recipesTable).where(
+      and(eq(recipesTable.id, id), eq(recipesTable.userId, userId))
+    );
     if (rows.length === 0) return null;
     await db.update(recipesTable).set({ categories: categories as string[] }).where(eq(recipesTable.id, id));
     const updated = await db.select().from(recipesTable).where(eq(recipesTable.id, id));
@@ -486,15 +518,6 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
     };
   }
 
-  async getRecipeDagplan(): Promise<{ ontbijt: Recipe | null; lunch: Recipe | null; diner: Recipe | null }> {
-    const all = await this.getAllRecipes();
-    const pick = (cat: RecipeCategory): Recipe | null => {
-      const matching = all.filter((r) => (r.categories || []).includes(cat));
-      if (matching.length === 0) return null;
-      return matching[Math.floor(Math.random() * matching.length)];
-    };
-    return { ontbijt: pick("ontbijt"), lunch: pick("lunch"), diner: pick("diner") };
-  }
 }
 
 // ============================================================
@@ -502,68 +525,77 @@ export class PgStorage extends BasePlaceStorage implements IStorage {
 // ============================================================
 
 export class MemStorage extends BasePlaceStorage implements IStorage {
-  private favoritesSet: Set<string>;
-  private visitedSet: Set<string>;
-  private recipesArr: Recipe[];
+  // Store per-user data
+  private favoritesMap: Map<string, Set<string>> = new Map();
+  private visitedMap: Map<string, Set<string>> = new Map();
+  private recipesMap: Map<string, Recipe[]> = new Map();
 
   constructor() {
     super();
-    this.favoritesSet = new Set();
-    this.visitedSet = new Set();
-    this.recipesArr = [];
 
-    // Load persisted recipes from file
+    // Load persisted recipes from file into "default" user
     const recipesPath = path.join(process.cwd(), "data", "recipes.json");
     try {
       if (fs.existsSync(recipesPath)) {
-        this.recipesArr = JSON.parse(fs.readFileSync(recipesPath, "utf-8"));
+        const recipes = JSON.parse(fs.readFileSync(recipesPath, "utf-8"));
+        this.recipesMap.set("default", recipes);
       }
     } catch (e) {
       console.error("Failed to load recipes:", e);
     }
   }
 
-  private persistRecipes() {
+  private getUserRecipes(userId: string): Recipe[] {
+    return this.recipesMap.get(userId) || [];
+  }
+
+  private persistRecipes(userId: string) {
+    // Only persist "default" user to file for backward compat
+    if (userId !== "default") return;
     try {
       const dataDir = path.join(process.cwd(), "data");
       if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
-      fs.writeFileSync(path.join(dataDir, "recipes.json"), JSON.stringify(this.recipesArr, null, 2), "utf-8");
+      fs.writeFileSync(path.join(dataDir, "recipes.json"), JSON.stringify(this.getUserRecipes(userId), null, 2), "utf-8");
     } catch (e) {
       console.error("Failed to persist recipes:", e);
     }
   }
 
-  async getFavorites(): Promise<string[]> {
-    return Array.from(this.favoritesSet);
+  async getFavorites(userId: string): Promise<string[]> {
+    return Array.from(this.favoritesMap.get(userId) || []);
   }
 
-  async toggleFavorite(id: string): Promise<boolean> {
-    if (this.favoritesSet.has(id)) {
-      this.favoritesSet.delete(id);
+  async toggleFavorite(userId: string, id: string): Promise<boolean> {
+    if (!this.favoritesMap.has(userId)) this.favoritesMap.set(userId, new Set());
+    const set = this.favoritesMap.get(userId)!;
+    if (set.has(id)) {
+      set.delete(id);
       return false;
     } else {
-      this.favoritesSet.add(id);
+      set.add(id);
       return true;
     }
   }
 
-  async getVisited(): Promise<string[]> {
-    return Array.from(this.visitedSet);
+  async getVisited(userId: string): Promise<string[]> {
+    return Array.from(this.visitedMap.get(userId) || []);
   }
 
-  async toggleVisited(id: string): Promise<boolean> {
-    if (this.visitedSet.has(id)) {
-      this.visitedSet.delete(id);
+  async toggleVisited(userId: string, id: string): Promise<boolean> {
+    if (!this.visitedMap.has(userId)) this.visitedMap.set(userId, new Set());
+    const set = this.visitedMap.get(userId)!;
+    if (set.has(id)) {
+      set.delete(id);
       return false;
     } else {
-      this.visitedSet.add(id);
+      set.add(id);
       return true;
     }
   }
 
-  async getAllRecipes(): Promise<Recipe[]> {
-    // Migrate legacy kidFavorite → kidApproval + ensure favorite field
-    for (const r of this.recipesArr) {
+  async getAllRecipes(userId: string): Promise<Recipe[]> {
+    const recipes = this.getUserRecipes(userId);
+    for (const r of recipes) {
       if (!r.kidApproval) {
         r.kidApproval = (r as any).kidFavorite ? ["beiden"] : [];
         delete (r as any).kidFavorite;
@@ -572,10 +604,10 @@ export class MemStorage extends BasePlaceStorage implements IStorage {
         r.favorite = false;
       }
     }
-    return this.recipesArr;
+    return recipes;
   }
 
-  async addRecipe(recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "favorite" | "kidApproval">): Promise<Recipe> {
+  async addRecipe(userId: string, recipe: Omit<Recipe, "id" | "createdAt" | "cooked" | "favorite" | "kidApproval">): Promise<Recipe> {
     const newRecipe: Recipe = {
       ...recipe,
       id: `recipe-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
@@ -584,29 +616,31 @@ export class MemStorage extends BasePlaceStorage implements IStorage {
       kidApproval: [],
       createdAt: new Date().toISOString(),
     };
-    this.recipesArr.push(newRecipe);
-    this.persistRecipes();
+    if (!this.recipesMap.has(userId)) this.recipesMap.set(userId, []);
+    this.recipesMap.get(userId)!.push(newRecipe);
+    this.persistRecipes(userId);
     return newRecipe;
   }
 
-  async deleteRecipe(id: string): Promise<boolean> {
-    const idx = this.recipesArr.findIndex((r) => r.id === id);
+  async deleteRecipe(userId: string, id: string): Promise<boolean> {
+    const recipes = this.getUserRecipes(userId);
+    const idx = recipes.findIndex((r) => r.id === id);
     if (idx === -1) return false;
-    this.recipesArr.splice(idx, 1);
-    this.persistRecipes();
+    recipes.splice(idx, 1);
+    this.persistRecipes(userId);
     return true;
   }
 
-  async toggleRecipeCooked(id: string): Promise<boolean> {
-    const recipe = this.recipesArr.find((r) => r.id === id);
+  async toggleRecipeCooked(userId: string, id: string): Promise<boolean> {
+    const recipe = this.getUserRecipes(userId).find((r) => r.id === id);
     if (!recipe) return false;
     recipe.cooked = !recipe.cooked;
-    this.persistRecipes();
+    this.persistRecipes(userId);
     return recipe.cooked;
   }
 
-  async toggleRecipeKidApproval(id: string, tag: KidApproval): Promise<KidApproval[]> {
-    const recipe = this.recipesArr.find((r) => r.id === id);
+  async toggleRecipeKidApproval(userId: string, id: string, tag: KidApproval): Promise<KidApproval[]> {
+    const recipe = this.getUserRecipes(userId).find((r) => r.id === id);
     if (!recipe) return [];
     if (!recipe.kidApproval) recipe.kidApproval = [];
     if (recipe.kidApproval.includes(tag)) {
@@ -614,35 +648,26 @@ export class MemStorage extends BasePlaceStorage implements IStorage {
     } else {
       recipe.kidApproval.push(tag);
     }
-    this.persistRecipes();
+    this.persistRecipes(userId);
     return recipe.kidApproval;
   }
 
-  async toggleRecipeFavorite(id: string): Promise<boolean> {
-    const recipe = this.recipesArr.find((r) => r.id === id);
+  async toggleRecipeFavorite(userId: string, id: string): Promise<boolean> {
+    const recipe = this.getUserRecipes(userId).find((r) => r.id === id);
     if (!recipe) return false;
     recipe.favorite = !recipe.favorite;
-    this.persistRecipes();
+    this.persistRecipes(userId);
     return recipe.favorite;
   }
 
-  async updateRecipeCategories(id: string, categories: RecipeCategory[]): Promise<Recipe | null> {
-    const recipe = this.recipesArr.find((r) => r.id === id);
+  async updateRecipeCategories(userId: string, id: string, categories: RecipeCategory[]): Promise<Recipe | null> {
+    const recipe = this.getUserRecipes(userId).find((r) => r.id === id);
     if (!recipe) return null;
     recipe.categories = categories;
-    this.persistRecipes();
+    this.persistRecipes(userId);
     return recipe;
   }
 
-  async getRecipeDagplan(): Promise<{ ontbijt: Recipe | null; lunch: Recipe | null; diner: Recipe | null }> {
-    const all = await this.getAllRecipes();
-    const pick = (cat: RecipeCategory): Recipe | null => {
-      const matching = all.filter((r) => (r.categories || []).includes(cat));
-      if (matching.length === 0) return null;
-      return matching[Math.floor(Math.random() * matching.length)];
-    };
-    return { ontbijt: pick("ontbijt"), lunch: pick("lunch"), diner: pick("diner") };
-  }
 }
 
 // ============================================================

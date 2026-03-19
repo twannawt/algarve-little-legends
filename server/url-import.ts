@@ -6,6 +6,31 @@
 import type { UrlImportResult, Place, RecipeImportResult } from "@shared/schema";
 
 // ============================================================
+// SSRF Protection — block internal/private network requests
+// ============================================================
+
+function isAllowedUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.toLowerCase();
+    // Block private/internal addresses
+    if (host === "localhost" || host === "[::1]") return false;
+    if (/^127\./.test(host)) return false;
+    if (/^10\./.test(host)) return false;
+    if (/^172\.(1[6-9]|2\d|3[01])\./.test(host)) return false;
+    if (/^192\.168\./.test(host)) return false;
+    if (/^169\.254\./.test(host)) return false; // link-local
+    if (/^0\./.test(host)) return false;
+    if (host.endsWith(".local") || host.endsWith(".internal")) return false;
+    // Only allow http(s)
+    if (parsed.protocol !== "https:" && parsed.protocol !== "http:") return false;
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+// ============================================================
 // Google Maps URL parsing
 // ============================================================
 
@@ -113,6 +138,10 @@ interface WebMeta {
 }
 
 async function fetchWebMeta(url: string): Promise<WebMeta> {
+  if (!isAllowedUrl(url)) {
+    console.warn("Blocked SSRF attempt:", url);
+    return { title: "", description: "", image: "", siteName: "" };
+  }
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 8000);
@@ -244,6 +273,7 @@ export async function importFromUrls(
       googleMapsUrl.includes("maps.app")
     ) {
       try {
+        if (!isAllowedUrl(googleMapsUrl)) throw new Error("Blocked URL");
         const res = await fetch(googleMapsUrl, {
           redirect: "follow",
           headers: { "User-Agent": "Mozilla/5.0" },
@@ -319,6 +349,10 @@ export async function importFromUrls(
 // ============================================================
 
 export async function extractLinksFromPage(url: string): Promise<string[]> {
+  if (!isAllowedUrl(url)) {
+    console.warn("Blocked SSRF attempt:", url);
+    return [];
+  }
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 15000);

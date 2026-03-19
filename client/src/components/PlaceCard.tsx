@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { MapPin, Heart } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { MapPin, Heart, ChevronLeft } from "lucide-react";
 import { useLocation } from "wouter";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { motion, useMotionValue, useTransform } from "framer-motion";
@@ -213,18 +213,37 @@ function CardIllustration({ category }: { category: string }) {
   }
 }
 
-export function PlaceCard({ place }: { place: Place }) {
+// Module-level flag — swipe hint shown once per app session
+let swipeHintShown = false;
+
+interface PlaceCardProps {
+  place: Place;
+  /** Optional pre-fetched favorites array — avoids per-card query */
+  favorites?: string[];
+}
+
+export function PlaceCard({ place, favorites: favoriteProp }: PlaceCardProps) {
   const [, navigate] = useLocation();
   const queryClient = useQueryClient();
   const [isMobile, setIsMobile] = useState(false);
+  const [showSwipeHint, setShowSwipeHint] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.matchMedia("(hover: none)").matches);
+    const mobile = window.matchMedia("(hover: none)").matches;
+    setIsMobile(mobile);
+    // Show swipe hint on first mobile card render (module-level flag)
+    if (mobile && !swipeHintShown) {
+      swipeHintShown = true;
+      setShowSwipeHint(true);
+    }
   }, []);
 
-  const { data: favorites = [] } = useQuery<string[]>({
+  // Use prop if available, fall back to own query for standalone usage
+  const { data: fetchedFavorites = [] } = useQuery<string[]>({
     queryKey: ["/api/favorites"],
+    enabled: favoriteProp === undefined,
   });
+  const favorites = favoriteProp ?? fetchedFavorites;
 
   const isFavorite = favorites.includes(place.id);
   const distance = getDistance(LAGOA_LAT, LAGOA_LNG, place.latitude, place.longitude);
@@ -317,11 +336,27 @@ export function PlaceCard({ place }: { place: Place }) {
         drag="x"
         dragConstraints={{ left: -100, right: 0 }}
         dragElastic={0.1}
-        onDragEnd={handleDragEnd}
+        onDragEnd={(_, info) => {
+          handleDragEnd(_, info);
+          if (showSwipeHint) setShowSwipeHint(false);
+        }}
         style={{ x }}
       >
         {cardContent}
       </motion.div>
+      {/* Swipe hint — shown once per session on the first card */}
+      {showSwipeHint && (
+        <motion.div
+          initial={{ opacity: 0, x: 10 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ delay: 1.5, duration: 0.4 }}
+          className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-accent/90 text-white text-[10px] font-medium shadow-lg pointer-events-none"
+        >
+          <ChevronLeft className="h-3 w-3 animate-pulse" />
+          Swipe
+        </motion.div>
+      )}
     </div>
   );
 }

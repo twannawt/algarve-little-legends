@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
+import { clerkMiddleware } from "@clerk/express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
@@ -7,6 +8,9 @@ import { initDatabase } from "./db";
 
 const app = express();
 const httpServer = createServer(app);
+
+// Clerk middleware — attaches auth to all requests
+app.use(clerkMiddleware());
 
 declare module "http" {
   interface IncomingMessage {
