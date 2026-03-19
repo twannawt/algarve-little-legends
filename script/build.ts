@@ -9,6 +9,7 @@ import path from "path";
 const allowlist = [
   "@clerk/express",
   "@google/generative-ai",
+  "dotenv",
   "axios",
   "connect-pg-simple",
   "cors",
