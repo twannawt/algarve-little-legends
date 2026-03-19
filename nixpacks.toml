@@ -2,6 +2,7 @@
 NODE_ENV = "development"
 NPM_CONFIG_PRODUCTION = "false"
 NPM_CONFIG_LEGACY_PEER_DEPS = "true"
+VITE_CLERK_PUBLISHABLE_KEY = "pk_test_d2lzZS1yb3VnaHktMTIuY2xlcmsuYWNjb3VudHMuZGV2JA"
 
 [phases.setup]
 nixPkgs = ["nodejs_22"]
