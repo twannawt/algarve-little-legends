@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import { MapPin, Heart, ChevronLeft } from "lucide-react";
+import { MapPin, Heart, ChevronLeft, CheckCircle } from "lucide-react";
 import { useLocation } from "wouter";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { apiRequest } from "@/lib/queryClient";
 import { getDistance, LAGOA_LAT, LAGOA_LNG } from "@/lib/geo";
+import { useT } from "@/lib/i18n";
 import { CategoryBadge, CategoryIcon } from "@/components/CategoryIcon";
 import { StarRating } from "@/components/StarRating";
 import { Card, CardContent } from "@/components/ui/card";
@@ -222,13 +223,16 @@ interface PlaceCardProps {
   place: Place;
   /** Optional pre-fetched favorites array — avoids per-card query */
   favorites?: string[];
+  /** Optional pre-fetched visited IDs array */
+  visitedIds?: string[];
   /** Optional rating (1-5) to display on the card */
   rating?: number;
 }
 
-export function PlaceCard({ place, favorites: favoriteProp, rating }: PlaceCardProps) {
+export function PlaceCard({ place, favorites: favoriteProp, visitedIds, rating }: PlaceCardProps) {
   const [, navigate] = useLocation();
   const queryClient = useQueryClient();
+  const t = useT();
   const [isMobile, setIsMobile] = useState(false);
   const [showSwipeHint, setShowSwipeHint] = useState(false);
 
@@ -277,6 +281,12 @@ export function PlaceCard({ place, favorites: favoriteProp, rating }: PlaceCardP
     >
       {/* Photo or illustrated category header */}
       <div className={`h-28 relative overflow-hidden`}>
+        {/* Visited badge */}
+        {visitedIds?.includes(place.id) && (
+          <div className="absolute bottom-2 right-2 z-10 flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-black/40 backdrop-blur-sm">
+            <CheckCircle className="h-3 w-3 text-emerald-400 fill-emerald-400/30" />
+          </div>
+        )}
         {place.imageUrl ? (
           <PlaceImage
             src={place.imageUrl}
@@ -363,7 +373,7 @@ export function PlaceCard({ place, favorites: favoriteProp, rating }: PlaceCardP
           className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-accent/90 text-white text-[10px] font-medium shadow-lg pointer-events-none"
         >
           <ChevronLeft className="h-3 w-3 animate-pulse" />
-          Swipe
+          {t("veegHint")}
         </motion.div>
       )}
     </div>

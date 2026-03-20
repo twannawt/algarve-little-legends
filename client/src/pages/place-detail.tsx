@@ -26,6 +26,14 @@ import { useT } from "@/lib/i18n";
 import { getDistance, LAGOA_LAT, LAGOA_LNG } from "@/lib/geo";
 import type { Place } from "@shared/schema";
 
+function BohoWaveDivider() {
+  return (
+    <svg className="w-full h-3 text-border my-5" viewBox="0 0 1200 8" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 4 Q150 0 300 4 Q450 8 600 4 Q750 0 900 4 Q1050 8 1200 4" fill="none" stroke="currentColor" strokeWidth="1" />
+    </svg>
+  );
+}
+
 const categoryHeroGradient: Record<string, string> = {
   restaurant: "from-[hsl(140,20%,42%)] to-[hsl(140,20%,52%)]",
   beach: "from-[hsl(195,20%,55%)] to-[hsl(195,20%,65%)]",
@@ -164,7 +172,7 @@ export default function PlaceDetail() {
       transition={{ duration: 0.25 }}
     >
       {/* Hero: photo or category gradient */}
-      <div className="h-[180px] relative overflow-hidden">
+      <div className="h-[240px] relative overflow-hidden">
         {place.imageUrl ? (
           <DetailHeroImage
             src={place.imageUrl}
@@ -177,7 +185,7 @@ export default function PlaceDetail() {
           </div>
         )}
         {/* Dark overlay at bottom for readability */}
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/30 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 via-black/15 to-transparent" />
       </div>
 
       <div className="max-w-3xl mx-auto px-4 pb-24 md:pb-8">
@@ -240,9 +248,11 @@ export default function PlaceDetail() {
         </div>
 
         {/* Description */}
-        <p className="text-sm text-foreground leading-relaxed mb-6">
+        <p className="text-sm text-foreground leading-relaxed mb-2">
           {place.description}
         </p>
+
+        {place.kidFeatures.length > 0 && <BohoWaveDivider />}
 
         {/* Kid Features — 2-column grid */}
         {place.kidFeatures.length > 0 && (
@@ -260,6 +270,8 @@ export default function PlaceDetail() {
             </div>
           </div>
         )}
+
+        {infoItems.length > 0 && <BohoWaveDivider />}
 
         {/* Info Grid */}
         {infoItems.length > 0 && (
@@ -295,6 +307,8 @@ export default function PlaceDetail() {
           </div>
         )}
 
+        {place.tip && <BohoWaveDivider />}
+
         {/* Tip Box — dashed border */}
         {place.tip && (
           <div className="mb-6 p-5 rounded-2xl border border-dashed border-accent/30 bg-accent/[0.04]">
@@ -322,6 +336,8 @@ export default function PlaceDetail() {
             </div>
           </div>
         )}
+
+        <BohoWaveDivider />
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 mb-6">

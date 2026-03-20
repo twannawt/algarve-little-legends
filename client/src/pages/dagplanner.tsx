@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { UtensilsCrossed, Bike, TreePine, MapPin, Navigation, RefreshCw, Compass, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -116,12 +116,26 @@ export default function DagplannerPage() {
       )}
 
       {plan && (
-        <div className="space-y-0">
+        <AnimatePresence mode="wait">
+        <motion.div
+          key={`${plan.restaurant.id}-${plan.activity.id}-${plan.playground.id}`}
+          className="space-y-0"
+          initial="hidden"
+          animate="visible"
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
+        >
           {steps.map((step, idx) => {
             const Icon = step.icon;
             const mapsUrl = `https://www.google.com/maps?q=${step.place.latitude},${step.place.longitude}`;
             return (
-              <div key={idx} className="flex gap-4">
+              <motion.div
+                key={idx}
+                className="flex gap-4"
+                variants={{
+                  hidden: { opacity: 0, y: 12, scale: 0.97 },
+                  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } },
+                }}
+              >
                 {/* Timeline */}
                 <div className="flex flex-col items-center">
                   <div className={`w-10 h-10 rounded-full ${step.color} flex items-center justify-center`}>
@@ -166,10 +180,11 @@ export default function DagplannerPage() {
                     </CardContent>
                   </Card>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
+        </AnimatePresence>
       )}
 
       <Button

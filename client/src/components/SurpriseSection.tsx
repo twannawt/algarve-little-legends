@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   UtensilsCrossed,
@@ -49,6 +49,15 @@ export function SurpriseSection() {
       setRandomPlace(null);
     }
   }
+
+  // Listen for external trigger (e.g. "Verras me" button in hero)
+  useEffect(() => {
+    function handleTrigger() {
+      fetchRandom();
+    }
+    window.addEventListener("trigger-surprise", handleTrigger);
+    return () => window.removeEventListener("trigger-surprise", handleTrigger);
+  });
 
   return (
     <>

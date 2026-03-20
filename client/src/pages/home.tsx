@@ -182,6 +182,10 @@ export default function HomePage() {
     queryKey: ["/api/favorites"],
   });
 
+  const { data: visitedIds = [] } = useQuery<string[]>({
+    queryKey: ["/api/visited"],
+  });
+
   // ── Performance: memoized computed values ──
   const filteredPlaces = useMemo(() =>
     places.filter((p) => {
@@ -287,7 +291,10 @@ export default function HomePage() {
           <div className="flex gap-3">
             <button
               data-testid="random-button"
-              onClick={() => document.getElementById("surprise-section")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent("trigger-surprise"));
+                document.getElementById("surprise-section")?.scrollIntoView({ behavior: "smooth" });
+              }}
               className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl bg-[hsl(42,35%,62%)] text-white text-sm font-semibold shadow-sm hover:opacity-90 transition-opacity flex-1"
             >
               <Sparkles className="h-4.5 w-4.5" />
@@ -304,50 +311,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Surprise section — category chips + random result */}
-        <div id="surprise-section">
-          <SurpriseSection />
-        </div>
-
-        {/* Categories — grid */}
-        <section id="categories-section" className="mb-6 scroll-mt-[10rem]">
-          <SectionHeader>{t("categorieen")}</SectionHeader>
-          <motion.div
-            className="grid grid-cols-3 gap-3 sm:grid-cols-5"
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-          >
-            {categoryConfig.map(({ key, labelKey, icon: Icon, color }) => {
-              const isActive = activeCategory === key;
-              return (
-                <motion.button
-                  key={key}
-                  data-testid={`category-${key}`}
-                  variants={fadeIn}
-                  transition={{ duration: 0.25 }}
-                  onClick={() => setActiveCategory(isActive ? null : key)}
-                  className={`flex flex-col items-center gap-2 py-4 px-2 rounded-2xl border shadow-sm transition-all ${
-                    isActive
-                      ? "border-primary bg-primary/10 ring-2 ring-primary/20"
-                      : "border-border bg-card hover:border-primary/30"
-                  }`}
-                >
-                  <div className={`p-3 rounded-full ${color}`}>
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <span className="text-xs font-medium text-foreground">{t(labelKey)}</span>
-                  <span className="text-xs font-semibold text-muted-foreground">
-                    {categoryCounts[key] || 0}
-                  </span>
-                </motion.button>
-              );
-            })}
-          </motion.div>
-        </section>
-
         {/* Search + Age Filters */}
-        <div className="mb-6">
+        <div className="mb-5">
           <SearchBar value={search} onChange={setSearch} placeholder={t("zoekPlekken")} />
           <div className="flex gap-2 mt-3">
             {[
@@ -371,6 +336,85 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* Surprise section — category chips + random result */}
+        <div id="surprise-section">
+          <SurpriseSection />
+        </div>
+
+        {/* Categories — horizontal scroll on mobile, grid on desktop */}
+        <section id="categories-section" className="mb-6 scroll-mt-[10rem]">
+          <SectionHeader>{t("categorieen")}</SectionHeader>
+          {/* Mobile: horizontal chip strip */}
+          <div className="relative sm:hidden">
+            <div className="absolute right-0 top-0 bottom-1 w-8 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+            <motion.div
+              className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
+              {categoryConfig.map(({ key, labelKey, icon: Icon, color }) => {
+                const isActive = activeCategory === key;
+                return (
+                  <motion.button
+                    key={key}
+                    data-testid={`category-${key}`}
+                    variants={fadeIn}
+                    transition={{ duration: 0.25 }}
+                    onClick={() => setActiveCategory(isActive ? null : key)}
+                    className={`flex items-center gap-2 px-4 py-3 min-h-[44px] rounded-2xl border shadow-sm transition-all whitespace-nowrap shrink-0 ${
+                      isActive
+                        ? "border-primary bg-primary/10 ring-2 ring-primary/20"
+                        : "border-border bg-card hover:border-primary/30"
+                    }`}
+                  >
+                    <div className={`p-1.5 rounded-full ${color}`}>
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <span className="text-xs font-medium text-foreground">{t(labelKey)}</span>
+                    <span className="text-xs font-semibold text-muted-foreground">
+                      {categoryCounts[key] || 0}
+                    </span>
+                  </motion.button>
+                );
+              })}
+            </motion.div>
+          </div>
+          {/* Desktop: grid layout */}
+          <motion.div
+            className="hidden sm:grid sm:grid-cols-5 gap-3"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            {categoryConfig.map(({ key, labelKey, icon: Icon, color }) => {
+              const isActive = activeCategory === key;
+              return (
+                <motion.button
+                  key={key}
+                  data-testid={`category-desktop-${key}`}
+                  variants={fadeIn}
+                  transition={{ duration: 0.25 }}
+                  onClick={() => setActiveCategory(isActive ? null : key)}
+                  className={`flex flex-col items-center gap-2 py-4 px-2 rounded-2xl border shadow-sm transition-all ${
+                    isActive
+                      ? "border-primary bg-primary/10 ring-2 ring-primary/20"
+                      : "border-border bg-card hover:border-primary/30"
+                  }`}
+                >
+                  <div className={`p-3 rounded-full ${color}`}>
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <span className="text-xs font-medium text-foreground">{t(labelKey)}</span>
+                  <span className="text-xs font-semibold text-muted-foreground">
+                    {categoryCounts[key] || 0}
+                  </span>
+                </motion.button>
+              );
+            })}
+          </motion.div>
+        </section>
+
         {/* Filtered Results */}
         {showResults && (
           <section className="mb-8">
@@ -386,7 +430,7 @@ export default function HomePage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredPlaces.map((place) => (
-                <PlaceCard key={place.id} place={place} favorites={favorites} />
+                <PlaceCard key={place.id} place={place} favorites={favorites} visitedIds={visitedIds} />
               ))}
             </div>
             {filteredPlaces.length === 0 && (
@@ -410,7 +454,7 @@ export default function HomePage() {
             <div className="flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:overflow-visible scrollbar-hide">
               {seasonalPlaces.map((place) => (
                 <div key={place.id} className="flex-shrink-0 w-64 md:w-auto">
-                  <PlaceCard place={place} favorites={favorites} />
+                  <PlaceCard place={place} favorites={favorites} visitedIds={visitedIds} />
                 </div>
               ))}
             </div>
@@ -430,7 +474,7 @@ export default function HomePage() {
             <div className="flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:overflow-visible scrollbar-hide">
               {recentlyViewed.map((place) => (
                 <div key={place.id} className="flex-shrink-0 w-64 md:w-auto">
-                  <PlaceCard place={place} favorites={favorites} />
+                  <PlaceCard place={place} favorites={favorites} visitedIds={visitedIds} />
                 </div>
               ))}
             </div>
@@ -461,7 +505,7 @@ export default function HomePage() {
             <div className="w-8 h-0.5 bg-primary/40 rounded-full mb-4" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {nearbyPlaces.map((place) => (
-                <PlaceCard key={place.id} place={place} favorites={favorites} />
+                <PlaceCard key={place.id} place={place} favorites={favorites} visitedIds={visitedIds} />
               ))}
             </div>
           </motion.section>

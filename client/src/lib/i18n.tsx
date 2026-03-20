@@ -111,6 +111,7 @@ const translations = {
   jouwBeoordeling: "Jouw beoordeling",
   geefBeoordeling: "Geef een beoordeling",
   beoordelingOpgeslagen: "Beoordeling opgeslagen",
+  veegHint: "Veeg",
   leeftijd: "Leeftijd",
   keuken: "Keuken",
   prijs: "Prijs",

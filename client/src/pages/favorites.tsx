@@ -77,7 +77,7 @@ export default function FavoritesPage() {
         >
           {activePlaces.map((place) => (
             <motion.div key={place.id} variants={fadeIn} transition={{ duration: 0.25 }}>
-              <PlaceCard place={place} favorites={favoriteIds} rating={tab === "visited" ? ratings[place.id] : undefined} />
+              <PlaceCard place={place} favorites={favoriteIds} visitedIds={visitedIds} rating={tab === "visited" ? ratings[place.id] : undefined} />
             </motion.div>
           ))}
         </motion.div>
